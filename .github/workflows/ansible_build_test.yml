@@ -1,0 +1,16 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: YAML Lint
+      uses: ibiqlik/action-yamllint@v0.0.1
+    - name: Ansible Lint
+      uses: ansible/ansible-lint-action@v4.1.0
+
