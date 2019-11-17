@@ -8,5 +8,3 @@
       command: "/home/sdtdserver/sdtdserver update"
       register: update_sdtdserver
       changed_when: True
-    - debug:
-      msg: "{{ update_sdtdserver.stdout }}"
