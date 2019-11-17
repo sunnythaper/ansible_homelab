@@ -3,7 +3,8 @@
   
   tasks:
     - name: Update 7DTD server to latest
-      become: sdtdserver
+      become: yes
+      become_user: sdtdserver
       command: "/home/sdtdserver/sdtdserver update"
       register: update_sdtdserver
       changed_when: True
