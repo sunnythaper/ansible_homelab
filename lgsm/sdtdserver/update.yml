@@ -3,8 +3,6 @@
   
   tasks:
     - name: "Update {{ lgsm_server }} server to latest"
-      become: yes
-      become_user: "{{ lgsm_server }}"
       command: "/home/{{ lgsm_server }}/{{ lgsm_server }} update"
       register: update_server
       changed_when: True
