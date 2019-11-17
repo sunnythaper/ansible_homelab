@@ -5,4 +5,4 @@
     - name: "Update {{ lgsm_server }} server to latest"
       command: "/home/{{ lgsm_server }}/{{ lgsm_server }} update"
       register: update_server
-      changed_when: True
+      changed_when: "not update_server.stdout|search('No update available')"
