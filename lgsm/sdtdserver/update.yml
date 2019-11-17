@@ -2,9 +2,9 @@
 - hosts: all
   
   tasks:
-    - name: Update 7DTD server to latest
+    - name: Update {{ lgsm_server }} server to latest
       become: yes
-      become_user: sdtdserver
-      command: "/home/sdtdserver/sdtdserver update"
-      register: update_sdtdserver
+      become_user: {{ lgsm_server }}
+      command: "/home/{{ lgsm_server }}/{{ lgsm_server }} update"
+      register: update_server
       changed_when: True
