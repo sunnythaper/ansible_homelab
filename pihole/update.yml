@@ -1,0 +1,9 @@
+---
+- hosts: all
+  
+  tasks:
+    - name: "Update Pi-Hole to latest"
+      command: "pihole -up"
+      register: update_pihole
+      changed_when: "'Everything is up to date!' not in update_pihole.stdout"
+      failed_when: "'FAIL' in update_pihole.stdout"
