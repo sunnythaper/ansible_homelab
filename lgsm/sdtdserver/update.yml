@@ -6,3 +6,4 @@
       command: "/home/{{ lgsm_server }}/{{ lgsm_server }} update"
       register: update_server
       changed_when: "'No update available' not in update_server.stdout"
+      failed_when: "'FAIL' in update_server.stdout"
