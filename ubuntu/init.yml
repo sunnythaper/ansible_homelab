@@ -14,3 +14,16 @@
     - name: "Set timezone to {{ timezone }}"
       timezone:
         name: "{{ timezone }}"
+        
+    - name: Disable SSH password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication.*yes'
+        line: 'PasswordAuthentication no'
+      notify: restart_sshd
+
+handlers:
+  - name: restart_sshd
+    service:
+      name: sshd
+      state: restarted
