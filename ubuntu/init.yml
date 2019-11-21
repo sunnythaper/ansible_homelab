@@ -2,7 +2,7 @@
 - hosts: all
   
   tasks:
-    - name: "Upgrade all packages to the latest version"
+    - name: Upgrade all packages to the latest version
       apt:
         name: "*"
         state: latest
@@ -10,3 +10,7 @@
         cache_valid_time: 3600
         autoclean: yes
         autoremove: yes
+        
+    - name: "Set timezone to {{ timezone }}"
+      timezone:
+        name: "{{ timezone }}"
