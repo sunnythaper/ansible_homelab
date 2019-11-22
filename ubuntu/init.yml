@@ -22,7 +22,7 @@
         line: 'PasswordAuthentication no'
       register: password_auth
       
-    - name: restart_sshd
+    - name: Restart SSHD if SSH password authentication has been disabled
       service:
         name: sshd
         state: restarted
