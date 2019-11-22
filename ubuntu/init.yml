@@ -20,3 +20,10 @@
         path: /etc/ssh/sshd_config
         regexp: '^PasswordAuthentication.*yes'
         line: 'PasswordAuthentication no'
+      register: password_auth
+      
+    - name: restart_sshd
+      service:
+        name: sshd
+        state: restarted
+      when: password_auth.changed
