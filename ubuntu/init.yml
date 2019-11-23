@@ -2,6 +2,13 @@
 - hosts: all
   
   tasks:
+    - name: Install aptitude and perform upgrade
+      apt:
+        name: aptitude
+        update_cache: yes
+        cache_valid_time: 3600
+        upgrade: yes
+  
     - name: Upgrade all packages to the latest version
       apt:
         name: "*"
