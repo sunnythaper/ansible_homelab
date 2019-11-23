@@ -1,0 +1,33 @@
+---
+- hosts: all
+  
+  tasks:
+    - name: Add a "mattermost" group
+      group:
+        name: mattermost
+        state: present
+        gid: 1000
+        
+    - name: Add a "mattermost" user
+      user: 
+        name: mattermost
+        group: mattermost
+        password: '{{ password }}'
+        state: present
+        uid: 1000
+    
+    - name: Add user "mattermost" to sudo
+      lineinfile:
+        path: /etc/sudoers.d/mattermost
+        line: 'mattermost ALL=(ALL) NOPASSWD: ALL'
+        state: present
+        mode: 0440
+        create: yes
+        validate: 'visudo -cf %s'
+        
+    - name: Set includedir to include /etc/sudoers.d
+      lineinfile:
+        dest: /etc/sudoers
+        line: '#includedir /etc/sudoers.d'
+        state: present
+        validate: '/usr/sbin/visudo -cf %s'
