@@ -13,4 +13,5 @@
       unarchive:
         src: "{{ json_reponse.json.tarball_url }}"
         dest: /tmp/
+        creates: /tmp/mattermost-latest/
         remote_src: yes
