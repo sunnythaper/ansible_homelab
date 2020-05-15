@@ -13,3 +13,9 @@
       get_url:
         url: "{{ json_reponse.json.tarball_url }}"
         dest: /tmp/{{ json_reponse.json.name }}.tar.gz
+
+    - name: Unarchive Mattermost tarball
+      unarchive:
+        src: /tmp/{{ json_reponse.json.name }}.tar.gz
+        dest: /tmp/
+        remote_src: yes
