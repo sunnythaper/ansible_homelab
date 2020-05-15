@@ -9,13 +9,8 @@
         return_content: true
       register: json_reponse
 
-    - name: Identify & download tarball file from JSON
-      get_url:
-        url: "{{ json_reponse.json.tarball_url }}"
-        dest: /tmp/{{ json_reponse.json.name }}.tar.gz
-
-    - name: Unarchive Mattermost tarball
+    - name: Download & unarchive Mattermost tarball
       unarchive:
-        src: /tmp/{{ json_reponse.json.name }}.tar.gz
+        src: "{{ json_reponse.json.tarball_url }}"
         dest: /tmp/
         remote_src: yes
