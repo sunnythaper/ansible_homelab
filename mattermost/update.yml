@@ -15,3 +15,7 @@
         dest: /tmp/
         creates: /tmp/mattermost-latest/
         remote_src: yes
+        list_files: yes
+        extra_opts:
+          - --transform='s,^[^/]\+,\0-upgrade,'
+      register: archive_contents
