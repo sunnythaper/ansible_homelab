@@ -26,4 +26,16 @@
         state: directory
       
     - name: Backing up Postgres database
-      shell: "pg_dump --clean --create -U mattermost mattermost > /opt/mattermost-backups/db/mattermost-db-backup-{{ ansible_date_time.iso8601 }}.db"
+      shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
+      
+    - name: Creating a directory for application backups
+      file:
+        path: /opt/mattermost-backups/app
+        mode: 0775
+        owner: root
+        state: directory
+        
+    - name: Backing up Mattermost application
+      copy:
+        src: /opt/mattermost
+        dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
