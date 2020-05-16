@@ -13,7 +13,6 @@
       unarchive:
         src: "{{ json_reponse.json.tarball_url }}"
         dest: /tmp/
-        creates: /tmp/mattermost-latest/
         remote_src: yes
         list_files: yes
       register: archive_contents
@@ -39,3 +38,4 @@
       copy:
         src: /opt/mattermost
         dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
+        remote_src: yes
