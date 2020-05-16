@@ -52,7 +52,7 @@
       
     - name: Copy contents of latest release to Mattermost folder
       copy:
-        src: /tmp/mattermost/
+        src: /tmp/mattermost
         dest: /opt/mattermost/
         remote_src: yes
         directory_mode: yes
