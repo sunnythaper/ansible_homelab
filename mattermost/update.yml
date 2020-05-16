@@ -11,7 +11,7 @@
 
     - name: Downloading & unarchiving Mattermost tarball
       unarchive:
-        src: "https://releases.mattermost.com/{{ json_reponse.json.name.trim('v') }}/mattermost-{{ json_reponse.json.name.trim('v') }}-linux-amd64.tar.gz"
+        src: "https://releases.mattermost.com/{{ json_reponse.json.name | replace('v','') }}/mattermost-{{ json_reponse.json.name | replace('v','') }}-linux-amd64.tar.gz"
         dest: /tmp/
         remote_src: yes
         list_files: yes
