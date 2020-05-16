@@ -45,11 +45,27 @@
         mode: preserve
         group: mattermost
         owner: mattermost
-        
-    - name: Remove current Mattermost files
-      shell: "find /opt/mattermost/ /opt/mattermost/client/ -mindepth 1 -maxdepth 1 \\! \\( -type d \\( -path /opt/mattermost/client -o -path /opt/mattermost/client/plugins -o -path /opt/mattermost/config -o -path /opt/mattermost/logs -o -path /opt/mattermost/plugins -o -path /opt/mattermost/data \\) -prune \\) | sort | sudo xargs rm -r"
-      ignore_errors: yes
       
+    - name: Identify current Mattermost files except special folders
+      find:
+        paths:
+          - /opt/mattermost/
+          - /opt/mattermost/client/
+        excludes:
+          - /opt/mattermost/client/*
+          - /opt/mattermost/client/plugins/*
+          - /opt/mattermost/config/config.json
+          - /opt/mattermost/logs/*
+          - /opt/mattermost/plugins/*
+          - /opt/mattermost/data/*
+      register: files_to_delete
+      
+    - name: Delete current Mattermost files except special folders
+      file:
+        path: "{{ item.path }}
+        state: absent
+      with_items: "{{ files_to_delete.files }}"
+          
     - name: Remove config.json file from update before transferring
       file:
         path: /tmp/mattermost/config/config.json
