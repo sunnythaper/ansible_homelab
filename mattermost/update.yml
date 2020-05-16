@@ -53,7 +53,7 @@
       
     - name: Copy contents of latest release to Mattermost folder
       copy:
-        src: "{{ archive_contents.files[0].split('/')[0] }}"
+        src: "/tmp/{{ archive_contents.files[0].split('/')[0] }}/."
         dest: /opt/mattermost/
         remote_src: yes
         mode: preserve
