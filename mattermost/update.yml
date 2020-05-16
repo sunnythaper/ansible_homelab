@@ -62,7 +62,7 @@
       
     - name: Delete current Mattermost files except special folders
       file:
-        path: "{{ item.path }}
+        path: "{{ item.path }}"
         state: absent
       with_items: "{{ files_to_delete.files }}"
           
