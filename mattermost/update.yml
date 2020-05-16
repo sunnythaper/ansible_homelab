@@ -3,13 +3,13 @@
 - hosts: all
   
   tasks:
-    - name: Get latest Mattermost release JSON from Github
+    - name: Getting latest Mattermost release JSON from Github
       uri:
         url: https://api.github.com/repos/mattermost/mattermost-server/releases/latest
         return_content: true
       register: json_reponse
 
-    - name: Download & unarchive Mattermost tarball
+    - name: Downloading & unarchiving Mattermost tarball
       unarchive:
         src: "{{ json_reponse.json.tarball_url }}"
         dest: /tmp/
@@ -17,3 +17,13 @@
         remote_src: yes
         list_files: yes
       register: archive_contents
+      
+    - name: Creating a directory for database backups
+      file:
+        path: /opt/mattermost-backups/db
+        mode: 0775
+        owner: root
+        state: directory
+      
+    - name: Backing up Postgres database
+      command: "pg_dump --clean --create -U mattermost mattermost > /tmp/mattermost-db-backup.db"
