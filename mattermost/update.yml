@@ -17,5 +17,6 @@
         remote_src: yes
         list_files: yes
         extra_opts:
-          - --transform='s,^[^/]\+,\0-upgrade,'
+          - --transform
+          - s/^xxx/yyy/
       register: archive_contents
