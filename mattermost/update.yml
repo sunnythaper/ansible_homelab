@@ -50,6 +50,7 @@
         
     - name: Remove current Mattermost files
       shell: "find /opt/mattermost/ /opt/mattermost/client/ -mindepth 1 -maxdepth 1 \\! \\( -type d \\( -path /opt/mattermost/client -o -path /opt/mattermost/client/plugins -o -path /opt/mattermost/config -o -path /opt/mattermost/logs -o -path /opt/mattermost/plugins -o -path /opt/mattermost/data \\) -prune \\) | sort | sudo xargs rm -r"
+      ignore_errors: yes
       
     - name: Copy contents of latest release to Mattermost folder
       copy:
