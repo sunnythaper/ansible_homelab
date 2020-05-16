@@ -26,4 +26,4 @@
         state: directory
       
     - name: Backing up Postgres database
-      command: "pg_dump --clean --create -U mattermost mattermost > /opt/mattermost-backups/db/mattermost-db-backup.db"
+      shell: "pg_dump --clean --create -U mattermost mattermost > /opt/mattermost-backups/db/mattermost-db-backup.db"
