@@ -16,7 +16,4 @@
         creates: /tmp/mattermost-latest/
         remote_src: yes
         list_files: yes
-        extra_opts:
-          - --transform
-          - s/^xxx/yyy/
       register: archive_contents
