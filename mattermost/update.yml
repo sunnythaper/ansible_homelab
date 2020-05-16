@@ -50,6 +50,11 @@
       shell: "find /opt/mattermost/ /opt/mattermost/client/ -mindepth 1 -maxdepth 1 \\! \\( -type d \\( -path /opt/mattermost/client -o -path /opt/mattermost/client/plugins -o -path /opt/mattermost/config -o -path /opt/mattermost/logs -o -path /opt/mattermost/plugins -o -path /opt/mattermost/data \\) -prune \\) | sort | sudo xargs rm -r"
       ignore_errors: yes
       
+    - name: Remove config.json file from update before transferring
+      file:
+        path: /tmp/mattermost/config/config.json
+        state: absent
+      
     - name: Copy contents of latest release to Mattermost folder
       copy:
         src: /tmp/mattermost
@@ -59,7 +64,6 @@
         mode: preserve
         group: mattermost
         owner: mattermost
-        force: no
       
     - name: Start service mattermost
       service:
