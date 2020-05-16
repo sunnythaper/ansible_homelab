@@ -55,7 +55,7 @@
     - name: Copy contents of latest release to Mattermost folder
       copy:
         src: /tmp/mattermost
-        dest: /opt/mattermost/
+        dest: /opt/mattermost
         remote_src: yes
         mode: preserve
         group: mattermost
