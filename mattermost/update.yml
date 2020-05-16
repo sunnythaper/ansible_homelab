@@ -17,6 +17,11 @@
         list_files: yes
       register: archive_contents
       
+    - name: Stop service mattermost, if started
+      service:
+        name: mattermost
+        state: stopped
+      
     - name: Creating a directory for database backups
       file:
         path: /opt/mattermost-backups/db
@@ -42,3 +47,8 @@
         mode: preserve
         group: mattermost
         owner: mattermost
+      
+    - name: Stop service mattermost, if started
+      service:
+        name: mattermost
+        state: started
