@@ -37,7 +37,7 @@
     - name: Backing up Mattermost application
       copy:
         src: /opt/mattermost
-        dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}/
+        dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
         remote_src: yes
         mode: preserve
         group: mattermost
