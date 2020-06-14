@@ -12,7 +12,7 @@
       - plugins/
 
     directories_to_delete:
-      - tmp/
+      - tmp/mattermost/
 
   tasks:
     - name: Get currently installed Mattermost version
