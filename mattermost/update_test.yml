@@ -23,6 +23,16 @@
       register: release
       changed_when: current_version.stdout not in release.json.name
 
+    - name: Copy Mattermost folder for upgrade usage
+      copy:
+        src: /opt/mattermost/
+        dest: /opt/mattermost-upgrade
+        remote_src: yes
+        directory_mode: yes
+        mode: preserve
+        group: mattermost
+        owner: mattermost
+
     - name: Downloading & unarchiving Mattermost tarball
       unarchive:
         src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
