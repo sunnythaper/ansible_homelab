@@ -56,8 +56,7 @@
     - name: Identify current Mattermost files except special folders
       find:
         paths:
-          - /opt/mattermost-test/
-          - /opt/mattermost-test/client/
+          - /opt/mattermost-test/*
         excludes:
           - /opt/mattermost-test/client/*
           - /opt/mattermost-test/client/plugins/*
