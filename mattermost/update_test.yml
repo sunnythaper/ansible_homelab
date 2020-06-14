@@ -3,13 +3,15 @@
 - hosts: all
   vars:
     files_to_keep:
-      - /client
-      - /client/plugins
-      - /config/config.json
-      - /logs
-      - /plugins
-      - /data
-  
+      - client/plugins
+      - config/config.json
+      - data
+      - logs
+      - plugins
+
+    files_to_delete:
+      - tmp
+
   tasks:
     - name: Get currently installed Mattermost version
       shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
@@ -23,9 +25,16 @@
       register: release
       changed_when: current_version.stdout not in release.json.name
 
-    - name: Copy Mattermost folder for upgrade usage
+    - name: Downloading & unarchiving Mattermost tarball
+      unarchive:
+        src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
+        dest: /tmp/
+        remote_src: yes
+      when: release.changed
+
+    - name: Create Mattermost upgrade folder
       copy:
-        src: /opt/mattermost/
+        src: /tmp/mattermost/
         dest: /opt/mattermost-upgrade
         remote_src: yes
         directory_mode: yes
@@ -34,35 +43,40 @@
         owner: mattermost
       when: release.changed
 
-    - name: Downloading & unarchiving Mattermost tarball
-      unarchive:
-        src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
-        dest: /tmp/
+    - name: Copy config, data, and plugin files to upgrade folder
+      copy:
+        src: /opt/mattermost/{{ item }}/
+        dest: /opt/mattermost-upgrade/{{ item }}
         remote_src: yes
+        directory_mode: yes
+        mode: preserve
+        group: mattermost
+        owner: mattermost
+      with_items: "{{ files_to_keep }}"
       when: release.changed
-      
+
     # - name: Stop service mattermost, if started
     #   service:
     #     name: mattermost
     #     state: stopped
-      
+
     # - name: Creating a directory for database backups
     #   file:
     #     path: /opt/mattermost-backups/db
     #     mode: 0775
     #     owner: root
     #     state: directory
-      
+
     # - name: Backing up Postgres database
     #   shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
-      
+
     # - name: Creating a directory for application backups
     #   file:
     #     path: /opt/mattermost-backups/app
     #     mode: 0775
     #     owner: root
     #     state: directory
-        
+
     # - name: Backing up Mattermost application
     #   copy:
     #     src: /opt/mattermost
@@ -71,41 +85,16 @@
     #     mode: preserve
     #     group: mattermost
     #     owner: mattermost
-      
-    - name: Identify current Mattermost files
-      find:
-        paths: /opt/mattermost-upgrade/
-        file_type: any
-        recurse: yes
-      register: all_files
-      when: release.changed
-      
-    - name: Delete current Mattermost files except special folders
-      file:
-        path: "{{ item.path }}"
-        state: absent
-        recurse: yes
-      with_items: "{{ all_files.files }}"
-      when:
-        - release.changed
-        - item.path not in files_to_keep
-          
-    # - name: Remove config.json file from update before transferring
-    #   file:
-    #     path: /tmp/mattermost/config/config.json
-    #     state: absent
-      
-    # - name: Copy contents of latest release to Mattermost folder
-    #   copy:
-    #     src: /tmp/mattermost
-    #     dest: /opt/
-    #     remote_src: yes
-    #     directory_mode: yes
-    #     mode: preserve
-    #     group: mattermost
-    #     owner: mattermost
-      
+
+    # DELETE MATTERMOST DIRECTORY AND RENAME UPGRADE DIRECTORY
+
     # - name: Start service mattermost
     #   service:
     #     name: mattermost
     #     state: started
+
+    - name: Delete unneeded files
+      file:
+        path: "/{{ item }}/"
+        state: absent
+      with_items: "{{ files_to_delete }}"
