@@ -15,11 +15,12 @@
       register: release
       changed_when: current_version.stdout not in release.json.name
 
-    # - name: Downloading & unarchiving Mattermost tarball
-    #   unarchive:
-    #     src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
-    #     dest: /tmp/
-    #     remote_src: yes
+    - name: Downloading & unarchiving Mattermost tarball
+      unarchive:
+        src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
+        dest: /tmp/
+        remote_src: yes
+      when: release.changed
       
     # - name: Stop service mattermost, if started
     #   service:
