@@ -14,6 +14,10 @@
     directories_to_delete:
       - tmp/mattermost/
 
+    backup_directories:
+      - /opt/mattermost-backups/db
+      - /opt/mattermost-backups/app
+
   tasks:
     - name: Get currently installed Mattermost version
       shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
@@ -59,27 +63,22 @@
         - "{{ directories_to_keep }}"
       when: release.changed
 
+    - name: Create directories for application & database backups
+      file:
+        path: "{{ item }}"
+        mode: 0755
+        group: root
+        owner: root
+        state: directory
+      with_items: "{{ backup_directories }}"
+
     # - name: Stop service mattermost, if started
     #   service:
     #     name: mattermost
     #     state: stopped
 
-    # - name: Creating a directory for database backups
-    #   file:
-    #     path: /opt/mattermost-backups/db
-    #     mode: 0775
-    #     owner: root
-    #     state: directory
-
     # - name: Backing up Postgres database
     #   shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
-
-    # - name: Creating a directory for application backups
-    #   file:
-    #     path: /opt/mattermost-backups/app
-    #     mode: 0775
-    #     owner: root
-    #     state: directory
 
     # - name: Backing up Mattermost application
     #   copy:
