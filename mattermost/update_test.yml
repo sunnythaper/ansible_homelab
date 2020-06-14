@@ -67,6 +67,7 @@
         file_type: any
         recurse: yes
       register: all_files
+      when: release.changed
       
     - name: Delete current Mattermost files except special folders
       file:
@@ -74,7 +75,9 @@
         state: absent
         recurse: yes
       with_items: "{{ all_files.files }}"
-      when: files_to_keep not in item.path
+      when:
+        - release.changed
+        - item.path not in files_to_keep
           
     # - name: Remove config.json file from update before transferring
     #   file:
@@ -95,3 +98,4 @@
     #   service:
     #     name: mattermost
     #     state: started
+d
