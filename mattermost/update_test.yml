@@ -3,18 +3,20 @@
 - hosts: all
   
   tasks:
-    - name: "Get currently installed Mattermost version"
+    - name: Get currently installed Mattermost version
       command: "/opt/mattermost/bin/mattermost version"
-      register: mattermost_version
+      register: mattermost_info
       changed_when: False
 
+    - set_fact:
+      current_version: {{ 'mattermost_info' | regex_substring("^Version.\s([0-9.]\*)") }}
 
     - name: Getting latest Mattermost release JSON from Github
       uri:
         url: https://api.github.com/repos/mattermost/mattermost-server/releases/latest
         return_content: true
       register: release
-      changed_when: release != {{ 'mattermost_version' | regex_search("^Version.\s([0-9.]\*)") }}
+      changed_when: current_version not in release.json.name
 
     # - name: Downloading & unarchiving Mattermost tarball
     #   unarchive:
