@@ -7,7 +7,6 @@
 
     directories_to_keep:
       - client/plugins/
-      - config/config.json
       - data/
       - logs/
       - plugins/
