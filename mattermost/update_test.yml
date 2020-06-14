@@ -53,25 +53,25 @@
     #     group: mattermost
     #     owner: mattermost
       
-    # - name: Identify current Mattermost files except special folders
-    #   find:
-    #     paths:
-    #       - /opt/mattermost/
-    #       - /opt/mattermost/client/
-    #     excludes:
-    #       - /opt/mattermost/client/*
-    #       - /opt/mattermost/client/plugins/*
-    #       - /opt/mattermost/config/config.json
-    #       - /opt/mattermost/logs/*
-    #       - /opt/mattermost/plugins/*
-    #       - /opt/mattermost/data/*
-    #   register: files_to_delete
+    - name: Identify current Mattermost files except special folders
+      find:
+        paths:
+          - /opt/mattermost-test/
+          - /opt/mattermost-test/client/
+        excludes:
+          - /opt/mattermost-test/client/*
+          - /opt/mattermost-test/client/plugins/*
+          - /opt/mattermost-test/config/config.json
+          - /opt/mattermost-test/logs/*
+          - /opt/mattermost-test/plugins/*
+          - /opt/mattermost-test/data/*
+      register: files_to_delete
       
-    # - name: Delete current Mattermost files except special folders
-    #   file:
-    #     path: "{{ item.path }}"
-    #     state: absent
-    #   with_items: "{{ files_to_delete.files }}"
+    - name: Delete current Mattermost files except special folders
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      with_items: "{{ files_to_delete.files }}"
           
     # - name: Remove config.json file from update before transferring
     #   file:
