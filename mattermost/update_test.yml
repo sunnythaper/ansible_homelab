@@ -4,7 +4,7 @@
   
   tasks:
     - name: Get currently installed Mattermost version
-      command: "/opt/mattermost/bin/mattermost version | grep -oP \"(?<=^Version:\\s)([0-9].*)\""
+      command: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
       register: current_version
       changed_when: False
 
@@ -13,7 +13,7 @@
         url: https://api.github.com/repos/mattermost/mattermost-server/releases/latest
         return_content: true
       register: release
-      changed_when: current_version not in release.json.name
+      changed_when: current_version,stdout not in release.json.name
 
     # - name: Downloading & unarchiving Mattermost tarball
     #   unarchive:
