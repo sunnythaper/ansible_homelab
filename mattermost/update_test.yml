@@ -4,7 +4,7 @@
   
   tasks:
     - name: Get currently installed Mattermost version
-      command: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
+      shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
       register: current_version
       changed_when: False
 
