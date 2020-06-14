@@ -32,6 +32,7 @@
         mode: preserve
         group: mattermost
         owner: mattermost
+      when: release.changed
 
     - name: Downloading & unarchiving Mattermost tarball
       unarchive:
