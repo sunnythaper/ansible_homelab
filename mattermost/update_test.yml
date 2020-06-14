@@ -1,10 +1,18 @@
 
 ---
 - hosts: all
+  vars:
+    files_to_keep:
+      - /client
+      - /client/plugins
+      - /config/config.json
+      - /logs
+      - /plugins
+      - /data
   
   tasks:
     - name: Get currently installed Mattermost version
-      shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
+      shell: '/opt/mattermost-upgrade/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
       register: current_version
       changed_when: False
 
@@ -53,24 +61,20 @@
     #     group: mattermost
     #     owner: mattermost
       
-    - name: Identify current Mattermost files except special folders
+    - name: Identify current Mattermost files
       find:
-        paths:
-          - /opt/mattermost-test/*
-        excludes:
-          - /opt/mattermost-test/client/*
-          - /opt/mattermost-test/client/plugins/*
-          - /opt/mattermost-test/config/config.json
-          - /opt/mattermost-test/logs/*
-          - /opt/mattermost-test/plugins/*
-          - /opt/mattermost-test/data/*
-      register: files_to_delete
+        paths: /opt/mattermost-upgrade/
+        file_type: any
+        recurse: yes
+      register: all_files
       
     - name: Delete current Mattermost files except special folders
       file:
         path: "{{ item.path }}"
         state: absent
-      with_items: "{{ files_to_delete.files }}"
+        recurse: yes
+      with_items: "{{ all_files.files }}"
+      when: files_to_keep not in item.path
           
     # - name: Remove config.json file from update before transferring
     #   file:
