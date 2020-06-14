@@ -72,47 +72,51 @@
         state: directory
       with_items: "{{ backup_directories }}"
 
-    # - name: Stop service mattermost, if started
-    #   service:
-    #     name: mattermost
-    #     state: stopped
-    #   when: release.changed
+    - name: Stop service mattermost, if started
+      service:
+        name: mattermost
+        state: stopped
+      when: release.changed
 
-    # - name: Backing up Postgres database
-    #   shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
-    #   when: release.changed
+    - name: Back up Postgres database
+      shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
+      when: release.changed
 
-    # - name: Backing up Mattermost application
-    #   copy:
-    #     src: /opt/mattermost
-    #     dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
-    #     remote_src: yes
-    #     mode: preserve
-    #     group: mattermost
-    #     owner: mattermost
-    #   when: release.changed
-
-    # DELETE CURRENT MATTERMOST FOLDER
-
-    - name: Copy latest production-ready release for launch
+    - name: Back up Mattermost application
       copy:
-        src: /tmp/mattermost
-        dest: /opt/mattermost-upgrade
+        src: /opt/mattermost
+        dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
         remote_src: yes
         mode: preserve
         group: mattermost
         owner: mattermost
       when: release.changed
 
-    # - name: Start service mattermost
-    #   service:
-    #     name: mattermost
-    #     state: started
-    #   when: release.changed
+    - name: Delete current Mattermost folder
+      file:
+        path: /opt/mattermost
+        state: absent
+      when: release.changed
 
-    # - name: Delete unneeded folders
-    #   file:
-    #     path: "/{{ item }}"
-    #     state: absent
-    #   with_items: "{{ directories_to_delete }}"
-    #   when: release.changed
+    - name: Copy latest production-ready release for launch
+      copy:
+        src: /tmp/mattermost
+        dest: /opt
+        remote_src: yes
+        mode: preserve
+        group: mattermost
+        owner: mattermost
+      when: release.changed
+
+    - name: Start service mattermost
+      service:
+        name: mattermost
+        state: started
+      when: release.changed
+
+    - name: Delete unneeded folders
+      file:
+        path: "/{{ item }}"
+        state: absent
+      with_items: "{{ directories_to_delete }}"
+      when: release.changed
