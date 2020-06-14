@@ -49,6 +49,7 @@
         dest: /opt/mattermost-upgrade/{{ item }}
         remote_src: yes
         directory_mode: yes
+        force: yes
         mode: preserve
         group: mattermost
         owner: mattermost
