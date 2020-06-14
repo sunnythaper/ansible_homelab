@@ -20,7 +20,7 @@
 
   tasks:
     - name: Get currently installed Mattermost version
-      shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Version:\\s)([0-9].*)"'
+      shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Build Number:\\s)([0-9].*)"'
       register: current_version
       changed_when: False
 
@@ -48,7 +48,7 @@
       with_items: "{{ directories_to_keep }}"
       when: release.changed
 
-    - name: Copy config, data, and plugin files to upgrade folder
+    - name: Copy config, data, and plugins files to upgrade folder
       copy:
         src: /opt/mattermost/{{ item }}
         dest: /tmp/mattermost/{{ item }}
