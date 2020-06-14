@@ -3,14 +3,14 @@
 - hosts: all
   vars:
     files_to_keep:
-      - client/plugins
+      - client/plugins/
       - config/config.json
-      - data
-      - logs
-      - plugins
+      - data/
+      - logs/
+      - plugins/
 
     files_to_delete:
-      - tmp
+      - tmp/
 
   tasks:
     - name: Get currently installed Mattermost version
@@ -45,7 +45,7 @@
 
     - name: Copy config, data, and plugin files to upgrade folder
       copy:
-        src: /opt/mattermost/{{ item }}/
+        src: /opt/mattermost/{{ item }}
         dest: /opt/mattermost-upgrade/{{ item }}
         remote_src: yes
         directory_mode: yes
@@ -96,6 +96,6 @@
 
     - name: Delete unneeded files
       file:
-        path: "/{{ item }}/"
+        path: "/{{ item }}"
         state: absent
       with_items: "{{ files_to_delete }}"
