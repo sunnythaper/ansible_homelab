@@ -18,6 +18,8 @@
       - /opt/mattermost-backups/db
       - /opt/mattermost-backups/app
 
+    iso_time: "{{ ansible_date_time.iso8601 }}"
+
   tasks:
     - name: Get currently installed Mattermost version
       shell: '/opt/mattermost/bin/mattermost version | grep -oP "(?<=^Build Number:\\s)([0-9].*)"'
@@ -79,13 +81,13 @@
       when: release.changed
 
     - name: Back up Postgres database
-      shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
+      shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ iso_time }}.db"
       when: release.changed
 
     - name: Back up Mattermost application
       copy:
         src: /opt/mattermost
-        dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
+        dest: /opt/mattermost-backups/app/{{ iso_time }}
         remote_src: yes
         mode: preserve
         group: mattermost
