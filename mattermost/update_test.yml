@@ -9,7 +9,7 @@
       changed_when: False
 
     - set_fact:
-      current_version: {{ 'mattermost_info' | regex_substring("^Version.\s([0-9.]\*)") }}
+      current_version: "{{ 'mattermost_info' | regex_substring('^Version.\s([0-9.]\*)') }}"
 
     - name: Getting latest Mattermost release JSON from Github
       uri:
