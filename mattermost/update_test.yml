@@ -1,0 +1,94 @@
+
+---
+- hosts: all
+  
+  tasks:
+    - name: "Get currently installed Mattermost version"
+      command: "/opt/mattermost/bin/mattermost version"
+      register: mattermost_version
+      changed_when: False
+
+
+    - name: Getting latest Mattermost release JSON from Github
+      uri:
+        url: https://api.github.com/repos/mattermost/mattermost-server/releases/latest
+        return_content: true
+      register: release
+      changed_when: release != {{ 'mattermost_version' | regex_search("^Version.\s([0-9.]\*)") }}
+
+    # - name: Downloading & unarchiving Mattermost tarball
+    #   unarchive:
+    #     src: "https://releases.mattermost.com/{{ release.json.name | replace('v','') }}/mattermost-{{ release.json.name | replace('v','') }}-linux-amd64.tar.gz"
+    #     dest: /tmp/
+    #     remote_src: yes
+      
+    # - name: Stop service mattermost, if started
+    #   service:
+    #     name: mattermost
+    #     state: stopped
+      
+    # - name: Creating a directory for database backups
+    #   file:
+    #     path: /opt/mattermost-backups/db
+    #     mode: 0775
+    #     owner: root
+    #     state: directory
+      
+    # - name: Backing up Postgres database
+    #   shell: "pg_dumpall --clean -U mattermost > /opt/mattermost-backups/db/{{ ansible_date_time.iso8601 }}.db"
+      
+    # - name: Creating a directory for application backups
+    #   file:
+    #     path: /opt/mattermost-backups/app
+    #     mode: 0775
+    #     owner: root
+    #     state: directory
+        
+    # - name: Backing up Mattermost application
+    #   copy:
+    #     src: /opt/mattermost
+    #     dest: /opt/mattermost-backups/app/{{ ansible_date_time.iso8601 }}
+    #     remote_src: yes
+    #     mode: preserve
+    #     group: mattermost
+    #     owner: mattermost
+      
+    # - name: Identify current Mattermost files except special folders
+    #   find:
+    #     paths:
+    #       - /opt/mattermost/
+    #       - /opt/mattermost/client/
+    #     excludes:
+    #       - /opt/mattermost/client/*
+    #       - /opt/mattermost/client/plugins/*
+    #       - /opt/mattermost/config/config.json
+    #       - /opt/mattermost/logs/*
+    #       - /opt/mattermost/plugins/*
+    #       - /opt/mattermost/data/*
+    #   register: files_to_delete
+      
+    # - name: Delete current Mattermost files except special folders
+    #   file:
+    #     path: "{{ item.path }}"
+    #     state: absent
+    #   with_items: "{{ files_to_delete.files }}"
+          
+    # - name: Remove config.json file from update before transferring
+    #   file:
+    #     path: /tmp/mattermost/config/config.json
+    #     state: absent
+      
+    # - name: Copy contents of latest release to Mattermost folder
+    #   copy:
+    #     src: /tmp/mattermost
+    #     dest: /opt/
+    #     remote_src: yes
+    #     directory_mode: yes
+    #     mode: preserve
+    #     group: mattermost
+    #     owner: mattermost
+      
+    # - name: Start service mattermost
+    #   service:
+    #     name: mattermost
+    #     state: started
