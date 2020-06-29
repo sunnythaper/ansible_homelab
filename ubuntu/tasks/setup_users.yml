@@ -7,7 +7,7 @@
   user: 
     name: "{{ admin_user }}"
     group: sudo
-    password: "{{ admin_password }}"
+    password: "{{ admin_password | password_hash('sha512') }}"
     state: present
     uid: 1030
 
@@ -15,7 +15,7 @@
   user: 
     name: "{{ ansible_admin_user }}"
     group: sudo
-    password: "{{ admin_password }}"
+    password: "{{ admin_password | password_hash('sha512') }}"
     state: present
     uid: 1080
 
