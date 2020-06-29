@@ -15,10 +15,8 @@
     state: present
     uid: "{{ item }}"
   with_items:
-    - name: "{{ admin_user}}"
-      uid: 1030
-    - name: "{{ ansible_admin_user }}"
-      uid: 1080
+    - { name: "{{ admin_user}}", uid: 1030 }
+    - { name: "{{ ansible_admin_user }}", uid: 1080 }
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:
@@ -46,7 +44,5 @@
     state: present
     key: "{{ item }}"
   with_items:
-    - user: "{{ admin_user }}"
-      key: "{{ admin_public_key }}"
-    - user: "{{ ansible_admin_user }}"
-      key: "{{ admin_public_key }}"
+    - { user: "{{ admin_user }}", key: "{{ admin_public_key }}" }
+    - { user: "{{ ansible_admin_user }}", key: "{{ admin_public_key }}" }
