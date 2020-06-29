@@ -1,23 +1,23 @@
 ---  
+- name: Debug variables from Custom Credential
+  msg: "{{ admin_password | password_hash('sha512') }}"
+
 - name: Install Sudo for escalated privileges management
   apt:
     name: sudo
 
-- name: Add user {{ admin_user }}
+- name: Add users {{ admin_user }} and {{ ansible_admin_user }}
   user: 
-    name: "{{ admin_user }}"
+    name: "{{ item }}"
     group: sudo
     password: "{{ admin_password | password_hash('sha512') }}"
     state: present
-    uid: 1030
-
-- name: Add user {{ ansible_admin_user }}
-  user: 
-    name: "{{ ansible_admin_user }}"
-    group: sudo
-    password: "{{ admin_password | password_hash('sha512') }}"
-    state: present
-    uid: 1080
+    uid: "{{ item }}"
+  with_items:
+    - name: "{{ admin_user}}"
+      uid: 1030
+    - name: "{{ ansible_admin_user }}"
+      uid: 1080
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:
@@ -43,7 +43,9 @@
   authorized_key:
     user: "{{ item }}"
     state: present
-    key_file: "{{ admin_public_key }}"
+    key: "{{ item }}"
   with_items:
-    - "{{ admin_user }}"
-    - "{{ ansible_admin_user }}"
+    - user: "{{ admin_user }}"
+      key: "{{ admin_public_key }}"
+    - user: "{{ ansible_admin_user }}"
+      key: "{{ admin_public_key }}"
