@@ -1,6 +1,7 @@
 ---  
 - name: Debug variables from Custom Credential
-  msg: "{{ admin_password | password_hash('sha512') }}"
+  debug:
+   msg: "{{ admin_password | password_hash('sha512') }}"
 
 - name: Install Sudo for escalated privileges management
   apt:
