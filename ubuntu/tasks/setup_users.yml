@@ -1,0 +1,5 @@
+---
+- name: Debug AWX Custom Credential
+  debug:
+    var: openssh_public_key
+  

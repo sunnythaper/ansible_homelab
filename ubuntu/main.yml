@@ -7,3 +7,9 @@
   tasks:
     - name: Set localization settings for {{ timezone }}
       include_tasks: tasks/set_localization.yml
+
+    - name: Upgrade installed packages via Aptitude
+      include_tasks: tasks/upgrade_packages.yml
+
+    - name: Setup users
+      include_tasks: tasks/setup_users.yml
