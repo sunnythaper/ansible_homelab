@@ -43,7 +43,7 @@
   authorized_key:
     user: "{{ item }}"
     state: present
-    key: "{{ admin_public_key }}"
+    key_file: "{{ admin_public_key }}"
   with_items:
     - "{{ admin_user }}"
     - "{{ ansible_admin_user }}"
