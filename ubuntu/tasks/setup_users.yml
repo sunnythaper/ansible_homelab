@@ -1,7 +1,7 @@
 ---  
 - name: Debug variables from Custom Credential
   debug:
-   msg: "{{ admin_password | password_hash('sha512') }}"
+   msg: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
 
 - name: Install Sudo for escalated privileges management
   apt:
@@ -11,7 +11,7 @@
   user: 
     name: "{{ item.name }}"
     group: sudo
-    password: "{{ admin_password | password_hash('sha512') }}"
+    password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
     state: present
     uid: "{{ item.uid }}"
   with_items:
