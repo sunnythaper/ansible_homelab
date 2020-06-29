@@ -1,2 +1,9 @@
 ---
+# LOCALIZATION
 timezone: America/Phoenix
+
+# USERS
+ansible_user: ansible
+admin_user: admin
+admin_password: password
+admin_public_key: public_key

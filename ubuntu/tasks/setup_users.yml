@@ -1,5 +1,40 @@
----
-- name: Debug AWX Custom Credential
-  debug:
-    var: openssh_public_key
-  
+---  
+- name: Install Sudo for escalated privileges management
+  apt:
+    name: sudo
+
+- name: Add user {{ admin_user }}
+  user: 
+    name: "{{ admin_user }}"
+    group: sudo
+    password: "{{ admin_password }}"
+    state: present
+    uid: 1030
+
+- name: Add user {{ ansible_user }}
+  user: 
+    name: "{{ ansible_user }}"
+    group: sudo
+    password: "{{ admin_password }}"
+    state: present
+    uid: 1080
+
+- name: Grant {{ admin_user }} and {{ ansible_user }} sudo privileges
+  lineinfile:
+    dest: /etc/sudoers.d/{{ item }}
+    regexp: '^{{ item }}'
+    line: '{{ item }} ALL=(ALL) ALL'
+    state: present
+    mode: 0440
+    create: "yes"
+    validate: 'visudo -cf %s'
+  with_items:
+    - "{{ admin_user }}"
+    - "{{ ansible_user }}"
+
+- name: Set includedir to include /etc/sudoers.d
+  lineinfile:
+    dest: /etc/sudoers
+    line: '#includedir /etc/sudoers.d'
+    state: present
+    validate: '/usr/sbin/visudo -cf %s'

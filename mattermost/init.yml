@@ -22,7 +22,7 @@
         line: 'mattermost ALL=(ALL) NOPASSWD: ALL'
         state: present
         mode: 0440
-        create: yes
+        create: "yes"
         validate: 'visudo -cf %s'
         
     - name: Set includedir to include /etc/sudoers.d
