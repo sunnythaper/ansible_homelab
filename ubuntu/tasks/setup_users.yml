@@ -9,11 +9,11 @@
 
 - name: Add users {{ admin_user }} and {{ ansible_admin_user }}
   user: 
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     group: sudo
     password: "{{ admin_password | password_hash('sha512') }}"
     state: present
-    uid: "{{ item }}"
+    uid: "{{ item.uid }}"
   with_items:
     - { name: "{{ admin_user}}", uid: 1030 }
     - { name: "{{ ansible_admin_user }}", uid: 1080 }
@@ -40,9 +40,9 @@
 
 - name: Set authorized key for {{ admin_user }} and {{ ansible_admin_user }}
   authorized_key:
-    user: "{{ item }}"
+    user: "{{ item.user }}"
     state: present
-    key: "{{ item }}"
+    key: "{{ item.key }}"
   with_items:
     - { user: "{{ admin_user }}", key: "{{ admin_public_key }}" }
     - { user: "{{ ansible_admin_user }}", key: "{{ admin_public_key }}" }
