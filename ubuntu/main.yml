@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Set localization settings for {{ timezone }}
+      include_tasks: tasks/set_localization.yml
