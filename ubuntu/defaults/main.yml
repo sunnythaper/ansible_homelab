@@ -15,3 +15,22 @@ autoupdate_reboot: "true"
 autoupdate_reboot_time: "05:00"
 autoupdate_mail_to: ""
 autoupdate_mail_on_error: true
+
+# SSHD
+ssh_config_path: /etc/ssh/sshd_config.d/secure.conf
+sshd_name: ssh
+ssh_port: 22
+ssh_pubkey_authentication: "yes"
+ssh_password_authentication: "no"
+ssh_permit_root_login: "no"
+ssh_usedns: "no"
+ssh_permit_empty_password: "no"
+ssh_challenge_response_auth: "no"
+ssh_gss_api_authentication: "no"
+ssh_x11_forwarding: "no"
+ssh_login_grace_time: "30s"
+ssh_protocol: "2"
+ssh_max_auth_tries: "3"
+ssh_ignore_rhosts: "yes"
+ssh_host_based_authentication: "no"
+ssh_restart_handler_state: restarted

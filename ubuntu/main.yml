@@ -19,3 +19,6 @@
 
     - name: Enable fail2ban protection
       include_tasks: tasks/fail2ban.yml
+
+    - name: Set SSHD settings
+      include_tasks: tasks/set_sshd.yml
