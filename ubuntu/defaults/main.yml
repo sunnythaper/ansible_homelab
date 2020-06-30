@@ -10,7 +10,7 @@ admin_password_salt: passwordsalt
 admin_public_key: publickey
 
 # UNATTENDED UPGRADES
-autoupdate_blacklist: ""
+autoupdate_package_blacklist: []
 autoupdate_reboot: "true"
 autoupdate_reboot_time: "05:00"
 autoupdate_mail_to: ""
