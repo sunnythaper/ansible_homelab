@@ -10,7 +10,6 @@
     group: sudo
     password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
     state: present
-    create_home: "no"
     shell: /bin/bash
     uid: "{{ item.uid }}"
   with_items:
