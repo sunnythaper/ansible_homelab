@@ -41,7 +41,6 @@
   authorized_key:
     user: "{{ admin_user }}"
     state: present
-    exclusive: True
     key: "{{ item }}"
   with_file:
     - "{{ admin_public_key }}"
@@ -50,7 +49,6 @@
   authorized_key:
     user: "{{ ansible_admin_user }}"
     state: present
-    exclusive: True
     key: "{{ item }}"
   with_file:
     - "{{ admin_public_key }}"
