@@ -1,9 +1,4 @@
 ---
-- name: Install Aptitude for package management
-  apt:
-    name: aptitude
-    state: present
-
 - name: Upgrade all packages to the latest version
   apt:
     name: "*"
