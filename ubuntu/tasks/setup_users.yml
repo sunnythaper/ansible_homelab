@@ -37,18 +37,12 @@
     state: present
     validate: '/usr/sbin/visudo -cf %s'
 
-- name: Set authorized key for {{ admin_user }}
+- name: Set authorized key for {{ admin_user }} and {{ ansible_admin_user }}
   authorized_key:
-    user: "{{ admin_user }}"
+    user: "{{ item.user }}"
     state: present
-    key: "{{ item }}"
-  with_file:
-    - "{{ admin_public_key }}"
-
-- name: Set authorized key for {{ ansible_admin_user }}
-  authorized_key:
-    user: "{{ ansible_admin_user }}"
-    state: present
-    key: "{{ item }}"
-  with_file:
-    - "{{ admin_public_key }}"
+    exclusive: True
+    key: "{{ item.key }}"
+  with_items:
+    - { user: "{{ admin_user }}", key: "{{ admin_public_key }}" }
+    - { user: "{{ ansible_admin_user }}", key: "{{ admin_public_key }}" }
