@@ -11,5 +11,8 @@
     - name: Upgrade installed packages via Aptitude
       include_tasks: tasks/upgrade_packages.yml
 
+    - name: Enable Unattended Upgrades
+      include_tasks: tasks/unattended_upgrades.yml
+
     - name: Setup users
       include_tasks: tasks/setup_users.yml

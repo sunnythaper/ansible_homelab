@@ -2,7 +2,7 @@
 - name: Install Aptitude for package management
   apt:
     name: aptitude
-    force_apt_get: yes
+    state: present
 
 - name: Upgrade all packages to the latest version
   apt:
