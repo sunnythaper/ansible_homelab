@@ -37,4 +37,4 @@
       line: "HostbasedAuthentication {{ ssh_host_based_authentication }}"
     - regexp: "^AllowUsers"
       line: "AllowUsers  {{ admin_user }} {{ ansible_admin_user }}"
-  notify: restart ssh
+  notify: Restart ssh

@@ -4,6 +4,9 @@
   vars_files:
     - defaults/main.yml
 
+  handlers:
+    - include_tasks: handlers/main.yml
+
   tasks:
     - name: Set localization settings for {{ timezone }}
       include_tasks: tasks/set_localization.yml
