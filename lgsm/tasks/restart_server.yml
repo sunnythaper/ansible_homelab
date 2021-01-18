@@ -1,9 +1,8 @@
 ---
-- tasks:
-    - name: "Restart {{ lgsm_server }} server"
-      become: yes
-      become_user: "{{ lgsm_server }}"
-      command: "/home/{{ lgsm_server }}/{{ lgsm_server }} restart"
-      register: restart_server
-      changed_when: "'[  OK  ] Starting {{ lgsm_server }}' in restart_server.stdout"
-      # failed_when: "'FAIL' in restart_server.stdout"
+- name: "Restart {{ lgsm_server }} server"
+  become: yes
+  become_user: "{{ lgsm_server }}"
+  command: "/home/{{ lgsm_server }}/{{ lgsm_server }} restart"
+  register: restart_server
+  changed_when: "'[  OK  ] Starting {{ lgsm_server }}' in restart_server.stdout"
+  # failed_when: "'FAIL' in restart_server.stdout"
