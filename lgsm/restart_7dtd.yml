@@ -5,5 +5,5 @@
     - defaults/main.yml
 
   tasks:
-    - name: Restart {{ lgsm_server }}
+    - name: "Restart {{ lgsm_server }}"
       include_tasks: tasks/restart_server.yml
