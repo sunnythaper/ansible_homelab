@@ -1,7 +1,5 @@
 ---
-- hosts: all
-  
-  tasks:
+- tasks:
     - name: "Update {{ lgsm_server }} server to latest"
       become: yes
       become_user: "{{ lgsm_server }}"
