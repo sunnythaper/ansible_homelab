@@ -3,5 +3,5 @@
   become_user: "{{ lgsm_server }}"
   command: "/home/{{ lgsm_server }}/{{ lgsm_server }} restart"
   register: restart_server
-  changed_when: "'[  OK  ] Starting {{ lgsm_server }}' in restart_server.stdout"
+  changed_when: "'[  OK  ] Starting' in restart_server.stdout"
   # failed_when: "'FAIL' in restart_server.stdout"
