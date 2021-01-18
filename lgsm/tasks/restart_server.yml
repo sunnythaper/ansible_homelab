@@ -2,7 +2,6 @@
 - name: "Restart {{ lgsm_server }} server"
   become: yes
   become_user: "{{ lgsm_server }}"
-  ansible_become_password: "{{ admin_password }}"
   command: "/home/{{ lgsm_server }}/{{ lgsm_server }} restart"
   register: restart_server
   changed_when: "'[  OK  ] Starting {{ lgsm_server }}' in restart_server.stdout"
