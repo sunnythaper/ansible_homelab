@@ -8,5 +8,9 @@
     - name: "Restart {{ lgsm_server }}"
       include_tasks: tasks/restart_server.yml
 
+    - name: Give LGSM 10 seconds to restart
+      pause:
+        seconds: 10
+
     - name: "Set AutoParty to true"
       include_tasks: tasks/set_autoparty_true.yml
