@@ -1,0 +1,9 @@
+---
+- name: "Set AutoParty to true"
+  telnet:
+    host: localhost
+    port: 8081
+    command:
+      - sgs autoparty true
+  register: autoparty
+  changed_when: "'AutoParty set to True' in autoparty.stdout"
