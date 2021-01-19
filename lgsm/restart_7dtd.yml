@@ -10,7 +10,7 @@
 
     - name: Give LGSM 10 seconds to restart
       pause:
-        seconds: 10
+        minutes: 1
 
     - name: "Set AutoParty to true"
       include_tasks: tasks/set_autoparty_true.yml
