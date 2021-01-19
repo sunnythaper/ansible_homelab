@@ -2,6 +2,10 @@
 - name: "Set AutoParty to true"
   telnet:
     port: 8081
+    password: bbgn
+    password_prompt: "password:"
+    prompts:
+      - "session."
     command:
       - sgs autoparty true
   register: autoparty
