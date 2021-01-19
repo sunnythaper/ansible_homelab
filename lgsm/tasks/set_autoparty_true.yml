@@ -1,7 +1,6 @@
 ---
 - name: "Set AutoParty to true"
   telnet:
-    host: localhost
     port: 8081
     command:
       - sgs autoparty true
