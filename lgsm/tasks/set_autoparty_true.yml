@@ -1,5 +1,6 @@
 ---
 - name: "Set AutoParty to true"
+  connection: local
   telnet:
     port: 8081
     prompts:
