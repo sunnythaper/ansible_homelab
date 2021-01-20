@@ -1,9 +1,5 @@
 ---
 - name: "Set AutoParty to true"
-  telnet:
-    host: 127.0.0.1
-    port: 8081
-    command:
-      - sgs autoparty true
+  command: "echo 'sgs autoparty true' | netcat -w 1 localhost 8081 | grep AutoParty"
   register: autoparty
   changed_when: "'AutoParty set to True' in autoparty.stdout"
