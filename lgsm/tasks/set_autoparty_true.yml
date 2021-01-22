@@ -1,7 +1,8 @@
 ---
 - name: Set AutoParty to true
   ansible.builtin.shell: |
-    telnet localhost 8081
+    set timeout 120
+    spawn telnet localhost 8081
 
     expect "\nPress 'help' to get a list of all commands. Press 'exit' to end session."
     send "sgs autoparty true"
