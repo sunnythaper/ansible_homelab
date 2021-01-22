@@ -6,6 +6,6 @@
     login_prompt: "Please enter password:"
     user: "{{ telnet_password }}"
     prompts:
-      - "[>|Logon successful.]"
+      - "[>|#]"
     command:
       - sgs autoparty true
