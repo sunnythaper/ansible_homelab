@@ -2,7 +2,5 @@
 - name: Set AutoParty to true
     telnet:
     port: 8081
-    prompts:
-      - "[>#]"
     command:
       - sgs autoparty true
