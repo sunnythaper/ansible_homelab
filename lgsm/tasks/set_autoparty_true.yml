@@ -1,6 +1,6 @@
 ---
 - name: Set AutoParty to true
-  telnet:
+  ansible.netcommon.telnet:
     port: 8081
     prompts:
       - "[>|#]"
