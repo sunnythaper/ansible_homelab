@@ -1,10 +1,12 @@
 ---
-- name: "Set AutoParty to true"
-  telnet:
-    port: 8081
-    prompts:
-      - "[\n]"
-    command:
-      - sgs autoparty true
-  register: autoparty
-  changed_when: "'AutoParty set to True' in autoparty.stdout"
+- name: Set AutoParty to true
+  ansible.builtin.shell: |
+    telnet localhost 8081
+
+    expect "\nPress 'help' to get a list of all commands. Press 'exit' to end session."
+    send "sgs autoparty true"
+
+    exit
+  args:
+    executable: /usr/bin/expect
+  delegate_to: localhost
