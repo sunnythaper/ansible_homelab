@@ -1,6 +1,8 @@
 ---
 - name: Set AutoParty to true
-  expect:
-    command: telnet localhost 8081
-    responses:
-      (.*)to end session(.*): "sgs autoparty true"
+    telnet:
+    port: 8081
+    prompts:
+      - "[>#]"
+    command:
+      - sgs autoparty true
