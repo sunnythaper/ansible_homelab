@@ -4,7 +4,7 @@
     host: 127.0.0.1
     port: 8081
     login_prompt: "Please enter password:"
-    user: {{ telnet_password }}
+    user: "{{ telnet_password }}"
     prompts:
       - "[>|Logon successful.]"
     command:
