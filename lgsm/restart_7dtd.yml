@@ -2,7 +2,7 @@
 - hosts: all
 
   vars_files:
-    - defaults/main.yml
+    - "defaults/{{ lgsm_server }}.yml"
 
   tasks:
     - name: "Restart {{ lgsm_server }}"
