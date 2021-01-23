@@ -1,3 +1,6 @@
 ---
 - name: Set AutoParty to true
   shell: echo "sgs autoparty true" | netcat -w 1 localhost 8081 | grep AutoParty
+  register: sdtdserver_autoparty
+  changed_when: "'AutoParty set to True' in sdtdserver_autoparty.stdout"
+  failed_when: "'AutoParty set to True' not in sdtdserver_autoparty.stdout"
