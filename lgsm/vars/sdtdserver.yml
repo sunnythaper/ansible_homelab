@@ -1,0 +1,79 @@
+---
+# TELNET SETTINGS
+sdtdserver_AutoParty: true
+
+# SDTDSERVER.XML SETTINGS
+sdtdserver_ServerName: My 7DTD Server
+sdtdserver_ServerDescription: Come play on my server
+sdtdserver_ServerWebsiteURL:
+sdtdserver_ServerPassword: CHANGEME
+sdtdserver_ServerLoginConfirmationText:
+sdtdserver_ServerPort: 26900
+sdtdserver_ServerVisibility: 2
+sdtdserver_ServerDisabledNetworkProtocols:
+sdtdserver_ServerMaxWorldTransferSpeedKiBs: 1300
+sdtdserver_ServerMaxPlayerCount: 20
+sdtdserver_ServerReservedSlots: 0
+sdtdserver_ServerReservedSlotsPermission: 100
+sdtdserver_ServerAdminSlots: 0
+sdtdserver_ServerAdminSlotsPermission: 0
+sdtdserver_ControlPanelEnabled: false
+sdtdserver_ControlPanelPort: 8080
+sdtdserver_ControlPanelPassword: CHANGEME
+sdtdserver_TelnetEnabled: true
+sdtdserver_TelnetPort: 8081
+sdtdserver_TelnetPassword:
+sdtdserver_TelnetFailedLoginLimit: 10
+sdtdserver_TelnetFailedLoginsBlocktime: 10
+sdtdserver_TerminalWindowEnabled: true
+sdtdserver_AdminFileName: serveradmin.xml
+sdtdserver_EACEnabled: false
+sdtdserver_HideCommandExecutionLog: 0
+sdtdserver_MaxUncoveredMapChunksPerPlayer: 131072
+sdtdserver_PersistentPlayerProfiles: true
+sdtdserver_GameWorld: My Game World
+sdtdserver_WorldGenSeed: asdf
+sdtdserver_WorldGenSize: 4096
+sdtdserver_GameName: My Game Save
+sdtdserver_GameMode: GameModeSurvival
+sdtdserver_GameDifficulty: 4
+sdtdserver_BlockDamagePlayer: 100
+sdtdserver_BlockDamageAI: 100
+sdtdserver_BlockDamageAIBM: 100
+sdtdserver_XPMultiplier: 100
+sdtdserver_PlayerSafeZoneLevel: 5
+sdtdserver_PlayerSafeZoneHours: 5
+sdtdserver_BuildCreate: false
+sdtdserver_DayNightLength: 90
+sdtdserver_DayLightLength: 18
+sdtdserver_DropOnDeath: 3
+sdtdserver_DropOnQuit: 0
+sdtdserver_BedrollDeadZoneSize: 15
+sdtdserver_BedrollExpiryTime: 45
+sdtdserver_MaxSpawnedZombies: 64
+sdtdserver_MaxSpawnedAnimals: 50
+sdtdserver_ServerMaxAllowedViewDistance: 12
+sdtdserver_EnemySpawnMode: true
+sdtdserver_EnemyDifficulty: 0
+sdtdserver_ZombieMove: 0
+sdtdserver_ZombieMoveNight: 3
+sdtdserver_ZombieFeralMove: 3
+sdtdserver_ZombieBMMove: 3
+sdtdserver_BloodMoonFrequency: 7
+sdtdserver_BloodMoonRange: 0
+sdtdserver_BloodMoonWarning: 0
+sdtdserver_BloodMoonEnemyCount: 16
+sdtdserver_LootAbundance: 100
+sdtdserver_LootRespawnDays: 7
+sdtdserver_AirDropFrequency: 72
+sdtdserver_AirDropMarker: true
+sdtdserver_PartySharedKillRange: 10000
+sdtdserver_PlayerKillingMode: 0
+sdtdserver_LandClaimCount: 10
+sdtdserver_LandClaimSize: 41
+sdtdserver_LandClaimDeadZone: 30
+sdtdserver_LandClaimExpiryTime: 7
+sdtdserver_LandClaimDecayMode: 0
+sdtdserver_LandClaimOnlineDurabilityModifier: 4
+sdtdserver_LandClaimOfflineDurabilityModifier: 4
+sdtdserver_LandClaimOfflineDelay: 0
