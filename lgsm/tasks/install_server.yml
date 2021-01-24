@@ -26,3 +26,10 @@
     state: present
     shell: /bin/bash
     uid: 1000
+
+- name: Download LinuxGSM install script
+  get_url:
+    url: https://linuxgsm.sh
+    dest: "/home/{{ lgsm_server }}/linuxgsm.sh"
+    mode: '0775'
+    owner: "{{ lgsm_server }}"
