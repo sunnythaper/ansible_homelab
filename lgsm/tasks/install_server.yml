@@ -1,14 +1,10 @@
 ---
-- name: Enable i386 architecture
-  command: dpkg --add-architecture i386
-  register: add_arch_i386
-  failed_when: "'Permission denied' in add_arch_i386.stdout"
-
 - name: Install LinuxGSM dependencies
   apt:
     name: "{{ lgsm_dependencies }}"
     state: latest
     update_cache: yes
+    dpkg_options: 'add-architecture i386'
 
 - name: "Add user {{ lgsm_server }}"
   user:
