@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  vars_files:
+    - defaults/main.yml
+    - "vars/{{ lgsm_server }}.yml"
+
+  tasks:
+    - name: "Install {{ lgsm_server }}"
+      include_tasks: tasks/install_server.yml

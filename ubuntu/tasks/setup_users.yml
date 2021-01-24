@@ -2,10 +2,10 @@
 - name: Install Sudo for escalated privileges management
   apt:
     name: sudo
-    state: present
+    state: latest
 
 - name: Add users {{ admin_user }} and {{ ansible_admin_user }}
-  user: 
+  user:
     name: "{{ item.name }}"
     group: sudo
     password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"

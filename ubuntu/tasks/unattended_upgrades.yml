@@ -2,7 +2,7 @@
 - name: Install Unattended Upgrades
   apt:
     name: unattended-upgrades
-    state: present
+    state: latest
 
 - name: Copy unattended-upgrades configuration templates
   template:

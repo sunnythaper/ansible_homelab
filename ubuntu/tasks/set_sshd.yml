@@ -2,7 +2,7 @@
 - name: Install acl for privilege management
   apt:
     name: acl
-    state: present
+    state: latest
 
 - name: Update SSH configuration to be more secure
   lineinfile:
