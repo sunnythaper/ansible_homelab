@@ -19,7 +19,7 @@ lgsm_dependencies:
   - netcat
   - lib32gcc1
   - lib32stdc++6
-  - steamcmd
+  - steamcmd:i386
   - telnet
   - expect
 
