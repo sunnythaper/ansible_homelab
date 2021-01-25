@@ -6,7 +6,7 @@
 - name: Enable i386 architecture
   command: dpkg --add-architecture i386
   register: add_arch_i386
-  when: "'i386' not in check_arch_i386"
+  when: "'i386' not in check_arch_i386.stdout"
   failed_when: "'Permission denied' in add_arch_i386.stdout"
 
 - name: Accept SteamCMD EULA
