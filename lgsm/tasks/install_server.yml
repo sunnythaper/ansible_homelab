@@ -50,7 +50,6 @@
     creates: "/home/{{ lgsm_server }}/{{ lgsm_server }}"
   register: setup_server
   changed_when: "'Installed' in setup_server.stdout"
-  failed_when: "'Installed' not in setup_server.stdout"
 
 - name: "Install {{ lgsm_server }}"
   become: true
@@ -61,4 +60,3 @@
     creates: "/home/{{ lgsm_server }}/serverfiles/*"
   register: install_server
   changed_when: "'Install Complete' in install_server.stdout"
-  failed_when: "'Install Complete' not in install_server.stdout"
