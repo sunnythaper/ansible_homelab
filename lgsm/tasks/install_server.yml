@@ -45,6 +45,9 @@
   become: true
   become_user: "{{ lgsm_server }}"
   command: "/home/{{ lgsm_server }}/linuxgsm.sh {{ lgsm_server }}"
+  args:
+    chdir: "/home/{{ lgsm_server }}/"
+    creates: "/home/{{ lgsm_server }}/{{ lgsm_server }}"
   register: setup_server
   changed_when: "'Installed' in setup_server.stdout"
   failed_when: "'Installed' not in setup_server.stdout"
@@ -54,5 +57,5 @@
   become_user: "{{ lgsm_server }}"
   command: "/home/{{ lgsm_server }}/{{ lgsm_server }} auto-install"
   register: install_server
-  changed_when: "'Install Complete!' in install_server.stdout"
-  failed_when: "'Install Complete!' not in install_server.stdout"
+  changed_when: "'Install Complete' in install_server.stdout"
+  failed_when: "'Install Complete' not in install_server.stdout"
