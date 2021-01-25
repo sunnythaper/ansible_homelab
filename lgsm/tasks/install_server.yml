@@ -40,3 +40,19 @@
     mode: '0775'
     owner: "{{ lgsm_server }}"
     group: "{{ lgsm_server }}"
+
+- name: "Get {{ lgsm_server }} via LinuxGSM shell script"
+  become: true
+  become_user: "{{ lgsm_server }}"
+  command: "/home/{{ lgsm_server }}/linuxgsm.sh {{ lgsm_server }}"
+  register: setup_server
+  changed_when: "'Installed' in setup_server.stdout"
+  failed_when: "'Installed' not in setup_server.stdout"
+
+- name: "Install {{ lgsm_server }}"
+  become: true
+  become_user: "{{ lgsm_server }}"
+  command: "/home/{{ lgsm_server }}/{{ lgsm_server }} auto-install"
+  register: install_server
+  changed_when: "'Install Complete!' in install_server.stdout"
+  failed_when: "'Install Complete!' not in install_server.stdout"
