@@ -14,7 +14,7 @@
 
 - name: Install LinuxGSM dependencies
   apt:
-    name: "{{ lgsm_dependencies }}"
+    pkg: "{{ lgsm_dependencies }}"
     state: latest
     update_cache: yes
 
