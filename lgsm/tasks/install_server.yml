@@ -10,8 +10,7 @@
     question: steam/question
     value: 'I AGREE'
     vtype: select
-  when:
-    - lgsm_server == 'sdtdserver'
+  when: "'steamcmd:i386' in lgsm_dependencies
 
 - name: Install LinuxGSM dependencies
   apt:
@@ -23,6 +22,7 @@
   user:
     name: "{{ lgsm_server }}"
     password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
+    group: "{{ lgsm_server }}"
     state: present
     shell: /bin/bash
     uid: 1000
@@ -33,3 +33,4 @@
     dest: "/home/{{ lgsm_server }}/linuxgsm.sh"
     mode: '0775'
     owner: "{{ lgsm_server }}"
+    group: "{{ lgsm_server }}"
