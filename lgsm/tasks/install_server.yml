@@ -18,6 +18,12 @@
     state: latest
     update_cache: yes
 
+- name: "Create group for {{ lgsm_server }}"
+  group:
+    name: "{{ lgsm_server }}"
+    state: present
+    gid: 1000
+
 - name: "Add user {{ lgsm_server }}"
   user:
     name: "{{ lgsm_server }}"
