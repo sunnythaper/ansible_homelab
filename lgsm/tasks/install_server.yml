@@ -10,11 +10,11 @@
     question: steam/question
     value: 'I AGREE'
     vtype: select
-  when: "'steamcmd:i386' in lgsm_dependencies
+  when: "'steamcmd:i386' in lgsm_dependencies"
 
 - name: Install LinuxGSM dependencies
   apt:
-    pkg: "{{ lgsm_dependencies }}"
+    name: "{{ lgsm_dependencies }}"
     state: latest
     update_cache: yes
 
