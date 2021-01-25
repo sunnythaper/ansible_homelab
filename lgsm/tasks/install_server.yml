@@ -2,6 +2,7 @@
 - name: Check if i386 architechture is already enabled
   command: dpkg --print-foreign-architectures
   register: check_arch_i386
+  changed_when: false
 
 - name: Enable i386 architecture
   command: dpkg --add-architecture i386
