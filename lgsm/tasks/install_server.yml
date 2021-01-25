@@ -1,5 +1,5 @@
 ---
-- name: Check if i386 architechture is already enabled
+- name: Check if i386 architecture is already enabled
   command: dpkg --print-foreign-architectures
   register: check_arch_i386
   changed_when: false
@@ -57,7 +57,7 @@
   register: setup_server
   changed_when: "'Installed' in setup_server.stdout"
 
-- name: "Install {{ lgsm_server }}"
+- name: "Download {{ lgsm_server }} from Steam"
   become: true
   become_user: "{{ lgsm_server }}"
   command: "/home/{{ lgsm_server }}/{{ lgsm_server }} auto-install"
