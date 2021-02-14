@@ -34,7 +34,7 @@
     dest: /etc/sudoers
     line: 'includedir /etc/sudoers.d'
     state: present
-    validate: '/usr/sbin/visudo -cf %s'
+    # validate: '/usr/sbin/visudo -cf %s'
 
 - name: Set authorized key for {{ admin_user }} and {{ ansible_admin_user }}
   authorized_key:
