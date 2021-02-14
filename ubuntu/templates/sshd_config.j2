@@ -1,0 +1,71 @@
+AcceptEnv {{sshd_AcceptEnv}}
+AddressFamily {{sshd_AddressFamily}}
+AllowAgentForwarding {{sshd_AllowAgentForwarding}}
+AllowTcpForwarding {{sshd_AllowTcpForwarding}}
+AllowUsers {{admin_user}} {{ansible_admin_user}}
+AuthorizedKeysCommand {{sshd_AuthorizedKeysCommand}}
+AuthorizedKeysCommandUser {{sshd_AuthorizedKeysCommandUser}}
+AuthorizedKeysFile {{sshd_AuthorizedKeysFile}}
+AuthorizedPrincipalsFile {{sshd_AuthorizedPrincipalsFile}}
+Banner {{sshd_Banner}}
+ChallengeResponseAuthentication {{sshd_ChallengeResponseAuthentication}}
+ChrootDirectory {{sshd_ChrootDirectory}}
+Ciphers {{sshd_Ciphers}}
+ClientAliveCountMax {{sshd_ClientAliveCountMax}}
+ClientAliveInterval {{sshd_ClientAliveInterval}}
+Compression {{sshd_Compression}}
+GatewayPorts {{sshd_GatewayPorts}}
+GSSAPIAuthentication {{sshd_GSSAPIAuthentication}}
+GSSAPICleanupCredentials {{sshd_GSSAPICleanupCredentials}}
+GSSAPIKeyExchange {{sshd_GSSAPIKeyExchange}}
+GSSAPIStrictAcceptorCheck {{sshd_GSSAPIStrictAcceptorCheck}}
+HostbasedAuthentication {{sshd_HostbasedAuthentication}}
+HostKey {{sshd_HostKey}}
+HostKey {{sshd_HostKey2}}
+HostKey {{sshd_HostKey3}}
+HostKeyAlgorithms {{sshd_HostKeyAlgorithms}}
+IgnoreRhosts {{sshd_IgnoreRhosts}}
+IgnoreUserKnownHosts {{sshd_IgnoreUserKnownHosts}}
+KerberosAuthentication {{sshd_KerberosAuthentication}}
+KerberosGetAFSToken {{sshd_KerberosGetAFSToken}}
+KerberosOrLocalPasswd {{sshd_KerberosOrLocalPasswd}}
+KerberosTicketCleanup {{sshd_KerberosTicketCleanup}}
+KexAlgorithms {{sshd_KexAlgorithms}}
+ListenAddress {{sshd_ListenAddress}}
+ListenAddress {{sshd_ListenAddress}}
+LoginGraceTime {{sshd_LoginGraceTime}}
+LogLevel {{sshd_LogLevel}}
+MACs {{sshd_MACs}}
+MaxAuthTries {{sshd_MaxAuthTries}}
+MaxSessions {{sshd_MaxSessions}}
+MaxStartups {{sshd_MaxStartups}}
+PasswordAuthentication {{sshd_PasswordAuthentication}}
+PermitEmptyPasswords {{sshd_PermitEmptyPasswords}}
+PermitRootLogin {{sshd_PermitRootLogin}}
+PermitTTY {{sshd_PermitTTY}}
+PermitTunnel {{sshd_PermitTunnel}}
+PermitUserEnvironment {{sshd_PermitUserEnvironment}}
+PidFile {{sshd_PidFile}}
+Port {{sshd_Port}}
+PrintLastLog {{sshd_PrintLastLog}}
+PrintMotd {{sshd_PrintMotd}}
+Protocol {{sshd_Protocol}}
+PubkeyAuthentication {{sshd_PubkeyAuthentication}}
+RekeyLimit {{sshd_RekeyLimit}}
+StrictModes {{sshd_StrictModes}}
+Subsystem {{sshd_Subsystem}}
+SyslogFacility {{sshd_SyslogFacility}}
+TCPKeepAlive {{sshd_TCPKeepAlive}}
+UseDNS {{sshd_UseDNS}}
+UsePAM {{sshd_UsePAM}}
+UsePrivilegeSeparation {{sshd_UsePrivilegeSeparation}}
+VersionAddendum {{sshd_VersionAddendum}}
+X11DisplayOffset {{sshd_X11DisplayOffset}}
+X11Forwarding {{sshd_X11Forwarding}}
+X11UseLocalhost {{sshd_X11UseLocalhost}}
+
+# https://www.redhat.com/sysadmin/harden-new-system-ansible
+# AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+# AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+# AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+# AcceptEnv XMODIFIERS

@@ -4,42 +4,11 @@
     name: acl
     state: latest
 
-- name: Update SSH configuration to be more secure
-  lineinfile:
-    dest: "{{ ssh_config_path }}"
-    create: "yes"
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-    state: present
-  with_items:
-    - regexp: "^PubkeyAuthentication"
-      line: "PubkeyAuthentication  {{ ssh_pubkey_authentication }}"
-    - regexp: "^PasswordAuthentication"
-      line: "PasswordAuthentication {{ ssh_password_authentication }}"
-    - regexp: "^PermitRootLogin"
-      line: "PermitRootLogin {{ ssh_permit_root_login }}"
-    - regexp: "^Port"
-      line: "Port {{ ssh_port }}"
-    - regexp: "^UseDNS"
-      line: "UseDNS {{ ssh_usedns }}"
-    - regexp: "^PermitEmptyPasswords"
-      line: "PermitEmptyPasswords {{ ssh_permit_empty_password }}"
-    - regexp: "^ChallengeResponseAuthentication"
-      line: "ChallengeResponseAuthentication {{ ssh_challenge_response_auth }}"
-    - regexp: "^GSSAPIAuthentication"
-      line: "GSSAPIAuthentication {{ ssh_gss_api_authentication }}"
-    - regexp: "^X11Forwarding"
-      line: "X11Forwarding {{ ssh_x11_forwarding }}"
-    - regexp: "^LoginGraceTime"
-      line: "LoginGraceTime  {{ ssh_login_grace_time }}"
-    - regexp: "^Protocol"
-      line: "Protocol {{ ssh_protocol }}"
-    - regexp: "^MaxAuthTries"
-      line: "MaxAuthTries {{ ssh_max_auth_tries }}"
-    - regexp: "^IgnoreRhosts"
-      line: "IgnoreRhosts {{ ssh_ignore_rhosts }}"
-    - regexp: "^HostbasedAuthentication"
-      line: "HostbasedAuthentication {{ ssh_host_based_authentication }}"
-    - regexp: "^AllowUsers"
-      line: "AllowUsers  {{ admin_user }} {{ ansible_admin_user }}"
+- name: Copy SSH configuration template to be more secure
+  template:
+    src: "templates/sshd_config.j2"
+    dest: "/etc/ssh/sshd_config.d/{{sshd_config_name}}.conf"
+    owner: root
+    group: root
+    mode: '600'
   notify: Restart ssh
