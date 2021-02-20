@@ -1,5 +1,10 @@
 ---
 - name: Restart ssh
   service:
-    name: "ssh"
-    state: "restarted"
+    name: sshd
+    state: restarted
+
+- name: Restart postfix
+  service:
+    name: postfix
+    state: restarted
