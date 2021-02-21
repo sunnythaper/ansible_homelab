@@ -5,12 +5,19 @@
     dest: /etc/login.defs
     owner: root
     group: root
-    mode: '644'
+    mode: 0600
+
+- name: Set shadow file owner to root and mode to 0600
+  file:
+    path: /etc/shadow
+    owner: root
+    group: root
+    mode: 0600
 
 - name: Add users {{ admin_user }} and {{ ansible_admin_user }}
   user:
     name: "{{ item.name }}"
-    group: sudo
+    groups: "sudo,{{ item.name }}"
     password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
     state: present
     shell: /bin/bash
@@ -18,6 +25,17 @@
   with_items:
     - { name: "{{ admin_user}}", uid: 1030 }
     - { name: "{{ ansible_admin_user }}", uid: 1080 }
+
+- name: ensure ansible user home directory is noit world-readable
+  file:
+    state: directory
+    path: "/home/{{ item }}"
+    owner: "{{ item }}"
+    group: "{{ item }}"
+    mode: 0750
+  with_items:
+    - "{{ admin_user }}"
+    - "{{ ansible_admin_user }}"
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:
