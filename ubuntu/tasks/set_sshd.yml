@@ -10,6 +10,13 @@
     - "issue"
     - "issue.net"
 
+- name: Set permissions for sshd_config to 0440
+  file:
+    path: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+
 - name: Copy SSH configuration template to be more secure
   template:
     src: templates/sshd_config.j2
