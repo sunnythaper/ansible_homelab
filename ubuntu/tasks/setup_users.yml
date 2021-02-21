@@ -1,9 +1,4 @@
 ---
-- name: Install Sudo and ACL for escalated privilege management
-  apt:
-    name: ['sudo', 'acl']
-    state: latest
-
 - name: Copy login.defs configuration template to be more secure
   template:
     src: templates/login.defs.j2
