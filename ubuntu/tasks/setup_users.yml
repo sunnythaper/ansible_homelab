@@ -35,7 +35,7 @@
     - { name: "{{ admin_user}}", uid: 1030 }
     - { name: "{{ ansible_admin_user }}", uid: 1080 }
 
-- name: ensure ansible user home directory is noit world-readable
+- name: Set home directory permissions to be more secure
   file:
     state: directory
     path: "/home/{{ item }}"
@@ -45,6 +45,14 @@
   with_items:
     - "{{ admin_user }}"
     - "{{ ansible_admin_user }}"
+
+- name: Set sudoers.d permissions to 0600
+  file:
+    state: directory
+    path: /etc/sudoers.d
+    owner: root
+    group: root
+    mode: 0600
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:
