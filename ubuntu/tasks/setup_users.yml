@@ -52,7 +52,7 @@
     path: /etc/sudoers.d
     owner: root
     group: root
-    mode: 0600
+    mode: 0750
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:
