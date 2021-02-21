@@ -16,9 +16,10 @@
 
 - name: Remove unneccesary default users
   user:
-    name: "{{ users_blacklist }}"
+    name: "{{ item }}"
     state: absent
     remove: 'yes'
+  with_items: "{{ users_blacklist }}"
 
 - name: Create groups for {{ admin_user }} and {{ ansible_admin_user }}
   group:
