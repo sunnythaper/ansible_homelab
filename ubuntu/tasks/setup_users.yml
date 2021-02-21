@@ -20,6 +20,7 @@
     state: absent
     remove: 'yes'
   with_items: "{{ users_blacklist }}"
+  ignore_errors: true
 
 - name: Create groups for {{ admin_user }} and {{ ansible_admin_user }}
   group:
