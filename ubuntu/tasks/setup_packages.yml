@@ -1,5 +1,0 @@
----
-- name: Install preferred system packages via APT
-  apt:
-    name: ['sudo', 'acl', 'debsums', 'apt-show-versions']
-    state: latest

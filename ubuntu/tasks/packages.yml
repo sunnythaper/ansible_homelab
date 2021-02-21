@@ -1,0 +1,21 @@
+---
+- name: Install preferred system packages via APT
+  apt:
+    name: ['sudo', 'acl', 'debsums', 'apt-show-versions']
+    state: latest
+
+- name: Remove unneccessary default packages
+  apt:
+    name: "{{ packages_blocklist }}"
+    state: absent
+    purge: 'yes'
+  ignore_errors: true
+
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+    autoclean: yes
+    autoremove: yes

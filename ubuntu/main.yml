@@ -9,25 +9,22 @@
 
   tasks:
     - name: Set localization settings for {{ timezone }}
-      include_tasks: tasks/set_localization.yml
+      include_tasks: tasks/localization.yml
 
-    - name: Upgrade installed packages via Apt
-      include_tasks: tasks/upgrade_packages.yml
-
-    - name: Setup packages
-      include_tasks: tasks/setup_packages.yml
+    - name: Setup & upgrade preferred packages
+      include_tasks: tasks/packages.yml
 
     - name: Enable Unattended Upgrades
       include_tasks: tasks/unattended_upgrades.yml
 
     - name: Set user settings for {{ admin_user }} and {{ ansible_admin_user }}
-      include_tasks: tasks/setup_users.yml
+      include_tasks: tasks/users.yml
 
     - name: Enable fail2ban protection
       include_tasks: tasks/fail2ban.yml
 
     - name: Set SSHD settings
-      include_tasks: tasks/set_sshd.yml
+      include_tasks: tasks/sshd.yml
 
     - name: Set Postfix settings
       include_tasks: tasks/postfix.yml

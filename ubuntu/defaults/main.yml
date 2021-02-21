@@ -42,6 +42,26 @@ login_defs_UID_MIN: "1000"
 login_defs_UMASK: "077"
 login_defs_USERGROUPS_ENAB: "no"
 
+# PACKAGES
+packages_blocklist:
+  - apport*
+  - autofs
+  - avahi*
+  - avahi-*
+  - beep
+  - pastebinit
+  - popularity-contest
+  - rpcbind
+  - rsh*
+  - rsync
+  - talk*
+  - telnet*
+  - tftp*
+  - whoopsie
+  - xinetd
+  - yp-tools
+  - ypbind
+
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
 postfix_inet_interfaces: "loopback-only"
