@@ -42,12 +42,19 @@ login_defs_UID_MIN: "1000"
 login_defs_UMASK: "077"
 login_defs_USERGROUPS_ENAB: "no"
 
+# POSTFIX
+postfix_disable_vrfy_command: "yes"
+postfix_inet_interfaces: "loopback-only"
+postfix_smtp_tls_loglevel: "1"
+postfix_smtpd_banner: "$myhostname ESMTP"
+postfix_smtpd_helo_required: "yes"
+
 # UNATTENDED UPGRADES
-autoupdate_package_blacklist: []
-autoupdate_reboot: "true"
-autoupdate_reboot_time: "05:00"
-autoupdate_mail_to: ""
 autoupdate_mail_on_error: true
+autoupdate_mail_to: ""
+autoupdate_package_blacklist: []
+autoupdate_reboot_time: "05:00"
+autoupdate_reboot: "true"
 
 # SSHD
 sshd_AcceptEnv: "LANG LC_*"
