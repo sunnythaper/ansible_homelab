@@ -16,6 +16,7 @@
     owner: root
     group: root
     mode: 0600
+  notify: Restart sshd
 
 - name: Copy SSH configuration template to be more secure
   template:
@@ -24,4 +25,4 @@
     owner: root
     group: root
     mode: 0600
-  notify: Restart ssh
+  notify: Restart sshd
