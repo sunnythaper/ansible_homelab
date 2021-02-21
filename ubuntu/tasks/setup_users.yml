@@ -1,8 +1,19 @@
 ---
-- name: Install Sudo for escalated privileges management
+- name: Install Sudo and ACL for escalated privilege management
   apt:
-    name: sudo
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - sudo
+    - acl
+
+- name: Copy login.defs configuration template to be more secure
+  template:
+    src: templates/login.defs.j2
+    dest: /etc/login.defs
+    owner: root
+    group: root
+    mode: '644'
 
 - name: Add users {{ admin_user }} and {{ ansible_admin_user }}
   user:

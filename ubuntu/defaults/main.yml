@@ -9,6 +9,39 @@ admin_password: password
 admin_password_salt: passwordsalt
 admin_public_key: publickey
 
+# LOGIN DEFS
+login_defs_CHFN_RESTRICT: "rwh"
+login_defs_DEFAULT_HOME: "no"
+login_defs_ENCRYPT_METHOD: "SHA512"
+login_defs_ENV_PATH: "PATH=/usr/local/bin:/usr/bin:/bin"
+login_defs_ENV_SUPATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+login_defs_ERASECHAR: "0177"
+login_defs_FAILLOG_ENAB: "yes"
+login_defs_FTMP_FILE: "/var/log/btmp"
+login_defs_GID_MAX: "60000"
+login_defs_GID_MIN: "1000"
+login_defs_HUSHLOGIN_FILE: ".hushlogin"
+login_defs_KILLCHAR: "025"
+login_defs_LOG_OK_LOGINS: "no"
+login_defs_LOG_UNKFAIL_ENAB: "no"
+login_defs_LOGIN_RETRIES: "5"
+login_defs_LOGIN_TIMEOUT: "60"
+login_defs_MAIL_DIR: "/var/mail"
+login_defs_PASS_MAX_DAYS: "99999"
+login_defs_PASS_MIN_DAYS: "0"
+login_defs_PASS_WARN_AGE: "7"
+login_defs_SHA_CRYPT_MAX_ROUNDS: "65536"
+login_defs_SHA_CRYPT_MIN_ROUNDS: "10000"
+login_defs_SU_NAME: "su"
+login_defs_SYSLOG_SG_ENAB: "yes"
+login_defs_SYSLOG_SU_ENAB: "yes"
+login_defs_TTYGROUP: "tty"
+login_defs_TTYPERM: "0600"
+login_defs_UID_MAX: "60000"
+login_defs_UID_MIN: "1000"
+login_defs_UMASK: "077"
+login_defs_USERGROUPS_ENAB: "no"
+
 # UNATTENDED UPGRADES
 autoupdate_package_blacklist: []
 autoupdate_reboot: "true"
