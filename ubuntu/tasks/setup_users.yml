@@ -1,11 +1,8 @@
 ---
 - name: Install Sudo and ACL for escalated privilege management
   apt:
-    name: "{{ item }}"
+    name: ['sudo', 'acl']
     state: latest
-  with_items:
-    - sudo
-    - acl
 
 - name: Copy login.defs configuration template to be more secure
   template:
