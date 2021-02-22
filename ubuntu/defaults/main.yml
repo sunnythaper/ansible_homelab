@@ -46,8 +46,8 @@ login_defs_USERGROUPS_ENAB: "no"
 packages_blocklist:
   - apport*
   - autofs
-  - avahi*
   - avahi-*
+  - avahi*
   - beep
   - pastebinit
   - popularity-contest
@@ -67,6 +67,7 @@ postfix_disable_vrfy_command: "yes"
 postfix_inet_interfaces: "loopback-only"
 postfix_smtp_tls_loglevel: "1"
 postfix_smtpd_banner: "$myhostname ESMTP"
+postfix_smtpd_client_restrictions: "permit_mynetworks,reject"
 postfix_smtpd_helo_required: "yes"
 
 # UNATTENDED UPGRADES

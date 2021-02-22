@@ -14,18 +14,25 @@
     group: root
     mode: 0600
 
-- name: Set cron job files to root and mode to 0640
+- name: Set cron job files to root and mode to 0700
   file:
     path: "/etc/{{ item }}"
     owner: root
     group: root
-    mode: 0640
+    mode: 0700
   with_items:
     - cron.d
     - cron.daily
     - cron.hourly
     - cron.weekly
     - cron.monthly
+
+- name: Set crontab to root and mode to 0600
+  file:
+    path: /etc/crontab
+    owner: root
+    group: root
+    mode: 0600
 
 - name: Remove unneccesary default users
   user:
@@ -105,3 +112,8 @@
   with_items:
     - { user: "{{ admin_user }}", key: "{{ admin_public_key }}" }
     - { user: "{{ ansible_admin_user }}", key: "{{ admin_public_key }}" }
+
+- name: Lock root account
+  user:
+    name: root
+    password_lock: 'yes'
