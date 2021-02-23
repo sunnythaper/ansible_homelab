@@ -1,7 +1,7 @@
 ---
 - name: Install preferred system packages via APT
   apt:
-    name: ['sudo', 'acl', 'debsums', 'apt-show-versions']
+    name: "{{ packages_preferred }}"
     state: latest
 
 - name: Remove unneccessary default packages
