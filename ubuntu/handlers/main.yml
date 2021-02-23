@@ -8,3 +8,7 @@
   service:
     name: postfix
     state: restarted
+
+- name: Restart systemd
+  systemd:
+    daemon_reload: 'yes'

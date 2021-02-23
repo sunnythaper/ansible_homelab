@@ -80,6 +80,7 @@ postfix_smtpd_helo_required: "yes"
 
 # USER
 ansible_admin_user: ansible
+admin_email: "admin@mydomain.com"
 admin_user: admin
 admin_password: password
 admin_password_salt: passwordsalt
@@ -87,7 +88,7 @@ admin_public_key: publickey
 
 # UNATTENDED UPGRADES
 unattended_upgrade_mail_on_error: true
-unattended_upgrade_mail_to: ""
+unattended_upgrade_mail_to: "{{ admin_email }}"
 unattended_upgrade_package_blacklist: []
 unattended_upgrade_reboot_time: "05:00"
 unattended_upgrade_reboot: "true"
