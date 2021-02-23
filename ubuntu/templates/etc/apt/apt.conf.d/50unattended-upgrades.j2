@@ -8,14 +8,14 @@ Unattended-Upgrade::Allowed-Origins {
 };
 
 Unattended-Upgrade::Package-Blacklist {
-{% for package in autoupdate_package_blacklist %}
+{% for package in unattended_upgrade_package_blacklist %}
       "{{package}}";
 {% endfor %}
 };
 
-{% if autoupdate_mail_to %}
-Unattended-Upgrade::Mail "{{ autoupdate_mail_to }}";
-{% if autoupdate_mail_on_error %}
+{% if unattended_upgrade_mail_to %}
+Unattended-Upgrade::Mail "{{ unattended_upgrade_mail_to }}";
+{% if unattended_upgrade_mail_on_error %}
 Unattended-Upgrade::MailOnlyOnError "true";
 {% endif %}
 {% endif %}
@@ -23,5 +23,5 @@ Unattended-Upgrade::MailOnlyOnError "true";
 Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
 Unattended-Upgrade::Remove-Unused-Dependencies "true";
 
-Unattended-Upgrade::Automatic-Reboot "{{ autoupdate_reboot }}";
-Unattended-Upgrade::Automatic-Reboot-Time "{{ autoupdate_reboot_time }}";
+Unattended-Upgrade::Automatic-Reboot "{{ unattended_upgrade_reboot }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_upgrade_reboot_time }}";

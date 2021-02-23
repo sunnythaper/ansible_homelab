@@ -10,7 +10,7 @@
     - "issue"
     - "issue.net"
 
-- name: Set permissions for sshd_config to 0440
+- name: Set permissions for sshd_config to 0600
   file:
     path: /etc/ssh/sshd_config
     owner: root
@@ -20,7 +20,7 @@
 
 - name: Copy SSH configuration template to be more secure
   template:
-    src: templates/sshd_config.j2
+    src: templates/etc/ssh/sshd_config.j2
     dest: "/etc/ssh/sshd_config.d/{{sshd_config_name}}.conf"
     owner: root
     group: root

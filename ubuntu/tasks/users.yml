@@ -1,7 +1,7 @@
 ---
 - name: Copy login.defs configuration template to be more secure
   template:
-    src: templates/login.defs.j2
+    src: templates/etc/login.defs.j2
     dest: /etc/login.defs
     owner: root
     group: root

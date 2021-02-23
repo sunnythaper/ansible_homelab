@@ -1,13 +1,6 @@
 ---
-# BASIC SETTINGS
-ansible_admin_user: ansible
-admin_user: admin
-admin_password: password
-admin_password_salt: passwordsalt
-admin_public_key: publickey
-
 # LOCALIZATION
-timezone: America/Phoenix
+localization_timezone: America/Phoenix
 
 # LOGIN DEFS
 login_defs_CHFN_RESTRICT: "rwh"
@@ -41,6 +34,14 @@ login_defs_UID_MAX: "60000"
 login_defs_UID_MIN: "1000"
 login_defs_UMASK: "077"
 login_defs_USERGROUPS_ENAB: "no"
+
+# NETWORK
+network_domain: mydomain.com
+network_fqdn: "{{ network_hostname }}.{{ network_domain }}"
+network_hostname: "{{ inventory_hostname }}"
+network_nameservers:
+  - "1.1.1.1"
+  - "1.0.0.1"
 
 # PACKAGES
 packages_blocklist:
@@ -77,12 +78,19 @@ postfix_smtpd_banner: "$myhostname ESMTP"
 postfix_smtpd_client_restrictions: "permit_mynetworks,reject"
 postfix_smtpd_helo_required: "yes"
 
+# USER
+ansible_admin_user: ansible
+admin_user: admin
+admin_password: password
+admin_password_salt: passwordsalt
+admin_public_key: publickey
+
 # UNATTENDED UPGRADES
-autoupdate_mail_on_error: true
-autoupdate_mail_to: ""
-autoupdate_package_blacklist: []
-autoupdate_reboot_time: "05:00"
-autoupdate_reboot: "true"
+unattended_upgrade_mail_on_error: true
+unattended_upgrade_mail_to: ""
+unattended_upgrade_package_blacklist: []
+unattended_upgrade_reboot_time: "05:00"
+unattended_upgrade_reboot: "true"
 
 # USERS
 users_blacklist:

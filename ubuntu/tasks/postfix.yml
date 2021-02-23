@@ -1,7 +1,7 @@
 ---
 - name: Copy Postfix configuration template to be more secure
   template:
-    src: templates/main.cf.j2
+    src: templates/etc/postfix/main.cf.j2
     dest: /etc/postfix/main.cf
     owner: root
     group: root
