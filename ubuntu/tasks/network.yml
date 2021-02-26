@@ -1,4 +1,8 @@
 ---
+- name: Set system hostname
+  hostname:
+    name: "{{ network_fqdn }}"
+
 - name: Copy resolv.conf to set nameserver settings
   template:
     src: etc/resolv.conf.j2
