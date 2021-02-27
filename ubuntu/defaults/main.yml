@@ -88,11 +88,24 @@ admin_password_salt: passwordsalt
 admin_public_key: publickey
 
 # UNATTENDED UPGRADES
-unattended_upgrade_mail_on_error: true
-unattended_upgrade_mail_to: "{{ admin_email }}"
-unattended_upgrade_package_blacklist: []
-unattended_upgrade_reboot_time: "05:00"
-unattended_upgrade_reboot: "true"
+unattended_upgrade_AutoFixInterruptedDpkg: "true"
+unattended_upgrade_Automatic-Reboot-Time: "05:00"
+unattended_upgrade_Automatic-Reboot-WithUsers: "false"
+unattended_upgrade_Automatic-Reboot: "true"
+unattended_upgrade_Debug: "false"
+unattended_upgrade_InstallOnShutdown: "false"
+unattended_upgrade_Mail: "{{ admin_email }}"
+unattended_upgrade_MailOnlyOnError: true
+unattended_upgrade_MinimalSteps: "true"
+unattended_upgrade_OnlyOnACPower: "true"
+unattended_upgrade_Package-Blacklist: []
+unattended_upgrade_Remove-New-Unused-Dependencies: "true"
+unattended_upgrade_Remove-Unused-Dependencies: "true"
+unattended_upgrade_Remove-Unused-Kernel-Packages: "true"
+unattended_upgrade_Skip-Updates-On-Metered-Connections: "true"
+unattended_upgrade_SyslogEnable: "true"
+unattended_upgrade_SyslogFacility: "daemon"
+unattended_upgrade_Verbose: "false"
 
 # USERS
 users_blacklist:

@@ -1,7 +1,7 @@
 ---
 - name: Set system hostname
   hostname:
-    name: "{{ network_fqdn }}"
+    name: "{{ network_hostname }}"
 
 - name: Copy resolv.conf to set nameserver settings
   template:
