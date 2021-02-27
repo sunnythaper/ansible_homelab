@@ -19,7 +19,7 @@ Unattended-Upgrade::Package-Blacklist {
 Unattended-Upgrade::Mail "{{ unattended_upgrade_Mail }}";
 {% if unattended_upgrade_MailOnlyOnError %}
 Unattended-Upgrade::MailOnlyOnError "true";
-Unattended-Upgrade::MailReport "only-on-error";
+// Unattended-Upgrade::MailReport "only-on-error";
 {% endif %}
 {% endif %}
 
