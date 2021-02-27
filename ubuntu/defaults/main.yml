@@ -51,16 +51,31 @@ packages_blocklist:
   - avahi-*
   - avahi*
   - beep
+  - bind9
+  - cups
+  - dovecot-imapd
+  - dovecot-pop3d
+  - isc-dhcp-server
+  - ldap-utils
+  - nis
+  - openbsd-inetd
   - pastebinit
   - popularity-contest
   - rpcbind
+  - rsh-client
   - rsh*
   - rsync
+  - samba
+  - slapd
+  - snmpd
+  - squid
   - talk*
   - telnet*
   - tftp*
+  - vsftpd
   - whoopsie
   - xinetd
+  - xserver-xorg*
   - yp-tools
   - ypbind
 
