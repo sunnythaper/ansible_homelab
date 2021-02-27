@@ -3,6 +3,14 @@
   hostname:
     name: "{{ network_hostname }}"
 
+- name: Copy hosts file to set basic dns settings
+  template:
+    src: etc/hosts.j2
+    dest: /etc/hosts
+    mode: 0644
+    owner: root
+    group: root
+
 - name: Copy resolv.conf to set nameserver settings
   template:
     src: etc/resolv.conf.j2
