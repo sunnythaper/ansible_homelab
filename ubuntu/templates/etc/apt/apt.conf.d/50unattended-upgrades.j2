@@ -19,22 +19,22 @@ Unattended-Upgrade::Package-Blacklist {
 Unattended-Upgrade::Mail "{{ unattended_upgrade_Mail }}";
 {% if unattended_upgrade_MailOnlyOnError %}
 Unattended-Upgrade::MailOnlyOnError "true";
-// Unattended-Upgrade::MailReport "only-on-error";
+Unattended-Upgrade::MailReport "only-on-error";
 {% endif %}
 {% endif %}
 
-Unattended-Upgrade::AutoFixInterruptedDpkg "{{ unattended_upgrade_AutoFixInterruptedDpkg }}"
+Unattended-Upgrade::AutoFixInterruptedDpkg "{{ unattended_upgrade_AutoFixInterruptedDpkg }}";
 Unattended-Upgrade::Automatic-Reboot "{{ unattended_upgrade_Automatic_Reboot }}";
 Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_upgrade_Automatic_Reboot_Time }}";
 Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ unattended_upgrade_Automatic_Reboot_WithUsers }}";
-Unattended-Upgrade::Debug "{{ unattended_upgrade_Debug }}"
-Unattended-Upgrade::InstallOnShutdown "{{ unattended_upgrade_InstallOnShutdown }}"
-Unattended-Upgrade::MinimalSteps "{{ unattended_upgrade_MinimalSteps }}"
-Unattended-Upgrade::OnlyOnACPower "{{ unattended_upgrade_OnlyOnACPower }}"
-Unattended-Upgrade::Remove-New-Unused-Dependencies "{{ unattended_upgrade_Remove_New_Unused_Dependencies }}"
-Unattended-Upgrade::Remove-Unused-Dependencies "{{ unattended_upgrade_Remove_Unused_Dependencies }}"
-Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ unattended_upgrade_Remove_Unused_Kernel_Packages }}"
-Unattended-Upgrade::Skip-Updates-On-Metered-Connections "{{ unattended_upgrade_Skip_Updates_On_Metered_Connections }}"
-Unattended-Upgrade::SyslogEnable "{{ unattended_upgrade_SyslogEnable }}"
-Unattended-Upgrade::SyslogFacility "{{ unattended_upgrade_SyslogFacility }}"
-Unattended-Upgrade::Verbose "{{ unattended_upgrade_Verbose }}"
+Unattended-Upgrade::Debug "{{ unattended_upgrade_Debug }}";
+Unattended-Upgrade::InstallOnShutdown "{{ unattended_upgrade_InstallOnShutdown }}";
+Unattended-Upgrade::MinimalSteps "{{ unattended_upgrade_MinimalSteps }}";
+Unattended-Upgrade::OnlyOnACPower "{{ unattended_upgrade_OnlyOnACPower }}";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "{{ unattended_upgrade_Remove_New_Unused_Dependencies }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ unattended_upgrade_Remove_Unused_Dependencies }}";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ unattended_upgrade_Remove_Unused_Kernel_Packages }}";
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "{{ unattended_upgrade_Skip_Updates_On_Metered_Connections }}";
+Unattended-Upgrade::SyslogEnable "{{ unattended_upgrade_SyslogEnable }}";
+Unattended-Upgrade::SyslogFacility "{{ unattended_upgrade_SyslogFacility }}";
+Unattended-Upgrade::Verbose "{{ unattended_upgrade_Verbose }}";
