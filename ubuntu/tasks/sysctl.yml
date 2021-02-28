@@ -1,5 +1,6 @@
 ---
 - name: Set sysctl settings
+  become: true
   sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value|int }}"
