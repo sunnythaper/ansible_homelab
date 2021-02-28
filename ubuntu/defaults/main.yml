@@ -23,8 +23,7 @@ firewall_base_rules:
   - direction: in
     from: "::1"
     rule: deny
-  - from: "192.168.1.0/24"
-    port: "{{ sshd_Port }}"
+  - port: "{{ sshd_Port }}"
     proto: tcp
     rule: allow
   - port: 53
