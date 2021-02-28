@@ -20,3 +20,47 @@
     group: root
   notify:
     - Restart systemd
+
+- name: Disable DCCP protocol
+  lineinfile:
+    dest: /etc/modprobe.d/secure.conf
+    regexp: "^(#)?install dccp(\\s|$)"
+    line: "install dccp /bin/true"
+    owner: root
+    group: root
+    mode: 0644
+    create: true
+  when: network_disable_dccp
+
+- name: Disable SCTP protocol
+  lineinfile:
+    dest: /etc/modprobe.d/secure.conf
+    regexp: "^(#)?install sctp(\\s|$)"
+    line: "install sctp /bin/true"
+    owner: root
+    group: root
+    mode: 0644
+    create: true
+  when: network_disable_cis
+
+- name: Disable RDS protocol
+  lineinfile:
+    dest: /etc/modprobe.d/secure.conf
+    regexp: "^(#)?install rds(\\s|$)"
+    line: "install rds /bin/true"
+    owner: root
+    group: root
+    mode: 0644
+    create: true
+  when: network_disable_rds
+
+- name: Disable TIPC protocol
+  lineinfile:
+    dest: /etc/modprobe.d/secure.conf
+    regexp: "^(#)?install tipc(\\s|$)"
+    line: "install tipc /bin/true"
+    owner: root
+    group: root
+    mode: 0644
+    create: true
+  when: network_disable_tipc
