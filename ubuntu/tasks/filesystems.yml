@@ -12,7 +12,7 @@
   with_items: "{{ filesystem.disable }}"
 
 - name: Remove unneeded filesystems (modprobe)
-  modprobe:
+  community.general.modprobe:
     name: "{{ item }}"
     state: absent
   with_items: "{{ filesystem.disable }}"

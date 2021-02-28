@@ -32,7 +32,7 @@
   with_items: "{{ network.disable }}"
 
 - name: Remove unneeded network protocols (modprobe)
-  modprobe:
+  community.general.modprobe:
     name: "{{ item }}"
     state: absent
   with_items: "{{ network.disable }}"
