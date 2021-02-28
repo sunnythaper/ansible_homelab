@@ -1,0 +1,3 @@
+{% for setting in sysctl_settings %}
+      "{{ setting.key }} = {{ setting.value }}"
+{% endfor %}

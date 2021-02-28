@@ -1,11 +1,9 @@
 ---
-- name: Set sysctl settings
-  become: true
-  sysctl:
-    name: "{{ item.key }}"
-    value: "{{ item.value|int }}"
-    state: present
-    sysctl_set: 'yes'
-  with_dict: "{{ sysctl_settings }}"
-  notify:
-    - Restart sysctl
+- name: Copy sysctl configuration to /etc/sysctl.d/secure.conf
+  template:
+    src: etc/sysctl.d/secure.conf.j2
+    dest: /etc/sysctl.d/secure.conf
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart sysctl
