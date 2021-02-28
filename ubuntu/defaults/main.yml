@@ -28,7 +28,7 @@ firewall_base_rules:
     proto: tcp
     rule: allow
   - port: 53
-    proto: all
+    proto: any
     rule: allow
 firewall_DEFAULT_APPLICATION_POLICY: SKIP
 firewall_DEFAULT_FORWARD_POLICY: DROP
