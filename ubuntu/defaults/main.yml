@@ -11,6 +11,33 @@ fail2ban_protocol: "tcp"
 fail2ban_sender: "fail2ban.{{ network_hostname }}@{{ network_domain }}"
 fail2ban_usedns: "warn"
 
+# FIREWALL
+firewall_applications: []
+firewall_base_rules:
+  - direction: in
+    interface: lo
+    rule: allow
+  - direction: in
+    from: 127.0.0.0/8
+    rule: deny
+  - direction: in
+    from: "::1"
+    rule: deny
+  - from: "192.168.1.0/24"
+    port: "{{ sshd_Port }}"
+    proto: tcp
+    rule: allow
+  - port: 53
+    proto: all
+    rule: allow
+firewall_DEFAULT_APPLICATION_POLICY: SKIP
+firewall_DEFAULT_FORWARD_POLICY: DROP
+firewall_DEFAULT_INPUT_POLICY: DROP
+firewall_DEFAULT_OUTPUT_POLICY: ACCEPT
+firewall_IPV6: no
+firewall_MANAGE_BUILTINS: no
+firewall_rules: []
+
 # LOCALIZATION
 localization_timezone: America/Phoenix
 
@@ -71,6 +98,7 @@ packages_blocklist:
   - cups
   - dovecot-imapd
   - dovecot-pop3d
+  - iptables-persistent
   - isc-dhcp-server
   - ldap-utils
   - nis
@@ -93,7 +121,6 @@ packages_blocklist:
   - xserver-xorg*
   - yp-tools
   - ypbind
-  - iptables-persistent
 
 packages_preferred:
   - acl
