@@ -35,3 +35,8 @@
     group: root
     mode: 0644
   notify: Restart ufw
+
+- name: Start the firewall
+  ufw:
+    state: "enabled"
+    logging: "on"
