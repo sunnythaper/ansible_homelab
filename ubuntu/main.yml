@@ -29,6 +29,9 @@
     - name: Enable fail2ban protection
       include_tasks: tasks/fail2ban.yml
 
+    - name: Enable rkhunter protection
+      include_tasks: tasks/rkhunter.yml
+
     - name: Set SSHD settings
       include_tasks: tasks/sshd.yml
 

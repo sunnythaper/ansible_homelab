@@ -1,0 +1,18 @@
+---
+- name: Copy rkhunter configuration to /etc/default/rkhunter
+  template:
+    src: etc/default/rkhunter.j2
+    dest: /etc/default/rkhunter
+    owner: root
+    group: root
+    mode: 0644
+  notify: Update rkhunter
+
+- name: Copy rkhunter.conf configuration to /etc/rkhunter.conf
+  template:
+    src: etc/rkhunter.conf.j2
+    dest: /etc/rkhunter.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Update rkhunter
