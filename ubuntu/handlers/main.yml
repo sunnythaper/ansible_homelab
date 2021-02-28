@@ -1,14 +1,22 @@
 ---
-- name: Restart sshd
+- name: Restart fail2ban
   service:
-    name: sshd
+    name: fail2ban
     state: restarted
+    enabled: yes
 
 - name: Restart postfix
   service:
     name: postfix
     state: restarted
+    enabled: yes
 
 - name: Restart systemd
   systemd:
     daemon_reload: 'yes'
+
+- name: Restart sshd
+  service:
+    name: sshd
+    state: restarted
+    enabled: yes

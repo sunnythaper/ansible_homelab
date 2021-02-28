@@ -1,4 +1,16 @@
 ---
+# FAIL2BAN
+fail2ban_backend: "auto"
+fail2ban_bantime: "10m"
+fail2ban_destemail: "{{ admin_email }}"
+fail2ban_findtime: "10m"
+fail2ban_logencoding: "auto"
+fail2ban_maxretry: "5"
+fail2ban_mta: "sendmail"
+fail2ban_protocol: "tcp"
+fail2ban_sender: "fail2ban.{{ network_hostname }}@{{ network_domain }}"
+fail2ban_usedns: "warn"
+
 # LOCALIZATION
 localization_timezone: America/Phoenix
 
@@ -62,7 +74,6 @@ packages_blocklist:
   - pastebinit
   - popularity-contest
   - rpcbind
-  - rsh-client
   - rsh*
   - rsync
   - samba
@@ -78,13 +89,17 @@ packages_blocklist:
   - xserver-xorg*
   - yp-tools
   - ypbind
+  - iptables-persistent
 
 packages_preferred:
   - acl
   - apt-show-versions
   - aptitude
   - debsums
+  - fail2ban
+  - iptables
   - sudo
+  - ufw
 
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
@@ -93,14 +108,6 @@ postfix_smtp_tls_loglevel: "1"
 postfix_smtpd_banner: "$myhostname ESMTP"
 postfix_smtpd_client_restrictions: "permit_mynetworks,reject"
 postfix_smtpd_helo_required: "yes"
-
-# USER
-ansible_admin_user: ansible
-admin_email: "admin@mydomain.com"
-admin_user: admin
-admin_password: password
-admin_password_salt: passwordsalt
-admin_public_key: publickey
 
 # UNATTENDED UPGRADES
 unattended_upgrade_AutoFixInterruptedDpkg: "true"
@@ -123,6 +130,12 @@ unattended_upgrade_SyslogFacility: "daemon"
 unattended_upgrade_Verbose: "false"
 
 # USERS
+ansible_admin_user: ansible
+admin_email: "admin@mydomain.com"
+admin_user: admin
+admin_password: password
+admin_password_salt: passwordsalt
+admin_public_key: publickey
 users_blacklist:
   - games
   - gnats
