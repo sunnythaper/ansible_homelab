@@ -95,6 +95,8 @@ packages_preferred:
   - acl
   - apt-show-versions
   - aptitude
+  - audispd-plugins
+  - auditd
   - debsums
   - fail2ban
   - iptables
