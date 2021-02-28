@@ -1,0 +1,9 @@
+---
+- name: Set /etc/security/limits.conf to disable coredump
+  lineinfile:
+    dest: /etc/security/limits.conf
+    line: "*                hard    core            0"
+    regexp: '(^#)?\*\s+hard\s+core\s+[0-9]+'
+    state: present
+    create: true
+    insertbefore: "# End of file"

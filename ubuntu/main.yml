@@ -17,6 +17,9 @@
     - name: Set sysctl related settings
       include_tasks: tasks/sysctl.yml
 
+    - name: Disable system core dumps
+      include_tasks: tasks/coredump.yml
+
     - name: Setup & upgrade preferred packages
       include_tasks: tasks/packages.yml
 
