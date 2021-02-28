@@ -14,6 +14,9 @@
     - name: Set network related settings for {{ network_hostname }}
       include_tasks: tasks/network.yml
 
+    - name: Remove filesystems & network protocols via modprobe
+      include_tasks: tasks/modprobe.yml
+
     - name: Set up firewall related settings
       include_tasks: tasks/firewall.yml
 
@@ -22,9 +25,6 @@
 
     - name: Disable system core dumps
       include_tasks: tasks/coredump.yml
-
-    - name: Remove Unnecessary filesystems
-      include_tasks: tasks/filesystems.yml
 
     - name: Setup & upgrade preferred packages
       include_tasks: tasks/packages.yml

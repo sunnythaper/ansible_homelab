@@ -1,5 +1,5 @@
 ---
-- name: Remove unneeded filesystems
+- name: Remove filesystems & network protocols
   lineinfile:
     dest: /etc/modprobe.d/secure.conf
     regexp: "^(#)?install {{ item }}(\\s|$)"
@@ -9,4 +9,6 @@
     group: root
     mode: 0644
     create: true
-  with_items: "{{ filesystem.disable }}"
+  with_items:
+    - "{{ filesystem.disable }}"
+    - "{{ network.disable }}"

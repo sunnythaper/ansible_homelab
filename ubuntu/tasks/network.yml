@@ -19,14 +19,3 @@
     owner: root
     group: root
   notify: Restart systemd
-
-- name: Remove unneeded network protocols
-  lineinfile:
-    dest: /etc/modprobe.d/secure.conf
-    regexp: "^(#)?install {{ item }}(\\s|$)"
-    line: "install {{ item }} /bin/true"
-    owner: root
-    group: root
-    mode: 0644
-    create: true
-  with_items: "{{ network.disable }}"
