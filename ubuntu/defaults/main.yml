@@ -14,15 +14,6 @@ fail2ban_usedns: "warn"
 # FIREWALL
 firewall_applications: []
 firewall_base_rules:
-  - direction: in
-    interface: lo
-    rule: allow
-  - direction: in
-    from: 127.0.0.0/8
-    rule: deny
-  - direction: in
-    from: "::1"
-    rule: deny
   - port: "{{ sshd_Port }}"
     proto: tcp
     rule: allow
