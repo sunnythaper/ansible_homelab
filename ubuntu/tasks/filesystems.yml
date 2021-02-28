@@ -1,0 +1,18 @@
+---
+- name: Remove unneeded filesystems
+  lineinfile:
+    dest: /etc/modprobe.d/secure.conf
+    regexp: "^(#)?install {{ item }}(\\s|$)"
+    line: "install {{ item }} /bin/true"
+    state: present
+    owner: root
+    group: root
+    mode: 0644
+    create: true
+  with_items: "{{ filesystem.disable }}"
+
+- name: Remove unneeded filesystems (modprobe)
+  modprobe:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ filesystem.disable }}"

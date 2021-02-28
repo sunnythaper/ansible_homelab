@@ -23,6 +23,9 @@
     - name: Disable system core dumps
       include_tasks: tasks/coredump.yml
 
+    - name: Remove Unnecessary filesystems
+      include_tasks: tasks/filesystems.yml
+
     - name: Setup & upgrade preferred packages
       include_tasks: tasks/packages.yml
 

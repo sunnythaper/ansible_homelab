@@ -11,6 +11,18 @@ fail2ban_protocol: "tcp"
 fail2ban_sender: "fail2ban.{{ network_hostname }}@{{ network_domain }}"
 fail2ban_usedns: "warn"
 
+# FILESYSTEM
+filesystem:
+  disable:
+    - cramfs
+    - freevxfs
+    - hfs
+    - hfsplus
+    - jffs2
+    - squashfs
+    - udf
+    - vfat
+
 # FIREWALL
 firewall_applications: []
 firewall_base_rules:
@@ -66,10 +78,12 @@ login_defs_UMASK: "077"
 login_defs_USERGROUPS_ENAB: "no"
 
 # NETWORK
-network_disable_dccp: true
-network_disable_sctp: true
-network_disable_rds: true
-network_disable_tipc: true
+network:
+  disable:
+    - dccp
+    - rds
+    - sctp
+    - tipc
 network_domain: mydomain.com
 network_fqdn: "{{ network_hostname }}.{{ network_domain }}"
 network_hostname: "{{ inventory_hostname }}"
