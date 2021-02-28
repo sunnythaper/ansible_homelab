@@ -1,5 +1,6 @@
 ---
 - name: Apply sysctl config
+  become: true
   command: sysctl --load /etc/sysctl.d/secure.conf
 
 - name: Restart fail2ban
