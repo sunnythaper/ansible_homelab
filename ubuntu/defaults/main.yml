@@ -101,7 +101,7 @@ packages_preferred:
   - iptables
   - sudo
   - ufw
-  - audispd-plugins # Has to come after auditd
+  # - audispd-plugins
 
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
