@@ -1,5 +1,5 @@
 ---
-- name: config port/protocol/network rules
+- name: Set firewall rules via ufw
   ufw:
     delete: "{{ item.delete | default(omit) }}"
     direction: "{{ item.direction | default(omit) }}"
@@ -21,13 +21,13 @@
     - "{{ firewall_base_rules }}"
     - "{{ firewall_rules }}"
 
-- name: config application rules
+- name: Set firewall application rules via ufw
   ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
   with_items: "{{ firewall_applications }}"
 
-- name: config service
+- name: Copy ufw configuration to /etc/default/ufw
   template:
     src: etc/default/ufw.j2
     dest: /etc/default/ufw
