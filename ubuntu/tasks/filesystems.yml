@@ -10,9 +10,3 @@
     mode: 0644
     create: true
   with_items: "{{ filesystem.disable }}"
-
-- name: Remove unneeded filesystems (modprobe)
-  community.general.modprobe:
-    name: "{{ item }}"
-    state: absent
-  with_items: "{{ filesystem.disable }}"
