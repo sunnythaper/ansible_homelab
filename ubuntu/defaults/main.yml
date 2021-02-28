@@ -95,13 +95,13 @@ packages_preferred:
   - acl
   - apt-show-versions
   - aptitude
-  - audispd-plugins
   - auditd
   - debsums
   - fail2ban
   - iptables
   - sudo
   - ufw
+  - audispd-plugins # Has to come after auditd
 
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
