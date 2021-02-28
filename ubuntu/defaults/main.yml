@@ -216,9 +216,8 @@ sshd_X11Forwarding: "no"
 sshd_X11UseLocalhost: "yes"
 
 # SYSCTL
-sysctl_dev_tty_ldisc_autoload: 0
-sysctl_net_ipv6_conf_accept_ra_rtr_pref: 0
 sysctl_settings:
+  dev.tty.ldisc_autoload: 0
   fs.protected_hardlinks: 1
   fs.protected_symlinks: 1
   fs.suid_dumpable: 0
@@ -271,6 +270,7 @@ sysctl_settings:
   net.ipv4.tcp_synack_retries: 2
   net.ipv4.tcp_syncookies: 1
   net.ipv4.tcp_timestamps: 0
+  net.ipv6.conf.accept_ra_rtr_pref: 0
   net.ipv6.conf.all.accept_ra_defrtr: 0
   net.ipv6.conf.all.accept_ra_pinfo: 0
   net.ipv6.conf.all.accept_ra_rtr_pref: 0

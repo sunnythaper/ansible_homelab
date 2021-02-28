@@ -1,0 +1,10 @@
+---
+- name: Set sysctl settings
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value|int }}"
+    state: present
+    sysctl_set: 'yes'
+  with_dict: "{{ sysctl_settings }}"
+  notify:
+    - Restart sysctl
