@@ -197,7 +197,6 @@ sshd_Ciphers: "chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,ae
 sshd_ClientAliveCountMax: "2"
 sshd_ClientAliveInterval: "300"
 sshd_Compression: "no"
-sshd_config_name: secure
 sshd_GatewayPorts: "no"
 sshd_GSSAPIAuthentication: "no"
 sshd_GSSAPICleanupCredentials: "yes"
