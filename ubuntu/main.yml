@@ -14,6 +14,9 @@
     - name: Set network related settings for {{ network_hostname }}
       include_tasks: tasks/network.yml
 
+    - name: Set up firewall related settings
+      include_tasks: tasks/firewall.yml
+
     - name: Set sysctl related settings
       include_tasks: tasks/sysctl.yml
 
