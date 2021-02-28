@@ -14,7 +14,8 @@ fail2ban_usedns: "warn"
 # FIREWALL
 firewall_applications: []
 firewall_base_rules:
-  - port: "{{ sshd_Port }}"
+  - from: 192.168.1.0/24
+    port: "{{ sshd_Port }}"
     proto: tcp
     rule: allow
   - port: 53
