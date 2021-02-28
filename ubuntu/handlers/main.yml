@@ -1,6 +1,10 @@
 ---
 - name: Apply sysctl config
-  command: sudo sysctl --load /etc/sysctl.d/secure.conf
+  become: true
+  command: sysctl --load /etc/sysctl.d/secure.conf
+
+- name: Update rkhunter
+  command: rkhunter --propupd
 
 - name: Restart fail2ban
   service:
