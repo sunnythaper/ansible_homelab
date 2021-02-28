@@ -95,13 +95,11 @@ packages_preferred:
   - acl
   - apt-show-versions
   - aptitude
-  - auditd
   - debsums
   - fail2ban
   - iptables
   - sudo
   - ufw
-  # - audispd-plugins
 
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
