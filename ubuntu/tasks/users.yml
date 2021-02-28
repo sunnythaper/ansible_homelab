@@ -7,33 +7,6 @@
     group: root
     mode: 0600
 
-- name: Set shadow file owner to root and mode to 0600
-  file:
-    path: /etc/shadow
-    owner: root
-    group: root
-    mode: 0600
-
-- name: Set cron job files to root and mode to 0700
-  file:
-    path: "/etc/{{ item }}"
-    owner: root
-    group: root
-    mode: 0700
-  with_items:
-    - cron.d
-    - cron.daily
-    - cron.hourly
-    - cron.weekly
-    - cron.monthly
-
-- name: Set crontab to root and mode to 0600
-  file:
-    path: /etc/crontab
-    owner: root
-    group: root
-    mode: 0600
-
 - name: Remove unneccesary default users
   user:
     name: "{{ item }}"
@@ -62,26 +35,6 @@
   with_items:
     - { name: "{{ admin_user}}", uid: 1030 }
     - { name: "{{ ansible_admin_user }}", uid: 1080 }
-
-- name: Grab all home directories
-  find:
-    paths: /home
-    file_type: directory
-  register: home_directories
-
-- name: Set home directory permissions to 0750
-  file:
-    mode: 0750
-    path: "{{ item.path }}"
-  with_items: "{{ home_directories.files }}"
-
-- name: Set sudoers.d permissions to 0600
-  file:
-    state: directory
-    path: /etc/sudoers.d
-    owner: root
-    group: root
-    mode: 0750
 
 - name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
   lineinfile:

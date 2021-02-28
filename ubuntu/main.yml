@@ -37,3 +37,6 @@
 
     - name: Set Postfix settings
       include_tasks: tasks/postfix.yml
+
+    - name: Set system permissions
+      include_tasks: tasks/permissions.yml

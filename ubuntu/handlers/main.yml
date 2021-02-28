@@ -1,7 +1,6 @@
 ---
 - name: Apply sysctl config
-  become: true
-  command: sysctl --load /etc/sysctl.d/secure.conf
+  command: sysctl -p
 
 - name: Update rkhunter
   command: rkhunter --propupd
