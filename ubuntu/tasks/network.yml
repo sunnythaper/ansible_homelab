@@ -41,7 +41,7 @@
     group: root
     mode: 0644
     create: true
-  when: network_disable_cis
+  when: network_disable_sctp
 
 - name: Disable RDS protocol
   lineinfile:
