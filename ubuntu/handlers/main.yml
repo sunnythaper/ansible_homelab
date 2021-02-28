@@ -20,3 +20,8 @@
     name: sshd
     state: restarted
     enabled: yes
+
+- name: Restart sysctl
+  service:
+    name: systemd-sysctl
+    state: restarted
