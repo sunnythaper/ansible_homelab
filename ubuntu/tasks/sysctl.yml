@@ -7,3 +7,6 @@
     group: root
     mode: 0644
   notify: Apply sysctl config
+
+- name: Run all notified handlers now before system becomes read only
+  meta: flush_handlers

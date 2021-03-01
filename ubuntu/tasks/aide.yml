@@ -3,6 +3,7 @@
   apt:
     name: "{{ aide.packages }}"
     state: latest
+    install_recommends: false
 
 - name: Check if daily aide cron exists
   stat:
@@ -30,25 +31,19 @@
     - Restart systemd
     - Enable aidecheck
 
-# - name: Copy aide configuration to /etc/aide/
-#   template:
-#     src: etc/aide/aide.conf.j2
-#     dest: /etc/aide/aide.conf
-#     owner: root
-#     group: root
-#     mode: 0644
+- name: Copy aide configuration to /etc/aide/
+  template:
+    src: etc/aide/aide.conf.j2
+    dest: /etc/aide/aide.conf
+    owner: root
+    group: root
+    mode: 0644
 
 - name: stat Debian aide.db
   stat:
     path: /var/lib/aide/aide.db
   register: aidedb
 
-# - name: Initialize the aide database if it doesn't exist
-#   expect:
-#     command: aideinit
-#     timeout: null
-#     responses:
-#       Question:
-#         - 'Overwrite /var/lib/aide/aide.db [yN]?': 'y'
-#         - 'Overwrite existing /var/lib/aide/aide.db.new [Yn]?': 'y'
-#   when: not aidedb.stat.exists
+- name: Initialize the aide database if it doesn't exist
+  command: aideinit
+  when: not aidedb.stat.exists
