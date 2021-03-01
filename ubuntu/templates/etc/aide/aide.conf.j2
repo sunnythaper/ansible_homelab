@@ -1,3 +1,5 @@
 {% for setting in aide.conf %}
-{{ setting.key }} = {{ setting.value }}
+{% for key, value in setting.items() %}
+{{key}} = {{value}}
+{% endfor %}
 {% endfor %}
