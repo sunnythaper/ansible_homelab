@@ -1,15 +1,9 @@
 ---
-- name: Install preferred system packages via APT
+- name: Install aptitude
   apt:
-    name: "{{ packages_preferred }}"
+    name: aptitude
     state: latest
-
-- name: Remove unneccessary default packages
-  apt:
-    name: "{{ packages_blocklist }}"
-    state: absent
-    purge: 'yes'
-  ignore_errors: true
+    install_recommends: no
 
 - name: Upgrade all packages to the latest version
   apt:
@@ -19,3 +13,18 @@
     cache_valid_time: 3600
     autoclean: yes
     autoremove: yes
+    upgrade: 'full'
+    install_recommends: no
+
+- name: Install preferred system packages via APT
+  apt:
+    name: "{{ packages_preferred }}"
+    state: latest
+    install_recommends: no
+
+- name: Remove unneccessary default packages
+  apt:
+    name: "{{ packages_blocklist }}"
+    state: absent
+    purge: 'yes'
+  ignore_errors: true

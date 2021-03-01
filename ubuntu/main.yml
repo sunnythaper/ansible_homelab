@@ -8,14 +8,17 @@
     - import_tasks: handlers/main.yml
 
   tasks:
-    - name: Set up aide to track file system changes
-      include_tasks: tasks/aide.yml
-
     - name: Set localization settings for {{ localization_timezone }}
       include_tasks: tasks/localization.yml
 
     - name: Set network related settings for {{ network_hostname }}
       include_tasks: tasks/network.yml
+
+    - name: Setup & upgrade preferred packages
+      include_tasks: tasks/packages.yml
+
+    - name: Set up aide to track file system changes
+      include_tasks: tasks/aide.yml
 
     - name: Remove filesystems & network protocols via modprobe
       include_tasks: tasks/modprobe.yml
@@ -28,9 +31,6 @@
 
     - name: Disable system core dumps
       include_tasks: tasks/coredump.yml
-
-    - name: Setup & upgrade preferred packages
-      include_tasks: tasks/packages.yml
 
     - name: Enable Unattended Upgrades
       include_tasks: tasks/unattended_upgrades.yml

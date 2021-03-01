@@ -1,10 +1,4 @@
 ---
-- name: Install aide and aide-common
-  apt:
-    name: "{{ aide.packages }}"
-    state: latest
-    install_recommends: false
-
 - name: Check if daily aide cron exists
   stat:
     path: /etc/cron.daily/aide
