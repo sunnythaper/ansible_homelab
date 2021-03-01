@@ -1,15 +1,11 @@
 ---
-- name: configure sysctl
+- name: Configure sysctl settings
   sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value|int }}"
     state: present
-    sysctl_set: 'yes'
   with_dict: "{{ sysctl.conf }}"
   notify: Restart sysctl
-
-- name: Run all notified handlers now before system becomes read only
-  meta: flush_handlers
 
 - name: Check if a reboot is needed
   register: reboot_required

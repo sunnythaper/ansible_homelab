@@ -20,14 +20,14 @@
     - name: Set up aide to track file system changes
       include_tasks: tasks/aide.yml
 
+    - name: Set sysctl related settings
+      include_tasks: tasks/sysctl.yml
+
     - name: Remove filesystems & network protocols via modprobe
       include_tasks: tasks/modprobe.yml
 
     - name: Set up firewall related settings
       include_tasks: tasks/firewall.yml
-
-    - name: Set sysctl related settings
-      include_tasks: tasks/sysctl.yml
 
     - name: Disable system core dumps
       include_tasks: tasks/coredump.yml
