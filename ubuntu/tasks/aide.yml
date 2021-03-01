@@ -33,7 +33,7 @@
 - name: Copy aide configuration to /etc/aide/
   template:
     src: etc/aide/aide.conf.j2
-    dest: /etc/aide/aide.con
+    dest: /etc/aide/aide.conf
     owner: root
     group: root
     mode: 0644
