@@ -1,9 +1,8 @@
 ---
 - name: Install aide and aide-common
   apt:
-    name: "{{ item }}"
+    name: "{{ aide.packages }}"
     state: latest
-  with_items: "{{ aide.packages }}"
 
 - name: Check if daily aide cron exists
   stat:
@@ -19,7 +18,7 @@
     group: root
   when: not aidecron.stat.exists
 
-- name: aide timer
+- name: Setup aide check timer (instead of cron)
   template:
     src: lib/systemd/system/aidecheck.timer.j2
     dest: /lib/systemd/system/aidecheck.timer
@@ -31,17 +30,13 @@
     - Restart systemd
     - Enable aidecheck
 
-- name: add aide Debian dir exclusions
-  blockinfile:
-    path: /etc/aide/aide.conf
-    marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    insertafter: EOF
-    block: |
-      !/var/lib/docker
-      !/var/lib/lxcfs
-      !/var/lib/private/systemd
-      !/var/log/audit
-      !/var/log/journal
+- name: Copy aide configuration to /etc/aide/
+  template:
+    src: etc/aide/aide.conf.j2
+    dest: /etc/aide/aide.con
+    owner: root
+    group: root
+    mode: 0644
 
 - name: stat Debian aide.db
   stat:
