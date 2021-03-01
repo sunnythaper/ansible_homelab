@@ -1,4 +1,42 @@
 ---
+# AIDE
+aide:
+  conf:
+    Checksums: "sha256+sha512+rmd160+haval+gost+crc32+tiger"
+    database_attrs: "Checksums"
+    database_new: "file:/var/lib/aide/aide.db.new"
+    database_out: "file:/var/lib/aide/aide.db.new"
+    database: "file:/var/lib/aide/aide.db"
+    FreqRotLog: "Log-S"
+    Full: "InodeData+StaticFile"
+    grouped: "yes"
+    gzip_dbout: "yes"
+    HiSerMemberLog: "SerMemberLog+ARF"
+    InodeData: "OwnerMode+n+i+Size+l+X"
+    LinkedLog: "Log-n"
+    Log: "OwnerMode+n+S+X"
+    LoSerMemberLog: "SerMemberLog+ANF"
+    LowDELog: "SerMemberLog+ANF+ARF"
+    LowLog: "Log-S"
+    OwnerMode: "p+u+g+ftype"
+    RamdiskData: "InodeData-i"
+    report_base16: "no"
+    SerMemberDELog: "Full+ANF"
+    SerMemberLog: "Full+I"
+    Size: "s+b"
+    StaticFile: "m+c+Checksums"
+    summarize_changes: "yes"
+    VarDir: "OwnerMode+n+i+X"
+    VarDirInode: "OwnerMode+n+X"
+    VarDirTime: "InodeData"
+    VarFile: "OwnerMode+n+l+X"
+    VarInode: "VarTime-i"
+    VarTime: "InodeData+Checksums"
+    verbose: "6"
+  packages:
+    - aide
+    - aide-common
+
 # FAIL2BAN
 fail2ban_backend: "auto"
 fail2ban_bantime: "10m"

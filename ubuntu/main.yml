@@ -8,6 +8,9 @@
     - import_tasks: handlers/main.yml
 
   tasks:
+    - name: Set up aide to track file system changes
+      include_tasks: tasks/aide.yml
+
     - name: Set localization settings for {{ localization_timezone }}
       include_tasks: tasks/localization.yml
 

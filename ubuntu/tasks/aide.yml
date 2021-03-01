@@ -1,0 +1,59 @@
+---
+- name: Install aide and aide-common
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ aide.packages }}"
+
+- name: Check if daily aide cron exists
+  stat:
+    path: /etc/cron.daily/aide
+  register: aidecron
+
+- name: Copy aide service settings to /lib/systemd/system/
+  template:
+    src: lib/systemd/system/aidecheck.service.j2
+    dest: /lib/systemd/system/aidecheck.service
+    mode: 0644
+    owner: root
+    group: root
+  when: not aidecron.stat.exists
+
+- name: aide timer
+  template:
+    src: lib/systemd/system/aidecheck.timer.j2
+    dest: /lib/systemd/system/aidecheck.timer
+    mode: 0644
+    owner: root
+    group: root
+  when: not aidecron.stat.exists
+  notify:
+    - Restart systemd
+    - Enable aidecheck
+
+- name: add aide Debian dir exclusions
+  blockinfile:
+    path: /etc/aide/aide.conf
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    insertafter: EOF
+    block: |
+      !/var/lib/docker
+      !/var/lib/lxcfs
+      !/var/lib/private/systemd
+      !/var/log/audit
+      !/var/log/journal
+
+- name: stat Debian aide.db
+  stat:
+    path: /var/lib/aide/aide.db
+  register: aidedb
+
+- name: Initialize the aide database if it doesn't exist
+  expect:
+    command: aideinit
+    timeout: null
+    responses:
+      Question:
+        - 'Overwrite /var/lib/aide/aide.db [yN]?': 'y'
+        - 'Overwrite existing /var/lib/aide/aide.db.new [Yn]?': 'y'
+  when: not aidedb.stat.exists

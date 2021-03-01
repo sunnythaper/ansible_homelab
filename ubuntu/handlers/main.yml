@@ -35,3 +35,9 @@
 - name: Restart ufw
   ufw:
     state: reloaded
+
+- name: Enable aidecheck
+  systemd:
+    name: aidecheck.timer
+    enabled: 'yes'
+    state: started
