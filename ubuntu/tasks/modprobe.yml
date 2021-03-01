@@ -1,7 +1,7 @@
 ---
 - name: Remove filesystems & network protocols
   lineinfile:
-    dest: /etc/modprobe.d/secure.conf
+    dest: /etc/modprobe.d/50-local.conf
     regexp: "^(#)?install {{ item }}(\\s|$)"
     line: "install {{ item }} /bin/true"
     state: present

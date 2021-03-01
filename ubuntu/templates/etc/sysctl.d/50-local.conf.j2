@@ -1,0 +1,3 @@
+{% for key, value in sysctl.conf.items() %}
+{{key}} = {{value | int}}
+{% endfor %}

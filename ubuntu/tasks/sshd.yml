@@ -13,7 +13,7 @@
 - name: Copy SSH configuration template to be more secure
   template:
     src: templates/etc/ssh/sshd_config.j2
-    dest: "/etc/ssh/sshd_config.d/secure.conf"
+    dest: "/etc/ssh/sshd_config.d/50-local.conf"
     owner: root
     group: root
     mode: 0600
