@@ -13,14 +13,8 @@
     type: password
     control: requisite
     module_path: pam_cracklib.so
-    module_arguments:
-      - 'retry={{ users.cracklib.retry }}'
-      - 'minlen={{ users.cracklib.minlen }}'
-      - 'difok={{ users.cracklib.difok }}'
-      - 'ucredit={{ users.cracklib.ucredit }}'
-      - 'ocredit={{ users.cracklib.ocredit }}'
-      - 'dcredit={{ users.cracklib.dcredit }}'
-      - 'lcredit={{ users.cracklib.lcredit }}'
+    module_arguments: "{{ item.key }}={{ item.value|int }}"
+  loop: "{{ users.cracklib | dictsort }}"
 
 - name: Remove unneccesary default users
   user:
