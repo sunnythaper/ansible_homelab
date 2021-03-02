@@ -1,17 +1,26 @@
 ---
-- name: Copy sysctl configuration to /etc/sysctl.d/50-local.conf
-  template:
-    src: etc/sysctl.d/50-local.conf.j2
-    dest: /etc/sysctl.d/50-local.conf
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - Apply sysctl config
-    - Restart sysctl
+# - name: Copy sysctl configuration to /etc/sysctl.d/50-local.conf
+#   template:
+#     src: etc/sysctl.d/50-local.conf.j2
+#     dest: /etc/sysctl.d/50-local.conf
+#     owner: root
+#     group: root
+#     mode: 0644
+#   notify:
+#     - Apply sysctl config
+#     - Restart sysctl
 
-- name: Run handlers now to apply sysctl settings before continuing
-  meta: flush_handlers
+- name: Configure sysctl settings
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value|int }}"
+    state: present
+    sysctl_set: yes
+    reload: yes
+  with_dict: "{{ sysctl.conf }}"
+
+# - name: Run handlers now to apply sysctl settings before continuing
+#   meta: flush_handlers
 
 - name: Check if a reboot is needed
   register: reboot_required
