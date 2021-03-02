@@ -53,7 +53,6 @@ logindefs:
     ENV_PATH: "PATH=/usr/local/bin:/usr/bin:/bin"
     ENV_SUPATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     ERASECHAR: 0177
-    FAIL_DELAY: 5
     FAILLOG_ENAB: "yes"
     FTMP_FILE: /var/log/btmp
     GID_MAX: 60000
