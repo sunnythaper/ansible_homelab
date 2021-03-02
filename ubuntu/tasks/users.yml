@@ -14,7 +14,7 @@
     control: requisite
     module_path: pam_cracklib.so
     module_arguments: "{{ item.key }}={{ item.value|int }}"
-  loop: "{{ users.cracklib | dict2items }}"
+  loop: "{{ users.cracklib | dictsort }}"
 
 - name: Remove unneccesary default users
   user:
