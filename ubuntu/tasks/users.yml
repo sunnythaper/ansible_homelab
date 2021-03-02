@@ -13,9 +13,8 @@
     type: password
     control: requisite
     module_path: pam_cracklib.so
-    module_arguments:
-      - "{{ item.key }}={{ item.value }}"
-  with_dict: "{{ users.cracklib }}"
+    module_arguments: "{{ item.key }}={{ item.value|int }}"
+  loop: "{{ users.cracklib | dict2items }}"
 
 - name: Remove unneccesary default users
   user:

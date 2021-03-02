@@ -6,7 +6,7 @@
     state: present
     sysctl_set: yes
     reload: yes
-  with_dict: "{{ sysctl.conf }}"
+  with_dict: "{{ sysctl.conf | dictsort }}"
 
 - name: Check if a reboot is needed
   register: reboot_required
