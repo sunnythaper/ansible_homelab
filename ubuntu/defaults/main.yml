@@ -270,21 +270,21 @@ sshd_X11UseLocalhost: "yes"
 # SYSCTL
 sysctl:
   conf:
-    dev.tty.ldisc_autoload: 0
-    fs.protected_hardlinks: 1
-    fs.protected_symlinks: 1
-    fs.suid_dumpable: 0
-    kernel.core_uses_pid: 1
-    kernel.dmesg_restrict: 1
-    kernel.kptr_restrict: 2
-    kernel.panic_on_oops: 60
-    kernel.panic: 60
-    kernel.perf_event_paranoid: 2
-    kernel.randomize_va_space: 2
-    kernel.sysrq: 0
-    kernel.unprivileged_bpf_disabled: 1
-    kernel.yama.ptrace_scope: 2
-    net.core.bpf_jit_harden: 2
+    # dev.tty.ldisc_autoload: 0
+    # fs.protected_hardlinks: 1
+    # fs.protected_symlinks: 1
+    # fs.suid_dumpable: 0
+    # kernel.core_uses_pid: 1
+    # kernel.dmesg_restrict: 1
+    # kernel.kptr_restrict: 2
+    # kernel.panic_on_oops: 60
+    # kernel.panic: 60
+    # kernel.perf_event_paranoid: 2
+    # kernel.randomize_va_space: 2
+    # kernel.sysrq: 0
+    # kernel.unprivileged_bpf_disabled: 1
+    # kernel.yama.ptrace_scope: 2
+    # net.core.bpf_jit_harden: 2
     net.ipv4.conf.all.accept_redirects: 0
     net.ipv4.conf.all.accept_source_route: 0
     net.ipv4.conf.all.arp_announce: 2
@@ -292,7 +292,7 @@ sysctl:
     net.ipv4.conf.all.bootp_relay: 0
     net.ipv4.conf.all.forwarding: 0
     net.ipv4.conf.all.log_martians: 1
-    net.ipv4.conf.all.mc_forwarding: 0
+    # net.ipv4.conf.all.mc_forwarding: 0
     net.ipv4.conf.all.proxy_arp: 0
     net.ipv4.conf.all.rp_filter: 1
     net.ipv4.conf.all.secure_redirects: 0
@@ -323,7 +323,7 @@ sysctl:
     net.ipv4.tcp_synack_retries: 2
     net.ipv4.tcp_syncookies: 1
     net.ipv4.tcp_timestamps: 0
-    net.ipv6.conf.accept_ra_rtr_pref: 0
+    # net.ipv6.conf.accept_ra_rtr_pref: 0
     net.ipv6.conf.all.accept_ra_defrtr: 0
     net.ipv6.conf.all.accept_ra_pinfo: 0
     net.ipv6.conf.all.accept_ra_rtr_pref: 0
@@ -348,7 +348,7 @@ sysctl:
     net.ipv6.conf.default.max_addresses: 1
     net.ipv6.conf.default.router_solicitations: 0
     net.ipv6.conf.default.use_tempaddr: 2
-    net.netfilter.nf_conntrack_max: 2000000
-    net.netfilter.nf_conntrack_tcp_loose: 0
-    vm.swappiness: 10
-    vm.vfs_cache_pressure: 150
+    # net.netfilter.nf_conntrack_max: 2000000
+    # net.netfilter.nf_conntrack_tcp_loose: 0
+    # vm.swappiness: 10
+    # vm.vfs_cache_pressure: 150
