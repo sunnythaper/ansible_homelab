@@ -11,7 +11,7 @@
   pamd:
     name: common-password
     type: password
-    control: required
+    control: requisite
     module_path: pam_cracklib.so
     module_arguments:
       - 'retry={{ users.cracklib.retry }}'
