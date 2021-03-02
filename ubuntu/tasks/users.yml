@@ -14,13 +14,8 @@
     control: requisite
     module_path: pam_cracklib.so
     module_arguments:
-      - 'retry={{ users.cracklib.retry }}'
-      - 'minlen={{ users.cracklib.minlen }}'
-      - 'difok={{ users.cracklib.difok }}'
-      - 'ucredit={{ users.cracklib.ucredit }}'
-      - 'ocredit={{ users.cracklib.ocredit }}'
-      - 'dcredit={{ users.cracklib.dcredit }}'
-      - 'lcredit={{ users.cracklib.lcredit }}'
+      - "{{ item.key }}={{ item.value }}"
+  with_dict: "{{ users.cracklib }}"
 
 - name: Remove unneccesary default users
   user:
@@ -47,6 +42,7 @@
     state: present
     shell: /bin/bash
     uid: "{{ item.uid }}"
+    expires: -1
   with_items:
     - { name: "{{ admin_user}}", uid: 1030 }
     - { name: "{{ ansible_admin_user }}", uid: 1080 }
