@@ -7,12 +7,27 @@
     group: root
     mode: 0600
 
+- name: Harden password requirements for the cracklib pam module
+  pamd:
+    name: common-password
+    type: password
+    control: required
+    module_path: pam_cracklib.so
+    module_arguments:
+      - 'retry={{ users.cracklib.retry }}'
+      - 'minlen={{ users.cracklib.minlen }}'
+      - 'difok={{ users.cracklib.difok }}'
+      - 'ucredit={{ users.cracklib.ucredit }}'
+      - 'ocredit={{ users.cracklib.ocredit }}'
+      - 'dcredit={{ users.cracklib.dcredit }}'
+      - 'lcredit={{ users.cracklib.lcredit }}'
+
 - name: Remove unneccesary default users
   user:
     name: "{{ item }}"
     state: absent
     remove: 'yes'
-  with_items: "{{ users_blacklist }}"
+  with_items: "{{ users.blacklist }}"
   ignore_errors: true
 
 - name: Create groups for {{ admin_user }} and {{ ansible_admin_user }}

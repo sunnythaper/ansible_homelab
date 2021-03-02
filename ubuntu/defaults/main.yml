@@ -145,6 +145,7 @@ packages_preferred:
   - debsums
   - fail2ban
   - iptables
+  - libpam-cracklib
   - rkhunter
   - sudo
   - ufw
@@ -184,14 +185,23 @@ admin_user: admin
 admin_password: password
 admin_password_salt: passwordsalt
 admin_public_key: publickey
-users_blacklist:
-  - games
-  - gnats
-  - irc
-  - list
-  - news
-  - sync
-  - uucp
+users:
+  blacklist:
+    - games
+    - gnats
+    - irc
+    - list
+    - news
+    - sync
+    - uucp
+  cracklib:
+    dcredit: -2
+    difok: 3
+    lcredit: -2
+    minlen: 16
+    ocredit: -1
+    retry: 3
+    ucredit: -1
 
 # RKHUNTER
 rkhunter_ALLOW_SSH_PROT_V1: "0"
