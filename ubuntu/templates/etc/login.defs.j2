@@ -1,31 +1,3 @@
-CHFN_RESTRICT {{login_defs_CHFN_RESTRICT}}
-DEFAULT_HOME {{login_defs_DEFAULT_HOME}}
-ENCRYPT_METHOD {{login_defs_ENCRYPT_METHOD}}
-ENV_PATH {{login_defs_ENV_PATH}}
-ENV_SUPATH {{login_defs_ENV_SUPATH}}
-ERASECHAR {{login_defs_ERASECHAR}}
-FAILLOG_ENAB {{login_defs_FAILLOG_ENAB}}
-FTMP_FILE {{login_defs_FTMP_FILE}}
-GID_MAX {{login_defs_GID_MAX}}
-GID_MIN {{login_defs_GID_MIN}}
-HUSHLOGIN_FILE {{login_defs_HUSHLOGIN_FILE}}
-KILLCHAR {{login_defs_KILLCHAR}}
-LOG_OK_LOGINS {{login_defs_LOG_OK_LOGINS}}
-LOG_UNKFAIL_ENAB {{login_defs_LOG_UNKFAIL_ENAB}}
-LOGIN_RETRIES {{login_defs_LOGIN_RETRIES}}
-LOGIN_TIMEOUT {{login_defs_LOGIN_TIMEOUT}}
-MAIL_DIR {{login_defs_MAIL_DIR}}
-PASS_MAX_DAYS {{login_defs_PASS_MAX_DAYS}}
-PASS_MIN_DAYS {{login_defs_PASS_MIN_DAYS}}
-PASS_WARN_AGE {{login_defs_PASS_WARN_AGE}}
-SHA_CRYPT_MAX_ROUNDS {{login_defs_SHA_CRYPT_MAX_ROUNDS}}
-SHA_CRYPT_MIN_ROUNDS {{login_defs_SHA_CRYPT_MIN_ROUNDS}}
-SU_NAME {{login_defs_SU_NAME}}
-SYSLOG_SG_ENAB {{login_defs_SYSLOG_SG_ENAB}}
-SYSLOG_SU_ENAB {{login_defs_SYSLOG_SU_ENAB}}
-TTYGROUP {{login_defs_TTYGROUP}}
-TTYPERM {{login_defs_TTYPERM}}
-UID_MAX {{login_defs_UID_MAX}}
-UID_MIN {{login_defs_UID_MIN}}
-UMASK {{login_defs_UMASK}}
-USERGROUPS_ENAB {{login_defs_USERGROUPS_ENAB}}
+{% for setting, value in logindefs.conf.items() -%}
+{{ setting }} {{ value }}
+{% endfor %}
