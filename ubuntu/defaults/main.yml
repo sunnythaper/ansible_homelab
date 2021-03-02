@@ -1,10 +1,4 @@
 ---
-# AIDE
-aide:
-  packages:
-    - aide
-    - aide-common
-
 # FAIL2BAN
 fail2ban_backend: "auto"
 fail2ban_bantime: "10m"
