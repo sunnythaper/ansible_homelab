@@ -112,6 +112,7 @@ packages_blocklist:
   - openbsd-inetd
   - pastebinit
   - popularity-contest
+  - prelink
   - rpcbind
   - rsh*
   - rsync

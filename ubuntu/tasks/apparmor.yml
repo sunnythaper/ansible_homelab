@@ -12,7 +12,7 @@
 - name: Get apparmor status
   command: aa-status --complaining
   register: aa_status
-  changed_when: aa_status.stdout != "0"
+  changed_when: false
 
 - name: Enforce all apparmor profiles
   command: find /etc/apparmor.d/ -maxdepth 1 -type f -exec aa-enforce {} \;
