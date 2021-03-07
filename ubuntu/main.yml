@@ -17,6 +17,9 @@
     - name: Setup & upgrade preferred packages
       include_tasks: tasks/packages.yml
 
+    - name: Set AppArmor related settings
+      include_tasks: tasks/apparmor.yml
+
     - name: Set up aide to track file system changes
       include_tasks: tasks/aide.yml
 
