@@ -17,7 +17,7 @@
 
 - name: Do a full upgrade via aptitude
   apt:
-    upgrade: 'full'
+    upgrade: 'dist'
     install_recommends: no
     purge: 'yes'
 
