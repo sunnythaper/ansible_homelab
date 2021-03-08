@@ -8,10 +8,10 @@
     - import_tasks: handlers/main.yml
 
   tasks:
-    - name: Set localization settings for {{ localization_timezone }}
+    - name: "Set localization settings for {{ localization_timezone }}"
       include_tasks: tasks/localization.yml
 
-    - name: Set network related settings for {{ network.hostname }}
+    - name: "Set network related settings for {{ network.hostname }}"
       include_tasks: tasks/network.yml
 
     - name: Setup & upgrade preferred packages
@@ -38,7 +38,7 @@
     - name: Enable Unattended Upgrades
       include_tasks: tasks/unattended_upgrades.yml
 
-    - name: Set user settings for {{ admin_user }} and {{ ansible_admin_user }}
+    - name: "Set user settings for {{ admin_user }} and {{ ansible_admin_user }}"
       include_tasks: tasks/users.yml
 
     - name: Enable fail2ban protection
