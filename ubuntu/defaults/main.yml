@@ -19,7 +19,7 @@ fail2ban_logencoding: "auto"
 fail2ban_maxretry: "5"
 fail2ban_mta: "sendmail"
 fail2ban_protocol: "tcp"
-fail2ban_sender: "fail2ban.{{ network.hostname }}@{{ network.domain }}"
+fail2ban_sender: "fail2ban.{{ networking.hostname }}@{{ networking.domain }}"
 fail2ban_usedns: "warn"
 
 # FILESYSTEM
@@ -92,10 +92,10 @@ logindefs:
     UMASK: 077
     USERGROUPS_ENAB: "no"
 
-# NETWORK
-network:
+# NETWORKING
+networking:
   conf:
-    Domains: "{{ network.domain }}"
+    Domains: "{{ networking.domain }}"
     LLMNR: "no"
     MulticastDNS: "no"
     DNSSEC: allow-downgrade
@@ -109,7 +109,7 @@ network:
     - sctp
     - tipc
   domain: mydomain.com
-  fqdn: "{{ network.hostname }}.{{ network.domain }}"
+  fqdn: "{{ networking.hostname }}.{{ networking.domain }}"
   hostname: "{{ inventory_hostname }}"
   ip: "{{ ansible_host }}"
   nameservers:

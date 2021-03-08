@@ -1,7 +1,7 @@
 ---
 - name: Set system hostname
   hostname:
-    name: "{{ network.hostname }}"
+    name: "{{ networking.hostname }}"
 
 - name: Copy hosts file to set basic dns settings
   template:
