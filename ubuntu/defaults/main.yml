@@ -107,12 +107,10 @@ network:
     - rds
     - sctp
     - tipc
-  domain: mydomain.com
+  domain: "{{ override.domain | "mydomain.com" }}"
   hostname: "{{ inventory_hostname }}"
   ip: "{{ ansible_host }}"
-  nameservers:
-    - 1.1.1.1
-    - 1.0.0.1
+  nameservers: "{{ override.nameservers | ["1.1.1.1","1.0.0.1"] }}"
 
 # PACKAGES
 packages_blocklist:
@@ -198,7 +196,7 @@ unattended_upgrade_Verbose: "false"
 
 # USERS
 ansible_admin_user: ansible
-admin_email: "admin@mydomain.com"
+admin_email: "{{ override.email | "admin@mydomain.com"}}"
 admin_user: admin
 admin_password: password
 admin_password_salt: passwordsalt
