@@ -1,4 +1,4 @@
-search {{ networking.domain }}
-{% for nameserver in networking.nameservers %}
+search {{ network.domain }}
+{% for nameserver in network.nameservers %}
 nameserver {{ nameserver }}
 {% endfor %}
