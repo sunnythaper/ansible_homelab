@@ -1,0 +1,5 @@
+[Coredump]
+
+{% for setting, value in coredump.conf | dictsort -%}
+{{ setting }}={{ value }}
+{% endfor %}

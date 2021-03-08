@@ -1,4 +1,4 @@
 ---
-- name: "Set timezone to {{ localization_timezone }}"
+- name: "Set timezone to {{ localization.timezone }}"
   timezone:
-    name: "{{ localization_timezone }}"
+    name: "{{ localization.timezone }}"

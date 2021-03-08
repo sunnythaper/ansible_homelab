@@ -7,3 +7,11 @@
     state: present
     create: true
     insertbefore: "# End of file"
+
+- name: Copy coredump.conf to /etc/systemd/ to restrict coredumps
+  template:
+    src: etc/systemd/coredump.conf.j2
+    dest: /etc/systemd/coredump.conf
+    owner: root
+    group: root
+    mode: 0644
