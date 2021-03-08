@@ -1,4 +1,5 @@
 [Resolve]
+Domains={{ network.domain }}
 DNS={% for nameserver in network.nameservers %}{{ nameserver }} {% endfor %}
 {% for setting, value in network.conf | dictsort -%}
 {{ setting }}={{ value }}

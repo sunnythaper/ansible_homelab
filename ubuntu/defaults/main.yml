@@ -1,9 +1,4 @@
 ---
-# BASE SETTINGS
-base:
-  domain: mydomain.com
-  email: admin@mydomain.com
-
 # CORE DUMP
 coredump:
   conf:
@@ -18,7 +13,7 @@ coredump:
 # FAIL2BAN
 fail2ban_backend: "auto"
 fail2ban_bantime: "10m"
-fail2ban_destemail: "{{ base.email }}"
+fail2ban_destemail: "{{ admin_email }}"
 fail2ban_findtime: "10m"
 fail2ban_logencoding: "auto"
 fail2ban_maxretry: "5"
@@ -100,7 +95,6 @@ logindefs:
 # NETWORK
 network:
   conf:
-    Domains: "{{ base.domain }}"
     LLMNR: "no"
     MulticastDNS: "no"
     DNSSEC: allow-downgrade
@@ -113,12 +107,12 @@ network:
     - rds
     - sctp
     - tipc
-  domain: "{{ base.domain }}"
+  domain: mydomain.com
   hostname: "{{ inventory_hostname }}"
   ip: "{{ ansible_host }}"
   nameservers:
-    - "1.1.1.1"
-    - "1.0.0.1"
+    - 1.1.1.1
+    - 1.0.0.1
 
 # PACKAGES
 packages_blocklist:
@@ -189,7 +183,7 @@ unattended_upgrade_Automatic_Reboot_WithUsers: "false"
 unattended_upgrade_Automatic_Reboot: "true"
 unattended_upgrade_Debug: "false"
 unattended_upgrade_InstallOnShutdown: "false"
-unattended_upgrade_Mail: "{{ base.email }}"
+unattended_upgrade_Mail: "{{ admin_email }}"
 unattended_upgrade_MailOnlyOnError: true
 unattended_upgrade_MinimalSteps: "true"
 unattended_upgrade_OnlyOnACPower: "true"
@@ -204,7 +198,7 @@ unattended_upgrade_Verbose: "false"
 
 # USERS
 ansible_admin_user: ansible
-admin_email: "{{ base.email }}"
+admin_email: "admin@mydomain.com"
 admin_user: admin
 admin_password: password
 admin_password_salt: passwordsalt
@@ -236,7 +230,7 @@ rkhunter_CRON_DB_UPDATE: "true"
 rkhunter_DB_UPDATE_EMAIL: "false"
 rkhunter_MIRRORS_MODE: "0"
 rkhunter_NICE: "0"
-rkhunter_REPORT_EMAIL: "{{ base.email }}"
+rkhunter_REPORT_EMAIL: "{{ admin_email }}"
 rkhunter_RUN_CHECK_ON_BATTERY: "false"
 rkhunter_UPDATE_MIRRORS: "1"
 
