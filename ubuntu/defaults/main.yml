@@ -95,8 +95,6 @@ logindefs:
 # NETWORK
 network:
   conf:
-    # DNS: ""
-    # FallbackDNS: ""
     Domains: "{{ network.domain }}"
     LLMNR: "no"
     MulticastDNS: "no"

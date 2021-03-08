@@ -8,7 +8,7 @@
     - import_tasks: handlers/main.yml
 
   tasks:
-    - name: "Set localization settings for {{ localization_timezone }}"
+    - name: "Set localization settings for {{ localization.timezone }}"
       include_tasks: tasks/localization.yml
 
     - name: "Set network related settings for {{ network.hostname }}"
