@@ -1,4 +1,12 @@
 ---
+# HOST
+host:
+  domain: mydomain.com
+  email: admin@mydomain.com
+  nameservers:
+    - 1.1.1.1
+    - 1.0.0.1
+
 # CORE DUMP
 coredump:
   conf:
@@ -107,10 +115,10 @@ network:
     - rds
     - sctp
     - tipc
-  domain: "{{ override.domain | "mydomain.com" }}"
+  domain: "{{ host.domain }}"
   hostname: "{{ inventory_hostname }}"
   ip: "{{ ansible_host }}"
-  nameservers: "{{ override.nameservers | ["1.1.1.1","1.0.0.1"] }}"
+  nameservers: "{{ host.nameservers }}"
 
 # PACKAGES
 packages_blocklist:
@@ -196,7 +204,7 @@ unattended_upgrade_Verbose: "false"
 
 # USERS
 ansible_admin_user: ansible
-admin_email: "{{ override.email | "admin@mydomain.com"}}"
+admin_email: "{{ host.email }}"
 admin_user: admin
 admin_password: password
 admin_password_salt: passwordsalt
