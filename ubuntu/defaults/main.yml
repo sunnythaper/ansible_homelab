@@ -19,7 +19,7 @@ fail2ban_logencoding: "auto"
 fail2ban_maxretry: "5"
 fail2ban_mta: "sendmail"
 fail2ban_protocol: "tcp"
-fail2ban_sender: "fail2ban.{{ network_hostname }}@{{ network_domain }}"
+fail2ban_sender: "fail2ban.{{ network.hostname }}@{{ network.domain }}"
 fail2ban_usedns: "warn"
 
 # FILESYSTEM
@@ -94,18 +94,29 @@ logindefs:
 
 # NETWORK
 network:
+  conf:
+    # DNS: ""
+    # FallbackDNS: ""
+    Domains: "{{ network.domain }}"
+    LLMNR: "no"
+    MulticastDNS: "no"
+    DNSSEC: allow-downgrade
+    DNSOverTLS: opportunistic
+    Cache: no-negative
+    DNSStubListener: "yes"
+    ReadEtcHosts: "yes"
   disable:
     - dccp
     - rds
     - sctp
     - tipc
-network_domain: mydomain.com
-network_fqdn: "{{ network_hostname }}.{{ network_domain }}"
-network_hostname: "{{ inventory_hostname }}"
-network_ip: "{{ ansible_host }}"
-network_nameservers:
-  - "1.1.1.1"
-  - "1.0.0.1"
+  domain: mydomain.com
+  fqdn: "{{ network.hostname }}.{{ network.domain }}"
+  hostname: "{{ inventory_hostname }}"
+  ip: "{{ ansible_host }}"
+  nameservers:
+    - "1.1.1.1"
+    - "1.0.0.1"
 
 # PACKAGES
 packages_blocklist:

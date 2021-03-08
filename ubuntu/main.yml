@@ -11,7 +11,7 @@
     - name: Set localization settings for {{ localization_timezone }}
       include_tasks: tasks/localization.yml
 
-    - name: Set network related settings for {{ network_hostname }}
+    - name: Set network related settings for {{ network.hostname }}
       include_tasks: tasks/network.yml
 
     - name: Setup & upgrade preferred packages
