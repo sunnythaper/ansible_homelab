@@ -32,6 +32,7 @@ filesystem:
     - jffs2
     - squashfs
     - udf
+    - usb-storage
     - vfat
 
 # FIREWALL

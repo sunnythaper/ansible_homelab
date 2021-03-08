@@ -15,6 +15,17 @@
     module_path: pam_cracklib.so
     module_arguments: "{% for k, v in users.cracklib | dictsort -%}{{ k }}={{ v }} {% endfor %}"
 
+- name: Set sudo commands to use pty and be logged
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "{{ item.regex }}"
+    line: "{{ item.line }}"
+    validate: "visudo -cf %s"
+  with_items:
+    - { line: "Defaults use_pty", regex: "^Defaults use_pty" }
+    - { line: 'Defaults logfile="/var/log/sudo.log"', regex: "^Defaults logfile.*" }
+
 - name: Remove unneccesary default users
   user:
     name: "{{ item }}"
