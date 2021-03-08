@@ -11,15 +11,7 @@
     state: latest
     update_cache: yes
     cache_valid_time: 3600
-    autoclean: yes
-    autoremove: yes
     install_recommends: no
-
-- name: Do a full upgrade via aptitude
-  apt:
-    upgrade: 'dist'
-    install_recommends: no
-    purge: 'yes'
 
 - name: Install preferred system packages via APT
   apt:
@@ -31,5 +23,10 @@
   apt:
     name: "{{ packages_blocklist }}"
     state: absent
-    purge: 'yes'
+    autoclean: yes
+    autoremove: yes
   ignore_errors: true
+
+- name: Purge unused packages via aptitude
+  apt:
+    purge: 'yes'
