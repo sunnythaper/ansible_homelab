@@ -10,7 +10,6 @@
 - name: Add wine repository key to apt
   apt_key:
     url: https://dl.winehq.org/wine-builds/winehq.key
-    keyring: /etc/apt/trusted.gpg.d/winehq.gpg
 
 - name: Add WineHQ repository
   apt_repository:
