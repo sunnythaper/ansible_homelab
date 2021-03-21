@@ -2,7 +2,7 @@
 <MyConfigDedicated xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SessionSettings>
 {% for setting, value in game.sessionconf | dictsort -%}
-    <{{ setting }}>{{ value }}</{{ setting }}>
+    {{ "    " }}<{{ setting }}>{{ value }}</{{ setting }}>
 {% endfor %}
     <SuppressedWarnings />
     <BlockTypeLimits>
@@ -11,7 +11,7 @@
     </BlockTypeLimits>
   </SessionSettings>
 {% for setting, value in game.conf | dictsort -%}
-  <{{ setting }}>{{ value }}</{{ setting }}>
+  {{ "  " }}<{{ setting }}>{{ value }}</{{ setting }}>
 {% endfor %}
   <Administrators>
     <unsignedLong>76561198024954968</unsignedLong>
