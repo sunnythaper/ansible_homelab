@@ -26,20 +26,26 @@ game:
     AutoRestartEnabled: "false"
     AutoRestartSave: "true"
     AutoRestatTimeInMin: 720
+    AutoUpdateBranchPassword: ""
     AutoUpdateCheckIntervalInMin: 10
     AutoUpdateEnabled: "false"
     AutoUpdateRestartDelayInMin: 15
+    AutoUpdateSteamBranch: ""
     GroupID: "{{ server.groupid | default(0) }}"
     IgnoreLastSession: "true"
     IP: 0.0.0.0
     LoadWorld: "Z:{{ directories.world | replace('/','\\\\') }}"
     ManualActionChatMessage: "Server will be shut down in {0} min(s)."
     ManualActionDelay: 5
+    MessageOfTheDay: ""
+    MessageOfTheDayUrl: ""
     PauseGameWhenEmpty: "true"
+    PremadeCheckpointPath: ""
     RemoteApiEnabled: "false"
     RemoteApiPort: 8080
     RemoteSecurityKey: TOppeC56DmRct7rME06hsw==
     SaveChatToLog: "false"
+    ServerDescription: ""
     ServerName: "{{ server.name | default('My Space Engineers Server') }}"
     ServerPasswordHash: "{{ server.passwordhash | default('') }}"
     ServerPasswordSalt: "{{ server.passwordsalt | default('') }}"
@@ -118,7 +124,7 @@ game:
     MinDropContainerRespawnTime: 5
     OnlineMode: PUBLIC
     OptimalGridCount: 0
-    OptimalSpawnDistance: 50000
+    OptimalSpawnDistance: 3000
     PermanentDeath: "false"
     PhysicsIterations: 8
     PiratePCU: 50000
@@ -145,6 +151,7 @@ game:
     StationVoxelSupport: "false"
     StopGridsPeriodMin: 15
     SunRotationIntervalMinutes: 119.999992
+    SuppressedWarnings: ""
     SyncDistance: 3000
     ThrusterDamage: "false"
     TotalPCU: 320000

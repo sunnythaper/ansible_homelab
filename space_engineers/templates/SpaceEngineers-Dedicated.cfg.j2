@@ -4,7 +4,6 @@
     {% for setting, value in game.sessionconf | dictsort -%}
     <{{ setting }}>{{ value }}</{{ setting }}>
     {% endfor %}
-    <SuppressedWarnings />
     <BlockTypeLimits>
       <dictionary>
       </dictionary>
@@ -18,13 +17,7 @@
     <unsignedLong>{{ steamid }}</unsignedLong>
     {% endfor %}
   </Administrators>
-  <AutoUpdateBranchPassword />
-  <AutoUpdateSteamBranch />
   <Banned />
-  <MessageOfTheDay />
-  <MessageOfTheDayUrl />
-  <Plugins />
-  <PremadeCheckpointPath />
   <Reserved />
-  <ServerDescription />
+  <Plugins />
 </MyConfigDedicated>
