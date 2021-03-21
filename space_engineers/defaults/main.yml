@@ -29,7 +29,7 @@ game:
     AutoUpdateCheckIntervalInMin: 10
     AutoUpdateEnabled: "false"
     AutoUpdateRestartDelayInMin: 15
-    GroupID: "{{ server.groupid | default("0") }}"
+    GroupID: "{{ server.groupid | default(0) }}"
     IgnoreLastSession: "true"
     IP: 0.0.0.0
     LoadWorld: "Z:{{ directories.world | replace('/','\\\\') }}"
@@ -40,14 +40,14 @@ game:
     RemoteApiPort: 8080
     RemoteSecurityKey: TOppeC56DmRct7rME06hsw==
     SaveChatToLog: "false"
-    ServerName: "{{ server.name | default("My Space Engineers Server") }}"
-    ServerPasswordHash: "{{ server.passwordhash | default("") }}"
-    ServerPasswordSalt: "{{ server.passwordsalt | default("") }}"
-    ServerPort: "{{ server.port | default("27016") }}"
+    ServerName: "{{ server.name | default(My Space Engineers Server) }}"
+    ServerPasswordHash: "{{ server.passwordhash | default(omit) }}"
+    ServerPasswordSalt: "{{ server.passwordsalt | default(omit) }}"
+    ServerPort: "{{ server.port | default(27016) }}"
     SteamPort: 8766
     WatcherInterval: 30
     WatcherSimulationSpeedMinimum: 0.05
-    WorldName: "{{ server.world | default("Star System") }}"
+    WorldName: "{{ server.world | default(Star System) }}"
   sessionconf:
     AdaptiveSimulationQuality: "true"
     AFKTimeountMin: 0
