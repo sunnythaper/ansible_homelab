@@ -39,7 +39,7 @@ game:
     PauseGameWhenEmpty: "true"
     RemoteApiEnabled: "false"
     RemoteApiPort: 8080
-    RemoteSecurityKey: "TOppeC56DmRct7rME06hsw\=\="
+    RemoteSecurityKey: TOppeC56DmRct7rME06hsw==
     SaveChatToLog: "false"
     ServerName: "{{ server.name }}"
     ServerPasswordHash: "{{ server.passwordhash }}"
