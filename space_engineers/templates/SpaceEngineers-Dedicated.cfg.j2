@@ -14,7 +14,7 @@
   <{{ setting }}>{{ value }}</{{ setting }}>
   {% endfor %}
   <Administrators>
-    {% for steamid in game.conf -%}
+    {% for steamid in steam.administrators -%}
     <unsignedLong>{{ steamid }}</unsignedLong>
     {% endfor %}
   </Administrators>
