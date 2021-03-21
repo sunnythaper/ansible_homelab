@@ -66,4 +66,4 @@
   become_user: "{{ user.name }}"
   command: "{{ directories.scripts }}/install-winetricks.sh"
   register: install_winetricks
-  when: release.changed
+  when: release.changed or not winetricks.stat.exists
