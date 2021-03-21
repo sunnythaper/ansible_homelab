@@ -1,0 +1,13 @@
+[Unit]
+Description=Space Engineers
+
+[Service]
+Type=simple
+User={{ user.name }}
+Group={{ user.name }}
+ExecStart=env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix }} wine {{ directories.steam }}/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:{{ directories.steam | replace('/','\\\\') }} -ignorelastsession
+Restart=on-failure
+WorkingDirectory={{ directories.server }}/DedicatedServer64
+
+[Install]
+WantedBy=multi-user.target

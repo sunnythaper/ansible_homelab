@@ -7,12 +7,6 @@
     group: "{{ user.name }}"
     mode: 0644
 
-- name: Install steamcmd
-  apt:
-    name: steamcmd:i386
-    state: latest
-    install_recommends: yes
-
 - name: Install Space Engineers via steamcmd
   become: true
   become_user: "{{ user.name }}"
@@ -28,5 +22,10 @@
     group: "{{ user.name }}"
     creates: Sandbox.sbc
 
-# env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix }} wine {{ directories.steam }}/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:{{ directories.steam | replace('/','\\\\') }} -ignorelastsession
-# env WINEARCH=win64 WINEDEBUG=-all WINEPREFIX=/home/seserver/wineprefix wine /home/seserver/serverfiles/server/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:\\home\\seserver\\serverfiles\\server -ignorelastsession
+- name: Copy service file for Space Engineers
+  copy:
+    src: spaceengineers.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
+    mode: 0755
