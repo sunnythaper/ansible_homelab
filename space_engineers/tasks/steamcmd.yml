@@ -18,13 +18,13 @@
   become_user: "{{ user.name }}"
   command: "/usr/games/steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +force_install_dir {{ directories.steam }} +app_update 298740 +quit"
 
-- name: Copy zip archive with world files
-  copy:
+- name: "Extract world archive into {{ directories.world }}"
+  unarchive:
     src: files/star_system.zip
     dest: "{{ directories.world }}"
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0644
+    creates: Sandbox.sbc
 
 # env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix }} wine {{ directories.steam }}/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:{{ directories.steam | replace('/','\\\\') }} -ignorelastsession
 # env WINEARCH=win64 WINEDEBUG=-all WINEPREFIX=/home/seserver/wineprefix wine /home/seserver/serverfiles/server/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:\\home\\seserver\\serverfiles\\server -ignorelastsession
