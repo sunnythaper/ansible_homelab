@@ -1,0 +1,14 @@
+---
+- name: Copy Space Engineers configuration to dedicated server folder
+  template:
+    src: SpaceEngineers-Dedicated.cfg.j2
+    dest: "{{ directories.steam }}/SpaceEngineers-Dedicated.cfg"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644
+
+
+
+
+
+# env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix }} wine {{ directories.steam }}/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:{{ directories.steam | replace('/','\\\\') }} -ignorelastsession

@@ -1,0 +1,10 @@
+#!/bin/bash
+Xvfb :5 -screen 0 {{ wine.resolution }} &
+env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEDLLOVERRIDES="mscoree=d" WINEPREFIX={{ directories.wineprefix}} wineboot --init /nogui
+env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix}} winetricks corefonts
+env DISPLAY=:{{ wine.display }} WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix}} winetricks -q vcrun2017
+env DISPLAY=:{{ wine.display }} WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix}} winetricks -q --force dotnet48
+env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix}} winetricks sound=disabled
+env DISPLAY=:{{ wine.display }} WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix}} winetricks -q vcrun2013
+rm -rf ~/.cache
+echo winetricks is setup

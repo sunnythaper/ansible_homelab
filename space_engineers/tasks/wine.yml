@@ -1,0 +1,48 @@
+---
+- name: Get currently installed winetricks version
+  command: 'winetricks -V'
+  register: winetricks_version
+  changed_when: False
+
+- name: Getting latest winetricks release JSON from Github
+  uri:
+    url: https://api.github.com/repos/mattermost/mattermost-server/releases/latest
+    return_content: true
+  register: release
+  changed_when: release.json.name not in winetricks_version.stdout
+
+- name: Download latest winetricks from Github
+  get_url:
+    url: https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+    dest: /usr/local/bin/winetricks
+    force: yes
+    owner: root
+    group: root
+    mode: 0755
+  when: release.changed
+
+- name: Download latest winetricks bash completion script from Github
+  get_url:
+    url: https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks.bash-completion
+    dest: /usr/share/bash-completion/completions/winetricks
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: release.changed
+
+- name: Copy install-winetricks bash script to ~/scripts
+  template:
+    src: install-winetricks.j2
+    dest: "{{ directories.scripts }}/install-winetricks.sh"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0644
+
+- name: "Run install-winetricks for setup commands"
+  become: true
+  become_user: "{{ user.name }}"
+  command: "{{ directories.scripts }}/install-winetricks.sh"
+  register: install_winetricks
+  changed_when: "'winetricks is setup' in install_winetricks.stdout"
+  when: release.changed

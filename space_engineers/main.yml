@@ -1,0 +1,25 @@
+---
+- hosts: all
+
+  vars_files:
+    - defaults/main.yml
+
+  handlers:
+    - import_tasks: handlers/main.yml
+
+  tasks:
+    - name: Add i386 architecture
+      include_tasks: tasks/i386.yml
+
+    - name: Install dependencies
+      include_tasks: tasks/apt.yml
+
+    - name: Create & setup user
+      include_tasks: tasks/user.yml
+
+    - name: Create required directories
+      include_tasks: tasks/directories.yml
+
+    - name: Setup wine & winetricks
+      include_tasks: tasks/wine.yml
+

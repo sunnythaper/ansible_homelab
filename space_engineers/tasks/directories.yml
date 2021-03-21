@@ -1,0 +1,13 @@
+---
+- name: Create game directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+  with_items:
+    - "{{ directories.plugins }}"
+    - "{{ directories.scripts }}"
+    - "{{ directories.steam }}"
+    - "{{ directories.wineprefix }}"
+    - "{{ directories.world }}"
