@@ -181,4 +181,5 @@ wine:
   arch: win64
   debug: -all
   display: "5.0"
+  package: winehq-stable
   resolution: 1024x768x16

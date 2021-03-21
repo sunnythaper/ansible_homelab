@@ -7,14 +7,6 @@
     vtype: select
   when: "'steamcmd:i386' in apt.dependencies"
 
-- name: Add wine repository key to apt
-  apt_key:
-    url: https://dl.winehq.org/wine-builds/winehq.key
-
-- name: Add WineHQ repository
-  apt_repository:
-    repo: deb https://dl.winehq.org/wine-builds/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main
-
 - name: Install dependencies
   apt:
     name: "{{ apt.dependencies }}"
