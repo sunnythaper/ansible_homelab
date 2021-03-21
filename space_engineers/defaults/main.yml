@@ -173,6 +173,12 @@ steam:
   administrators:
     - steamID
 
+ufw:
+  rules:
+    - port: "{{ server.port }}"
+      proto: any
+      rule: allow
+
 user:
   name: seserver
 

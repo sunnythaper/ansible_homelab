@@ -22,3 +22,6 @@
 
     - name: Setup dedicated server with config files
       include_tasks: tasks/steamcmd.yml
+
+    - name: Setup firewall settings via ufw
+      include_tasks: tasks/ufw.yml
