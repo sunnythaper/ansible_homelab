@@ -61,9 +61,8 @@
     group: "{{ user.name }}"
     mode: 0555
 
-- name: "Run install-winetricks for setup commands"
+- name: Run install-winetricks for setup commands
   become: true
   become_user: "{{ user.name }}"
   command: "{{ directories.scripts }}/install-winetricks.sh"
-  register: install_winetricks
   when: release.changed or not winetricks.stat.exists
