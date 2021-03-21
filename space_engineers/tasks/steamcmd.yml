@@ -17,6 +17,8 @@
   become: true
   become_user: "{{ user.name }}"
   command: "/usr/games/steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +force_install_dir {{ directories.steam }} +app_update 298740 +quit"
+  register: steamcmd_install
+  changed_when: "'already up to date.' not in steamcmd_install.stdout"
 
 - name: "Extract world archive into {{ directories.world }}"
   unarchive:
