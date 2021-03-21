@@ -14,11 +14,16 @@
     state: latest
     install_recommends: yes
 
+- name: Check if winetricks is already installed
+  stat:
+    path: /usr/local/bin/winetricks
+  register: winetricks
+
 - name: Get currently installed winetricks version
   command: 'winetricks -V'
   register: winetricks_version
   changed_when: false
-  ignore_errors: yes
+  when: winetricks.stat.exists
 
 - name: Getting latest winetricks release JSON from Github
   uri:
@@ -35,7 +40,7 @@
     owner: root
     group: root
     mode: 0755
-  when: release.changed
+  when: release.changed or not winetricks.stat.exists
 
 - name: Download latest winetricks bash completion script from Github
   get_url:
