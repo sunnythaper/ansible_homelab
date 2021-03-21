@@ -7,6 +7,12 @@
     group: "{{ user.name }}"
     mode: 0644
 
+- name: Install steamcmd
+  apt:
+    name: steamcmd:i386
+    state: latest
+    install_recommends: yes
+
 - name: Install Space Engineers via steamcmd
   become: true
   become_user: "{{ user.name }}"

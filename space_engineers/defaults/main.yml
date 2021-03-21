@@ -8,7 +8,6 @@ apt:
     - curl
     - gnupg2
     - software-properties-common
-    - steamcmd:i386
     - unzip
     - xvfb
 
