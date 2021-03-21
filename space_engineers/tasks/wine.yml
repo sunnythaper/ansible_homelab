@@ -17,7 +17,8 @@
 - name: Get currently installed winetricks version
   command: 'winetricks -V'
   register: winetricks_version
-  changed_when: False
+  changed_when: false
+  ignore_errors: yes
 
 - name: Getting latest winetricks release JSON from Github
   uri:
