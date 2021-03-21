@@ -4,9 +4,6 @@
   vars_files:
     - defaults/main.yml
 
-  handlers:
-    - import_tasks: handlers/main.yml
-
   tasks:
     - name: Add i386 architecture
       include_tasks: tasks/i386.yml
@@ -23,3 +20,5 @@
     - name: Setup wine & winetricks
       include_tasks: tasks/wine.yml
 
+    - name: Setup dedicated server with config files
+      include_tasks: tasks/steamcmd.yml
