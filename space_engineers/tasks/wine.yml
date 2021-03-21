@@ -59,7 +59,7 @@
     dest: "{{ directories.scripts }}/install-winetricks.sh"
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0755
+    mode: 0555
 
 - name: "Run install-winetricks for setup commands"
   become: true
