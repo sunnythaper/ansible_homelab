@@ -23,7 +23,7 @@
     creates: Sandbox.sbc
 
 - name: Copy service file for Space Engineers
-  copy:
+  template:
     src: spaceengineers.service
     dest: /etc/systemd/system
     owner: root
