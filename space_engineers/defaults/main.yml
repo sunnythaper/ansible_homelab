@@ -27,9 +27,9 @@ game:
     AutoRestartSave: "true"
     AutoRestatTimeInMin: 720
     AutoUpdateCheckIntervalInMin: 10
-    AutoUpdateEnabled: "true"
+    AutoUpdateEnabled: "false"
     AutoUpdateRestartDelayInMin: 15
-    GroupID: 0
+    GroupID: "{{ server.groupid | default("0") }}"
     IgnoreLastSession: "true"
     IP: 0.0.0.0
     LoadWorld: "Z:{{ directories.world | replace('/','\\\\') }}"
@@ -40,14 +40,14 @@ game:
     RemoteApiPort: 8080
     RemoteSecurityKey: TOppeC56DmRct7rME06hsw==
     SaveChatToLog: "false"
-    ServerName: "{{ server.name }}"
-    ServerPasswordHash: "{{ server.passwordhash }}"
-    ServerPasswordSalt: "{{ server.passwordsalt }}"
-    ServerPort: "{{ server.port }}"
+    ServerName: "{{ server.name | default("My Space Engineers Server") }}"
+    ServerPasswordHash: "{{ server.passwordhash | default("") }}"
+    ServerPasswordSalt: "{{ server.passwordsalt | default("") }}"
+    ServerPort: "{{ server.port | default("27016") }}"
     SteamPort: 8766
     WatcherInterval: 30
     WatcherSimulationSpeedMinimum: 0.05
-    WorldName: "{{ server.world }}"
+    WorldName: "{{ server.world | default("Star System") }}"
   sessionconf:
     AdaptiveSimulationQuality: "true"
     AFKTimeountMin: 0
@@ -162,20 +162,13 @@ game:
     WelderSpeedMultiplier: 2
     WorldSizeKm: 0
 
-server:
-  name: My Space Engineers Server
-  passwordhash: z5dXWHuN6eheu9x+Hf8yEyUG71U=
-  passwordsalt: /NEiQKDQVNvBEnp27Izvjw==
-  port: 27016
-  world: Star System
-
 steam:
   administrators:
     - steamID
 
 ufw:
   rules:
-    - port: "{{ server.port }}"
+    - port: "{{ game.conf.ServerPort }}"
       proto: any
       rule: allow
 
