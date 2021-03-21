@@ -16,7 +16,7 @@
 - name: Install Space Engineers via steamcmd
   become: true
   become_user: "{{ user.name }}"
-  command: "steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +force_install_dir {{ directories.steam }} +app_update 298740 +quit"
+  command: "/usr/games/steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +force_install_dir {{ directories.steam }} +app_update 298740 +quit"
 
 
 # env WINEARCH={{ wine.arch }} WINEDEBUG={{ wine.debug }} WINEPREFIX={{ directories.wineprefix }} wine {{ directories.steam }}/DedicatedServer64/SpaceEngineersDedicated.exe -noconsole -path Z:{{ directories.steam | replace('/','\\\\') }} -ignorelastsession
