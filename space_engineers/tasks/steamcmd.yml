@@ -24,8 +24,8 @@
 
 - name: Copy service file for Space Engineers
   template:
-    src: spaceengineers.service
-    dest: /etc/systemd/system
+    src: spaceengineers.service.j2
+    dest: /etc/systemd/system/spaceengineers.service
     owner: root
     group: root
     mode: 0755
