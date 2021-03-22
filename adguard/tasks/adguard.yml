@@ -1,0 +1,8 @@
+---
+- name: download adguard-home archive
+  unarchive:
+    src: "https://github.com/AdguardTeam/AdGuardHome/releases/download/{{ adguard.version }}/AdGuardHome_linux_amd64.tar.gz"
+    dest: "/home/{{ user.name }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    remote_src: yes

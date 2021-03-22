@@ -1,0 +1,15 @@
+---
+- hosts: all
+
+  vars_files:
+    - defaults/main.yml
+
+  tasks:
+    - name: Setup adguard user
+      include_tasks: tasks/user.yml
+
+    - name: Install adguard
+      include_tasks: tasks/adguard.yml
+
+    - name: Setup firewall rules
+      include_tasks: tasks/ufw.yml
