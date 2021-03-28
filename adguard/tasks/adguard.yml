@@ -11,6 +11,7 @@
   template:
     src: AdGuardHome.yaml.j2
     dest: "/home/{{ user.name }}/AdGuardHome/AdGuardHome.yaml"
+    force: no
     owner: root
     group: root
     mode: 0644
@@ -24,12 +25,6 @@
     group: root
     mode: 0604
   notify: Restart adguard
-
-- name: Disable systemd-resolved
-  service:
-    name: systemd-resolved
-    state: stopped
-    enabled: no
 
 - name: Start adguard service
   service:
