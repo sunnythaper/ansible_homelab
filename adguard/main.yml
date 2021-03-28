@@ -4,6 +4,9 @@
   vars_files:
     - defaults/main.yml
 
+  handlers:
+    - import_tasks: handlers/main.yml
+
   tasks:
     - name: Setup adguard user
       include_tasks: tasks/user.yml
