@@ -10,7 +10,7 @@
 - name: Copy adguard configuration
   template:
     src: AdGuardHome.yaml.j2
-    dest: "/home/{{ user.name }}/AdGuardHome.yaml"
+    dest: "/home/{{ user.name }}/AdGuardHome/AdGuardHome.yaml"
     owner: root
     group: root
     mode: 0644
