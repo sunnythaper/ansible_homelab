@@ -3,21 +3,16 @@ admin_password: password
 admin_password_salt: passwordsalt
 
 adguard:
+  conf:
+    bind_port: 80
+  user:
+    name: "{{ adguard_admin.user | default('admin') }}"
+    password: "{{ adguard_admin.password | default('$2a$10$M6cXyL/SqMGDcnJ0Tq1xG.01qoBc8M4zsLmHELqQ13aiBrfVE.5Ae') }}"
   version: v0.105.2
 
 ufw:
   rules:
-    - from_ip: 192.168.1.0/24
-      port: 3000     # INITIAL SETUP
-      proto: tcp
-      rule: allow
     - port: 53       # DNS
-      proto: any
-      rule: allow
-    - port: 67       # DHCP SERVER
-      proto: udp
-      rule: allow
-    - port: 68       # DHCP CLIENT
       proto: any
       rule: allow
     - port: 80       # HTTP
@@ -26,9 +21,10 @@ ufw:
     - port: 443      # HTTPS
       proto: tcp
       rule: allow
-    - port: 853      # DNS OVER TLS/HTTPS
-      proto: tcp
-      rule: allow
+
+unbound:
+  conf:
+    port: 5335
 
 user:
   name: adguard
