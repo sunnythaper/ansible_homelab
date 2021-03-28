@@ -25,6 +25,12 @@
     mode: 0604
   notify: Restart adguard
 
+- name: Disable systemd-resolved
+  service:
+    name: systemd-resolved
+    state: stopped
+    enabled: no
+
 - name: Start adguard service
   service:
     name: AdGuardHome
