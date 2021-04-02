@@ -5,4 +5,4 @@ metadata:
   name: awx
 spec:
   tower_ingress_type: ingress
-  tower_hostname: "{{ host.name }}.{{ host.domain }}"
+  tower_hostname: "{{ domain }}"

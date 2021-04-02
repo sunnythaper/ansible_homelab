@@ -16,9 +16,7 @@ docker:
     - ca-certificates
     - gnupg
 
-host:
-  domain: example.com
-  name: awx
+domain: awx.example.com
 
 minikube:
   conf:
