@@ -31,6 +31,6 @@
 - name: Add internal ip to awx nginx config
   lineinfile:
     path: "{{ nginx.path }}/{{ domain }}"
-    regexp: '^proxy_pass'
+    regexp: 'proxy_pass'
     line: "proxy_pass {{ awx_ip.stdout }};"
   notify: Reload nginx
