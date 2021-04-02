@@ -28,4 +28,4 @@
 - name: Deploy awx service via minikube
   become: yes
   become_user: "{{ user.name }}"
-  command: minikube kubectl -- apply -f awx.yml
+  command: "minikube kubectl -- apply -f /home/{{ user.name }}/awx.yml"
