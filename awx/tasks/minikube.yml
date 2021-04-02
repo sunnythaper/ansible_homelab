@@ -15,7 +15,7 @@
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube start --addons={{ minikube.conf.addons }} --driver=docker"
-  when: "'host: Running' not in minikube.stdout"
+  when: "'Running' not in minikube.stdout"
 
 - name: Get running pods
   become: yes
