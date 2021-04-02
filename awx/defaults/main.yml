@@ -28,6 +28,15 @@ nginx:
   package: nginx
   path: /etc/nginx/sites-enabled
 
+ufw:
+  rules:
+    - port: 80
+      proto: tcp
+      rule: allow
+    - port: 443
+      proto: tcp
+      rule: allow
+
 user:
   name: awx
 

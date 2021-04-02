@@ -31,5 +31,5 @@
   lineinfile:
     path: "{{ nginx.path }}/{{ domain }}"
     regexp: 'proxy_pass'
-    line: "proxy_pass {{ awx_ip.stdout }};"
+    line: "                proxy_pass {{ awx_ip.stdout }};"
   notify: Reload nginx
