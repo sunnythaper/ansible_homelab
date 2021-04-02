@@ -7,7 +7,7 @@
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube status"
-  register: minikube
+  register: kubestatus
   changed_when: false
   failed_when: false
 
@@ -15,7 +15,7 @@
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube start --addons={{ minikube.conf.addons }} --driver=docker"
-  when: "'Running' not in minikube.stdout"
+  when: "'Running' not in kubestatus.stdout"
 
 - name: Get running pods
   become: yes
