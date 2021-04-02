@@ -1,0 +1,23 @@
+---
+---
+- hosts: all
+
+  vars_files:
+    - main.yml
+
+  tasks:
+    - name: Install pip
+      include_tasks: pip.yml
+
+    - name: Install ansible
+      include_tasks: ansible.yml
+
+    - name: Install docker
+      include_tasks: docker.yml
+
+    - name: Setup user
+      include_tasks: user.yml
+
+    - name: Install minikube
+      include_tasks: minikube.yml
+

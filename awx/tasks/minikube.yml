@@ -1,0 +1,31 @@
+---
+- name: Install minikube via apt
+  apt:
+    deb: "{{ minikube.package }}"
+
+- name: Start minikube
+  become: yes
+  become_user: "{{ user.name }}"
+  command: "minikube start --addons={{ minikube.conf.addons }} --driver=docker"
+
+- name: Deploy awx operator via minikube
+  become: yes
+  become_user: "{{ user.name }}"
+  command: "minikube kubectl -- apply -f {{ awx.operator.package }}"
+
+- name: Copy awx deployment template
+  copy:
+    src: files/awx.yml
+    dest: "/home/{{ user.name }}/awx.yml"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0604
+
+- name: Wait for awx operator to init
+  pause:
+    minutes: 1
+
+- name: Deploy awx service via minikube
+  become: yes
+  become_user: "{{ user.name }}"
+  command: minikube kubectl -- apply -f awx.yml

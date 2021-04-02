@@ -1,0 +1,32 @@
+---
+admin_password: password
+
+ansible:
+  package: ansible
+
+awx:
+  operator:
+    package: https://raw.githubusercontent.com/ansible/awx-operator/devel/deploy/awx-operator.yaml
+
+docker:
+  packages:
+    - docker-ce
+  prereqs:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+
+host:
+  domain: example.com
+  name: awx
+
+minikube:
+  conf:
+    addons: ingress
+  package: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+
+user:
+  name: awx
+
+pip:
+  package: python3-pip
