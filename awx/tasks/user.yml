@@ -3,7 +3,7 @@
   group:
     name: "{{ user.name }}"
     state: present
-    gid: 1000
+    gid: 1090
 
 - name: "Add user {{ user.name }}"
   user:
@@ -12,4 +12,4 @@
     groups: "{{ user.name }},docker"
     state: present
     shell: /bin/bash
-    uid: 1000
+    uid: 1090
