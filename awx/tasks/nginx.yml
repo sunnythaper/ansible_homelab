@@ -15,7 +15,6 @@
   template:
     src: templates/etc/nginx/sites-enabled/awx.j2
     dest: "{{ nginx.path }}/{{ domain }}"
-    force: yes
     owner: root
     group: root
     mode: 0644
