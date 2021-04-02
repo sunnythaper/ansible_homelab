@@ -20,3 +20,17 @@
     group: root
     mode: 0644
   notify: Reload nginx
+
+- name: Get awx internal ip via minikube
+  become: yes
+  become_user: "{{ user.name }}"
+  command: minikube service awx-service --url
+  changed_when: false
+  register: awx_ip
+
+- name: Add internal ip to awx nginx config
+  lineinfile:
+    path: "{{ nginx.path }}/{{ domain }}"
+    regexp: '^proxy_pass'
+    line: "proxy_pass {{ awx_ip.stdout }}"
+  notify: Reload nginx
