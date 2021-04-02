@@ -4,6 +4,9 @@
   vars_files:
     - defaults/main.yml
 
+  handlers:
+    - import_tasks: handlers/main.yml
+
   tasks:
     - name: Install pip
       include_tasks: tasks/pip.yml
@@ -19,4 +22,7 @@
 
     - name: Install minikube
       include_tasks: tasks/minikube.yml
+
+    - name: Install nginx
+      include_tasks: tasks/nginx.yml
 

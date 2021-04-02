@@ -24,6 +24,10 @@ minikube:
     addons: ingress
   package: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 
+nginx:
+  package: nginx
+  path: /etc/nginx/sites-enabled
+
 user:
   name: awx
 

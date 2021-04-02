@@ -33,12 +33,13 @@
   register: operator
 
 - name: Copy awx deployment template
-  copy:
-    src: files/awx.yml
+  template:
+    src: templates/awx.yml.j2
     dest: "/home/{{ user.name }}/awx.yml"
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0604
+    force: yes
   register: deployment
 
 - name: Wait for awx operator to init

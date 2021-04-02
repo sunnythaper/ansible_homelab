@@ -1,0 +1,22 @@
+---
+- name: Install nginx via apt
+  apt:
+    install_recommends: no
+    name: "{{ nginx.package }}"
+    state: latest
+
+- name: Remove default nginx config
+  file:
+    path: "{{ nginx.path }}/default"
+    state: absent
+  notify: Restart nginx
+
+- name: Copy awx nginx config
+  template:
+    src: templates/etc/nginx/sites-enabled/awx.j2
+    dest: "{{ nginx.path }}/{{ domain }}"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload nginx
