@@ -28,3 +28,6 @@
 
     - name: Setup ufw
       include_tasks: tasks/ufw.yml
+
+    - name: Get admin password
+      include_tasks: tasks/password.yml
