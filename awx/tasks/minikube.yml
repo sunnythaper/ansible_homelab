@@ -3,15 +3,24 @@
   apt:
     deb: "{{ minikube.package }}"
 
+- name: Get running pods
+  become: yes
+  become_user: "{{ user.name }}"
+  command: "minikube kubectl get pods"
+  register: pods
+  failed_when: false
+
 - name: Start minikube
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube start --addons={{ minikube.conf.addons }} --driver=docker"
+  when: "'minikube start' in pods.stdout"
 
 - name: Deploy awx operator via minikube
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube kubectl -- apply -f {{ awx.operator.package }}"
+  when: "'awx-operator' not in pods.stdout"
 
 - name: Copy awx deployment template
   copy:
@@ -20,12 +29,15 @@
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0604
+  register: deployment
 
 - name: Wait for awx operator to init
   pause:
     minutes: 1
+  when: deployment.changed
 
 - name: Deploy awx service via minikube
   become: yes
   become_user: "{{ user.name }}"
   command: "minikube kubectl -- apply -f /home/{{ user.name }}/awx.yml"
+  when: deployment.changed
