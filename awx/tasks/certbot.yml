@@ -1,5 +1,5 @@
 ---
-- name: Install certbox via pip
+- name: Install certbot via pip
   pip:
     name: "{{ certbot.packages }}"
     state: latest
