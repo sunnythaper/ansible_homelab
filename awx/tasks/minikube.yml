@@ -3,19 +3,19 @@
   apt:
     deb: "{{ minikube.package }}"
 
-- name: Get minikube status
-  become: yes
-  become_user: "{{ user.name }}"
-  command: "minikube status"
-  register: kubestatus
-  changed_when: false
-  failed_when: false
+- name: Create minikube service via systemd
+  template:
+    src: etc/systemd/system/awx.service.j2
+    dest: /etc/systemd/system/awx.service
+    owner: root
+    group: root
+    mode: 0604
 
-- name: Start minikube
-  become: yes
-  become_user: "{{ user.name }}"
-  command: "minikube start --addons={{ minikube.conf.addons }} --driver=docker"
-  when: "'Running' not in kubestatus.stdout"
+- name: Start minikube via systemd
+  service:
+    name: AWX
+    state: started
+    enabled: yes
 
 - name: Get running pods
   become: yes
