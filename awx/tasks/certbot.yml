@@ -1,0 +1,32 @@
+---
+- name: Install certbox via pip
+  pip:
+    name: "{{ certbot.packages }}"
+    state: latest
+
+- name: Create .secrets directory
+  file:
+    path: /root/.secrets
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Copy cloudflare.ini
+  template:
+    src: templates/root/.secrets/cloudflare.ini.j2
+    dest: /root/.secrets/cloudflare.ini
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0400
+    force: yes
+
+- name: Get ssl via certbot
+  command: "certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini -d {{ domain }} --preferred-challenges dns-01 --noninteractive --agree-tos --email {{ email }}"
+  args:
+    creates: "/etc/letsencrypt/live/{{ domain }}/fullchain.pem"
+  register: certbot
+
+- name: Setup ssl on nginx
+  command: "certbot --nginx -d {{ domain }} --noninteractive --agree-tos --email {{ email }}"
+  when: certbot.changed

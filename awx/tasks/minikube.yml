@@ -52,3 +52,9 @@
   become_user: "{{ user.name }}"
   command: "minikube kubectl -- apply -f /home/{{ user.name }}/awx.yml"
   when: deployment.changed or operator.changed
+  register: awxservice
+
+- name: Wait for awx service to init
+  pause:
+    minutes: 3
+  when: awxservice.changed

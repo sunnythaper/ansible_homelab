@@ -29,5 +29,8 @@
     - name: Setup ufw
       include_tasks: tasks/ufw.yml
 
+    - name: Install certbot
+      include: tasks/certbot.yml
+
     - name: Get admin password
       include_tasks: tasks/password.yml
