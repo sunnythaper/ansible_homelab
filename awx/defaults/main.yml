@@ -13,7 +13,7 @@ certbot:
   packages:
     - certbot
     - certbot-dns-cloudflare
-    - certbox-nginx
+    - certbot-nginx
 
 cloudflare:
   token: token
