@@ -13,7 +13,7 @@
 
 - name: Start minikube via systemd
   service:
-    name: AWX
+    name: awx
     state: started
     enabled: yes
 
