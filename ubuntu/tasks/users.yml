@@ -1,5 +1,5 @@
 ---
-- name: Copy login.defs configuration template to be more secure
+- name: Copy login.defs config
   template:
     src: templates/etc/login.defs.j2
     dest: /etc/login.defs
@@ -7,7 +7,7 @@
     group: root
     mode: 0600
 
-- name: Harden password requirements for the cracklib pam module
+- name: Harden password requirements for cracklib
   pamd:
     name: common-password
     type: password
@@ -26,7 +26,7 @@
     - { line: "Defaults use_pty", regex: "^Defaults use_pty" }
     - { line: 'Defaults logfile="/var/log/sudo.log"', regex: "^Defaults logfile.*" }
 
-- name: Remove unneccesary default users
+- name: Remove unneccesary users
   user:
     name: "{{ item }}"
     state: absent
@@ -34,40 +34,34 @@
   with_items: "{{ users.blacklist }}"
   ignore_errors: true
 
-- name: Create groups for {{ admin_user }} and {{ ansible_admin_user }}
+- name: Create groups for users
   group:
     name: "{{ item.name }}"
     state: present
     gid: "{{ item.gid }}"
-  with_items:
-    - { name: "{{ admin_user}}", gid: 1030 }
-    - { name: "{{ ansible_admin_user }}", gid: 1080 }
+  with_items: "{{ vault.users.sudo }}"
 
-- name: Add users {{ admin_user }} and {{ ansible_admin_user }}
+- name: Add users
   user:
     name: "{{ item.name }}"
     groups: "sudo,{{ item.name }}"
-    password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
+    password: "{{ item.password }}"
     state: present
-    shell: /bin/bash
+    shell: "{{ item.shell }}"
     uid: "{{ item.uid }}"
-    expires: -1
-  with_items:
-    - { name: "{{ admin_user}}", uid: 1030 }
-    - { name: "{{ ansible_admin_user }}", uid: 1080 }
+    expires: "{{ item.expires }}"
+  with_items: "{{ vault.users.sudo }}"
 
-- name: Grant {{ admin_user }} and {{ ansible_admin_user }} sudo privileges
+- name: Grant sudo privileges
   lineinfile:
-    dest: /etc/sudoers.d/{{ item }}
-    regexp: '^{{ item }}'
-    line: '{{ item }} ALL=(ALL) ALL'
+    dest: /etc/sudoers.d/{{ item.name }}
+    regexp: '^{{ item.name }}'
+    line: '{{ item.name }} ALL=(ALL) ALL'
     state: present
     mode: 0440
     create: "yes"
     validate: 'visudo -cf %s'
-  with_items:
-    - "{{ admin_user }}"
-    - "{{ ansible_admin_user }}"
+  with_items: "{{ vault.users.sudo }}"
 
 - name: Set includedir to include /etc/sudoers.d
   lineinfile:
@@ -76,15 +70,13 @@
     state: present
     validate: '/usr/sbin/visudo -cf %s'
 
-- name: Set authorized key for {{ admin_user }} and {{ ansible_admin_user }}
+- name: Set authorized keys
   authorized_key:
-    user: "{{ item.user }}"
+    user: "{{ item.name }}"
     state: present
     exclusive: True
     key: "{{ item.key }}"
-  with_items:
-    - { user: "{{ admin_user }}", key: "{{ admin_public_key }}" }
-    - { user: "{{ ansible_admin_user }}", key: "{{ admin_public_key }}" }
+  with_items: "{{ vault.users.sudo }}"
 
 - name: Lock root account
   user:

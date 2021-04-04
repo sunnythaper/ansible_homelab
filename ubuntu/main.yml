@@ -3,6 +3,7 @@
 
   vars_files:
     - defaults/main.yml
+    - vars/vault.yml
 
   handlers:
     - import_tasks: handlers/main.yml
@@ -38,7 +39,7 @@
     - name: Enable Unattended Upgrades
       include_tasks: tasks/unattended_upgrades.yml
 
-    - name: "Set user settings for {{ admin_user }} and {{ ansible_admin_user }}"
+    - name: Setup users
       include_tasks: tasks/users.yml
 
     - name: Enable fail2ban protection
