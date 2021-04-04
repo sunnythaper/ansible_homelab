@@ -33,7 +33,7 @@
     state: restarted
 
 - name: Restart ufw
-  ufw:
+  community.general.ufw:
     state: reloaded
 
 - name: Enable aidecheck

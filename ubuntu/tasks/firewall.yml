@@ -1,6 +1,6 @@
 ---
 - name: Set firewall rules via ufw
-  ufw:
+  community.general.ufw:
     delete: "{{ item.delete | default(omit) }}"
     direction: "{{ item.direction | default(omit) }}"
     from_ip: "{{ item.from_ip | default(omit) }}"
@@ -22,7 +22,7 @@
     - "{{ firewall_rules }}"
 
 - name: Set firewall application rules via ufw
-  ufw:
+  community.general.ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
   with_items: "{{ firewall_applications }}"
@@ -37,6 +37,6 @@
   notify: Restart ufw
 
 - name: Start the firewall
-  ufw:
+  community.general.ufw:
     state: "enabled"
     logging: "on"
