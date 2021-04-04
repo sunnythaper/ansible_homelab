@@ -10,49 +10,49 @@
 
   tasks:
     - name: Set localization settings
-      include_tasks: tasks/localization.yml
+      include_tasks: localization.yml
 
     - name: Set network settings
-      include_tasks: tasks/network.yml
+      include_tasks: network.yml
 
     - name: Setup & upgrade preferred packages
-      include_tasks: tasks/packages.yml
+      include_tasks: packages.yml
 
     - name: Set AppArmor related settings
-      include_tasks: tasks/apparmor.yml
+      include_tasks: apparmor.yml
 
     - name: Set up aide to track file system changes
-      include_tasks: tasks/aide.yml
+      include_tasks: aide.yml
 
     - name: Set sysctl related settings
-      include_tasks: tasks/sysctl.yml
+      include_tasks: sysctl.yml
 
     - name: Remove filesystems & network protocols via modprobe
-      include_tasks: tasks/modprobe.yml
+      include_tasks: modprobe.yml
 
     - name: Set up firewall related settings
-      include_tasks: tasks/firewall.yml
+      include_tasks: firewall.yml
 
     - name: Disable system core dumps
-      include_tasks: tasks/coredump.yml
+      include_tasks: coredump.yml
 
     - name: Enable Unattended Upgrades
-      include_tasks: tasks/unattended_upgrades.yml
+      include_tasks: unattended_upgrades.yml
 
     - name: Setup users
-      include_tasks: tasks/users.yml
+      include_tasks: users.yml
 
     - name: Enable fail2ban protection
-      include_tasks: tasks/fail2ban.yml
+      include_tasks: fail2ban.yml
 
     - name: Enable rkhunter protection
-      include_tasks: tasks/rkhunter.yml
+      include_tasks: rkhunter.yml
 
     - name: Set SSHD settings
-      include_tasks: tasks/sshd.yml
+      include_tasks: sshd.yml
 
     - name: Set Postfix settings
-      include_tasks: tasks/postfix.yml
+      include_tasks: postfix.yml
 
     - name: Set system permissions
-      include_tasks: tasks/permissions.yml
+      include_tasks: permissions.yml
