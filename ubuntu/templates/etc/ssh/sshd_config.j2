@@ -2,7 +2,7 @@ AcceptEnv {{sshd_AcceptEnv}}
 AddressFamily {{sshd_AddressFamily}}
 AllowAgentForwarding {{sshd_AllowAgentForwarding}}
 AllowTcpForwarding {{sshd_AllowTcpForwarding}}
-AllowUsers ansible sunnythaper
+AllowUsers {{vault.users.sudo[0].name}} {{vault.users.sudo[1].name}}
 AuthorizedKeysCommand {{sshd_AuthorizedKeysCommand}}
 AuthorizedKeysCommandUser {{sshd_AuthorizedKeysCommandUser}}
 AuthorizedKeysFile {{sshd_AuthorizedKeysFile}}
