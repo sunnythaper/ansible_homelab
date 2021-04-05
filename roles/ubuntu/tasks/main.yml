@@ -2,11 +2,11 @@
 - hosts: all
 
   vars_files:
-    - defaults/main.yml
-    - vars/vault.yml
+    - main.yml
+    - vault.yml
 
   handlers:
-    - import_tasks: handlers/main.yml
+    - import_tasks: main.yml
 
   tasks:
     - name: Set localization settings
