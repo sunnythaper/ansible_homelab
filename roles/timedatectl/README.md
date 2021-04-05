@@ -15,9 +15,8 @@ Default is to setup timezone as `America/Phoenix` and can be overwritten with th
 
 ```yaml
 ---
-local:
-  timedatectl:
-    timezone: America/Phoenix
+timedatectl:
+  timezone: America/Phoenix
 ```
 
 Dependencies

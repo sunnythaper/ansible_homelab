@@ -8,4 +8,5 @@
     - timedatectl
     - dns
     - apt
+    - apparmor
     - ubuntu

@@ -1,0 +1,8 @@
+---
+apparmor:
+  apt:
+    install:
+      - apparmor
+      - apparmor-profiles
+      - apparmor-profiles-extra
+      - apparmor-utils

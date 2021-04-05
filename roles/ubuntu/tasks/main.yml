@@ -1,7 +1,4 @@
 ---
-- name: Set AppArmor related settings
-  include_tasks: apparmor.yml
-
 - name: Set up aide to track file system changes
   include_tasks: aide.yml
 
