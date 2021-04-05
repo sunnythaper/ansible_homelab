@@ -1,0 +1,8 @@
+---
+dependencies:
+  - name: community.general
+
+galaxy_info:
+  role_name: ubuntu
+  author: sunnythaper
+  description: Ubuntu init role focused on security
