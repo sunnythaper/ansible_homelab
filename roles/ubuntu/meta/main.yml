@@ -1,7 +1,0 @@
----
-dependencies:
-  - name: community.general
-
-galaxy_info:
-  author: sunnythaper
-  description: Ubuntu system initiation with focus on security
