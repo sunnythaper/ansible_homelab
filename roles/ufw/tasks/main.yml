@@ -1,4 +1,10 @@
 ---
+- name: Install ufw via apt
+  apt:
+    name: "{{ ufw.apt.install }}"
+    state: latest
+    install_recommends: no
+
 - name: Set firewall rules via ufw
   ufw:
     delete: "{{ item.delete | default(omit) }}"
@@ -17,15 +23,13 @@
     state: "{{ item.state | default(omit) }}"
     to_ip: "{{ item.to_ip | default(omit) }}"
     to_port: "{{ item.to_port | default(omit) }}"
-  with_items:
-    - "{{ firewall_base_rules }}"
-    - "{{ firewall_rules }}"
+  with_items: "{{ ufw.rules }}"
 
 - name: Set firewall application rules via ufw
   ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
-  with_items: "{{ firewall_applications }}"
+  with_items: "{{ ufw.applications }}"
 
 - name: Copy ufw configuration to /etc/default/ufw
   template:
@@ -36,7 +40,7 @@
     mode: 0644
   notify: Restart ufw
 
-- name: Start the firewall
+- name: Start ufw
   ufw:
     state: "enabled"
     logging: "on"

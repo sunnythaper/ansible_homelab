@@ -19,24 +19,6 @@ fail2ban_protocol: "tcp"
 fail2ban_sender: "fail2ban.{{ network.hostname }}@{{ network.domain }}"
 fail2ban_usedns: "warn"
 
-# FIREWALL
-firewall_applications: []
-firewall_base_rules:
-  - from: 192.168.1.0/24
-    port: "{{ sshd_Port }}"
-    proto: tcp
-    rule: allow
-  - port: 53
-    proto: any
-    rule: allow
-firewall_DEFAULT_APPLICATION_POLICY: SKIP
-firewall_DEFAULT_FORWARD_POLICY: DROP
-firewall_DEFAULT_INPUT_POLICY: DROP
-firewall_DEFAULT_OUTPUT_POLICY: ACCEPT
-firewall_IPV6: no
-firewall_MANAGE_BUILTINS: no
-firewall_rules: []
-
 # LOGIN DEFS
 logindefs:
   conf:

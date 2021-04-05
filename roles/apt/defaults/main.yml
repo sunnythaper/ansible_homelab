@@ -5,11 +5,9 @@ apt:
     - apt-show-versions
     - debsums
     - fail2ban
-    - iptables
     - libpam-cracklib
     - rkhunter
     - sudo
-    - ufw
   remove:
     - apport*
     - autofs

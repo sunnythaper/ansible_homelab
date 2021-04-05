@@ -13,4 +13,5 @@
     - sysctl
     - modprobe
     - coredump
+    - ufw
     - ubuntu
