@@ -1,7 +1,4 @@
 ---
-- name: Set localization settings
-  include_tasks: localization.yml
-
 - name: Set network settings
   include_tasks: network.yml
 

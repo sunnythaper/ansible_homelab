@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: timedatectl
+  author: sunnythaper
+  description: Set system timezones via timedatectl

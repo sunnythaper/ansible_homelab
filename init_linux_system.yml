@@ -5,4 +5,5 @@
     - vars/vault.yml
 
   roles:
+    - timedatectl
     - ubuntu
