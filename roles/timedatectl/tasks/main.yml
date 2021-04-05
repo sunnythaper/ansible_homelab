@@ -17,5 +17,5 @@
 - name: Set timezone
   shell: "timedatectl set-timezone {{ timedatectl.timezone }}; timedatectl show"
   register: updated_timedatectl
-  changed_when: "'Timezone={{ timedatectl.timezone }}' in updated_timedatectl.stdout"
-  when: "'Timezone={{ timedatectl.timezone }}' not in current_timedatectl.stdout"
+  changed_when: timedatectl.timezone in updated_timedatectl.stdout
+  when: timedatectl.timezone not in current_timedatectl.stdout
