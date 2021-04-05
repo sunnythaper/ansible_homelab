@@ -1,9 +1,9 @@
 ---
-- name: Set system hostname
+- name: Set hostname
   hostname:
     name: "{{ dns.hostname }}"
 
-- name: Copy hosts file to set basic dns settings
+- name: Copy hosts file
   template:
     src: etc/hosts.j2
     dest: /etc/hosts
@@ -11,7 +11,7 @@
     owner: root
     group: root
 
-- name: Copy resolv.conf to set nameserver settings
+- name: Copy resolv.conf
   template:
     src: etc/resolv.conf.j2
     dest: /etc/resolv.conf
@@ -20,7 +20,7 @@
     group: root
   notify: Restart systemd
 
-- name: Copy resolved.conf to /etc/systemd/resolved.conf
+- name: Copy resolved.conf
   template:
     src: etc/systemd/resolved.conf.j2
     dest: /etc/systemd/resolved.conf
