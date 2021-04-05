@@ -30,19 +30,6 @@ fail2ban_protocol: "tcp"
 fail2ban_sender: "fail2ban.{{ network.hostname }}@{{ network.domain }}"
 fail2ban_usedns: "warn"
 
-# FILESYSTEM
-filesystem:
-  disable:
-    - cramfs
-    - freevxfs
-    - hfs
-    - hfsplus
-    - jffs2
-    - squashfs
-    - udf
-    - usb-storage
-    - vfat
-
 # FIREWALL
 firewall_applications: []
 firewall_base_rules:
@@ -98,19 +85,6 @@ logindefs:
 
 # NETWORK
 network:
-  conf:
-    LLMNR: "no"
-    MulticastDNS: "no"
-    DNSSEC: allow-downgrade
-    DNSOverTLS: opportunistic
-    Cache: no-negative
-    DNSStubListener: "yes"
-    ReadEtcHosts: "yes"
-  disable:
-    - dccp
-    - rds
-    - sctp
-    - tipc
   domain: "{{ vault.host.domain }}"
   hostname: "{{ inventory_hostname }}"
   ip: "{{ ansible_host }}"

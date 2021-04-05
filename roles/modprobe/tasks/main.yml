@@ -1,7 +1,7 @@
 ---
-- name: Remove filesystems & network protocols
+- name: Remove filesystems & network protocols via modprobe
   lineinfile:
-    dest: /etc/modprobe.d/50-local.conf
+    dest: "/etc/modprobe.d/{{ modprobe.filename }}.conf"
     regexp: "^(#)?install {{ item }}(\\s|$)"
     line: "install {{ item }} /bin/true"
     state: present
@@ -10,5 +10,5 @@
     mode: 0644
     create: true
   with_items:
-    - "{{ filesystem.disable }}"
-    - "{{ network.disable }}"
+    - "{{ modprobe.disable.filesystems }}"
+    - "{{ modprobe.disable.networks }}"

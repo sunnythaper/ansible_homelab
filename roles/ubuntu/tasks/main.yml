@@ -1,7 +1,4 @@
 ---
-- name: Remove filesystems & network protocols via modprobe
-  include_tasks: modprobe.yml
-
 - name: Set up firewall related settings
   include_tasks: firewall.yml
 

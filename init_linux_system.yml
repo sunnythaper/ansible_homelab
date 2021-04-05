@@ -11,4 +11,5 @@
     - apparmor
     - aide
     - sysctl
+    - modprobe
     - ubuntu
