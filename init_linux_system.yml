@@ -7,4 +7,5 @@
   roles:
     - timedatectl
     - dns
+    - apt
     - ubuntu

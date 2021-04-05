@@ -120,60 +120,6 @@ network:
   ip: "{{ ansible_host }}"
   nameservers: "{{ vault.host.nameservers }}"
 
-# PACKAGES
-packages_blocklist:
-  - apport*
-  - autofs
-  - avahi-*
-  - avahi*
-  - beep
-  - bind9
-  - cups
-  - dovecot-imapd
-  - dovecot-pop3d
-  - iptables-persistent
-  - isc-dhcp-server
-  - ldap-utils
-  - nis
-  - openbsd-inetd
-  - pastebinit
-  - popularity-contest
-  - prelink
-  - rpcbind
-  - rsh*
-  - rsync
-  - samba
-  - slapd
-  - snmpd
-  - squid
-  - talk*
-  - telnet*
-  - tftp*
-  - vsftpd
-  - whoopsie
-  - xinetd
-  - xserver-xorg*
-  - yp-tools
-  - ypbind
-
-packages_preferred:
-  - acl
-  - aide
-  - aide-common
-  - apparmor
-  - apparmor-profiles
-  - apparmor-profiles-extra
-  - apparmor-utils
-  - apt-show-versions
-  - debsums
-  - fail2ban
-  - iptables
-  - libpam-cracklib
-  - rkhunter
-  - sudo
-  - systemd-coredump
-  - ufw
-
 # POSTFIX
 postfix_disable_vrfy_command: "yes"
 postfix_inet_interfaces: "loopback-only"

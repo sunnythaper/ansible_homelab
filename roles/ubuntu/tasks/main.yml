@@ -1,7 +1,4 @@
 ---
-- name: Setup & upgrade preferred packages
-  include_tasks: packages.yml
-
 - name: Set AppArmor related settings
   include_tasks: apparmor.yml
 
