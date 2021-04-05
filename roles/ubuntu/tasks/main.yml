@@ -1,58 +1,48 @@
 ---
-- hosts: all
+- name: Set localization settings
+  include_tasks: localization.yml
 
-  vars_files:
-    - ../defaults/main.yml
-    - ../vars/vault.yml
+- name: Set network settings
+  include_tasks: network.yml
 
-  handlers:
-    - import_tasks: ../handlers/main.yml
+- name: Setup & upgrade preferred packages
+  include_tasks: packages.yml
 
-  tasks:
-    - name: Set localization settings
-      include_tasks: localization.yml
+- name: Set AppArmor related settings
+  include_tasks: apparmor.yml
 
-    - name: Set network settings
-      include_tasks: network.yml
+- name: Set up aide to track file system changes
+  include_tasks: aide.yml
 
-    - name: Setup & upgrade preferred packages
-      include_tasks: packages.yml
+- name: Set sysctl related settings
+  include_tasks: sysctl.yml
 
-    - name: Set AppArmor related settings
-      include_tasks: apparmor.yml
+- name: Remove filesystems & network protocols via modprobe
+  include_tasks: modprobe.yml
 
-    - name: Set up aide to track file system changes
-      include_tasks: aide.yml
+- name: Set up firewall related settings
+  include_tasks: firewall.yml
 
-    - name: Set sysctl related settings
-      include_tasks: sysctl.yml
+- name: Disable system core dumps
+  include_tasks: coredump.yml
 
-    - name: Remove filesystems & network protocols via modprobe
-      include_tasks: modprobe.yml
+- name: Enable Unattended Upgrades
+  include_tasks: unattended_upgrades.yml
 
-    - name: Set up firewall related settings
-      include_tasks: firewall.yml
+- name: Setup users
+  include_tasks: users.yml
 
-    - name: Disable system core dumps
-      include_tasks: coredump.yml
+- name: Enable fail2ban protection
+  include_tasks: fail2ban.yml
 
-    - name: Enable Unattended Upgrades
-      include_tasks: unattended_upgrades.yml
+- name: Enable rkhunter protection
+  include_tasks: rkhunter.yml
 
-    - name: Setup users
-      include_tasks: users.yml
+- name: Set SSHD settings
+  include_tasks: sshd.yml
 
-    - name: Enable fail2ban protection
-      include_tasks: fail2ban.yml
+- name: Set Postfix settings
+  include_tasks: postfix.yml
 
-    - name: Enable rkhunter protection
-      include_tasks: rkhunter.yml
-
-    - name: Set SSHD settings
-      include_tasks: sshd.yml
-
-    - name: Set Postfix settings
-      include_tasks: postfix.yml
-
-    - name: Set system permissions
-      include_tasks: permissions.yml
+- name: Set system permissions
+  include_tasks: permissions.yml
