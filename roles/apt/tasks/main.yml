@@ -5,7 +5,7 @@
     state: latest
     install_recommends: no
 
-- name: Upgrade all packages to the latest version
+- name: Upgrade packages to latest
   apt:
     name: "*"
     state: latest
@@ -13,14 +13,14 @@
     cache_valid_time: 3600
     install_recommends: no
 
-- name: Install preferred system packages via APT
+- name: Install desired packages
   apt:
     name: "{{ apt.install }}"
     state: latest
     install_recommends: no
   when: apt.install is defined
 
-- name: Remove unneccessary default packages
+- name: Remove desired packages
   apt:
     name: "{{ apt.remove }}"
     state: absent
@@ -29,6 +29,6 @@
   ignore_errors: true
   when: apt.remove is defined
 
-- name: Purge unused packages via aptitude
+- name: Purge packages
   apt:
     purge: 'yes'
