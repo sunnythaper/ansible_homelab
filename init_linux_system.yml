@@ -6,4 +6,5 @@
 
   roles:
     - timedatectl
+    - dns
     - ubuntu

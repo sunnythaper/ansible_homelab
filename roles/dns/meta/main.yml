@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: dns
+  author: sunnythaper
+  description: Set hostname, dns, and basic network settings

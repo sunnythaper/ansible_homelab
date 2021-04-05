@@ -1,7 +1,4 @@
 ---
-- name: Set network settings
-  include_tasks: network.yml
-
 - name: Setup & upgrade preferred packages
   include_tasks: packages.yml
 
