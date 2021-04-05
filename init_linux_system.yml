@@ -10,4 +10,5 @@
     - apt
     - apparmor
     - aide
+    - sysctl
     - ubuntu

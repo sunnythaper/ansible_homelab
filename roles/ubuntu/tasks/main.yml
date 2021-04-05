@@ -1,7 +1,4 @@
 ---
-- name: Set sysctl related settings
-  include_tasks: sysctl.yml
-
 - name: Remove filesystems & network protocols via modprobe
   include_tasks: modprobe.yml
 
