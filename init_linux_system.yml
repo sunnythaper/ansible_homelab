@@ -9,4 +9,5 @@
     - dns
     - apt
     - apparmor
+    - aide
     - ubuntu

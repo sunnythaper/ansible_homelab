@@ -1,0 +1,6 @@
+---
+aide:
+  apt:
+    install:
+      - aide
+      - aide-common

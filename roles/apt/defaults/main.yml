@@ -2,8 +2,6 @@
 apt:
   install:
     - acl
-    - aide
-    - aide-common
     - apt-show-versions
     - debsums
     - fail2ban

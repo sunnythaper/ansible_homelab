@@ -1,7 +1,4 @@
 ---
-- name: Set up aide to track file system changes
-  include_tasks: aide.yml
-
 - name: Set sysctl related settings
   include_tasks: sysctl.yml
 
