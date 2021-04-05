@@ -1,4 +1,4 @@
 ---
 - name: Set timezone
-  community.general.timezone:
+  timezone:
     name: "{{ localization.timezone }}"

@@ -1,6 +1,5 @@
 ---
-dependencies:
-  - name: community.general
+dependencies: []
 
 galaxy_info:
   role_name: ubuntu
