@@ -9,7 +9,6 @@ apt:
     - libpam-cracklib
     - rkhunter
     - sudo
-    - systemd-coredump
     - ufw
   remove:
     - apport*

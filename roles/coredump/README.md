@@ -1,7 +1,7 @@
-apt
+coredump
 ========
 
-Install and remove desired system packages via aptitude
+Disable / restrict system coredumps
 
 Requirements
 ------------
@@ -15,11 +15,13 @@ Default declarations are based on a security-forward approach and can be overwri
 
 ```yaml
 ---
-apt:
-  install:
-    - nano
-  remove:
-    - vim
+coredump:
+  apt:
+    install:
+      - systemd-coredump
+  conf:
+    ProcessSizeMax: 0
+    Storage: none
 ```
 
 Dependencies
@@ -34,5 +36,5 @@ Example Playbook
 ---
 - hosts: all
   roles:
-    - apt
+    - coredump
 ```

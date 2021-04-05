@@ -2,9 +2,6 @@
 - name: Set up firewall related settings
   include_tasks: firewall.yml
 
-- name: Disable system core dumps
-  include_tasks: coredump.yml
-
 - name: Enable Unattended Upgrades
   include_tasks: unattended_upgrades.yml
 

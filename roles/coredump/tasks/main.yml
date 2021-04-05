@@ -1,4 +1,10 @@
 ---
+- name: Install coredump packages via apt
+  apt:
+    name: "{{ coredump.apt.install }}"
+    state: latest
+    install_recommends: no
+
 - name: Set /etc/security/limits.conf to disable coredump
   lineinfile:
     dest: /etc/security/limits.conf

@@ -7,17 +7,6 @@ host:
     - 1.1.1.1
     - 1.0.0.1
 
-# CORE DUMP
-coredump:
-  conf:
-    # Compress: "yes"
-    # ExternalSizeMax: 2G
-    # JournalSizeMax: 767M
-    # KeepFree:
-    # MaxUse:
-    ProcessSizeMax: 0
-    Storage: none
-
 # FAIL2BAN
 fail2ban_backend: "auto"
 fail2ban_bantime: "10m"
