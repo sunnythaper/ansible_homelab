@@ -7,7 +7,6 @@
     sysctl_set: yes
     reload: yes
   with_dict: "{{ sysctl.conf.ct }}"
-  no_log: true
 
 - name: Check if reboot is required
   register: reboot_required
