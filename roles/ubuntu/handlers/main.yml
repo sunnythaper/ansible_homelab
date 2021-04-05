@@ -1,7 +1,4 @@
 ---
-- name: Apply sysctl config
-  command: sysctl -p
-
 - name: Update rkhunter
   command: rkhunter --propupd
 
@@ -17,28 +14,13 @@
     state: restarted
     enabled: yes
 
-- name: Restart systemd
-  systemd:
-    daemon_reload: 'yes'
-
 - name: Restart sshd
   service:
     name: sshd
     state: restarted
     enabled: yes
 
-- name: Restart sysctl
-  service:
-    name: systemd-sysctl
-    state: restarted
-
 - name: Restart ufw
   service:
     name: ufw
     state: reloaded
-
-- name: Enable aidecheck
-  systemd:
-    name: aidecheck.timer
-    enabled: 'yes'
-    state: started

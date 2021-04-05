@@ -45,6 +45,7 @@
     mode: 0750
     path: "{{ item.path }}"
   with_items: "{{ home_directories.files }}"
+  no_log: true
 
 - name: Set sudoers.d permissions to 0600
   file:

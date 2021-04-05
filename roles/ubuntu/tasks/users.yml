@@ -40,6 +40,7 @@
     state: present
     gid: "{{ item.gid }}"
   with_items: "{{ vault.users.sudo }}"
+  no_log: true
 
 - name: Add users
   user:
@@ -51,6 +52,7 @@
     uid: "{{ item.uid }}"
     expires: "{{ item.expires }}"
   with_items: "{{ vault.users.sudo }}"
+  no_log: true
 
 - name: Grant sudo privileges
   lineinfile:
@@ -62,6 +64,7 @@
     create: "yes"
     validate: 'visudo -cf %s'
   with_items: "{{ vault.users.sudo }}"
+  no_log: true
 
 - name: Set includedir to include /etc/sudoers.d
   lineinfile:
@@ -77,6 +80,7 @@
     exclusive: True
     key: "{{ item.key }}"
   with_items: "{{ vault.users.sudo }}"
+  no_log: true
 
 - name: Lock root account
   user:
