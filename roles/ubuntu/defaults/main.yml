@@ -61,10 +61,6 @@ firewall_IPV6: no
 firewall_MANAGE_BUILTINS: no
 firewall_rules: []
 
-# LOCALIZATION
-localization:
-  timezone: America/Phoenix
-
 # LOGIN DEFS
 logindefs:
   conf:
