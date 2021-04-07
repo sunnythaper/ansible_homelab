@@ -1,7 +1,4 @@
 ---
-- name: Enable Unattended Upgrades
-  include_tasks: unattended_upgrades.yml
-
 - name: Setup users
   include_tasks: users.yml
 

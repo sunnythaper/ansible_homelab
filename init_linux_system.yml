@@ -13,5 +13,6 @@
     - sysctl
     - modprobe
     - coredump
-    # - ufw
+    - ufw
+    - unattendedupgrades
     - ubuntu

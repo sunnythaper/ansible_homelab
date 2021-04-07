@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: unattendedupgrades
+  author: sunnythaper
+  description: Install and schedule apt package updates via unattended upgrades

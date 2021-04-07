@@ -69,26 +69,6 @@ postfix_smtpd_banner: "$myhostname ESMTP"
 postfix_smtpd_client_restrictions: "permit_mynetworks,reject"
 postfix_smtpd_helo_required: "yes"
 
-# UNATTENDED UPGRADES
-unattended_upgrade_AutoFixInterruptedDpkg: "true"
-unattended_upgrade_Automatic_Reboot_Time: "05:00"
-unattended_upgrade_Automatic_Reboot_WithUsers: "false"
-unattended_upgrade_Automatic_Reboot: "true"
-unattended_upgrade_Debug: "false"
-unattended_upgrade_InstallOnShutdown: "false"
-unattended_upgrade_Mail: "{{ vault.host.email }}"
-unattended_upgrade_MailOnlyOnError: true
-unattended_upgrade_MinimalSteps: "true"
-unattended_upgrade_OnlyOnACPower: "true"
-unattended_upgrade_Package_Blacklist: []
-unattended_upgrade_Remove_New_Unused_Dependencies: "true"
-unattended_upgrade_Remove_Unused_Dependencies: "true"
-unattended_upgrade_Remove_Unused_Kernel_Packages: "true"
-unattended_upgrade_Skip_Updates_On_Metered_Connections: "true"
-unattended_upgrade_SyslogEnable: "true"
-unattended_upgrade_SyslogFacility: "daemon"
-unattended_upgrade_Verbose: "false"
-
 # USERS
 users:
   blacklist:
