@@ -1,5 +1,5 @@
 ---
-unattended-upgrades:
+unattendedupgrades:
   conf:
     AutoFixInterruptedDpkg: "true"
     Automatic_Reboot_Time: "05:00"
