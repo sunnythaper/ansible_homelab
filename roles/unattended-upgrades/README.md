@@ -1,5 +1,5 @@
 unattended-upgrades
-========
+===================
 
 Install and schedule apt package updates via unattended upgrades
 

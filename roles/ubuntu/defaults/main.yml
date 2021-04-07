@@ -44,14 +44,6 @@ users:
     - news
     - sync
     - uucp
-  cracklib:
-    dcredit: -2
-    difok: 3
-    lcredit: -2
-    minlen: 16
-    ocredit: -1
-    retry: 3
-    ucredit: -1
 
 # RKHUNTER
 rkhunter_ALLOW_SSH_PROT_V1: "0"

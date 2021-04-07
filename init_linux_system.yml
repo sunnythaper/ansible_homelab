@@ -16,4 +16,5 @@
     - ufw
     - unattended-upgrades
     - logindefs
+    - cracklib
     - ubuntu
