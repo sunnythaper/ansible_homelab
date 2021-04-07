@@ -1,0 +1,13 @@
+---
+users:
+  add: []
+  sudo: []
+  system: []
+  remove:
+    - games
+    - gnats
+    - irc
+    - list
+    - news
+    - sync
+    - uucp

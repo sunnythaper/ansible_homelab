@@ -15,7 +15,7 @@
     name: "{{ item }}"
     state: absent
     remove: 'yes'
-  with_items: "{{ users.blacklist }}"
+  with_items: "{{ users.remove }}"
   ignore_errors: true
 
 - name: Create groups for users

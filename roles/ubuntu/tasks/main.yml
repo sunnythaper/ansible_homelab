@@ -1,7 +1,4 @@
 ---
-- name: Setup users
-  include_tasks: users.yml
-
 - name: Enable fail2ban protection
   include_tasks: fail2ban.yml
 

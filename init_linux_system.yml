@@ -17,4 +17,5 @@
     - unattended-upgrades
     - logindefs
     - cracklib
+    - users
     - ubuntu
