@@ -1,3 +1,19 @@
+unattended-upgrades
+========
+
+Install and schedule apt package updates via unattended upgrades
+
+Requirements
+------------
+
+Tested with Ansible 2.8.5
+
+Role Variables
+--------------
+
+Default declarations are based on a security-forward approach and can be overwritten with the following:
+
+```yaml
 ---
 unattendedupgrades:
   conf:
@@ -7,7 +23,7 @@ unattendedupgrades:
     Automatic_Reboot: "true"
     Debug: "false"
     InstallOnShutdown: "false"
-    Mail: "{{ vault.host.email }}"
+    Mail: admin@example.com
     MailOnlyOnError: true
     MinimalSteps: "true"
     OnlyOnACPower: "true"
@@ -19,3 +35,19 @@ unattendedupgrades:
     SyslogEnable: "true"
     SyslogFacility: "daemon"
     Verbose: "false"
+```
+
+Dependencies
+------------
+
+None
+
+Example Playbook
+----------------
+
+```yaml
+---
+- hosts: all
+  roles:
+    - unattended-upgrades
+```

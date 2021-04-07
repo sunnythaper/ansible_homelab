@@ -1,0 +1,40 @@
+Unattended-Upgrade::Allowed-Origins {
+        "${distro_id}:${distro_codename}-security";
+        "${distro_id}:${distro_codename}-updates";
+        "${distro_id}:${distro_codename}";
+        "${distro_id}ESM:${distro_codename}-infra-security";
+        "${distro_id}ESM:${distro_codename}";
+        "${distro_id}ESMApps:${distro_codename}-apps-security";
+//      "${distro_id}:${distro_codename}-proposed";
+//      "${distro_id}:${distro_codename}-backports";
+};
+
+Unattended-Upgrade::Package-Blacklist {
+{% for package in unattended-upgrades.conf.Package_Blacklist %}
+      "{{package}}";
+{% endfor %}
+};
+
+{% if unattended-upgrades.conf.Mail %}
+Unattended-Upgrade::Mail "{{ unattended-upgrades.conf.Mail }}";
+{% if unattended-upgrades.conf.MailOnlyOnError %}
+Unattended-Upgrade::MailOnlyOnError "true";
+Unattended-Upgrade::MailReport "only-on-error";
+{% endif %}
+{% endif %}
+
+Unattended-Upgrade::AutoFixInterruptedDpkg "{{ unattended-upgrades.conf.AutoFixInterruptedDpkg }}";
+Unattended-Upgrade::Automatic-Reboot "{{ unattended-upgrades.conf.Automatic_Reboot }}";
+Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended-upgrades.conf.Automatic_Reboot_Time }}";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "{{ unattended-upgrades.conf.Automatic_Reboot_WithUsers }}";
+Unattended-Upgrade::Debug "{{ unattended-upgrades.conf.Debug }}";
+Unattended-Upgrade::InstallOnShutdown "{{ unattended-upgrades.conf.InstallOnShutdown }}";
+Unattended-Upgrade::MinimalSteps "{{ unattended-upgrades.conf.MinimalSteps }}";
+Unattended-Upgrade::OnlyOnACPower "{{ unattended-upgrades.conf.OnlyOnACPower }}";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "{{ unattended-upgrades.conf.Remove_New_Unused_Dependencies }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ unattended-upgrades.conf.Remove_Unused_Dependencies }}";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ unattended-upgrades.conf.Remove_Unused_Kernel_Packages }}";
+Unattended-Upgrade::Skip-Updates-On-Metered-Connections "{{ unattended-upgrades.conf.Skip_Updates_On_Metered_Connections }}";
+Unattended-Upgrade::SyslogEnable "{{ unattended-upgrades.conf.SyslogEnable }}";
+Unattended-Upgrade::SyslogFacility "{{ unattended-upgrades.conf.SyslogFacility }}";
+Unattended-Upgrade::Verbose "{{ unattended-upgrades.conf.Verbose }}";

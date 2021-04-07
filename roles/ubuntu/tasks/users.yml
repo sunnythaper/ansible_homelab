@@ -1,12 +1,4 @@
 ---
-- name: Copy login.defs config
-  template:
-    src: templates/etc/login.defs.j2
-    dest: /etc/login.defs
-    owner: root
-    group: root
-    mode: 0600
-
 - name: Harden password requirements for cracklib
   pamd:
     name: common-password

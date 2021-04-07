@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: logindefs
+  author: sunnythaper
+  description: Configure /etc/login.defs to be more security-forward in approach

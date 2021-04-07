@@ -14,5 +14,6 @@
     - modprobe
     - coredump
     - ufw
-    - unattendedupgrades
+    - unattended-upgrades
+    - logindefs
     - ubuntu
