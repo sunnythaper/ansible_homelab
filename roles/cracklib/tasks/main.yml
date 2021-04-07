@@ -1,4 +1,10 @@
 ---
+- name: Install cracklib via apt
+  apt:
+    name: "{{ cracklib.apt.install }}"
+    state: latest
+    install_recommends: no
+
 - name: Harden password requirements for cracklib
   pamd:
     name: common-password

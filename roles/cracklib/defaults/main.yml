@@ -1,5 +1,8 @@
 ---
 cracklib:
+  apt:
+    install:
+      - libpam-cracklib
   conf:
     dcredit: -2
     difok: 3

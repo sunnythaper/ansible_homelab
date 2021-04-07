@@ -1,4 +1,10 @@
 ---
+- name: Install sudo via apt
+  apt:
+    name: "{{ users.apt.install }}"
+    state: latest
+    install_recommends: no
+
 - name: Set sudo commands to use pty and be logged
   lineinfile:
     dest: /etc/sudoers

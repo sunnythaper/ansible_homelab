@@ -5,9 +5,7 @@ apt:
     - apt-show-versions
     - debsums
     - fail2ban
-    - libpam-cracklib
     - rkhunter
-    - sudo
   remove:
     - apport*
     - autofs
