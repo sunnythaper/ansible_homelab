@@ -4,7 +4,6 @@ apt:
     - acl
     - apt-show-versions
     - debsums
-    - fail2ban
     - rkhunter
   remove:
     - apport*

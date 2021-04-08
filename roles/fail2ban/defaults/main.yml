@@ -1,0 +1,15 @@
+---
+fail2ban:
+  apt:
+    install:
+      - fail2ban
+fail2ban_backend: "auto"
+fail2ban_bantime: "10m"
+fail2ban_destemail: "{{ vault.host.email }}"
+fail2ban_findtime: "10m"
+fail2ban_logencoding: "auto"
+fail2ban_maxretry: "5"
+fail2ban_mta: "sendmail"
+fail2ban_protocol: "tcp"
+fail2ban_sender: "fail2ban@{{ vault.host.domain }}"
+fail2ban_usedns: "warn"

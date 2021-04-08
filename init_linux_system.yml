@@ -18,4 +18,5 @@
     - logindefs
     - cracklib
     - users
+    - fail2ban
     - ubuntu

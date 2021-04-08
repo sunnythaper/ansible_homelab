@@ -2,12 +2,6 @@
 - name: Update rkhunter
   command: rkhunter --propupd
 
-- name: Restart fail2ban
-  service:
-    name: fail2ban
-    state: restarted
-    enabled: yes
-
 - name: Restart postfix
   service:
     name: postfix

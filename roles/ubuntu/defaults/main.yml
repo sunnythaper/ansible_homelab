@@ -7,18 +7,6 @@ host:
     - 1.1.1.1
     - 1.0.0.1
 
-# FAIL2BAN
-fail2ban_backend: "auto"
-fail2ban_bantime: "10m"
-fail2ban_destemail: "{{ vault.host.email }}"
-fail2ban_findtime: "10m"
-fail2ban_logencoding: "auto"
-fail2ban_maxretry: "5"
-fail2ban_mta: "sendmail"
-fail2ban_protocol: "tcp"
-fail2ban_sender: "fail2ban.{{ network.hostname }}@{{ network.domain }}"
-fail2ban_usedns: "warn"
-
 # NETWORK
 network:
   domain: "{{ vault.host.domain }}"

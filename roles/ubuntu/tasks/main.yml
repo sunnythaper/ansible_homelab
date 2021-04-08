@@ -1,7 +1,4 @@
 ---
-- name: Enable fail2ban protection
-  include_tasks: fail2ban.yml
-
 - name: Enable rkhunter protection
   include_tasks: rkhunter.yml
 
