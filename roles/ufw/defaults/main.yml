@@ -14,7 +14,7 @@ ufw:
     MANAGE_BUILTINS: no
     IPT_SYSCTL: /etc/ufw/sysctl.conf
   rules:
-    - port: "{{ sshd_Port }}"
+    - port: "{{ sshd.conf.Port | default(22) }}"
       proto: tcp
       rule: allow
     - port: 53

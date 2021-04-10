@@ -2,6 +2,6 @@
 
 enabled = true
 mode    = normal
-port    = {{ sshd_Port }}
+port    = {{ sshd.conf.Port }}
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
