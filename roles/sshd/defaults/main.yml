@@ -54,7 +54,7 @@ sshd:
     PubkeyAuthentication: "yes"
     RekeyLimit: "1G 1300"
     StrictModes: "yes"
-    Subsystem: "sftp /usr/lib/openssh/sftp-server"
+    # Subsystem: "sftp /usr/lib/openssh/sftp-server"
     SyslogFacility: "AUTHPRIV"
     TCPKeepAlive: "no"
     UseDNS: "no"
