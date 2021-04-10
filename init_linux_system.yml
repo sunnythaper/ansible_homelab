@@ -20,4 +20,5 @@
     - users
     - fail2ban
     - rkhunter
+    - sshd
     - ubuntu

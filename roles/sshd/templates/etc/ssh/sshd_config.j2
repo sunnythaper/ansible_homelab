@@ -1,0 +1,3 @@
+{% for setting, value in sshd.conf | dictsort -%}
+{{ setting }} {{ value }}
+{% endfor %}

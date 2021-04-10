@@ -1,5 +1,5 @@
 ---
-- name: Copy issue.net banner to warn off the baddies
+- name: Copy issue.net banner
   template:
     src: templates/etc/issue.j2
     dest: "/etc/{{ item }}"
@@ -20,7 +20,7 @@
     - 80-livepatch
     - 95-hwe-eol
 
-- name: Copy SSH configuration template to be more secure
+- name: Copy SSH config
   template:
     src: templates/etc/ssh/sshd_config.j2
     dest: "/etc/ssh/sshd_config.d/50-local.conf"

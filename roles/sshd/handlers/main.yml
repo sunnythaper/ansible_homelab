@@ -1,6 +1,6 @@
 ---
-- name: Restart postfix
+- name: Restart sshd
   service:
-    name: postfix
+    name: sshd
     state: restarted
     enabled: yes

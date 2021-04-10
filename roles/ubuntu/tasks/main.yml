@@ -1,7 +1,4 @@
 ---
-- name: Set SSHD settings
-  include_tasks: sshd.yml
-
 - name: Set Postfix settings
   include_tasks: postfix.yml
 
