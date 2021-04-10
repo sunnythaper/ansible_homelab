@@ -1,7 +1,4 @@
 ---
-- name: Update rkhunter
-  command: rkhunter --propupd
-
 - name: Restart postfix
   service:
     name: postfix

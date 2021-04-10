@@ -1,7 +1,4 @@
 ---
-- name: Enable rkhunter protection
-  include_tasks: rkhunter.yml
-
 - name: Set SSHD settings
   include_tasks: sshd.yml
 

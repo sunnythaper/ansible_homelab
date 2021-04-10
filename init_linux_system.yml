@@ -19,4 +19,5 @@
     - cracklib
     - users
     - fail2ban
+    - rkhunter
     - ubuntu

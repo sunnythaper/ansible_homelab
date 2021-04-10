@@ -4,7 +4,6 @@ apt:
     - acl
     - apt-show-versions
     - debsums
-    - rkhunter
   remove:
     - apport*
     - autofs

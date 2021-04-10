@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: rkhunter
+  author: sunnythaper
+  description: Install & configure rkhunter to protect against rootkits

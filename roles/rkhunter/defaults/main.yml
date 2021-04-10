@@ -1,0 +1,16 @@
+---
+rkhunter:
+  apt:
+    install:
+      - rkhunter
+rkhunter_ALLOW_SSH_PROT_V1: "0"
+rkhunter_ALLOW_SSH_ROOT_USER: "no"
+rkhunter_APT_AUTOGEN: "true"
+rkhunter_CRON_DAILY_RUN: "true"
+rkhunter_CRON_DB_UPDATE: "true"
+rkhunter_DB_UPDATE_EMAIL: "false"
+rkhunter_MIRRORS_MODE: "0"
+rkhunter_NICE: "0"
+rkhunter_REPORT_EMAIL: "{{ vault.host.email }}"
+rkhunter_RUN_CHECK_ON_BATTERY: "false"
+rkhunter_UPDATE_MIRRORS: "1"
