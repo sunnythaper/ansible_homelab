@@ -1,3 +1,9 @@
 {% for setting, value in sshd.conf | dictsort -%}
 {{ setting }} {{ value }}
 {% endfor %}
+
+AllowUsers {{vault.users.sudo[0].name}} {{vault.users.sudo[1].name}}
+
+{% for setting in sshd.hostkeys -%}
+HostKey {{ setting }}
+{% endfor %}
