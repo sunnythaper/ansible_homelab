@@ -1,7 +1,9 @@
 ---
 - name: Install ufw via apt
   apt:
-    name: "{{ ufw.apt.install }}"
+    name:
+      - iptables
+      - ufw
     state: latest
     install_recommends: no
 
@@ -29,6 +31,7 @@
   ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
+  when: ufw.applications is defined
   with_items: "{{ ufw.applications }}"
 
 - name: Copy ufw configuration to /etc/default/ufw
