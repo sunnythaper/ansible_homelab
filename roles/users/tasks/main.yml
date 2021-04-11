@@ -7,6 +7,7 @@
   no_log: true
   with_items:
     - "{{ users.add | default([]) }}"
+    - "{{ users.docker | default([]) }}"
     - "{{ users.sudo | default([]) }}"
     - "{{ users.system | default([]) }}"
 
