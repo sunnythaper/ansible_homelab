@@ -1,7 +1,7 @@
 ---
 users:
   add: []
-  sudo: "{{ vault.users.sudo | default([omit]) }}"
+  sudo: "{{ vault.users.sudo | default([]) }}"
   sudoers:
     conf:
       - line: 'Defaults logfile="/var/log/sudo.log"'
