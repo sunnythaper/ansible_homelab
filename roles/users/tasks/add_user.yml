@@ -1,0 +1,12 @@
+---
+- name: Add users
+  no_log: true
+  user:
+    expires: "{{ item.expires | default('-1') }}"
+    groups: "{{ item.name }}"
+    name: "{{ item.name }}"
+    password: "{{ item.password }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    state: present
+    uid: "{{ item.uid }}"
+  with_items: "{{ users.add }}"
