@@ -9,7 +9,6 @@
     - "{{ users.add | default(omit) }}"
     - "{{ users.sudo | default(omit) }}"
     - "{{ users.system | default(omit) }}"
-    - "{{ vault.users.sudo | default(omit) }}"
 
 - name: Remove users
   include_tasks: remove_users.yml
@@ -17,13 +16,13 @@
 
 - name: Add sudo users
   include_tasks: add_sudo_users.yml
-  when: users.sudo is defined or vault.users.sudo is defined
+  when: users.sudo is defined
 
 - name: Lock root account
   user:
     name: root
     password_lock: 'yes'
-  when: users.sudo is defined or vault.users.sudo is defined
+  when: users.sudo is defined
 
 - name: List home directories
   find:

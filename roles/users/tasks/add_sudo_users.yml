@@ -25,9 +25,7 @@
     shell: "{{ item.shell | default('/bin/bash') }}"
     state: present
     uid: "{{ item.uid }}"
-  with_items:
-    - "{{ users.sudo | default(omit) }}"
-    - "{{ vault.users.sudo | default(omit) }}"
+  with_items: "{{ users.sudo }}"
 
 - name: Grant sudo privileges
   lineinfile:
@@ -39,9 +37,7 @@
     state: present
     validate: 'visudo -cf %s'
   no_log: true
-  with_items:
-    - "{{ users.sudo | default(omit) }}"
-    - "{{ vault.users.sudo | default(omit) }}"
+  with_items: "{{ users.sudo }}"
 
 - name: Set includedir to include /etc/sudoers.d
   lineinfile:
@@ -65,6 +61,4 @@
     state: present
     user: "{{ item.name }}"
   no_log: true
-  with_items:
-    - "{{ users.sudo | default(omit) }}"
-    - "{{ vault.users.sudo | default(omit) }}"
+  with_items: "{{ users.sudo }}"

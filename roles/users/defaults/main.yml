@@ -11,7 +11,8 @@ users:
     install:
       - sudo
   add: []
-  sudo: []
+  sudo:
+    - "{{ vault.users.sudo | default(omit) }}"
   system: []
   remove:
     - games
