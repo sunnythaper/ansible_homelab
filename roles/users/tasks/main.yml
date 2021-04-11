@@ -6,9 +6,9 @@
     state: present
   no_log: true
   with_items:
-    - "{{ users.add | default('') }}"
-    - "{{ users.sudo | default('') }}"
-    - "{{ users.system | default('') }}"
+    - "{{ users.add | default([]) }}"
+    - "{{ users.sudo | default([]) }}"
+    - "{{ users.system | default([]) }}"
 
 - name: Remove users
   include_tasks: remove_users.yml
