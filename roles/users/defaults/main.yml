@@ -12,7 +12,7 @@ users:
         regex: "^Defaults use_pty"
   system:  "{{ host.users.system | default([omit]) }}"
   remove:
-    -  "{{ host.users.remove | default([omit]) }}"
+    - "{{ host.users.remove | default([omit]) }}"
     - games
     - gnats
     - irc
