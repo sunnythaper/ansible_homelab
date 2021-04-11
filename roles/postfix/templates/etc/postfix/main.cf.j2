@@ -134,7 +134,7 @@ data_directory = /var/lib/postfix
 #
 # Note: you need to stop/start Postfix when this parameter changes.
 #
-inet_interfaces = {{postfix_inet_interfaces}}
+inet_interfaces = {{postfix.conf.inet_interfaces}}
 #inet_interfaces = $myhostname
 #inet_interfaces = $myhostname, localhost
 
@@ -573,7 +573,7 @@ mynetworks = 127.0.0.0/8
 #
 #smtpd_banner = $myhostname ESMTP $mail_name
 #smtpd_banner = $myhostname ESMTP $mail_name ($mail_version)
-smtpd_banner = {{postfix_smtpd_banner}}
+smtpd_banner = {{postfix.conf.smtpd_banner}}
 
 
 # PARALLEL DELIVERY TO THE SAME DESTINATION
@@ -683,7 +683,7 @@ sample_directory =
 readme_directory =
 inet_protocols = ipv4
 
-disable_vrfy_command = {{postfix_disable_vrfy_command}}
-smtp_tls_loglevel = {{postfix_smtp_tls_loglevel}}
-smtpd_client_restrictions = {{postfix_smtpd_client_restrictions}}
-smtpd_helo_required = {{postfix_smtpd_helo_required}}
+disable_vrfy_command = {{postfix.conf.disable_vrfy_command}}
+smtp_tls_loglevel = {{postfix.conf.smtp_tls_loglevel}}
+smtpd_client_restrictions = {{postfix.conf.smtpd_client_restrictions}}
+smtpd_helo_required = {{postfix.conf.smtpd_helo_required}}

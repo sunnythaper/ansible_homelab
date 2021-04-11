@@ -1,7 +1,7 @@
-sshd
-========
+cron
+====
 
-Configure sshd in a security-forward approach
+Configure cron in a security-forward approach
 
 Requirements
 ------------
@@ -15,7 +15,7 @@ Default declarations are based on a security-forward approach and can be overwri
 
 ```yaml
 ---
-sshd:
+cron:
   conf:
 
 ```
@@ -32,5 +32,5 @@ Example Playbook
 ---
 - hosts: all
   roles:
-    - sshd
+    - cron
 ```

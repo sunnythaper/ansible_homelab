@@ -1,0 +1,20 @@
+---
+- name: Set cron job permissions
+  file:
+    path: "/etc/{{ item }}"
+    owner: root
+    group: root
+    mode: 0700
+  with_items:
+    - cron.d
+    - cron.daily
+    - cron.hourly
+    - cron.weekly
+    - cron.monthly
+
+- name: Set crontab permissions
+  file:
+    path: /etc/crontab
+    owner: root
+    group: root
+    mode: 0600

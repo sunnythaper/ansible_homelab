@@ -28,3 +28,14 @@
     group: root
     mode: 0600
   notify: Restart sshd
+
+- name: Set permissions
+  file:
+    path: "{{ item }}"
+    owner: root
+    group: root
+    mode: 0600
+  with_items:
+    - /etc/ssh/sshd_config
+    - /etc/shadow
+  notify: Restart sshd

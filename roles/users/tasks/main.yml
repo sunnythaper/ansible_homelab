@@ -76,3 +76,25 @@
   user:
     name: root
     password_lock: 'yes'
+
+
+- name: Grab all home directories
+  find:
+    paths: /home
+    file_type: directory
+  register: home_directories
+
+- name: Set home directory permissions
+  file:
+    mode: 0750
+    path: "{{ item.path }}"
+  with_items: "{{ home_directories.files }}"
+  no_log: true
+
+- name: Set sudoers.d permissions
+  file:
+    state: directory
+    path: /etc/sudoers.d
+    owner: root
+    group: root
+    mode: 0750

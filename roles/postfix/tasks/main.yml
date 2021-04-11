@@ -1,9 +1,9 @@
 ---
-- name: Copy Postfix configuration template to be more secure
+- name: Copy Postfix config
   template:
     src: templates/etc/postfix/main.cf.j2
     dest: /etc/postfix/main.cf
     owner: root
     group: root
-    mode: '644'
+    mode: 0644
   notify: Restart postfix

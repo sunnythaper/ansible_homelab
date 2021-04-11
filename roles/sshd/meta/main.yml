@@ -4,4 +4,4 @@ dependencies: []
 galaxy_info:
   role_name: sshd
   author: sunnythaper
-  description: Configure sshd on a security-forward approach
+  description: Configure sshd in a security-forward approach

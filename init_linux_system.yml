@@ -21,4 +21,5 @@
     - fail2ban
     - rkhunter
     - sshd
-    - ubuntu
+    - postfix
+    - cron
