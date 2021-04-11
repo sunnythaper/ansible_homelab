@@ -1,7 +1,5 @@
 ---
 users:
-  add: []
-  docker: []
   remove:
     - games
     - gnats
@@ -10,11 +8,10 @@ users:
     - news
     - sync
     - uucp
-  sudo: "{{ vault.users.sudo | default([]) }}"
+  sudo: "{{ vault.users.sudo | default(omit) }}"
   sudoers:
     conf:
       - line: 'Defaults logfile="/var/log/sudo.log"'
         regex: "^Defaults logfile.*"
       - line: Defaults use_pty
         regex: "^Defaults use_pty"
-  system: []
