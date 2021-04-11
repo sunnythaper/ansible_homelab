@@ -62,3 +62,8 @@
     user: "{{ item.name }}"
   no_log: true
   with_items: "{{ users.sudo }}"
+
+- name: Lock root account
+  user:
+    name: root
+    password_lock: 'yes'

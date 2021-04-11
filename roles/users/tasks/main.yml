@@ -18,12 +18,6 @@
   include_tasks: add_sudo_users.yml
   when: users.sudo is defined
 
-- name: Lock root account
-  user:
-    name: root
-    password_lock: 'yes'
-  when: users.sudo is defined
-
 - name: List home directories
   find:
     file_type: directory
