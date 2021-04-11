@@ -2,7 +2,7 @@
 - name: Install sudo via apt
   apt:
     install_recommends: no
-    name: "{{ users.apt.install }}"
+    name: sudo
     state: latest
 
 - name: Set /etc/sudoers config
@@ -12,8 +12,8 @@
     regexp: "{{ item.regex }}"
     state: present
     validate: "visudo -cf %s"
-  when: sudoers.conf is defined
-  with_items: "{{ sudoers.conf }}"
+  when: users.sudoers.conf is defined
+  with_items: "{{ users.sudoers.conf }}"
 
 - name: Add users
   no_log: true

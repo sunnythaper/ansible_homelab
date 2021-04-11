@@ -18,15 +18,5 @@
   include_tasks: add_sudo_users.yml
   when: users.sudo is defined
 
-- name: List home directories
-  find:
-    file_type: directory
-    paths: /home
-  register: home_directories
-
 - name: Set home directory permissions
-  file:
-    mode: 0750
-    path: "{{ item.path }}"
-  no_log: true
-  with_items: "{{ home_directories.files }}"
+  include_tasks: set_permissions.yml
