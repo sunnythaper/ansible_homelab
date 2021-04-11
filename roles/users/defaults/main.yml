@@ -1,4 +1,11 @@
 ---
+sudoers:
+  conf:
+    - line: 'Defaults logfile="/var/log/sudo.log"'
+      regex: "^Defaults logfile.*"
+    - line: Defaults use_pty
+      regex: "^Defaults use_pty"
+
 users:
   apt:
     install:

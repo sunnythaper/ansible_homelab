@@ -1,0 +1,8 @@
+---
+- name: Remove users
+  ignore_errors: true
+  user:
+    name: "{{ item }}"
+    remove: 'yes'
+    state: absent
+  with_items: "{{ users.remove }}"

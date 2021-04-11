@@ -1,100 +1,39 @@
 ---
-- name: Install sudo via apt
-  apt:
-    name: "{{ users.apt.install }}"
-    state: latest
-    install_recommends: no
-
-- name: Set sudo commands to use pty and be logged
-  lineinfile:
-    dest: /etc/sudoers
-    state: present
-    regexp: "{{ item.regex }}"
-    line: "{{ item.line }}"
-    validate: "visudo -cf %s"
-  with_items:
-    - { line: "Defaults use_pty", regex: "^Defaults use_pty" }
-    - { line: 'Defaults logfile="/var/log/sudo.log"', regex: "^Defaults logfile.*" }
-
-- name: Remove unneccesary users
-  user:
-    name: "{{ item }}"
-    state: absent
-    remove: 'yes'
-  with_items: "{{ users.remove }}"
-  ignore_errors: true
-
-- name: Create groups for users
+- name: Create groups
   group:
-    name: "{{ item.name }}"
-    state: present
     gid: "{{ item.gid }}"
-  with_items: "{{ vault.users.sudo }}"
-  no_log: true
-
-- name: Add users
-  user:
     name: "{{ item.name }}"
-    groups: "sudo,{{ item.name }}"
-    password: "{{ item.password }}"
     state: present
-    shell: "{{ item.shell }}"
-    uid: "{{ item.uid }}"
-    expires: "{{ item.expires }}"
-  with_items: "{{ vault.users.sudo }}"
   no_log: true
+  with_items:
+    - "{{ users.add | default(omit) }}"
+    - "{{ users.sudo | default(omit) }}"
+    - "{{ users.system | default(omit) }}"
+    - "{{ vault.users.sudo | default(omit) }}"
 
-- name: Grant sudo privileges
-  lineinfile:
-    dest: /etc/sudoers.d/{{ item.name }}
-    regexp: '^{{ item.name }}'
-    line: '{{ item.name }} ALL=(ALL) ALL'
-    state: present
-    mode: 0440
-    create: "yes"
-    validate: 'visudo -cf %s'
-  with_items: "{{ vault.users.sudo }}"
-  no_log: true
+- name: Remove users
+  include_tasks: remove_users.yml
+  when: users.remove is defined
 
-- name: Set includedir to include /etc/sudoers.d
-  lineinfile:
-    dest: /etc/sudoers
-    line: '#includedir /etc/sudoers.d'
-    state: present
-    validate: '/usr/sbin/visudo -cf %s'
-
-- name: Set authorized keys
-  authorized_key:
-    user: "{{ item.name }}"
-    state: present
-    exclusive: True
-    key: "{{ item.key }}"
-  with_items: "{{ vault.users.sudo }}"
-  no_log: true
+- name: Add sudo users
+  include_tasks: add_sudo_users.yml
+  when: users.sudo is defined or vault.users.sudo is defined
 
 - name: Lock root account
   user:
     name: root
     password_lock: 'yes'
+  when: users.sudo is defined or vault.users.sudo is defined
 
-
-- name: Grab all home directories
+- name: List home directories
   find:
-    paths: /home
     file_type: directory
+    paths: /home
   register: home_directories
 
 - name: Set home directory permissions
   file:
     mode: 0750
     path: "{{ item.path }}"
-  with_items: "{{ home_directories.files }}"
   no_log: true
-
-- name: Set sudoers.d permissions
-  file:
-    state: directory
-    path: /etc/sudoers.d
-    owner: root
-    group: root
-    mode: 0750
+  with_items: "{{ home_directories.files }}"
