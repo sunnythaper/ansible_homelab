@@ -1,18 +1,15 @@
 ---
 users:
-  add: "{{ host.users.add | default(omit) }}"
-  sudo:
-    - "{{ host.users.sudo | default(omit) }}"
-    - "{{ vault.users.sudo | default(omit) }}"
+  add: []
+  sudo: "{{ vault.users.sudo | default([omit]) }}"
   sudoers:
     conf:
       - line: 'Defaults logfile="/var/log/sudo.log"'
         regex: "^Defaults logfile.*"
       - line: Defaults use_pty
         regex: "^Defaults use_pty"
-  system:  "{{ host.users.system | default(omit) }}"
+  system: []
   remove:
-    - "{{ host.users.remove | default(omit) }}"
     - games
     - gnats
     - irc
