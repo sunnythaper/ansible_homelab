@@ -14,6 +14,10 @@
   include_tasks: remove_users.yml
   when: users.remove is defined
 
+- name: Add users
+  include_tasks: add_users.yml
+  when: users.add is defined
+
 - name: Add sudo users
   include_tasks: add_sudo_users.yml
   when: users.sudo is defined
