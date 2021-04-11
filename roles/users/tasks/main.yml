@@ -19,6 +19,10 @@
   include_tasks: add_users.yml
   when: users.add is defined
 
+- name: Add docker users
+  include_tasks: add_docker_users.yml
+  when: users.docker is defined
+
 - name: Add sudo users
   include_tasks: add_sudo_users.yml
   when: users.sudo is defined

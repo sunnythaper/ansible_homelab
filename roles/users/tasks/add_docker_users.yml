@@ -3,10 +3,10 @@
   no_log: true
   user:
     expires: "{{ item.expires | default('-1') }}"
-    group: "{{ item.name }}"
+    groups: "{{ item.name }},docker"
     name: "{{ item.name }}"
     password: "{{ item.password }}"
     shell: "{{ item.shell | default('/bin/bash') }}"
     state: present
     uid: "{{ item.uid }}"
-  with_items: "{{ users.add }}"
+  with_items: "{{ users.docker }}"
