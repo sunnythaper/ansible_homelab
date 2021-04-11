@@ -10,8 +10,9 @@ users:
   apt:
     install:
       - sudo
-  sudo:
-    - "{{ vault.users.sudo | default(omit) }}"
+  add: []
+  sudo: "{{ vault.users.sudo | default(omit) }}"
+  system: []
   remove:
     - games
     - gnats
