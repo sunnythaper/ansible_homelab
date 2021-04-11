@@ -4,7 +4,7 @@
     gid: "{{ item.gid }}"
     name: "{{ item.name }}"
     state: present
-  no_log: true
+  # no_log: true
   with_items:
     - "{{ users.add | default(omit) }}"
     - "{{ users.sudo | default(omit) }}"
