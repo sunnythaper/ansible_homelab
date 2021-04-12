@@ -1,9 +1,7 @@
 ---
 - name: Install ufw via apt
   apt:
-    name:
-      - iptables
-      - ufw
+    name: "{{ ufw.apt.install }}"
     state: latest
     install_recommends: no
 
@@ -25,14 +23,18 @@
     state: "{{ item.state | default(omit) }}"
     to_ip: "{{ item.to_ip | default(omit) }}"
     to_port: "{{ item.to_port | default(omit) }}"
-  with_items: "{{ ufw.rules }}"
+  with_items:
+    - "{{ ufw.rules }}"
+    - "{{ app.ufw.rules | default([]) }}"
 
 - name: Set firewall application rules via ufw
   ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
   when: ufw.applications is defined
-  with_items: "{{ ufw.applications }}"
+  with_items:
+    - "{{ ufw.applications }}"
+    - "{{ app.ufw.applications | default([]) }}"
 
 - name: Copy ufw configuration to /etc/default/ufw
   template:

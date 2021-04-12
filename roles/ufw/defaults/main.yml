@@ -1,5 +1,9 @@
 ---
 ufw:
+  apt:
+    install:
+      - iptables
+      - ufw
   conf:
     DEFAULT_APPLICATION_POLICY: SKIP
     DEFAULT_FORWARD_POLICY: DROP
@@ -9,7 +13,6 @@ ufw:
     MANAGE_BUILTINS: no
     IPT_SYSCTL: /etc/ufw/sysctl.conf
   rules:
-    - "{{ custom.ufw.rules | default({}) }}"
     - port: "{{ sshd.conf.Port | default(22) }}"
       proto: tcp
       rule: allow
