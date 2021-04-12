@@ -5,4 +5,6 @@
     name: "{{ item }}"
     remove: 'yes'
     state: absent
-  with_items: "{{ users.remove }}"
+  with_items:
+    - "{{ app.users.remove | default([]) }}"
+    - "{{ users.remove }}"

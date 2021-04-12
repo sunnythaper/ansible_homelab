@@ -1,5 +1,8 @@
 ---
 users:
+  apt:
+    install:
+      - sudo
   remove:
     - games
     - gnats
@@ -8,7 +11,6 @@ users:
     - news
     - sync
     - uucp
-  sudo: "{{ vault.users.sudo | default(omit) }}"
   sudoers:
     conf:
       - line: 'Defaults logfile="/var/log/sudo.log"'

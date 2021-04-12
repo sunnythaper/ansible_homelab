@@ -2,7 +2,7 @@
 - name: Install sudo via apt
   apt:
     install_recommends: no
-    name: sudo
+    name: "{{ users.apt.install }}"
     state: latest
 
 - name: Set /etc/sudoers config
@@ -12,7 +12,6 @@
     regexp: "{{ item.regex }}"
     state: present
     validate: "visudo -cf %s"
-  when: users.sudoers.conf is defined
   with_items: "{{ users.sudoers.conf }}"
 
 - name: Add users
@@ -25,7 +24,9 @@
     shell: "{{ item.shell | default('/bin/bash') }}"
     state: present
     uid: "{{ item.uid }}"
-  with_items: "{{ users.sudo }}"
+  with_items:
+    - "{{ app.users.sudo | default([]) }}"
+    = "{{ vault.users.sudo | default([]) }}"
 
 - name: Grant sudo privileges
   lineinfile:
@@ -37,7 +38,9 @@
     state: present
     validate: 'visudo -cf %s'
   no_log: true
-  with_items: "{{ users.sudo }}"
+  with_items:
+    - "{{ app.users.sudo | default([]) }}"
+    = "{{ vault.users.sudo | default([]) }}"
 
 - name: Set includedir to include /etc/sudoers.d
   lineinfile:
@@ -61,7 +64,9 @@
     state: present
     user: "{{ item.name }}"
   no_log: true
-  with_items: "{{ users.sudo }}"
+  with_items:
+    - "{{ app.users.sudo | default([]) }}"
+    = "{{ vault.users.sudo | default([]) }}"
 
 - name: Lock root account
   user:
