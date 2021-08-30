@@ -1,0 +1,8 @@
+---
+nginx:
+  apt:
+    install:
+      - nginx
+  path:
+    available: /etc/nginx/sites-available
+    enabled: /etc/nginx/sites-enabled

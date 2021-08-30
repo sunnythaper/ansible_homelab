@@ -2,7 +2,7 @@
 - hosts: all
 
   vars_files:
-    - defaults/awx_system.yml
+    - defaults/nginx_system.yml
     - vars/vault.yml
 
   roles:

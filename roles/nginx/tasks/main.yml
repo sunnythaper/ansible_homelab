@@ -1,0 +1,25 @@
+---
+- name: Install nginx via apt
+  apt:
+    name: "{{ nginx.apt.install }}"
+    state: latest
+    install_recommends: no
+
+- name: Remove default nginx config
+  file:
+    path: "{{ nginx.path.enabled }}/default"
+    state: absent
+  notify: Restart nginx
+  when: app.nginx.sites is defined
+
+- name: Copy nginx reverse proxy config(s)
+  template:
+    src: templates/reverse-proxy.j2
+    dest: "{{ nginx.path.available }}/{{ item.domain }}"
+    force: no
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - "{{ app.nginx.sites.reverse_proxy | default([]) }}"
+  notify: Reload nginx
