@@ -8,5 +8,4 @@
     password: "{{ item.password }}"
     shell: "{{ item.shell | default('/bin/bash') }}"
     state: present
-    uid: "{{ item.uid }}"
   with_items: "{{ app.users.add }}"
