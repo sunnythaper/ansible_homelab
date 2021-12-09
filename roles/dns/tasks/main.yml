@@ -1,25 +1,4 @@
 ---
-- name: Set hostname
-  hostname:
-    name: "{{ dns.hostname }}"
-
-- name: Copy hosts file
-  template:
-    src: etc/hosts.j2
-    dest: /etc/hosts
-    mode: 0644
-    owner: root
-    group: root
-
-- name: Copy resolv.conf
-  template:
-    src: etc/resolv.conf.j2
-    dest: /etc/resolv.conf
-    mode: 0644
-    owner: root
-    group: root
-  notify: Restart systemd
-
 - name: Copy resolved.conf
   template:
     src: etc/systemd/resolved.conf.j2

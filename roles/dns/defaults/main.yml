@@ -7,7 +7,3 @@ dns:
     Cache: no-negative
     DNSStubListener: "yes"
     ReadEtcHosts: "yes"
-  domain: "{{ vault.host.domain | default('example.com') }}"
-  hostname: "{{ inventory_hostname }}"
-  ip: "{{ ansible_host }}"
-  nameservers: "{{ vault.host.nameservers | default('1.1.1.1', '1.0.0.1') }}"
