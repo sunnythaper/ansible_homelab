@@ -1,0 +1,10 @@
+---
+crowdsec:
+  apt:
+    prereqs:
+      - curl
+      - gnupg
+      - apt-transport-https
+    install:
+      - crowdsec
+      - crowdsec-firewall-bouncer-iptables
