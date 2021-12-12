@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: linuxgsm
-  author: sunnythaper
-  description: Install and upgrade games via linuxgsm

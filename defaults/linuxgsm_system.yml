@@ -1,9 +1,0 @@
----
-app:
-  name: {{ linuxgsm.server }}
-  users:
-    add:
-      - name: {{ linuxgsm.server }}
-        password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
-        gid: 1000
-        uid: 1000

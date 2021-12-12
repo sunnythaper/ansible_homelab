@@ -1,7 +1,0 @@
----
-- name: "Install {{ pip.package }} via apt"
-  apt:
-    install_recommends: no
-    name: "{{ pip.package }}"
-    state: latest
-    update_cache: yes

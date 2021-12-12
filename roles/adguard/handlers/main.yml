@@ -1,5 +1,0 @@
-- name: Restart adguard
-  service:
-    name: AdGuardHome
-    state: restarted
-    enabled: yes

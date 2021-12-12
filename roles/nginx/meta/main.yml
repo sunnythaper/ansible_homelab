@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: nginx
-  author: sunnythaper
-  description: Configure nginx in a security-forward approach

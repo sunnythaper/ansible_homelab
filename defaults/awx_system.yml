@@ -1,9 +1,0 @@
----
-app:
-  name: awx
-  users:
-    docker:
-      - name: awx
-        password: "{{ admin_password | password_hash('sha512', admin_password_salt) }}"
-        gid: 1090
-        uid: 1090

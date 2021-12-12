@@ -1,7 +1,0 @@
----
-- name: "Restart {{ lgsm_server }} server"
-  become: true
-  become_user: "{{ lgsm_server }}"
-  command: "/home/{{ lgsm_server }}/{{ lgsm_server }} restart"
-  register: restart_server
-  changed_when: "'Starting' in restart_server.stdout"

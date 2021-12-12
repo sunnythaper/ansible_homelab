@@ -1,9 +1,0 @@
----
-docker:
-  apt:
-    install:
-      - docker-ce
-    prereqs:
-      - apt-transport-https
-      - ca-certificates
-      - gnupg

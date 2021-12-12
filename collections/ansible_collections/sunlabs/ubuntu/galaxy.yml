@@ -1,0 +1,14 @@
+namespace: "sunlabs"
+name: "ubuntu"
+version: "0.0.1"
+readme: "README.md"
+authors:
+    - "Sunny Thaper (https://github.com/sunnythaper)"
+license:
+    - "MIT"
+tags:
+    - homelab
+    - sunlabs
+    - sunnythaper
+    - ubuntu
+repository: "https://github.com/sunnythaper/ansible_homelab"

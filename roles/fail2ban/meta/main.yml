@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: fail2ban
-  author: sunnythaper
-  description: Install & configure fail2ban with enforced profiles

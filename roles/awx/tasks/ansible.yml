@@ -1,5 +1,0 @@
----
-- name: "Install {{ ansible.package }} via pip"
-  pip:
-    name: "{{ ansible.package }}"
-    state: latest
