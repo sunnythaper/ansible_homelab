@@ -8,3 +8,4 @@ teleport:
   auth_server: "{{ config.teleport.controller | default(omit) }}"
   auth_token: "{{ teleport_auth_token | default(omit) }}"
   ca_pin: "{{ config.teleport.ca_pin | default(omit) }}"
+  labels: "{{ teleport_labels | default(omit) }}"
