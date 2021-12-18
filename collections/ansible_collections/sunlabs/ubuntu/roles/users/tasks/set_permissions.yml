@@ -9,5 +9,4 @@
   file:
     mode: 0750
     path: "{{ item.path }}"
-  no_log: true
   with_items: "{{ home_directories.files }}"

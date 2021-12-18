@@ -36,7 +36,6 @@
     regexp: '^{{ item.name }}'
     state: present
     validate: 'visudo -cf %s'
-  no_log: true
   with_items:
     - "{{ app.users.sudo | default([]) }}"
     - "{{ config.users.sudo | default([]) }}"
@@ -62,7 +61,6 @@
     key: "{{ item.key }}"
     state: present
     user: "{{ item.name }}"
-  no_log: true
   with_items:
     - "{{ app.users.sudo | default([]) }}"
     - "{{ config.users.sudo | default([]) }}"

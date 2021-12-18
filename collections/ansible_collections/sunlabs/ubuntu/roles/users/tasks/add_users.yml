@@ -1,6 +1,5 @@
 ---
 - name: Add users
-  no_log: true
   user:
     expires: "{{ item.expires | default('-1') }}"
     group: "{{ item.name }}"
