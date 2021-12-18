@@ -5,4 +5,4 @@
     - vars/vault.yml
 
   tasks:
-    - sunlabs.ubunutu.init
+    - import_playbook: sunlabs.ubunutu.init
