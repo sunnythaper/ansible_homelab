@@ -5,4 +5,4 @@
     - vars/vault.yml
 
   tasks:
-    - sunlabs.ubunutu.init
+    - sunlabs.ubunutu.init_system
