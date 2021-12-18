@@ -1,0 +1,17 @@
+---
+- name: Add teleport gpg key to apt
+  apt_key:
+    url: "{{ teleport.apt.key }}"
+    state: present
+
+- name: Add teleport repo to apt
+  apt_repository:
+    repo: "{{ teleport.apt.repo }}"
+    update_cache: true
+    state: present
+
+- name: Install teleport via apt
+  apt:
+    install_recommends: no
+    name: "{{ teleport.apt.install }}"
+    state: latest

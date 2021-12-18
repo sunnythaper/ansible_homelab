@@ -1,0 +1,10 @@
+---
+teleport:
+  apt:
+    key: https://deb.releases.teleport.dev/teleport-pubkey.asc
+    repo: deb https://deb.releases.teleport.dev/ stable main
+    install:
+      - teleport
+  auth_server: "{{ config.teleport.controller | default(omit) }}"
+  auth_token: "{{ config.teleport.auth_token | default(omit) }}"
+  ca_pin: "{{ config.teleport.ca_pin | default(omit) }}"
