@@ -15,3 +15,11 @@
     install_recommends: no
     name: "{{ teleport.apt.install }}"
     state: latest
+
+- name: Copy teleport config
+  template:
+    src: "templates/teleport.yaml.j2"
+    dest: "/etc/teleport.yaml"
+    owner: root
+    group: root
+    mode: 0600
