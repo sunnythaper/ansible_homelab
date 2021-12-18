@@ -35,4 +35,4 @@
   service:
     name: teleport
     enabled: yes
-    status: started
+    state: started
