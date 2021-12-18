@@ -14,4 +14,4 @@ tags:
   - ubuntu
 repository: "https://github.com/sunnythaper/ansible_homelab"
 dependencies:
-  - "community.general": "*"
+  "community.general": "*"
