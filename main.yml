@@ -1,7 +1,4 @@
 ---
 - hosts: all
 
-  vars_files:
-    - vars/vault.yml
-
 - import_playbook: sunlabs.ubuntu.init
