@@ -5,7 +5,7 @@ teleport:
     repo: deb https://deb.releases.teleport.dev/ stable main
     install:
       - teleport
-  auth_server: "{{ config.teleport.auth_server | default(omit) }}"
-  auth_token: "{{ teleport_auth_token | default(omit) }}"
-  ca_pin: "{{ config.teleport.ca_pin | default(omit) }}"
+  auth_server: "{{ config.teleport.auth_server | default(false) }}"
+  auth_token: "{{ teleport_auth_token | default(false) }}"
+  ca_pin: "{{ config.teleport.ca_pin | default(false) }}"
   labels: "{{ teleport_labels | default(false) }}"

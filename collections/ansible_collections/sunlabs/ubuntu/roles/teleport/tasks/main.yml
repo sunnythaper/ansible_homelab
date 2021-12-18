@@ -23,3 +23,16 @@
     owner: root
     group: root
     mode: 0600
+  register: teleport_config
+
+- name: Stop teleport if config changed
+  service:
+    name: teleport
+    state: stopped
+  when: teleport_config.changed
+
+- name: Start teleport service
+  service:
+    name: teleport
+    enabled: yes
+    status: started
