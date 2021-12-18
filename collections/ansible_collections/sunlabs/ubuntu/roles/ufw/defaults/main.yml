@@ -19,3 +19,6 @@ ufw:
     - port: 53
       proto: any
       rule: allow
+    - port: 3022
+      proto: tcp
+      rule: allow
