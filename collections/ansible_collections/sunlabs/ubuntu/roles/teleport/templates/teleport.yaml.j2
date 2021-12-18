@@ -20,6 +20,8 @@ teleport:
   diag_addr: ""
 auth_service:
   enabled: "no"
+proxy_service:
+  enabled: "no"
 ssh_service:
   enabled: "yes"
   pam:
@@ -31,5 +33,3 @@ ssh_service:
     {{ label }}: {{ value }}
     {% endfor %}
 {% endif %}
-proxy_service:
-  enabled: "no"
