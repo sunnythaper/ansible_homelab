@@ -4,25 +4,5 @@
   vars_files:
     - vars/vault.yml
 
-  collections:
-    - sunlabs.ubuntu
-
-  roles:
-    - sunlabs.ubuntu.timedatectl
-    - sunlabs.ubuntu.dns
-    - sunlabs.ubuntu.apt
-    - sunlabs.ubuntu.apparmor
-    - sunlabs.ubuntu.aide
-    - sunlabs.ubuntu.sysctl
-    - sunlabs.ubuntu.modprobe
-    - sunlabs.ubuntu.coredump
-    - sunlabs.ubuntu.ufw
-    - sunlabs.ubuntu.unattended_upgrades
-    - sunlabs.ubuntu.logindefs
-    - sunlabs.ubuntu.cracklib
-    - sunlabs.ubuntu.users
-    - sunlabs.ubuntu.crowdsec
-    - sunlabs.ubuntu.rkhunter
-    - sunlabs.ubuntu.sshd
-    - sunlabs.ubuntu.postfix
-    - sunlabs.ubuntu.cron
+  tasks:
+    - sunlabs.ubunutu.init
