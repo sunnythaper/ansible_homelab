@@ -11,11 +11,11 @@ Tested with Ansible 2.8.5
 Role Variables
 --------------
 
-Default is to setup most settings via magic variables or vault variables (since I'd like to keep this info consistent yet private) and can be overwritten with the following:
+Default is to setup most settings via magic variables or config  variables and can be overwritten with the following:
 
 ```yaml
 ---
-vault:
+config:
   host:
     domain: example.com
     nameservers:

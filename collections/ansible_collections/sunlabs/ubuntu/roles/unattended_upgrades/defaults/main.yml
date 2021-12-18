@@ -7,7 +7,7 @@ unattendedupgrades:
     Automatic_Reboot: "true"
     Debug: "false"
     InstallOnShutdown: "false"
-    Mail: "{{ vault.host.email | default('admin@example.com') }}"
+    Mail: "{{ config.email | default('admin@example.com') }}"
     MailOnlyOnError: true
     MinimalSteps: "true"
     OnlyOnACPower: "true"

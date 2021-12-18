@@ -10,7 +10,7 @@
     - "{{ app.users.docker | default([]) }}"
     - "{{ app.users.sudo | default([]) }}"
     - "{{ app.users.system | default([]) }}"
-    - "{{ vault.users.sudo | default([]) }}"
+    - "{{ config.users.sudo | default([]) }}"
 
 - name: Remove users
   include_tasks: remove_users.yml
@@ -26,7 +26,7 @@
 
 - name: Add sudo users
   include_tasks: add_sudo_users.yml
-  when: app.users.sudo is defined or vault.users.sudo is defined
+  when: app.users.sudo is defined or config.users.sudo is defined
 
 - name: Set home directory permissions
   include_tasks: set_permissions.yml

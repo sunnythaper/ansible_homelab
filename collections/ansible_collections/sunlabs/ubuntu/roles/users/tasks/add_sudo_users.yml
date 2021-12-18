@@ -25,7 +25,7 @@
     state: present
   with_items:
     - "{{ app.users.sudo | default([]) }}"
-    - "{{ vault.users.sudo | default([]) }}"
+    - "{{ config.users.sudo | default([]) }}"
 
 - name: Grant sudo privileges
   lineinfile:
@@ -39,7 +39,7 @@
   no_log: true
   with_items:
     - "{{ app.users.sudo | default([]) }}"
-    - "{{ vault.users.sudo | default([]) }}"
+    - "{{ config.users.sudo | default([]) }}"
 
 - name: Set includedir to include /etc/sudoers.d
   lineinfile:
@@ -65,7 +65,7 @@
   no_log: true
   with_items:
     - "{{ app.users.sudo | default([]) }}"
-    - "{{ vault.users.sudo | default([]) }}"
+    - "{{ config.users.sudo | default([]) }}"
 
 - name: Lock root account
   user:
