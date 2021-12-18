@@ -4,7 +4,4 @@
   vars_files:
     - vars/vault.yml
 
-  collections:
-    - sunlabs.ubuntu
-
 - import_playbook: sunlabs.ubuntu.init
