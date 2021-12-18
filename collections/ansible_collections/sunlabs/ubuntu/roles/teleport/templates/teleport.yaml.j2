@@ -27,9 +27,9 @@ ssh_service:
     service_name: "sshd"
 {% if teleport.labels %}
   labels:
-{% for label, value in teleport.labels | dictsort -%}
+    {% for label, value in teleport.labels | dictsort -%}
     {{ label }}: {{ value }}
-{% endfor %}
+    {% endfor %}
 {% endif %}
 proxy_service:
   enabled: "no"
