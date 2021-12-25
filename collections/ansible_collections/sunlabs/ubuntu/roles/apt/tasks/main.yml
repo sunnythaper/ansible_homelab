@@ -27,9 +27,12 @@
   ignore_errors: true
   when: apt.remove is defined
 
-- name: Autoclean & autoremove packages
+- name: Autoclean packages
   apt:
     autoclean: yes
+
+- name: Autoremove packages
+  apt:
     autoremove: yes
 
 - name: Purge packages
