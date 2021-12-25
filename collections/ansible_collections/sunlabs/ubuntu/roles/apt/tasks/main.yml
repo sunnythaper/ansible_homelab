@@ -24,11 +24,11 @@
   apt:
     name: "{{ apt.remove }}"
     state: absent
-    autoclean: yes
-    autoremove: yes
   ignore_errors: true
   when: apt.remove is defined
 
 - name: Purge packages
   apt:
+    autoclean: yes
+    autoremove: yes
     purge: 'yes'
