@@ -30,5 +30,5 @@ logindefs:
     TTYPERM: 0600
     UID_MAX: 60000
     UID_MIN: 1000
-    UMASK: 077
+    UMASK: 027
     USERGROUPS_ENAB: "no"
