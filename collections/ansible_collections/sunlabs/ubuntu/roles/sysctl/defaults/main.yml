@@ -70,7 +70,6 @@ sysctl:
       kernel.core_uses_pid: 1
       kernel.dmesg_restrict: 1
       kernel.kptr_restrict: 2
-      kernel.modules_disabled: 0
       kernel.panic_on_oops: 60
       kernel.panic: 60
       kernel.perf_event_paranoid: 3
@@ -80,7 +79,5 @@ sysctl:
       kernel.yama.ptrace_scope: 2
       net.core.bpf_jit_harden: 2
       net.ipv4.conf.all.mc_forwarding: 0
-      net.netfilter.nf_conntrack_max: 2000000
-      net.netfilter.nf_conntrack_tcp_loose: 0
       vm.swappiness: 10
       vm.vfs_cache_pressure: 150
