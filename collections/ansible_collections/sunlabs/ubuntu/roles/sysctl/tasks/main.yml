@@ -16,7 +16,7 @@
     sysctl_set: yes
     reload: yes
   with_dict: "{{ sysctl.conf.vm }}"
-  when: 'kvm' in ansible_virtualization_type
+  when: "'kvm' in ansible_virtualization_type"
 
 - name: Check if reboot is required
   register: reboot_required
