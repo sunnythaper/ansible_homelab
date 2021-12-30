@@ -8,6 +8,16 @@
     reload: yes
   with_dict: "{{ sysctl.conf.ct }}"
 
+- name: Configure additional sysctl settings
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value | int }}"
+    state: present
+    sysctl_set: yes
+    reload: yes
+  with_dict: "{{ sysctl.conf.vm }}"
+  when: 'kvm' in ansible_virtualization_type
+
 - name: Check if reboot is required
   register: reboot_required
   stat:
