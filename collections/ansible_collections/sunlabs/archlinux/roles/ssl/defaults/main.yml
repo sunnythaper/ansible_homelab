@@ -1,6 +1,6 @@
 ---
 ssl:
-  name: "{{ansible_dns.search | default('example.com')}}"
+  name: "{{ansible_dns.search | default(example.com)}}"
   path:
     cert: '/etc/ssl/crt/{{ssl.name}}.crt'
     private: '/etc/ssl/private/{{ssl.name}}.pem'
