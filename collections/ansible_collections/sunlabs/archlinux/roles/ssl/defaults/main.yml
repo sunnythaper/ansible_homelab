@@ -1,7 +1,7 @@
 ---
 ssl:
-  name: "{{ansible_dns.search | default('example.com')}}"
+  name: "{{ansible_dns.search[0] | default('example.com')}}"
   path:
-    cert: "/etc/ssl/certs/{{ansible_dns.search | default('example.com')}}.crt"
-    private: "/etc/ssl/private/{{ansible_dns.search | default('example.com')}}.pem"
+    cert: "/etc/ssl/certs/{{ansible_dns.search[0] | default('example.com')}}.crt"
+    private: "/etc/ssl/private/{{ansible_dns.search[0] | default('example.com')}}.pem"
   type: Ed448
