@@ -6,3 +6,13 @@
     name: nzbget-git
     state: latest
     use: yay
+
+- name: Copy config file
+  ansible.builtin.copy:
+    remote_src: yes
+    force: no
+    src: /usr/share/nzbget/nzbget.conf
+    dest: /var/lib/nzbget/.nzbget
+    owner: nzbget
+    group: nzbget
+    mode: '0750'
