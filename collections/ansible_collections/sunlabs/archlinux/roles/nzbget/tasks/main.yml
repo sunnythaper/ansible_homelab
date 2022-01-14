@@ -1,0 +1,6 @@
+---
+- name: Install `nzbget-git` using yay
+  kewlfft.aur.aur:
+    name: nzbget-git
+    state: latest
+    use: yay
