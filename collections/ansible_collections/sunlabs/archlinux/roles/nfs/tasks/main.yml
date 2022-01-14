@@ -6,6 +6,7 @@
     state: latest
 
 - name: Create /mnt/nas directory
+  become: yes
   ansible.builtin.file:
     force: yes
     group: mediacenter
