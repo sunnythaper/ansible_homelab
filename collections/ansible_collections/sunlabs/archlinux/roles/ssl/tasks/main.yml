@@ -17,7 +17,6 @@
     group: mediacenter
     mode: '0640'
     path: '{{ssl.path.private}}'
-    type: '{{ssl.type}}'
 
 - name: Create certificate signing request (CSR)
   become: yes

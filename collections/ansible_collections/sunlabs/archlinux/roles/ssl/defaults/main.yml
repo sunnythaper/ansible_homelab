@@ -4,4 +4,3 @@ ssl:
   path:
     cert: "/etc/ssl/certs/{{ansible_dns.search[0] | default('example.com')}}.crt"
     private: "/etc/ssl/private/{{ansible_dns.search[0] | default('example.com')}}.pem"
-  type: RSA
