@@ -1,5 +1,6 @@
 ---
 - name: Install `nfs-utils` via pacman
+  become: yes
   pacman:
     name: nfs-utils
     state: latest
