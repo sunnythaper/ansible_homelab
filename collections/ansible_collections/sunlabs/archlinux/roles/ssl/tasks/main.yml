@@ -1,0 +1,18 @@
+---
+- name: Generate OpenSSL private key
+  community.crypto.openssl_privatekey:
+    path: '{{ssl.path.private}}'
+    type: '{{ssl.type}}'
+
+- name: Create certificate signing request (CSR)
+  community.crypto.openssl_csr_pipe:
+    privatekey_path: '{{ssl.path.private}}'
+    common_name: '{{ssl.name}}'
+  register: csr
+
+- name: Create self-signed certificate from CSR
+  community.crypto.x509_certificate:
+    path: '{{ssl.path.cert}}'
+    csr_content: "{{ csr.csr }}"
+    privatekey_path: '{{ssl.path.private}}'
+    provider: selfsigned

@@ -3,5 +3,6 @@
 
   roles:
     - pacman
+    - ssl
     - nzbget
     - prowlarr

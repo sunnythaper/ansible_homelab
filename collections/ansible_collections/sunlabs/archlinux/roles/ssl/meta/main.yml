@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: ssl
+  author: sunnythaper
+  description: Generate self-signed ssl certificates
