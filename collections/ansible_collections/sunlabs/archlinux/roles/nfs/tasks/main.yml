@@ -1,4 +1,9 @@
 ---
+- name: Install `nfs-utils` via pacman
+  pacman:
+    name: nfs-utils
+    state: latest
+
 - name: Mount an NFS volume
   become: yes
   ansible.posix.mount:
