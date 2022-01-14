@@ -1,0 +1,8 @@
+---
+- name: Install `prowlarr` using yay
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: prowlarr
+    state: latest
+    use: yay

@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: prowlarr
+  author: sunnythaper
+  description: Install and configure prowlarr
