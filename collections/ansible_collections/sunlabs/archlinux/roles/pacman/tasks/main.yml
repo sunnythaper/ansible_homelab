@@ -3,6 +3,7 @@
   community.general.pacman:
     update_cache: yes
     upgrade: yes
+  become: yes
 
 - name: Install Yay
   kewlfft.aur.aur:
