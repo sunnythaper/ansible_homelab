@@ -1,0 +1,12 @@
+---
+- name: Update packages to latest
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install Yay
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+    state: present
+  become: yes

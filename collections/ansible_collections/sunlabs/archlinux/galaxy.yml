@@ -1,0 +1,15 @@
+namespace: "sunlabs"
+name: "archlinux"
+version: "0.0.1"
+readme: "README.md"
+description: "Initialize & maintain a standard Arch Linux system in a security-forward approach."
+authors:
+  - "Sunny Thaper (https://github.com/sunnythaper)"
+license:
+  - "MIT"
+tags:
+  - homelab
+  - sunlabs
+  - sunnythaper
+  - archlinux
+repository: "https://github.com/sunnythaper/ansible_homelab"
