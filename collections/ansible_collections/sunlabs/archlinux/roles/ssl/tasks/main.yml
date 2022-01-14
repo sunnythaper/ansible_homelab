@@ -6,6 +6,7 @@
     state: latest
 
 - name: Create mediacenter group
+  become: yes
   ansible.builtin.group:
     name: mediacenter
     state: present

@@ -8,6 +8,7 @@
     use: yay
 
 - name: Add nzbget user to mediacenter group
+  become: yes
   ansible.builtin.user:
     name: nzbget
     groups: mediacenter
