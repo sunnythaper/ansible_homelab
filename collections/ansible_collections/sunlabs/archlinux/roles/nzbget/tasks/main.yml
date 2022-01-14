@@ -10,13 +10,26 @@
 - name: Copy config file
   become: yes
   ansible.builtin.copy:
-    dest: /var/lib/nzbget/.nzbget
+    dest: "{{nzbget.path.config}}"
     force: no
     group: nzbget
     mode: '0750'
     owner: nzbget
     remote_src: yes
     src: /usr/share/nzbget/nzbget.conf
+
+- name: Enable SSL options in config file
+  ansible.builtin.lineinfile:
+    path: "{{nzbget.path.config}}"
+    regexp: "{{item.regex}}"
+    line: "{{item.line}}"
+  with_items:
+    - line: SecureControl=yes
+      regex: '^SecureControl='
+    - line: "SecureCert={{ssl.path.cert}}"
+      regex: '^SecureCert='
+    - line: "SecureKey={{ssl.path.private}}"
+      regex: '^SecureKey='
 
 - name: Enable nzbget service using systemd
   become: yes

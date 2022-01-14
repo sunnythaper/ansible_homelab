@@ -1,0 +1,4 @@
+---
+nzbget:
+  path:
+    config: /var/lib/nzbget/.nzbget
