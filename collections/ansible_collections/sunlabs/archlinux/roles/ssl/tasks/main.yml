@@ -1,4 +1,9 @@
 ---
+- name: Install `python-cryptography` via pacman
+  community.general.pacman:
+    name: python-cryptography
+    state: latest
+
 - name: Generate OpenSSL private key
   community.crypto.openssl_privatekey:
     path: '{{ssl.path.private}}'
