@@ -5,6 +5,14 @@
     name: nfs-utils
     state: latest
 
+- name: Create /mnt/nas directory
+  ansible.builtin.file:
+    force: yes
+    group: mediacenter
+    mode: '0770'
+    path: /mnt/nas
+    state: directory
+
 - name: Mount an NFS volume
   become: yes
   ansible.posix.mount:
