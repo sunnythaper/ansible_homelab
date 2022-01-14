@@ -1,5 +1,7 @@
 ---
 - name: Install `nzbget-git` using yay
+  become: yes
+  become_user: aur_builder
   kewlfft.aur.aur:
     name: nzbget-git
     state: latest
