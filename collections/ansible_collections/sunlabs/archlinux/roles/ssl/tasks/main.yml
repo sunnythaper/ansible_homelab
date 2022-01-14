@@ -6,6 +6,7 @@
     state: latest
 
 - name: Generate OpenSSL private key
+  become: yes
   community.crypto.openssl_privatekey:
     path: '{{ssl.path.private}}'
     type: '{{ssl.type}}'
@@ -17,6 +18,7 @@
   register: csr
 
 - name: Create self-signed certificate from CSR
+  become: yes
   community.crypto.x509_certificate:
     path: '{{ssl.path.cert}}'
     csr_content: "{{ csr.csr }}"
