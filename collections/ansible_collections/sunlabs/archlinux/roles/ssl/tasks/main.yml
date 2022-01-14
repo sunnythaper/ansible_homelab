@@ -5,9 +5,15 @@
     name: python-cryptography
     state: latest
 
+- name: Create mediacenter group
+  ansible.builtin.group:
+    name: mediacenter
+    state: present
+
 - name: Generate OpenSSL private key
   become: yes
   community.crypto.openssl_privatekey:
+    group: mediacenter
     path: '{{ssl.path.private}}'
     type: '{{ssl.type}}'
 
@@ -16,6 +22,7 @@
   community.crypto.openssl_csr_pipe:
     privatekey_path: '{{ssl.path.private}}'
     common_name: '{{ssl.name}}'
+  changed_when: false
   register: csr
 
 - name: Create self-signed certificate from CSR
@@ -25,3 +32,4 @@
     csr_content: "{{ csr.csr }}"
     privatekey_path: '{{ssl.path.private}}'
     provider: selfsigned
+    group: mediacenter

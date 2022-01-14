@@ -7,6 +7,12 @@
     state: latest
     use: yay
 
+- name: Add nzbget user to mediacenter group
+  ansible.builtin.user:
+    name: nzbget
+    groups: mediacenter
+    append: yes
+
 - name: Copy config file
   become: yes
   ansible.builtin.copy:
