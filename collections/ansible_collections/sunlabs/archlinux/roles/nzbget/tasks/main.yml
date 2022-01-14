@@ -8,11 +8,12 @@
     use: yay
 
 - name: Copy config file
+  become: yes
   ansible.builtin.copy:
-    remote_src: yes
-    force: no
-    src: /usr/share/nzbget/nzbget.conf
     dest: /var/lib/nzbget/.nzbget
-    owner: nzbget
+    force: no
     group: nzbget
     mode: '0750'
+    owner: nzbget
+    remote_src: yes
+    src: /usr/share/nzbget/nzbget.conf
