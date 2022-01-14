@@ -4,6 +4,7 @@
   roles:
     - pacman
     - ssl
+    - nfs
     - nzbget
     - prowlarr
     - sonarr
