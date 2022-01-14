@@ -9,7 +9,7 @@
   ansible.builtin.file:
     force: yes
     group: mediacenter
-    mode: '0770'
+    mode: '0570'
     path: /mnt/nas
     state: directory
 
