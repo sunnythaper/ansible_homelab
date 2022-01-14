@@ -1,0 +1,15 @@
+---
+- name: Install `sonarr` using yay
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: sonarr
+    state: latest
+    use: yay
+
+- name: Enable sonarr service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: sonarr
+    state: started
