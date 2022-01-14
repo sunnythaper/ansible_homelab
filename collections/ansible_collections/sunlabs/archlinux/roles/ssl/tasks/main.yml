@@ -12,6 +12,7 @@
     type: '{{ssl.type}}'
 
 - name: Create certificate signing request (CSR)
+  become: yes
   community.crypto.openssl_csr_pipe:
     privatekey_path: '{{ssl.path.private}}'
     common_name: '{{ssl.name}}'
