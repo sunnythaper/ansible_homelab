@@ -19,6 +19,8 @@
     src: /usr/share/nzbget/nzbget.conf
 
 - name: Enable SSL options in config file
+  become: yes
+  become_user: nzbget
   ansible.builtin.lineinfile:
     path: "{{nzbget.path.config}}"
     regexp: "{{item.regex}}"
