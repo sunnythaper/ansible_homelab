@@ -6,3 +6,10 @@
     name: prowlarr
     state: latest
     use: yay
+
+- name: Enable prowlarr service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: prowlarr
+    state: started
