@@ -17,3 +17,9 @@
     owner: nzbget
     remote_src: yes
     src: /usr/share/nzbget/nzbget.conf
+
+- name: Enable nzbget service using systemd
+  systemd:
+    name: nzbget
+    enabled: yes
+    state: started
