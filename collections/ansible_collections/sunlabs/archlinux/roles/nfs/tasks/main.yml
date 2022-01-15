@@ -29,7 +29,7 @@
   ansible.builtin.file:
     force: yes
     group: mediacenter
-    mode: '0570'
+    mode: '0770'
     owner: nzbget
     path: "{{item}}"
     state: directory
