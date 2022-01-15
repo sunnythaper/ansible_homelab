@@ -9,7 +9,7 @@
   become: yes
   ansible.builtin.file:
     force: yes
-    group: mediacenter
+    group: nzbget
     mode: '0770'
     owner: nzbget
     path: "{{nfs.path.nas}}"
@@ -28,7 +28,7 @@
   become: yes
   ansible.builtin.file:
     force: yes
-    group: mediacenter
+    group: nzbget
     mode: '0770'
     owner: nzbget
     path: "{{item}}"

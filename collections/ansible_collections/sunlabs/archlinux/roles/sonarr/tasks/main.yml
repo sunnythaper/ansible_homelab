@@ -7,11 +7,11 @@
     state: latest
     use: yay
 
-- name: Add sonarr user to mediacenter group
+- name: Add sonarr user to nzbget group
   become: yes
   ansible.builtin.user:
     name: sonarr
-    groups: mediacenter
+    groups: nzbget
     append: yes
 
 - name: Enable sonarr service using systemd

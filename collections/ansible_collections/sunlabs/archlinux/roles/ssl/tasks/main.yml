@@ -5,16 +5,16 @@
     name: python-cryptography
     state: latest
 
-- name: Create mediacenter group
+- name: Create nzbget group
   become: yes
   ansible.builtin.group:
-    name: mediacenter
+    name: nzbget
     state: present
 
 - name: Generate OpenSSL private key
   become: yes
   community.crypto.openssl_privatekey:
-    group: mediacenter
+    group: nzbget
     mode: '0640'
     path: '{{ssl.path.private}}'
 
@@ -30,7 +30,7 @@
   become: yes
   community.crypto.x509_certificate:
     csr_content: "{{ csr.csr }}"
-    group: mediacenter
+    group: nzbget
     path: '{{ssl.path.cert}}'
     privatekey_path: '{{ssl.path.private}}'
     provider: selfsigned
