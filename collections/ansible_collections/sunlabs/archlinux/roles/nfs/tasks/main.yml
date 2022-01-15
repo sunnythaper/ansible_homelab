@@ -5,14 +5,11 @@
     name: nfs-utils
     state: latest
 
-- name: Create /mnt/nas directory
+- name: Create nas directory
   become: yes
   ansible.builtin.file:
     force: yes
-    group: nzbget
-    mode: '0770'
-    owner: nzbget
-    path: "{{nfs.path.nas}}"
+    path: "{{nfs.path.dir}}"
     state: directory
 
 - name: Mount an NFS volume
@@ -20,17 +17,6 @@
   ansible.posix.mount:
     fstype: nfs
     opts: rw,sync,hard,intr
-    path: "{{nfs.path.nas}}"
-    src: "{{nfs.src}}"
+    path: "{{nfs.path.dir}}"
+    src: "{{nfs.path.nas}}"
     state: mounted
-
-- name: Create default directories
-  become: yes
-  ansible.builtin.file:
-    force: yes
-    group: nzbget
-    mode: '0775'
-    owner: nzbget
-    path: "{{item}}"
-    state: directory
-  with_items: "{{nfs.path.defaults}}"

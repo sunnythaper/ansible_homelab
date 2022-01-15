@@ -1,4 +1,16 @@
 ---
 nzbget:
+  config:
+    - line: SecureControl=yes
+      regex: '^SecureControl='
+    - line: "SecureCert={{ssl.path.cert}}"
+      regex: '^SecureCert='
+    - line: "SecureKey={{ssl.path.private}}"
+      regex: '^SecureKey='
+  dependencies:
+    - p7zip
+    - par2cmdline
+    - unrar
+    - unzip
   path:
     config: /var/lib/nzbget/.nzbget

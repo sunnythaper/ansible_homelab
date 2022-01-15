@@ -2,14 +2,10 @@
 - name: Install dependencies via pacman
   become: yes
   pacman:
-    name:
-      - p7zip
-      - par2cmdline
-      - unrar
-      - unzip
+    name: "{{nzbget.dependencies}}"
     state: latest
 
-- name: Install `nzbget-git` using yay
+- name: Install `nzbget-git` via yay
   become: yes
   become_user: aur_builder
   kewlfft.aur.aur:
@@ -28,22 +24,16 @@
     remote_src: yes
     src: /usr/share/nzbget/nzbget.conf
 
-- name: Enable SSL options in config file
+- name: Configure options via config file
   become: yes
   become_user: nzbget
   ansible.builtin.lineinfile:
     path: "{{nzbget.path.config}}"
     regexp: "{{item.regex}}"
     line: "{{item.line}}"
-  with_items:
-    - line: SecureControl=yes
-      regex: '^SecureControl='
-    - line: "SecureCert={{ssl.path.cert}}"
-      regex: '^SecureCert='
-    - line: "SecureKey={{ssl.path.private}}"
-      regex: '^SecureKey='
+  with_items: "{{nzbget.config}}"
 
-- name: Enable nzbget service using systemd
+- name: Enable nzbget service via systemd
   become: yes
   systemd:
     enabled: yes
