@@ -1,5 +1,6 @@
 ---
 nfs:
+  opts: rw,sync,hard,intr,_netdev
   path:
     dir: /nas
     nas: 192.168.1.21:/mnt/SunNAS/Media

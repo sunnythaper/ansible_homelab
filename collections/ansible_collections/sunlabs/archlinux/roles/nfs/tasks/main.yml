@@ -16,7 +16,7 @@
   become: yes
   ansible.posix.mount:
     fstype: nfs
-    opts: rw,sync,hard,intr
+    opts: "{{nfs.opts}}"
     path: "{{nfs.path.dir}}"
     src: "{{nfs.path.nas}}"
     state: mounted
