@@ -1,4 +1,10 @@
 ---
+- name: Install `unrar` via pacman
+  become: yes
+  pacman:
+    name: unrar
+    state: latest
+
 - name: Install `nzbget-git` using yay
   become: yes
   become_user: aur_builder
