@@ -1,0 +1,10 @@
+---
+nfs:
+  path:
+    defaults:
+      - /mnt/nas/Books
+      - /mnt/nas/Downloads
+      - /mnt/nas/Movies
+      - /mnt/nas/Music
+      - /mnt/nas/TV
+    nas: /mnt/nas
