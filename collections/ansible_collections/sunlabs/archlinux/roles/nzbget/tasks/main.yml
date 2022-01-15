@@ -1,8 +1,12 @@
 ---
-- name: Install `unrar` via pacman
+- name: Install dependencies via pacman
   become: yes
   pacman:
-    name: unrar
+    name:
+      - p7zip
+      - par2cmdline
+      - unrar
+      - unzip
     state: latest
 
 - name: Install `nzbget-git` using yay
