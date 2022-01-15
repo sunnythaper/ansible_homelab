@@ -1,6 +1,6 @@
 ---
 nfs:
-  opts: defaults,timeo=900,retrans=5,_netdev
+  opts: defaults,acl,timeo=900,retrans=5,_netdev
   path:
     dir: /nas
     nas: 192.168.1.21:/mnt/SunNAS/Media
