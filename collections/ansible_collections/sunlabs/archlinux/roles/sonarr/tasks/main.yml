@@ -7,6 +7,13 @@
     state: latest
     use: yay
 
+- name: Add sonarr user to mediacenter group
+  become: yes
+  ansible.builtin.user:
+    name: sonarr
+    groups: mediacenter
+    append: yes
+
 - name: Enable sonarr service using systemd
   become: yes
   systemd:
