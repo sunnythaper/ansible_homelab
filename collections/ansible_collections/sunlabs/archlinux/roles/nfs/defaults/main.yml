@@ -8,3 +8,4 @@ nfs:
       - /mnt/nas/Music
       - /mnt/nas/TV
     nas: /mnt/nas
+  src: 192.168.1.21:/mnt/SunNAS/Media

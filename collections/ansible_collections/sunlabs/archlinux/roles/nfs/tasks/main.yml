@@ -11,6 +11,7 @@
     force: yes
     group: mediacenter
     mode: '0570'
+    owner: nzbget
     path: "{{nfs.path.nas}}"
     state: directory
 
@@ -20,7 +21,7 @@
     fstype: nfs
     opts: rw,sync,hard,intr
     path: "{{nfs.path.nas}}"
-    src: 192.168.1.21:/mnt/SunNAS/Media
+    src: "{{nfs.src}}"
     state: mounted
 
 - name: Create default directories
@@ -29,6 +30,7 @@
     force: yes
     group: mediacenter
     mode: '0570'
+    owner: nzbget
     path: "{{item}}"
     state: directory
   with_items: "{{nfs.path.defaults}}"
