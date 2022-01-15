@@ -8,3 +8,6 @@
     - nzbget
     - prowlarr
     - sonarr
+    - radarr
+    - readarr
+    - lidarr

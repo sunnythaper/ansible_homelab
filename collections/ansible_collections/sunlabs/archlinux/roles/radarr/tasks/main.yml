@@ -1,0 +1,22 @@
+---
+- name: Install `radarr` using yay
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: radarr
+    state: latest
+    use: yay
+
+- name: Add radarr user to nzbget group
+  become: yes
+  ansible.builtin.user:
+    name: radarr
+    groups: nzbget
+    append: yes
+
+- name: Enable radarr service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: radarr
+    state: started

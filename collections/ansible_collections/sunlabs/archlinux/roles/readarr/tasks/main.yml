@@ -1,0 +1,22 @@
+---
+- name: Install `readarr` using yay
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: readarr
+    state: latest
+    use: yay
+
+- name: Add readarr user to nzbget group
+  become: yes
+  ansible.builtin.user:
+    name: readarr
+    groups: nzbget
+    append: yes
+
+- name: Enable readarr service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: readarr
+    state: started
