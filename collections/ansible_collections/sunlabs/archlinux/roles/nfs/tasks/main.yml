@@ -9,6 +9,8 @@
   become: yes
   ansible.builtin.file:
     force: yes
+    group: nzbget
+    owner: nzbget
     path: "{{nfs.path.dir}}"
     state: directory
 
