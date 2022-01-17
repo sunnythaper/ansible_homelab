@@ -1,12 +1,30 @@
 ---
 nzbget:
   config:
+    - line: "MainDir={{nfs.path.dir}}/Downloads"
+      regex: '^MainDir='
+    - line: CertStore=/etc/ssl/certs/ca-certificates.crt
+      regex: '^CertStore='
+    - line: CertCheck=yes
+      regex: '^CertCheck='
+    - line: FormAuth=yes
+      regex: '^FormAuth='
     - line: SecureControl=yes
       regex: '^SecureControl='
     - line: "SecureCert={{ssl.path.cert}}"
       regex: '^SecureCert='
     - line: "SecureKey={{ssl.path.private}}"
       regex: '^SecureKey='
+    - line: UMask=002
+      regex: '^UMask='
+    - line: AppendCategoryDir=yes
+      regex: '^AppendCategoryDir='
+    - line: DirectRename=yes
+      regex: '^DirectRename='
+    - line: DirectUnpack=yes
+      regex: '^DirectUnpack='
+    - line: ReorderFiles=yes
+      regex: '^ReorderFiles='
   dependencies:
     - p7zip
     - par2cmdline
