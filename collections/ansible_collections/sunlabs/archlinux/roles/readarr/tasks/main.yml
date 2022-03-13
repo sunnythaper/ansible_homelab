@@ -3,7 +3,7 @@
   become: yes
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: readarr
+    name: readarr-nightly
     state: latest
     use: yay
 

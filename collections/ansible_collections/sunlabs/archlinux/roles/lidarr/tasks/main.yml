@@ -3,7 +3,7 @@
   become: yes
   become_user: aur_builder
   kewlfft.aur.aur:
-    name: lidarr
+    name: lidarr-nightly
     state: latest
     use: yay
 
