@@ -24,9 +24,6 @@ proxy_service:
   enabled: "no"
 ssh_service:
   enabled: "yes"
-  pam:
-    enabled: "true"
-    service_name: "sshd"
 {% if teleport.labels %}
   labels:
     {% for label, value in teleport.labels | dictsort -%}
