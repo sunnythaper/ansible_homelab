@@ -11,7 +11,7 @@
   become: yes
   template:
     src: "templates/teleport.yaml.j2"
-    dest: "/var/lib/teleport.yaml"
+    dest: "/etc/teleport.yaml"
     owner: root
     group: root
     mode: 0600
