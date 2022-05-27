@@ -3,6 +3,7 @@
 
   roles:
     - pacman
+    - teleport
     - ssl
     - nfs
     - nzbget
