@@ -7,6 +7,14 @@
     state: latest
     use: yay
 
+- name: Create teleport directory
+  file:
+    path: /etc/teleport
+    state: directory
+    owner: root
+    group: root
+    mode: 0600
+
 - name: Copy teleport config
   become: yes
   template:
