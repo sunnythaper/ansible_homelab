@@ -1,0 +1,22 @@
+---
+- name: Install `plex-media-server-plexpass` using yay
+  become: yes
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: plex-media-server-plexpass
+    state: latest
+    use: yay
+
+- name: Add plex user to nzbget group
+  become: yes
+  ansible.builtin.user:
+    name: plex
+    groups: nzbget
+    append: yes
+
+- name: Enable plexmediaserver service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: plexmediaserver
+    state: started
