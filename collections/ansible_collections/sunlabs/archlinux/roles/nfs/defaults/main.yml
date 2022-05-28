@@ -6,20 +6,20 @@ nfs:
       dir: /nas
       nas: 192.168.1.21:/mnt/SunNAS/Media
     books:
-      dir: "/nas/Books"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/Books"
+      dir: /nas/Books
+      nas: 192.168.1.21:/mnt/SunNAS/Media/Books
     downloads:
-      dir: "/nas/Downloads"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/Downloads"
+      dir: /nas/Downloads
+      nas: 192.168.1.21:/mnt/SunNAS/Media/Downloads
     movies:
-      dir: "/nas/Movies"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/Movies"
+      dir: /nas/Movies
+      nas: 192.168.1.21:/mnt/SunNAS/Media/Movies
     music:
-      dir: "/nas/Music"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/Music"
+      dir: /nas/Music
+      nas: 192.168.1.21:/mnt/SunNAS/Media/Music
     software:
-      dir: "/nas/Software"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/Software"
+      dir: /nas/Software
+      nas: 192.168.1.21:/mnt/SunNAS/Media/Software
     tv:
-      dir: "/nas/TV"
-      nas: "192.168.1.21:/mnt/SunNAS/Media/TV"
+      dir: /nas/TV
+      nas: 192.168.1.21:/mnt/SunNAS/Media/TV
