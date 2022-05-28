@@ -1,7 +1,7 @@
 ---
 nzbget:
   config:
-    - line: "MainDir={{nfs.path.main.dir}}"
+    - line: "MainDir={{nfs.path.downloads.dir}}"
       regex: '^MainDir='
     - line: CertStore=/etc/ssl/certs/ca-certificates.crt
       regex: '^CertStore='
