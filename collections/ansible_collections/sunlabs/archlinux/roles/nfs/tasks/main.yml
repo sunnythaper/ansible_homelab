@@ -5,6 +5,13 @@
     name: nfs-utils
     state: latest
 
+- name: Enable nfs-client.target service via systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: nfs-client.target
+    state: started
+
 - name: Create nas directories
   become: yes
   ansible.builtin.file:
@@ -24,6 +31,7 @@
 
 - name: Mount an NFS volume
   become: yes
+  become_user: nzbget
   ansible.posix.mount:
     fstype: nfs
     opts: "{{nfs.opts}}"
