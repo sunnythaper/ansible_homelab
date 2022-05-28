@@ -11,15 +11,16 @@
     force: yes
     group: nzbget
     owner: nzbget
-    path: "{{item}}"
+    path: "{{item.dir}}"
     state: directory
   with_items:
-    - "{{nfs.path.books.dir}}"
-    - "{{nfs.path.downloads.dir}}"
-    - "{{nfs.path.movies.dir}}"
-    - "{{nfs.path.music.dir}}"
-    - "{{nfs.path.software.dir}}"
-    - "{{nfs.path.tv.dir}}"
+    - "{{nfs.path.main}}"
+    - "{{nfs.path.books}}"
+    - "{{nfs.path.downloads}}"
+    - "{{nfs.path.movies}}"
+    - "{{nfs.path.music}}"
+    - "{{nfs.path.software}}"
+    - "{{nfs.path.tv}}"
 
 - name: Mount an NFS volume
   become: yes
@@ -30,15 +31,9 @@
     src: "{{item.nas}}"
     state: mounted
   with_items:
-    - dir: "{{nfs.path.books.dir}}"
-      nas: "{{nfs.path.books.nas}}"
-    - dir: "{{nfs.path.downloads.dir}}"
-      nas: "{{nfs.path.downloads.nas}}"
-    - dir: "{{nfs.path.movies.dir}}"
-      nas: "{{nfs.path.movies.nas}}"
-    - dir: "{{nfs.path.music.dir}}"
-      nas: "{{nfs.path.music.nas}}"
-    - dir: "{{nfs.path.software.dir}}"
-      nas: "{{nfs.path.software.nas}}"
-    - dir: "{{nfs.path.tv.dir}}"
-      nas: "{{nfs.path.tv.nas}}"
+    - "{{nfs.path.books}}"
+    - "{{nfs.path.downloads}}"
+    - "{{nfs.path.movies}}"
+    - "{{nfs.path.music}}"
+    - "{{nfs.path.software}}"
+    - "{{nfs.path.tv}}"
