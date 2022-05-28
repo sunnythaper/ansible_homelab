@@ -5,6 +5,13 @@
     name: nginx-mainline
     state: latest
 
+- name: Enable nginx service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: nginx
+    state: started
+
 - name: Copy nginx config
   become: yes
   template:
@@ -15,16 +22,9 @@
     mode: 0600
   register: nginx_config
 
-- name: Stop nginx if config changed
+- name: Restart nginx if config changed
   become: yes
   systemd:
     name: nginx
-    state: stopped
+    state: restarted
   when: nginx_config.changed
-
-- name: Enable nginx service using systemd
-  become: yes
-  systemd:
-    enabled: yes
-    name: nginx
-    state: started
