@@ -24,7 +24,6 @@
 
 - name: Mount an NFS volume
   become: yes
-  become_user: nzbget
   ansible.posix.mount:
     fstype: nfs
     opts: "{{nfs.opts}}"
