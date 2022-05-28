@@ -1,0 +1,30 @@
+---
+- name: Install `nginx-mainline` via pacman
+  become: yes
+  pacman:
+    name: nginx-mainline
+    state: latest
+
+- name: Copy nginx config
+  become: yes
+  template:
+    src: "templates/etc/nginx/sites-available/example.com.conf.j2"
+    dest: "/etc/nginx/sites-available/{{ nginx.subdomain }}.{{ nginx.domain }}.conf"
+    owner: root
+    group: root
+    mode: 0600
+  register: nginx_config
+
+- name: Stop nginx if config changed
+  become: yes
+  systemd:
+    name: nginx
+    state: stopped
+  when: nginx_config.changed
+
+- name: Enable nginx service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: nginx
+    state: started

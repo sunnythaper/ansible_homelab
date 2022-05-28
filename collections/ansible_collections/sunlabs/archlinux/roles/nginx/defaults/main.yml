@@ -1,0 +1,4 @@
+---
+nginx:
+  domain: "{{ config.domain | default('example.com') }}"
+  subdomain: plex
