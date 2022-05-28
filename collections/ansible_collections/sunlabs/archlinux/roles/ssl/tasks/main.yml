@@ -10,6 +10,15 @@
   ansible.builtin.group:
     name: nzbget
     state: present
+    gid: 1002
+
+- name: Create the nzbget user
+  become: yes
+  ansible.builtin.user:
+    create_home: no
+    group: nzbget
+    name: nzbget
+    uid: 1002
 
 - name: Generate OpenSSL private key
   become: yes
