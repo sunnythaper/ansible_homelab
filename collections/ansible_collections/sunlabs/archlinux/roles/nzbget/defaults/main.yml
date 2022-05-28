@@ -11,9 +11,9 @@ nzbget:
       regex: '^FormAuth='
     - line: SecureControl=yes
       regex: '^SecureControl='
-    - line: "SecureCert={{ssl.path.cert}}"
+    - line: "SecureCert=/etc/ssl/certs/nzbget.{{ ansible_dns.search[0] | default('example.com') }}.crt"
       regex: '^SecureCert='
-    - line: "SecureKey={{ssl.path.private}}"
+    - line: "SecureKey=/etc/ssl/private/nzbget.{{ ansible_dns.search[0] | default('example.com') }}.key"
       regex: '^SecureKey='
     - line: UMask=002
       regex: '^UMask='
@@ -30,5 +30,15 @@ nzbget:
     - par2cmdline
     - unrar
     - unzip
+  user:
+    name: nzbget
+    group: nzbget
+    uid: 1003
+    gid: 1003
   path:
     config: /var/lib/nzbget/.nzbget
+    cert: /etc/ssl/certs
+    private: /etc/ssl/private
+  web:
+    subdomain: nzbget
+    domain: "{{ ansible_dns.search[0] | default('example.com') }}"

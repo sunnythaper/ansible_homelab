@@ -1,4 +1,4 @@
 ---
 nginx:
-  domain: "{{ config.domain | default('example.com') }}"
+  domain: "{{ ansible_dns.search[0] | default('example.com') }}"
   subdomain: plex

@@ -23,13 +23,23 @@
   with_items:
     - /etc/nginx/sites-available
     - /etc/nginx/sites-enabled
+    - /etc/nginx/nginxconfig.io
 
-- name: Copy nginx config
+- name: Copy nginx configs
   become: yes
   template:
-    src: "templates/etc/nginx/sites-available/example.com.conf.j2"
-    dest: "/etc/nginx/sites-available/{{ nginx.subdomain }}.{{ nginx.domain }}.conf"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: root
     group: root
     mode: 0600
+  with_items:
+    - src: "templates/etc/nginx/sites-available/example.com.conf.j2"
+      dest: "/etc/nginx/sites-available/{{ nginx.subdomain }}.{{ nginx.domain }}.conf"
+    - src: "templates/etc/nginx/nginxconfig.io/general.conf.j2"
+      dest: "/etc/nginx/nginxconfig.io/general.conf"
+    - src: "templates/etc/nginx/nginxconfig.io/proxy.conf.j2"
+      dest: "/etc/nginx/nginxconfig.io/proxy.conf"
+    - src: "templates/etc/nginx/nginxconfig.io/security.conf.j2"
+      dest: "/etc/nginx/nginxconfig.io/security.conf"
   notify: Restart nginx

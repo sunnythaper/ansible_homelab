@@ -4,32 +4,49 @@ server {
     server_name             {{ nginx.subdomain }}.{{ nginx.domain }};
 
     # SSL
-    ssl_certificate         /etc/letsencrypt/live/{{ nginx.subdomain }}.{{ nginx.domain }}/fullchain.pem;
-    ssl_certificate_key     /etc/letsencrypt/live/{{ nginx.subdomain }}.{{ nginx.domain }}/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/{{ nginx.subdomain }}.{{ nginx.domain }}/chain.pem;
+    ssl_certificate     /etc/ssl/certs/{{ nginx.subdomain }}.{{ nginx.domain }}.crt;
+    ssl_certificate_key /etc/ssl/certs/{{ nginx.subdomain }}.{{ nginx.domain }}.key;
+
+    # security
+    include                 nginxconfig.io/security.conf;
 
     # logging
-    access_log              /var/log/nginx/{{ nginx.subdomain }}.{{ nginx.domain }}.access.log;
-    error_log               /var/log/nginx/{{ nginx.subdomain }}.{{ nginx.domain }}.error.log warn;
+    access_log          /var/log/nginx/{{ nginx.subdomain }}.{{ nginx.domain }}.access.log;
+    error_log           /var/log/nginx/{{ nginx.subdomain }}.{{ nginx.domain }}.error.log warn;
 
     # reverse proxy
     location / {
         proxy_pass https://localhost:32400;
+
+        # proxy settings from Arch Linux documenation
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+
+        include    nginxconfig.io/proxy.conf;
     }
+
+    # additional config
+    include nginxconfig.io/general.conf;
+}
+
+# subdomains redirect
+server {
+    listen                  443 ssl http2;
+    listen                  [::]:443 ssl http2;
+    server_name             *.{{ nginx.subdomain }}.{{ nginx.domain }};
+
+    # SSL
+    ssl_certificate     /etc/ssl/certs/{{ nginx.subdomain }}.{{ nginx.domain }}.crt;
+    ssl_certificate_key /etc/ssl/certs/{{ nginx.subdomain }}.{{ nginx.domain }}.key;
+    return              301 https://{{ nginx.subdomain }}.{{ nginx.domain }}$request_uri;
 }
 
 # HTTP redirect
 server {
     listen      80;
     listen      [::]:80;
-    server_name {{ nginx.subdomain }}.{{ nginx.domain }};
-    include     nginxconfig.io/letsencrypt.conf;
-
-    location / {
-        return 301 https://{{ nginx.subdomain }}.{{ nginx.domain }}$request_uri;
-    }
+    server_name .{{ nginx.subdomain }}.{{ nginx.domain }};
+    return      301 https://{{ nginx.subdomain }}.{{ nginx.domain }}$request_uri;
 }

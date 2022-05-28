@@ -5,33 +5,18 @@
     name: python-cryptography
     state: latest
 
-- name: Create nzbget group
-  become: yes
-  ansible.builtin.group:
-    name: nzbget
-    state: present
-    gid: 1003
-
-- name: Create the nzbget user
-  become: yes
-  ansible.builtin.user:
-    create_home: no
-    group: nzbget
-    name: nzbget
-    uid: 1003
-
 - name: Generate OpenSSL private key
   become: yes
   community.crypto.openssl_privatekey:
-    group: nzbget
+    group: "{{ ssl_user_group }}"
     mode: '0640'
-    path: '{{ssl.path.private}}'
+    path: '{{ ssl_private_path }}/{{ ssl_name }}.key'
 
 - name: Create certificate signing request (CSR)
   become: yes
   community.crypto.openssl_csr_pipe:
-    common_name: '{{ssl.name}}'
-    privatekey_path: '{{ssl.path.private}}'
+    common_name: '{{ssl_name}}'
+    privatekey_path: '{{ ssl_private_path }}/{{ ssl_name }}.key'
   changed_when: false
   register: csr
 
@@ -39,7 +24,7 @@
   become: yes
   community.crypto.x509_certificate:
     csr_content: "{{ csr.csr }}"
-    group: nzbget
-    path: '{{ssl.path.cert}}'
-    privatekey_path: '{{ssl.path.private}}'
+    group: "{{ ssl_user_group }}"
+    path: '{{ ssl_cert_path }}/{{ ssl_name }}.crt'
+    privatekey_path: '{{ ssl_private_path }}/{{ ssl_name }}.key'
     provider: selfsigned

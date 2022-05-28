@@ -1,4 +1,30 @@
 ---
+- name: Create nzbget group
+  become: yes
+  ansible.builtin.group:
+    name: "{{ nzbget.user.group }}"
+    state: present
+    gid: "{{ nzbget.user.gid }}"
+
+- name: Create the nzbget user
+  become: yes
+  ansible.builtin.user:
+    create_home: no
+    group: "{{ nzbget.user.group }}"
+    name: "{{ nzbget.user.name }}"
+    uid: "{{ nzbget.user.uid }}"
+
+- name: Setup SSL
+  include_role:
+    name: ssl
+  vars:
+    ssl_subdomain: "{{ nzbget.web.subdomain }}"
+    ssl_domain: "{{ nzbget.web.domain }}"
+    ssl_cert_path: "{{ nzbget.path.cert }}"
+    ssl_private_path: "{{ nzbget.path.private }}"
+    ssl_user_name: "{{ nzbget.user.name }}"
+    ssl_user_group: "{{ nzbget.user.group }}"
+
 - name: Install dependencies via pacman
   become: yes
   pacman:
@@ -18,15 +44,15 @@
   ansible.builtin.copy:
     dest: "{{nzbget.path.config}}"
     force: no
-    group: nzbget
+    group: "{{ nzbget.user.group }}"
     mode: '0750'
-    owner: nzbget
+    owner: "{{ nzbget.user.name }}"
     remote_src: yes
     src: /usr/share/nzbget/nzbget.conf
 
 - name: Configure options via config file
   become: yes
-  become_user: nzbget
+  become_user: "{{ nzbget.user.name }}"
   ansible.builtin.lineinfile:
     path: "{{nzbget.path.config}}"
     regexp: "{{item.regex}}"
