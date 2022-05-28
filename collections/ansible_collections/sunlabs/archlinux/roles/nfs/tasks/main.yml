@@ -11,16 +11,8 @@
     force: yes
     group: nzbget
     owner: nzbget
-    path: "{{item.dir}}"
+    path: "{{nfs.path.main}}"
     state: directory
-  with_items:
-    - "{{nfs.path.main}}"
-    - "{{nfs.path.books}}"
-    - "{{nfs.path.downloads}}"
-    - "{{nfs.path.movies}}"
-    - "{{nfs.path.music}}"
-    - "{{nfs.path.software}}"
-    - "{{nfs.path.tv}}"
 
 - name: Mount an NFS volume
   become: yes
