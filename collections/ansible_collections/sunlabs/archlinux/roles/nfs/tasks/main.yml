@@ -6,6 +6,7 @@
     state: latest
 
 - name: Create nas directory
+  become: yes
   ansible.builtin.file:
     force: yes
     group: nzbget
