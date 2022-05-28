@@ -12,6 +12,18 @@
     name: nginx
     state: started
 
+- name: Create nginx directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0600
+  with_items:
+    - /etc/nginx/sites-available
+    - /etc/nginx/sites-enabled
+
 - name: Copy nginx config
   become: yes
   template:
@@ -20,11 +32,4 @@
     owner: root
     group: root
     mode: 0600
-  register: nginx_config
-
-- name: Restart nginx if config changed
-  become: yes
-  systemd:
-    name: nginx
-    state: restarted
-  when: nginx_config.changed
+  notify: Restart nginx
