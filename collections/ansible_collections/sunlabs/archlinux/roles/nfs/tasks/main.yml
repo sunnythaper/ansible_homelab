@@ -14,13 +14,7 @@
     path: "{{item.dir}}"
     state: directory
   with_items:
-    - "{{nfs.path.main}}"
-    - "{{nfs.path.books}}"
-    - "{{nfs.path.downloads}}"
-    - "{{nfs.path.movies}}"
-    - "{{nfs.path.music}}"
-    - "{{nfs.path.software}}"
-    - "{{nfs.path.tv}}"
+    - "{{nfs.path}}"
 
 - name: Mount an NFS volume
   become: yes
