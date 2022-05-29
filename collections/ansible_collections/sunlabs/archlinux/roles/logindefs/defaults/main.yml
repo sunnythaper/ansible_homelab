@@ -1,0 +1,39 @@
+---
+logindefs:
+  conf:
+    CHFN_RESTRICT: rwh
+    CONSOLE: /etc/securetty
+    DEFAULT_HOME: "no"
+    ENCRYPT_METHOD: SHA512
+    ENV_PATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
+    ENV_SUPATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
+    ERASECHAR: 0177
+    FAIL_DELAY: 3
+    FAILLOG_ENAB: "yes"
+    GID_MAX: 60000
+    GID_MIN: 1000
+    HUSHLOGIN_FILE: .hushlogin
+    KILLCHAR: 025
+    LOG_OK_LOGINS: "yes"
+    LOG_UNKFAIL_ENAB: "no"
+    LOGIN_RETRIES: 5
+    LOGIN_TIMEOUT: 30
+    MAIL_DIR: /var/spool/mail
+    PASS_MAX_DAYS: 365
+    PASS_MIN_DAYS: 1
+    PASS_WARN_AGE: 7
+    SHA_CRYPT_MAX_ROUNDS: 65536
+    SHA_CRYPT_MIN_ROUNDS: 10000
+    SU_NAME: su
+    SYS_UID_MIN: 500
+    SYS_UID_MAX: 999
+    SYS_GID_MIN: 500
+    SYS_GID_MAX: 999
+    SYSLOG_SG_ENAB: "yes"
+    SYSLOG_SU_ENAB: "yes"
+    TTYGROUP: tty
+    TTYPERM: 0600
+    UID_MAX: 60000
+    UID_MIN: 1000
+    UMASK: 027
+    USERGROUPS_ENAB: "no"

@@ -7,6 +7,7 @@
 - hosts: administration
   roles:
     - lynis
+    - logindefs
 
 - hosts: mediacenter
   roles:
