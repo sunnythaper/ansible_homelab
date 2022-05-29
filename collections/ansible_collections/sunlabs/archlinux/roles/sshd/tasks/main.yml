@@ -1,0 +1,27 @@
+---
+- name: Copy issue.net banner
+  become: yes
+  template:
+    src: templates/etc/issue.j2
+    dest: /etc/issue
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Copy SSH config
+  become: yes
+  template:
+    src: templates/etc/ssh/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart sshd
+
+- name: Set /etc/shadow permissions
+  become: yes
+  file:
+    path: /etc/shadow
+    owner: root
+    group: root
+    mode: 0600

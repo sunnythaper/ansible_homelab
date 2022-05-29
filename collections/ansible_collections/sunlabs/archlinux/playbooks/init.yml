@@ -8,6 +8,7 @@
   roles:
     - lynis
     - logindefs
+    - sshd
 
 - hosts: mediacenter
   roles:

@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: sshd
+  author: sunnythaper
+  description: Installs and configures sshd
