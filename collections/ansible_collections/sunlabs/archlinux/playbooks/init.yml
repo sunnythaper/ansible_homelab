@@ -1,12 +1,14 @@
 ---
 - hosts: all
-
   roles:
     - pacman
     - teleport
 
-- hosts: mediacenter
+- hosts: administration
+  roles:
+    - lynis
 
+- hosts: mediacenter
   roles:
     - nfs
     - nzbget

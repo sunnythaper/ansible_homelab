@@ -1,0 +1,6 @@
+---
+- name: Install `lynis` via pacman
+  become: yes
+  pacman:
+    name: lynis
+    state: latest
