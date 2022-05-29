@@ -1,5 +1,6 @@
 ---
 - name: Copy login.defs config
+  become: yes
   template:
     src: templates/etc/login.defs.j2
     dest: /etc/login.defs
