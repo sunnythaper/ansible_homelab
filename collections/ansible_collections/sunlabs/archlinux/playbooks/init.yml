@@ -8,9 +8,10 @@
 - name: Harden system configuration to be security-forward
   hosts: administration
   roles:
-    - audit
+    - apparmor
     - logindefs
     - sshd
+    - sysctl
     - lynis
 
 - name: Configure media center storage and delivery

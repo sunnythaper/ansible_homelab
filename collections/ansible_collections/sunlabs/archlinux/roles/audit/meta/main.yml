@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: audit
-  author: sunnythaper
-  description: Install and configure audit

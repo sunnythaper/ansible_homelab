@@ -1,0 +1,13 @@
+---
+- name: Install `apparmor` via pacman
+  become: yes
+  pacman:
+    name: apparmor
+    state: latest
+
+- name: Enable apparmor service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: apparmor
+    state: started
