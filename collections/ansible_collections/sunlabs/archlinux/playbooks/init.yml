@@ -4,6 +4,10 @@
   roles:
     - pacman
     - teleport
+
+- hosts: mediacenter
+
+  roles:
     - nfs
     - nzbget
     - prowlarr
@@ -12,4 +16,3 @@
     - readarr
     - lidarr
     - plex
-    - nginx
