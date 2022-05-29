@@ -5,6 +5,19 @@
     update_cache: yes
     upgrade: yes
 
+- name: Install `pacman-contrib` via pacman
+  become: yes
+  pacman:
+    name: pacman-contrib
+    state: latest
+
+- name: Enable paccache.timer service using systemd
+  become: yes
+  systemd:
+    enabled: yes
+    name: paccache.timer
+    state: started
+
 - name: Create the `aur_builder` user
   become: yes
   ansible.builtin.user:
