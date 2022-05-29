@@ -1,16 +1,20 @@
 ---
-- hosts: all
+- name: Update system packages & install Teleport
+  hosts: all
   roles:
     - pacman
     - teleport
 
-- hosts: administration
+- name: Harden system configuration to be security-forward
+  hosts: administration
   roles:
-    - lynis
+    - audit
     - logindefs
     - sshd
+    - lynis
 
-- hosts: mediacenter
+- name: Configure media center storage and delivery
+  hosts: mediacenter
   roles:
     - nfs
     - nzbget
