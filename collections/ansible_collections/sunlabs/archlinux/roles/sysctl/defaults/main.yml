@@ -83,8 +83,5 @@ sysctl:
       kernel.yama.ptrace_scope: 2
       net.core.bpf_jit_harden: 2
       net.ipv4.conf.all.mc_forwarding: 0
-      net.netfilter.nf_conntrack_max: 2000000
-      net.netfilter.nf_conntrack_tcp_loose: 0
-      net.ipv6.conf.accept_ra_rtr_pref: 0
       vm.swappiness: 10
       vm.vfs_cache_pressure: 150
