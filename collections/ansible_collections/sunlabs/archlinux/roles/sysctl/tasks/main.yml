@@ -1,5 +1,6 @@
 ---
 - name: Configure sysctl settings
+  become: yes
   sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value | int }}"
@@ -9,6 +10,7 @@
   with_dict: "{{ sysctl.conf.ct }}"
 
 - name: Configure additional sysctl settings
+  become: yes
   sysctl:
     name: "{{ item.key }}"
     value: "{{ item.value | int }}"
@@ -25,6 +27,7 @@
     get_md5: no
 
 - name: Reboot server if required
+  become: yes
   reboot:
     msg: Reboot initiated by Ansible due to sysctl updates
     connect_timeout: 5
