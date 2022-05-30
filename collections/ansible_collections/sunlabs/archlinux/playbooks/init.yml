@@ -1,12 +1,13 @@
 ---
 - name: Update system packages & install Teleport
-  hosts: all
+  hosts: archlinux
   roles:
     - pacman
     - teleport
 
 - name: Harden system configuration to be security-forward
   hosts: administration
+  hosts: archlinux:&administration
   roles:
     - privileges
     - apparmor
@@ -17,7 +18,7 @@
     - lynis
 
 - name: Configure media center storage and delivery
-  hosts: mediacenter
+  hosts: archlinux:&mediacenter
   roles:
     - nfs
     - nzbget
