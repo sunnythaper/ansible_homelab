@@ -41,4 +41,4 @@
   become: yes
   command: "apparmor_parser /usr/share/apparmor/extra-profiles"
   register: apparmor_parser
-  changed_when: 'Profile already exists' not in apparmor_parser.stdout
+  changed_when: "'Profile already exists' not in apparmor_parser.stdout"
