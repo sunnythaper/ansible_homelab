@@ -26,3 +26,25 @@
     group: root
     mode: 0644
   notify: Reload systemd
+
+- name: Create PAM directory
+  become: yes
+  file:
+    path: /etc/security/limits.d/
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy coredump conf for PAM
+  become: yes
+  lineinfile:
+    dest: /etc/security/limits.d/50-coredump.conf
+    line: "* hard core 0"
+    regexp: '(^#)?\*\s+hard\s+core\s+[0-9]+'
+    state: present
+    create: true
+    insertbefore: "# End of file"
+    owner: root
+    group: root
+    mode: 0644
