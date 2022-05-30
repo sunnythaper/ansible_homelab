@@ -3,8 +3,9 @@
   become: yes
   ansible.builtin.lineinfile:
     regexp: '^GRUB_CMDLINE_LINUX="(?:lsm=landlock,lockdown,yama,apparmor,bpf )?(.*)"'
-    line: 'GRUB_CMDLINE_LINUX="lsm=landlock,lockdown,yama,apparmor \1"'
+    line: 'GRUB_CMDLINE_LINUX="lsm=landlock,lockdown,yama,apparmor,bpf \1"'
     path: /etc/default/grub
+    backrefs: yes
   register: grub
 
 - name: Apply grub file change
