@@ -73,7 +73,6 @@ sysctl:
       fs.suid_dumpable: 0
       kernel.core_uses_pid: 1
       kernel.dmesg_restrict: 1
-      kernel.kexec_load_disabled: 1
       kernel.kptr_restrict: 2
       kernel.modules_disabled: 1
       kernel.panic_on_oops: 60
