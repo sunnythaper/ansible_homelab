@@ -36,7 +36,7 @@
   become: yes
   ansible.builtin.lineinfile:
     regexp: 'ParallelDownloads'
-    line: 'ParallelDownloads = 5'
+    line: 'ParallelDownloads = 6'
     path: /etc/pacman.conf
 
 - name: Create the `aur_builder` user
