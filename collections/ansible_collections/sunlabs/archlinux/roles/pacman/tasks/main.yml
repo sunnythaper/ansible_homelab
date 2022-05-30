@@ -54,6 +54,9 @@
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     path: /etc/sudoers.d/11-install-aur_builder
     validate: 'visudo -cf %s'
+    owner: root
+    group: root
+    mode: 0440
 
 - name: Install Yay
   become: yes
