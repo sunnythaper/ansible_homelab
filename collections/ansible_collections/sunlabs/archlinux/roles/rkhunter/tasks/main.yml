@@ -1,0 +1,6 @@
+---
+- name: Install `rkhunter` via pacman
+  become: yes
+  pacman:
+    name: rkhunter
+    state: latest

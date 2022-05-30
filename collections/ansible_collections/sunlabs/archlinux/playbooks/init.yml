@@ -12,6 +12,7 @@
     - coredump
     - sysctl
     - apparmor
+    - rkhunter
     - logindefs
     - sshd
     - privileges
