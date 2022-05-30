@@ -6,6 +6,7 @@
     state: latest
 
 - name: Check if rkhunter database exists
+  become: yes
   stat:
     path: /var/lib/rkhunter/db/rkhunter.dat
   register: rkhunter_db
@@ -17,14 +18,14 @@
   changed_when: "'File created' in rkhunter_propupd.stdout"
   when: not rkhunter_db.stat.exists
 
-- name: Perform rkhunter check
-  become: yes
-  command: rkhunter --cronjob --report-warnings-only
-  failed_when: false
-
 - name: Update rkhunter database
   become: yes
   command: rkhunter --update
   register: rkhunter_update
   changed_when: "'Updated' in rkhunter_update.stdout"
   failed_when: "'Update failed' in rkhunter_update.stdout"
+
+- name: Perform rkhunter check
+  become: yes
+  command: rkhunter --cronjob --report-warnings-only
+  failed_when: false
