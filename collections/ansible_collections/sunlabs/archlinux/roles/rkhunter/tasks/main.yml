@@ -5,6 +5,10 @@
     name: rkhunter
     state: latest
 
+- name: Perform rkhunter check
+  become: yes
+  command: rkhunter --cronjob --report-warnings-only
+
 - name: Update rkhunter file properties database
   become: yes
   command: rkhunter --propupd
