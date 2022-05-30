@@ -28,4 +28,5 @@
 - name: Perform rkhunter check
   become: yes
   command: rkhunter --cronjob --report-warnings-only
+  changed_when: false
   failed_when: false
