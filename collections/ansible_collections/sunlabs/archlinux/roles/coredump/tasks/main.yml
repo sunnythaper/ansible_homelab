@@ -44,7 +44,6 @@
     regexp: '(^#)?\*\s+hard\s+core\s+[0-9]+'
     state: present
     create: true
-    insertbefore: "# End of file"
     owner: root
     group: root
     mode: 0644
