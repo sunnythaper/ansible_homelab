@@ -14,9 +14,9 @@
 - name: Enable paccache.timer service using systemd
   become: yes
   systemd:
-    enabled: yes
+    enabled: no
     name: paccache.timer
-    state: started
+    state: stopped
 
 - name: Create pacman hooks directory
   become: yes
@@ -27,14 +27,17 @@
     group: root
     mode: 0644
 
-- name: Copy pacman-clean-cache hook
+- name: Copy pacman hooks
   become: yes
   template:
-    src: templates/etc/pacman.d/hooks/pacman-clean-cache.hook.j2
-    dest: /etc/pacman.d/hooks/pacman-clean-cache.hook
+    src: "templates/etc/pacman.d/hooks/{{ item }}.j2"
+    dest: "/etc/pacman.d/hooks/{{ item }}"
     owner: root
     group: root
     mode: 0644
+  with_items:
+    - pacman-clean-cache.hook
+    - pacman-remove-uninstalled-cache.hook
 
 - name: Create the `aur_builder` user
   become: yes
