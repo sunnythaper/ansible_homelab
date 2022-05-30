@@ -1,4 +1,16 @@
 ---
+- name: Enable apparmor via grub
+  become: yes
+  ansible.builtin.lineinfile:
+    regexp: '^GRUB_CMDLINE_LINUX="(?:lsm=landlock,lockdown,yama,apparmor,bpf )?(.*)"'
+    line: 'GRUB_CMDLINE_LINUX="lsm=landlock,lockdown,yama,apparmor,bpf \1"'
+    path: /etc/default/grub
+  register: grub
+
+- name: Apply grub file change
+  command: "grub-mkconfig -o /boot/grub/grub.cfg"
+  when: grub.changed
+
 - name: Install `apparmor` via pacman
   become: yes
   pacman:
@@ -11,3 +23,14 @@
     enabled: yes
     name: apparmor
     state: started
+
+- name: Reboot server if required
+  become: yes
+  reboot:
+    msg: Reboot initiated by Ansible due to grub file updates
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+  when: grub.changed
