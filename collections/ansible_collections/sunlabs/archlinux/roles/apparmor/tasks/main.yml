@@ -44,7 +44,7 @@
   changed_when: "'Profile already exists' not in apparmor_parser.stderr"
   failed_when: false
 
-- name: Cache AppArmore profiles
+- name: Cache AppArmor profiles
   become: yes
   lineinfile:
     regexp: '^#write-cache'
