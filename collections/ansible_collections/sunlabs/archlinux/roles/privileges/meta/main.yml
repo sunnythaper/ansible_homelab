@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: privileges
+  author: sunnythaper
+  description: Set chmod and chown privileges
