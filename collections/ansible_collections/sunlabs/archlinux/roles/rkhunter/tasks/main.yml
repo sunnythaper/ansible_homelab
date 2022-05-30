@@ -5,6 +5,10 @@
     name: rkhunter
     state: latest
 
+- name: Update rkhunter file properties database
+  become: yes
+  command: rkhunter --propupd
+
 - name: Update rkhunter database
   become: yes
   command: rkhunter --update
