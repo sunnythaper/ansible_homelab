@@ -36,3 +36,9 @@
     post_reboot_delay: 30
     test_command: uptime
   when: grub.changed
+
+- name: Load AppArmor extra-profiles
+  become: yes
+  command: "apparmor_parser /usr/share/apparmor/extra-profiles"
+  register: apparmor_parser
+  changed_when: 'Profile already exists' not in apparmor_parser.stdout
