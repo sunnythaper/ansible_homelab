@@ -8,12 +8,13 @@
 - name: Harden system configuration to be security-forward
   hosts: archlinux:&administration
   roles:
-    - privileges
-    - apparmor
+    - modprobe
     - coredump
+    - apparmor
     - logindefs
     - sshd
     - sysctl
+    - privileges
     - lynis
 
 - name: Configure media center storage and delivery
