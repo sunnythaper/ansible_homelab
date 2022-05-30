@@ -21,10 +21,10 @@
     group: root
     mode: 0600
 
-- name: Set /etc/boot/grub.cfg permissions
+- name: Set /boot/grub/grub.cfg permissions
   become: yes
   file:
-    path: /etc/boot/grub.cfg
+    path: /boot/grub/grub.cfg
     owner: root
     group: root
     mode: 0700
