@@ -10,6 +10,7 @@
   roles:
     - privileges
     - apparmor
+    - coredump
     - logindefs
     - sshd
     - sysctl

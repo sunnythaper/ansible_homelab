@@ -1,0 +1,4 @@
+coredump
+========
+
+Disables coredump

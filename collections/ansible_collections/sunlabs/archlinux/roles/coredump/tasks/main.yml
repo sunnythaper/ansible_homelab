@@ -1,0 +1,15 @@
+---
+- name: Copy coredump conf for sysctl
+  become: yes
+  template:
+    src: templates/etc/sysctl.d/50-coredump.conf.j2
+    dest: /etc/sysctl.d/50-coredump.conf
+    owner: root
+    group: root
+    mode: 0644
+  register: coredump_sysctl
+
+- name: Apply coredump config via sysctl
+  become: yes
+  command: "sysctl -p /etc/sysctl.d/50-coredump.conf"
+  when: coredump_sysctl.changed
