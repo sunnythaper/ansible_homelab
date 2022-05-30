@@ -5,19 +5,26 @@
     name: rkhunter
     state: latest
 
-- name: Perform rkhunter check
-  become: yes
-  command: rkhunter --cronjob --report-warnings-only
+- name: Check if rkhunter database exists
+  stat:
+    path: /var/lib/rkhunter/db/rkhunter.dat
+  register: rkhunter_db
 
 - name: Update rkhunter file properties database
   become: yes
   command: rkhunter --propupd
   register: rkhunter_propupd
-  changed_when: "'File created' in rkhunter_propupd.stdout or 'File updated' in rkhunter_propupd.stdout"
+  changed_when: "'File created' in rkhunter_propupd.stdout"
+  when: not rkhunter_db.stat.exists
+
+- name: Perform rkhunter check
+  become: yes
+  command: rkhunter --cronjob --report-warnings-only
+  failed_when: false
 
 - name: Update rkhunter database
   become: yes
   command: rkhunter --update
   register: rkhunter_update
-  failed_when: "'Update failed' in rkhunter_update.stdout"
   changed_when: "'Updated' in rkhunter_update.stdout"
+  failed_when: "'Update failed' in rkhunter_update.stdout"
