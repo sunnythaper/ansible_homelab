@@ -36,7 +36,7 @@
   become: yes
   ansible.builtin.lineinfile:
     regexp: '^#ParallelDownloads'
-    line: 'ParallelDownlads = 5'
+    line: 'ParallelDownloads = 5'
     path: /etc/pacman.conf
 
 
