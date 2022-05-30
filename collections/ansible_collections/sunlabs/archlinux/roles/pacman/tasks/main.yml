@@ -35,10 +35,9 @@
 - name: Enable pacman parallel downloads
   become: yes
   ansible.builtin.lineinfile:
-    regexp: '^#ParallelDownloads'
+    regexp: 'ParallelDownloads'
     line: 'ParallelDownloads = 5'
     path: /etc/pacman.conf
-
 
 - name: Create the `aur_builder` user
   become: yes
