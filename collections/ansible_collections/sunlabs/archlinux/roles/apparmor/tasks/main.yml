@@ -43,3 +43,13 @@
   register: apparmor_parser
   changed_when: "'Profile already exists' not in apparmor_parser.stdout"
   failed_when: false
+
+- name: Set up pam_apparmor
+  lineinfile:
+    line: session optional pam_apparmor.so order=user,group,default
+    dest: /etc/pam.d/apparmor
+    state: present
+    create: yes
+    mode: 0755
+    owner: root
+    group: root
