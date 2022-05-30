@@ -10,10 +10,10 @@
   roles:
     - modprobe
     - coredump
+    - sysctl
     - apparmor
     - logindefs
     - sshd
-    - sysctl
     - privileges
     - lynis
 

@@ -4,6 +4,7 @@ modprobe:
   disable:
     filesystems:
       - cramfs
+      - firewire
       - freevxfs
       - hfs
       - hfsplus
