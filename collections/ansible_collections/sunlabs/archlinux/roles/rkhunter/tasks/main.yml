@@ -4,3 +4,10 @@
   pacman:
     name: rkhunter
     state: latest
+
+- name: Update rkhunter database
+  become: yes
+  command: rkhunter --update
+  register: rkhunter_update
+  failed_when: rkhunter_update.rc != 2 and rkhunter_update.rc != 0
+  changed_when: false
