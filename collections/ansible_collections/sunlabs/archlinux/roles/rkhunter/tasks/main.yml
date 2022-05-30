@@ -8,10 +8,12 @@
 - name: Update rkhunter file properties database
   become: yes
   command: rkhunter --propupd
+  register: rkhunter_propupd
+  changed_when: "'File created' in rkhunter_propupd.stdout or 'File updated' in rkhunter_propupd.stdout"
 
 - name: Update rkhunter database
   become: yes
   command: rkhunter --update
   register: rkhunter_update
-  failed_when: rkhunter_update.rc != 2 and rkhunter_update.rc != 0
-  changed_when: false
+  failed_when: "'Update failed' in rkhunter_update.stdout"
+  changed_when: "'Updated' in rkhunter_update.stdout"
