@@ -8,6 +8,15 @@
     sysctl_set: yes
     reload: yes
 
+- name: Create systemd directory
+  become: yes
+  file:
+    path: /etc/systemd/coredump.conf.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Copy coredump conf for systemd
   become: yes
   template:
