@@ -8,6 +8,7 @@
   register: grub
 
 - name: Apply grub file change
+  become: yes
   command: "grub-mkconfig -o /boot/grub/grub.cfg"
   when: grub.changed
 
