@@ -11,13 +11,6 @@
     name: pacman-contrib
     state: latest
 
-- name: Enable paccache.timer service using systemd
-  become: yes
-  systemd:
-    enabled: no
-    name: paccache.timer
-    state: stopped
-
 - name: Create pacman hooks directory
   become: yes
   file:
