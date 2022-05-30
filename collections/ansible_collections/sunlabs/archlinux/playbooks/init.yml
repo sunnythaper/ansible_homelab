@@ -6,7 +6,6 @@
     - teleport
 
 - name: Harden system configuration to be security-forward
-  hosts: administration
   hosts: archlinux:&administration
   roles:
     - privileges
