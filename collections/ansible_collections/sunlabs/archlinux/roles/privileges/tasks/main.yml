@@ -17,6 +17,6 @@
 - name: Set permissions
   become: yes
   file:
-    mode: 0750
+    mode: 0700
     path: "{{ item.path }}"
   with_items: "{{ home_directories.files }}"
