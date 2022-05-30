@@ -1,5 +1,5 @@
 ---
-- name: Copy issue.net banner
+- name: Copy /etc/issue banner
   become: yes
   template:
     src: templates/etc/issue.j2
