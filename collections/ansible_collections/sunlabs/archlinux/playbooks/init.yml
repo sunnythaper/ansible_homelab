@@ -8,6 +8,7 @@
 - name: Harden system configuration to be security-forward
   hosts: administration
   roles:
+    - privileges
     - apparmor
     - logindefs
     - sshd
