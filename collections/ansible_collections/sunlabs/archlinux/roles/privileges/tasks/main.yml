@@ -8,12 +8,14 @@
     mode: 0600
 
 - name: List home directories
+  become: yes
   find:
     file_type: directory
     paths: /home
   register: home_directories
 
 - name: Set permissions
+  become: yes
   file:
     mode: 0750
     path: "{{ item.path }}"
