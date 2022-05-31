@@ -5,11 +5,11 @@
     name: libpwquality
     state: latest
 
-- name: Harden password requirements for libpwquality
+- name: Copy libpwquality configuration
   become: yes
-  pamd:
-    name: common-password
-    type: password
-    control: requisite
-    module_path: pam_pwquality.so
-    module_arguments: "{% for k, v in libpwquality.conf | dictsort -%}{{ k }}={{ v }} {% endfor %}"
+  template:
+    src: templates/etc/security/pwquality.conf.d/50-pwquality.conf.j2
+    dest: /etc/security/pwquality.conf.d/50-pwquality.conf
+    owner: root
+    group: root
+    mode: 0644
