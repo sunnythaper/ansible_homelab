@@ -64,7 +64,7 @@
             value: "{{ ansible_os_family }}"
             short: yes
           - title: Report
-            value: "{{ rkhunter_report.stdout }}"
+            value: "```bash\n{{ rkhunter_report.stdout }}\n```"
             short: no
           - title: Remediation
             valud: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
