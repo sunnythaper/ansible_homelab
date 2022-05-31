@@ -50,4 +50,4 @@
           - title: Report
             value: "{{ rkhunter_report.stdout }}"
             short: no
-  when: config.mattermost is defined
+  when: config.mattermost is defined and rkhunter_report.stdout != ""
