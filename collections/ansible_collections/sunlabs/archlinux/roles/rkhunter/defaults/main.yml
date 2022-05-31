@@ -7,4 +7,3 @@ rkhunter:
       - /usr/bin/egrep
       - /usr/bin/fgrep
       - /usr/bin/ldd
-      - /usr/bin/vendor_perl/GET
