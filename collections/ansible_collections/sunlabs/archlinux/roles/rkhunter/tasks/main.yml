@@ -25,6 +25,22 @@
   changed_when: "'Updated' in rkhunter_update.stdout"
   failed_when: "'Update failed' in rkhunter_update.stdout"
 
+- name: Configure rkhunter whitelist
+  become: yes
+  lineinfile:
+    line: "SCRIPTWHITELIST={{ item }}"
+    dest: /etc/rkhunter.conf
+    state: present
+  with_items: "{{ rkhunter.conf.whitelist }}"
+
+- name: Configure rkhunter hidden files
+  become: yes
+  lineinfile:
+    line: "ALLOWHIDDENFILE={{ item }}"
+    dest: /etc/rkhunter.conf
+    state: present
+  with_items: "{{ rkhunter.conf.ignorehidden }}"
+
 - name: Perform rkhunter check
   become: yes
   command: rkhunter --cronjob --report-warnings-only
