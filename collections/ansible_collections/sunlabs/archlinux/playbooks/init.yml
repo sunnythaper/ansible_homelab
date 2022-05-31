@@ -15,6 +15,7 @@
     - sysctl
     - logindefs
     - sshd
+    - cracklib
     - privileges
     - lynis
 

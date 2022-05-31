@@ -1,0 +1,14 @@
+---
+- name: Install `cracklib` via pacman
+  become: yes
+  pacman:
+    name: cracklib
+    state: latest
+
+- name: Harden password requirements for cracklib
+  pamd:
+    name: common-password
+    type: password
+    control: requisite
+    module_path: pam_cracklib.so
+    module_arguments: "{% for k, v in cracklib.conf | dictsort -%}{{ k }}={{ v }} {% endfor %}"
