@@ -33,20 +33,21 @@
   failed_when: false
 
 - name: Send rkhunter report via Mattermost
-  url: "{{ config.mattermost.url }}"
-  api_key: "{{ config.mattermost.api_key }}"
-  attachments:
-    - text: "Report for **{{ ansible_fqdn }}**"
-      color: '#530f52'
-      title: rkhunter Report
-      fields:
-        - title: IP Address
-          value: "{{ ansible_default_ipv4.address }}"
-          short: yes
-        - title: Operating System
-          value: "{{ ansible_os_family }}"
-          short: yes
-        - title: Report
-          value: "{{ rkhunter_report.stdout }}"
-          short: no
+  mattermost:
+    url: "{{ config.mattermost.url }}"
+    api_key: "{{ config.mattermost.api_key }}"
+    attachments:
+      - text: "Report for **{{ ansible_fqdn }}**"
+        color: '#530f52'
+        title: rkhunter Report
+        fields:
+          - title: IP Address
+            value: "{{ ansible_default_ipv4.address }}"
+            short: yes
+          - title: Operating System
+            value: "{{ ansible_os_family }}"
+            short: yes
+          - title: Report
+            value: "{{ rkhunter_report.stdout }}"
+            short: no
   when: config.mattermost is defined
