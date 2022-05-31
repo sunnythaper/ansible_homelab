@@ -1,4 +1,4 @@
-cracklib
+libpwquality
 ========
 
-Install and configure cracklib
+Install and configure libpwquality

@@ -15,7 +15,7 @@
     - sysctl
     - logindefs
     - sshd
-    - cracklib
+    - libpwquality
     - privileges
     - lynis
 

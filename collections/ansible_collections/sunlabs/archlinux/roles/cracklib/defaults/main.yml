@@ -1,5 +1,5 @@
 ---
-cracklib:
+libpwquality:
   conf:
     dcredit: -2
     difok: 3

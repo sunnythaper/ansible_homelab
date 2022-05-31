@@ -1,14 +1,15 @@
 ---
-- name: Install `cracklib` via pacman
+- name: Install `libpwquality` via pacman
   become: yes
   pacman:
-    name: cracklib
+    name: libpwquality
     state: latest
 
-- name: Harden password requirements for cracklib
+- name: Harden password requirements for libpwquality
+  become: yes
   pamd:
     name: common-password
     type: password
     control: requisite
-    module_path: pam_cracklib.so
-    module_arguments: "{% for k, v in cracklib.conf | dictsort -%}{{ k }}={{ v }} {% endfor %}"
+    module_path: pam_pwquality.so
+    module_arguments: "{% for k, v in libpwquality.conf | dictsort -%}{{ k }}={{ v }} {% endfor %}"
