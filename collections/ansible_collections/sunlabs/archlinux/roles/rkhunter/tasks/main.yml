@@ -67,6 +67,6 @@
             value: "```bash\n{{ rkhunter_report.stdout }}\n```"
             short: no
           - title: Remediation
-            valud: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
+            value: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
             short: no
   when: config.mattermost is defined and rkhunter_report.stdout != ""
