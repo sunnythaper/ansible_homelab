@@ -3,6 +3,8 @@ rkhunter:
   conf:
     ignorehidden:
       - /etc/.updated
+      - /usr/share/man/man5/.k5identity.5.gz
+      - /usr/share/man/man5/.k5login.5.gz
     whitelist:
       - /usr/bin/egrep
       - /usr/bin/fgrep

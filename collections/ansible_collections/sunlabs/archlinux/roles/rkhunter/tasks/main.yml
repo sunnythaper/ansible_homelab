@@ -11,20 +11,6 @@
     path: /var/lib/rkhunter/db/rkhunter.dat
   register: rkhunter_db
 
-- name: Update rkhunter file properties database
-  become: yes
-  command: rkhunter --propupd
-  register: rkhunter_propupd
-  changed_when: "'File created' in rkhunter_propupd.stdout"
-  when: not rkhunter_db.stat.exists
-
-- name: Update rkhunter database
-  become: yes
-  command: rkhunter --update
-  register: rkhunter_update
-  changed_when: "'Updated' in rkhunter_update.stdout"
-  failed_when: "'Update failed' in rkhunter_update.stdout"
-
 - name: Configure rkhunter whitelist
   become: yes
   lineinfile:
@@ -40,6 +26,20 @@
     dest: /etc/rkhunter.conf
     state: present
   with_items: "{{ rkhunter.conf.ignorehidden }}"
+
+- name: Update rkhunter file properties database
+  become: yes
+  command: rkhunter --propupd
+  register: rkhunter_propupd
+  changed_when: "'File created' in rkhunter_propupd.stdout"
+  when: not rkhunter_db.stat.exists
+
+- name: Update rkhunter database
+  become: yes
+  command: rkhunter --update
+  register: rkhunter_update
+  changed_when: "'Updated' in rkhunter_update.stdout"
+  failed_when: "'Update failed' in rkhunter_update.stdout"
 
 - name: Perform rkhunter check
   become: yes
@@ -65,5 +65,8 @@
             short: yes
           - title: Report
             value: "{{ rkhunter_report.stdout }}"
+            short: no
+          - title: Remediation
+            valud: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
             short: no
   when: config.mattermost is defined and rkhunter_report.stdout != ""
