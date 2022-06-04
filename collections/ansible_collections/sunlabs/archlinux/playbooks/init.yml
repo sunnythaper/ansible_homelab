@@ -8,13 +8,13 @@
 - name: Harden system configuration to be security-forward
   hosts: archlinux:&administration
   roles:
+    - sshd
     - rkhunter
     - apparmor
     - modprobe
     - coredump
     - sysctl
     - logindefs
-    - sshd
     - libpwquality
     - privileges
     - lynis

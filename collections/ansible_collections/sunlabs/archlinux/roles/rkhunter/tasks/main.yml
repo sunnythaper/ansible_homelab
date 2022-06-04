@@ -69,5 +69,4 @@
           - title: Remediation
             value: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
             short: no
-        footer: "If the above looks correct, please issue `rkhunter --propupd` command if needed."
   when: config.mattermost is defined and rkhunter_report.stdout != ""

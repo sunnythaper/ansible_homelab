@@ -1,4 +1,13 @@
 ---
+- name: Copy authorized_keys
+  authorized_key:
+    exclusive: yes
+    key: "{{ item.key }}"
+    state: present
+    user: "{{ item.name }}"
+  with_items:
+    - "{{ config.users.sudo | default([]) }}"
+
 - name: Copy /etc/issue banner
   become: yes
   template:
