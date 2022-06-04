@@ -12,7 +12,6 @@ modprobe:
       - squashfs
       - udf
       - usb-storage
-      - vfat
     networks:
       - dccp
       - rds
