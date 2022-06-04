@@ -1,5 +1,6 @@
 ---
 - name: Copy authorized_keys
+  become: yes
   authorized_key:
     exclusive: yes
     key: "{{ item.key }}"
