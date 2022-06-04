@@ -27,3 +27,10 @@
     group: root
     mode: 0600
   notify: Restart sshd
+
+- name: Enable sshd service
+  become: yes
+  service:
+    name: sshd
+    enabled: yes
+    state: started
