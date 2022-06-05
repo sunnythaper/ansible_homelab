@@ -1,21 +1,9 @@
 ---
-- name: Configure sysctl settings
+- name: Copy sysctl.conf
   become: yes
-  sysctl:
-    name: "{{ item.key }}"
-    value: "{{ item.value | int }}"
-    state: present
-    sysctl_set: yes
-    reload: yes
-  with_dict: "{{ sysctl.conf.ct }}"
-
-- name: Configure additional sysctl settings
-  become: yes
-  sysctl:
-    name: "{{ item.key }}"
-    value: "{{ item.value | int }}"
-    state: present
-    sysctl_set: yes
-    reload: yes
-  with_dict: "{{ sysctl.conf.vm }}"
-  when: "'kvm' in ansible_virtualization_type"
+  template:
+    src: /etc/sysctl.d/99-sysctl.conf.j2
+    dest: /etc/sysctl.d/99-sysctl.conf
+    owner: root
+    group: root
+    mode: 0644
