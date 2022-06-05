@@ -1,6 +1,5 @@
 {% for dns in config.dns -%}
 nameserver {{ dns }}
 {% endfor %}
-
 options edns0 trust-ad
-search .{{ config.domain }}
+search {{ config.domain }}
