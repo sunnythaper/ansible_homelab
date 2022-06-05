@@ -62,7 +62,7 @@ net.ipv6.conf.default.router_solicitations=0
 net.ipv6.conf.default.use_tempaddr=2
 net.ipv6.conf.lo.disable_ipv6=1
 net.ipv6.icmp.echo_ignore_all=1
-{% if ansible_facts['virtualization_type'] == 'nokvm' %}
+{% if ansible_facts['virtualization_type'] == 'kvm' %}
 dev.tty.ldisc_autoload=0
 fs.protected_fifos=2
 fs.protected_hardlinks=1
@@ -72,7 +72,7 @@ fs.suid_dumpable=0
 kernel.core_uses_pid=1
 kernel.dmesg_restrict=1
 kernel.kptr_restrict=2
-kernel.modules_disabled=1
+{# kernel.modules_disabled=1 #}
 kernel.panic_on_oops=60
 kernel.panic=60
 kernel.perf_event_paranoid=3
