@@ -1,3 +1,4 @@
 127.0.0.1 localhost
 ::1 localhost
+127.0.1.1 {{ inventory_hostname }}.{{ config.domain }} {{ inventory_hostname }}
 {{ ansible_host }} {{ inventory_hostname }}.{{ config.domain }} {{ inventory_hostname }}
