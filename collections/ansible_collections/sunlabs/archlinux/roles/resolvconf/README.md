@@ -1,4 +1,4 @@
 resolvconf
 ========
 
-Set hostname, dns, and basic network settings
+Set dns and basic network settings

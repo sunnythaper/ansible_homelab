@@ -1,0 +1,18 @@
+---
+- name: Copy /etc/host file
+  become: yes
+  template:
+    src: /etc/host.j2
+    dest: /etc/host
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy /etc/hosts file
+  become: yes
+  template:
+    src: /etc/hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644

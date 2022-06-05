@@ -4,4 +4,4 @@ dependencies: []
 galaxy_info:
   role_name: resolvconf
   author: sunnythaper
-  description: Set hostname, dns, and basic network settings
+  description: Set dns and basic network settings

@@ -9,6 +9,7 @@
   hosts: archlinux:&administration
   roles:
     - resolvconf
+    - hosts
 
 - name: Harden system configuration to be security-forward
   hosts: archlinux:&administration
