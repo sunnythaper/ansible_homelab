@@ -17,3 +17,13 @@
     owner: root
     group: root
   notify: Restart systemd
+
+- name: Copy resolv.conf
+  become: yes
+  template:
+    src: etc/resolv.conf.j2
+    dest: /etc/resolv.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: Restart systemd
