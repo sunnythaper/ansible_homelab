@@ -62,7 +62,7 @@ net.ipv6.conf.default.router_solicitations=0
 net.ipv6.conf.default.use_tempaddr=2
 net.ipv6.conf.lo.disable_ipv6=1
 net.ipv6.icmp.echo_ignore_all=1
-{% if "{{ ansible_virtualization_type }}" == 'kvm' %}
+{% if ansible_facts['virtualization_type'] == 'kvm' %}
 dev.tty.ldisc_autoload=0
 fs.protected_fifos=2
 fs.protected_hardlinks=1
