@@ -6,14 +6,14 @@
     state: directory
     owner: root
     group: root
-    mode: 0644
+    mode: 0755
 
 - name: Copy resolved.conf
   become: yes
   template:
     src: etc/systemd/resolved.conf.d/resolved.conf.j2
     dest: /etc/systemd/resolved.conf.d/resolved.conf
-    mode: 0744
+    mode: 0644
     owner: root
     group: root
   notify: Restart systemd
@@ -23,7 +23,7 @@
   template:
     src: etc/resolv.conf.j2
     dest: /etc/resolv.conf
-    mode: 0744
+    mode: 0644
     owner: root
     group: root
   notify: Restart systemd
