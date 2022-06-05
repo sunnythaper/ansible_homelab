@@ -5,6 +5,11 @@
     - pacman
     - teleport
 
+- name: Configure basic host & network settings
+  hosts: archlinux:&administration
+  roles:
+    - resolvconf
+
 - name: Harden system configuration to be security-forward
   hosts: archlinux:&administration
   roles:
@@ -19,7 +24,7 @@
     - privileges
     - lynis
 
-- name: Configure media center storage and delivery
+- name: Configure media center storage & delivery
   hosts: archlinux:&mediacenter
   roles:
     - nfs
