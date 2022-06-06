@@ -1,0 +1,7 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: profile
+  author: sunnythaper
+  description: Sets umask to 027 via /etc/profile.d/umask.sh

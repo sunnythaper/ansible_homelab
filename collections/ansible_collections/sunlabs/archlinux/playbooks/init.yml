@@ -15,14 +15,18 @@
   hosts: archlinux:&administration
   roles:
     - sshd
-    - rkhunter
-    - apparmor
-    - modprobe
-    - coredump
-    - sysctl
+    - profile
     - logindefs
-    - libpwquality
+    - coredump
+    - modprobe
+    - sysctl
     - privileges
+
+- name: Configure additional packages for additional security
+  hosts: archlinux:&administration
+    - libpwquality
+    - apparmor
+    - rkhunter
     - lynis
 
 - name: Configure media center storage & delivery

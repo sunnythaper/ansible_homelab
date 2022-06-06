@@ -1,0 +1,14 @@
+---
+- name: Set umask via /etc/profile.d/umask.sh
+  become: yes
+  lineinfile:
+    dest: /etc/profile.d/umask.sh
+    line: umask 027
+    state: present
+    create: yes
+    owner: root
+    group: root
+    mode: 0644
+    validate:
+      path: /etc/profile.d/umask.sh
+      regexp: umask 027
