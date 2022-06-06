@@ -4,3 +4,12 @@
   pacman:
     name: logrotate
     state: latest
+
+- name: Copy logrotate configuration
+  become: yes
+  template:
+    src: etc/logrotate.d/general.j2
+    dest: /etc/logrotate.d/general
+    owner: root
+    group: root
+    mode: 0644
