@@ -2,9 +2,9 @@
 DNS={% for dns in config.dns -%}{{ dns }} {% endfor %}
 
 FallbackDNS=
-Domains={{ config.domain }}
+Domains=~{{ config.domain }}
 DNSSEC=yes
-DNSOverTLS=opportunistic
+DNSOverTLS=yes
 MulticastDNS=no
 LLMNR=no
 Cache=no-negative
