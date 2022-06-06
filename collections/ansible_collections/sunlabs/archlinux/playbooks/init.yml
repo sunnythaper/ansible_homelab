@@ -26,6 +26,7 @@
   hosts: archlinux:&administration
   roles:
     - libpwquality
+    - logrotate
     - apparmor
     - rkhunter
     - lynis

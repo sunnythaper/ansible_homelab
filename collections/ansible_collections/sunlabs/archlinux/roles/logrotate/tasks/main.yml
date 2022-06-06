@@ -1,0 +1,6 @@
+---
+- name: Install logrotate via pacman
+  become: yes
+  pacman:
+    name: logrotate
+    state: latest
