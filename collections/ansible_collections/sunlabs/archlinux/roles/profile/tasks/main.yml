@@ -9,6 +9,3 @@
     owner: root
     group: root
     mode: 0644
-    validate:
-      path: /etc/profile.d/umask.sh
-      regexp: umask 027
