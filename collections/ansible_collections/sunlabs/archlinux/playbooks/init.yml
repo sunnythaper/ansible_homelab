@@ -24,6 +24,7 @@
 
 - name: Configure additional packages for additional security
   hosts: archlinux:&administration
+  roles:
     - libpwquality
     - apparmor
     - rkhunter
