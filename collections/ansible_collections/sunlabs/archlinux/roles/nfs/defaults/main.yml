@@ -1,25 +1,22 @@
 ---
 nfs:
-  opts: defaults,acl,timeo=900,retrans=5,_netdev
+  opts: defaults,user,exec,timeo=900,retrans=5,_netdev
   path:
-    main:
-      dir: /nas
-      nas: 192.168.1.21:/mnt/SunNAS/Media
     books:
-      dir: /nas/Books
+      dir: /mnt/books
       nas: 192.168.1.21:/mnt/SunNAS/Media/Books
     downloads:
-      dir: /nas/Downloads
+      dir: /mnt/downloads
       nas: 192.168.1.21:/mnt/SunNAS/Media/Downloads
     movies:
-      dir: /nas/Movies
+      dir: /mnt/movies
       nas: 192.168.1.21:/mnt/SunNAS/Media/Movies
     music:
-      dir: /nas/Music
+      dir: /mnt/music
       nas: 192.168.1.21:/mnt/SunNAS/Media/Music
     software:
-      dir: /nas/Software
+      dir: /mnt/software
       nas: 192.168.1.21:/mnt/SunNAS/Media/Software
     tv:
-      dir: /nas/TV
+      dir: /mnt/tv
       nas: 192.168.1.21:/mnt/SunNAS/Media/TV
