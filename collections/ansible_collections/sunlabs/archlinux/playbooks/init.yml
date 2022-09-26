@@ -30,6 +30,11 @@
     - rkhunter
     - lynis
 
+- name: Configure PostgreSQL
+  hosts: archlinux:&postgresql
+  roles:
+    - postgresql
+
 - name: Configure media center storage & delivery
   hosts: archlinux:&mediacenter
   roles:
