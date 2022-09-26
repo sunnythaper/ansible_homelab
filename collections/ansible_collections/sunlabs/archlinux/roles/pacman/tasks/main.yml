@@ -4,6 +4,8 @@
   community.general.pacman:
     update_cache: yes
     upgrade: yes
+  tags:
+    - update
 
 - name: Install `pacman-contrib` via pacman
   become: yes
