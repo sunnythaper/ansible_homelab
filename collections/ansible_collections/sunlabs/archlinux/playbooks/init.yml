@@ -3,7 +3,6 @@
   hosts: archlinux
   roles:
     - pacman
-    {# - teleport #}
 
 - name: Configure basic host & network settings
   hosts: archlinux
