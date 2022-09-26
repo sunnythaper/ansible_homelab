@@ -3,16 +3,16 @@
   hosts: archlinux
   roles:
     - pacman
-    - teleport
+    {# - teleport #}
 
 - name: Configure basic host & network settings
-  hosts: archlinux:&administration
+  hosts: archlinux
   roles:
     - resolvconf
     - hosts
 
 - name: Harden system configuration to be security-forward
-  hosts: archlinux:&administration
+  hosts: archlinux
   roles:
     - sshd
     - profile
@@ -23,7 +23,7 @@
     - privileges
 
 - name: Configure additional packages for additional security
-  hosts: archlinux:&administration
+  hosts: archlinux
   roles:
     - libpwquality
     - logrotate
