@@ -1,7 +1,34 @@
 ---
-- name: Install `postgresql` via pacman
+- name: Install via pacman
   become: yes
   pacman:
-    name: postgresql
+    name: "{{ postgresql_daemon }}"
     state: latest
 
+- name: Check if database directory exists.
+  become: yes
+  file:
+    path: "{{ postgresql_data_dir }}"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    state: directory
+    mode: 0700
+
+- name: Check if database is initialized
+  become: yes
+  ansible.builtin.stat:
+    path: "{{ postgresql_data_dir }}/PG_VERSION"
+  register: postgres_data
+
+- name: Initialize database
+  become: yes
+  become_user: "{{ postgresql_user }}"
+  command: "{{ postgresql_bin_path }}/initdb -D {{ postgresql_data_dir }}"
+  when: not postgres_data.stat.exists
+
+- name: Start & enable service
+  become: yes
+  systemd:
+    enabled: yes
+    name: "{{ postgresql_daemon }}"
+    state: started

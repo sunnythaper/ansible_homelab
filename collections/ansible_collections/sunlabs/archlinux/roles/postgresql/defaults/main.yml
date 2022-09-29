@@ -1,0 +1,13 @@
+---
+# App Information
+postgresql_bin_path: /usr/bin
+postgresql_data_dir: /var/lib/postgres/data
+postgresql_daemon: postgresql
+
+# User Information
+postgresql_user: postgres
+postgresql_group: postgres
+
+# Database Information
+postgresql_databases: []
+postgresql_users: []
