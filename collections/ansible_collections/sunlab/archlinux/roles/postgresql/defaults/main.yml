@@ -30,7 +30,19 @@ postgresql_global_config:
   - option: password_encryption
     value: "{{ postgresql_auth_method }}"
   - option: ssl
-    value: "off"
+    value: "on"
+  - option: ssl_cert_file
+    value: "{{ ssl_cert_dir }}/{{ ssl_name }}.crt"
+  - option: ssl_key_file
+    value: "{{ ssl_key_dir }}/{{ ssl_name }}.key"
+  - option: ssl_ciphers
+    value: "HIGH:MEDIUM:+3DES:!aNULL"
+  - option: ssl_prefer_server_ciphers
+    value: "on"
+  - option: ssl_ecdh_curve
+    value: "secp521r1:secp384r1:prime256v1"
+  - option: ssl_min_protocol_version
+    value: TLSv1.2
   - option: stats_temp_directory
     value: /run/postgresql
   - option: unix_socket_directories
@@ -50,12 +62,12 @@ postgresql_hba_config:
     database: all
     user: all
     auth_method: reject
-  - type: host
+  - type: hostssl
     database: all
     user: all
     address: "127.0.0.1/32"
     auth_method: "{{ postgresql_auth_method }}"
-  - type: host
+  - type: hostssl
     database: all
     user: all
     address: "::1/128"
