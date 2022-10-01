@@ -11,7 +11,7 @@ postgresql_listen_addresses:
   - "{{ ansible_host }}"
 postgresql_unix_socket_directories:
   - /run/postgresql
-postgresql_unix_socket_directories_mode: 02755
+postgresql_unix_socket_directories_mode: 0755
 postgresql_global_config:
   - option: db_user_namespace
     value: "off"
