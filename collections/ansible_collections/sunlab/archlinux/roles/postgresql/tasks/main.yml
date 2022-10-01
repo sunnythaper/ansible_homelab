@@ -2,16 +2,16 @@
 - name: Install dependencies
   include_tasks: install.yml
 
-- name: Initialize database
-  include_tasks: initialize.yml
-
-- name: Configure database
-  include_tasks: configure.yml
-
 - name: Allow access to SSL certificates
-  include_role:
+  import_role:
     name: ssl
   vars:
     ssl_users: "{{ postgresql_user }}"
   tags:
     - add-user
+
+- name: Initialize database
+  include_tasks: initialize.yml
+
+- name: Configure database
+  include_tasks: configure.yml
