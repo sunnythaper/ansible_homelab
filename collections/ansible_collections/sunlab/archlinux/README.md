@@ -1,2 +1,2 @@
-## sunlabs.archlinux
+## sunlab.archlinux
 Initialize & maintain a standard Arch Linux system in a security-forward approach.

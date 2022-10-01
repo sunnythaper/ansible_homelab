@@ -1,0 +1,15 @@
+---
+- name: Install dependencies
+  include_tasks: install.yml
+
+- name: Setup SSL certificates
+  include_role:
+    name: ssl
+  vars:
+    ssl_users: "{{ postgresql_user }}"
+
+- name: Initialize database
+  include_tasks: initialize.yml
+
+- name: Configure database
+  include_tasks: configure.yml

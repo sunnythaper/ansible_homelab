@@ -1,0 +1,9 @@
+---
+- name: Install dependencies
+  include_tasks: install.yml
+
+- name: Setup Users & Groups
+  include_tasks: user.yml
+
+- name: Initialize certificates
+  include_tasks: initialize.yml

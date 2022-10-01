@@ -1,8 +1,0 @@
----
-ssl_subdomain: subdomain
-ssl_domain: "{{ ansible_dns.search[0] | default('example.com') }}"
-ssl_name: "{{ ssl_subdomain }}.{{ ssl_domain }}"
-ssl_cert_path: /etc/ssl/certs
-ssl_private_path: /etc/ssl/private
-ssl_user_name: root
-ssl_user_group: root

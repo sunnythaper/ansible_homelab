@@ -1,4 +1,4 @@
 ---
 - hosts: all
 
-- import_playbook: sunlabs.archlinux.init
+- import_playbook: sunlab.archlinux.init

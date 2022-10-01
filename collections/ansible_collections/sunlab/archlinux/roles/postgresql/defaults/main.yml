@@ -1,9 +1,11 @@
 ---
 # Daemon
+postgresql_daemon: postgresql
+
+# Directories
 postgresql_bin_dir: /usr/bin
 postgresql_config_dir: /var/lib/postgres/data
 postgresql_data_dir: /var/lib/postgres/data
-postgresql_daemon: postgresql
 
 # Global Configuration
 postgresql_listen_addresses:
@@ -33,9 +35,12 @@ postgresql_global_config:
     value: /run/postgresql
   - option: unix_socket_directories
     value: '{{ postgresql_unix_socket_directories | join(",") }}'
+  - option: unix_socket_permissions
+    value: 0770
 
 # Host-based Authentication
-postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
+# postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
+postgresql_auth_method: scram-sha-256
 postgresql_hba_config:
   - type: local
     database: all
@@ -60,6 +65,6 @@ postgresql_hba_config:
 postgresql_user: postgres
 postgresql_group: postgres
 
-# Database
+# Client
 postgresql_databases: []
 postgresql_users: []

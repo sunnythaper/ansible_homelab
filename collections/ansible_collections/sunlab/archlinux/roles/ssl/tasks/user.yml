@@ -1,0 +1,15 @@
+---
+- name: Create ssl-cert group
+  become: yes
+  ansible.builtin.group:
+    name: "{{ ssl_user_group }}"
+    state: present
+    gid: "{{ ssl_user_group_gid }}"
+
+- name: Add users to ssl-cert group
+  become: yes
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: "{{ ssl_user_group }}"
+    append: yes
+  with_items: "{{ ssl_users }}"
