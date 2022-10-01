@@ -4,7 +4,7 @@
   lineinfile:
     dest: "{{ postgresql_config_dir }}/postgresql.conf"
     regexp: "^#?{{ item.option }}.+$"
-    line: "{{ item.option }} = '{{ item.value }}'"
+    line: "{{ item.option }} = {{ item.value }}"
     state: "{{ item.state | default('present') }}"
     owner: "{{ postgresql_user }}"
     group: "{{ postgresql_group }}"

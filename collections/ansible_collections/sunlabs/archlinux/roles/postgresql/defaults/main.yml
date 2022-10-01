@@ -14,13 +14,13 @@ postgresql_unix_socket_directories:
 postgresql_unix_socket_directories_mode: 02755
 postgresql_global_config:
   - option: db_user_namespace
-    value: off
+    value: "off"
   - option: listen_addresses
     value: '{{ postgresql_listen_addresses | join(",") }}'
   - option: log_destination
     value: stderr
   - option: logging_collector
-    value: off
+    value: "off"
   - option: log_directory
     value: log
   - option: port
@@ -28,7 +28,7 @@ postgresql_global_config:
   - option: password_encryption
     value: "{{ postgresql_auth_method }}"
   - option: ssl
-    value: off
+    value: "off"
   - option: stats_temp_directory
     value: /run/postgresql
   - option: unix_socket_directories
