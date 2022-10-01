@@ -1,0 +1,33 @@
+---
+- name: Configure global settings
+  become: yes
+  lineinfile:
+    dest: "{{ postgresql_config_dir }}/postgresql.conf"
+    regexp: "^#?{{ item.option }}.+$"
+    line: "{{ item.option }} = '{{ item.value }}'"
+    state: "{{ item.state | default('present') }}"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600
+  with_items: "{{ postgresql_global_config }}"
+  notify: Restart PostgreSQL
+
+- name: Configure host based authentication
+  become: yes
+  template:
+    src: "pg_hba.conf.j2"
+    dest: "{{ postgresql_config_dir }}/pg_hba.conf"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600
+  notify: Restart PostgreSQL
+
+- name: Check if unix socket directory exists
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: "{{ postgresql_unix_socket_directories_mode }}"
+  with_items: "{{ postgresql_unix_socket_directories }}"

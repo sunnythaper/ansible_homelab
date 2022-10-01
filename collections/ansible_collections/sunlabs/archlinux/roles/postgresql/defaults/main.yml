@@ -1,13 +1,65 @@
 ---
-# App Information
-postgresql_bin_path: /usr/bin
+# Daemon
+postgresql_bin_dir: /usr/bin
+postgresql_config_dir: /var/lib/postgres/data
 postgresql_data_dir: /var/lib/postgres/data
 postgresql_daemon: postgresql
 
-# User Information
+# Global Configuration
+postgresql_listen_addresses:
+  - localhost
+  - "{{ ansible_host }}"
+postgresql_unix_socket_directories:
+  - /run/postgresql
+postgresql_unix_socket_directories_mode: 02755
+postgresql_global_config:
+  - option: db_user_namespace
+    value: off
+  - option: listen_addresses
+    value: '{{ postgresql_listen_addresses | join(",") }}'
+  - option: log_destination
+    value: stderr
+  - option: logging_collector
+    value: off
+  - option: log_directory
+    value: log
+  - option: port
+    value: 5432
+  - option: password_encryption
+    value: "{{ postgresql_auth_method }}"
+  - option: ssl
+    value: off
+  - option: stats_temp_directory
+    value: /run/postgresql
+  - option: unix_socket_directories
+    value: '{{ postgresql_unix_socket_directories | join(",") }}'
+
+# Host-based Authentication
+postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
+postgresql_hba_config:
+  - type: local
+    database: all
+    user: postgres
+    auth_method: peer
+  - type: local
+    database: all
+    user: all
+    auth_method: reject
+  - type: host
+    database: all
+    user: all
+    address: "127.0.0.1/32"
+    auth_method: "{{ postgresql_auth_method }}"
+  - type: host
+    database: all
+    user: all
+    address: "::1/128"
+    auth_method: reject
+
+# User
 postgresql_user: postgres
 postgresql_group: postgres
 
-# Database Information
+# Database
 postgresql_databases: []
 postgresql_users: []
