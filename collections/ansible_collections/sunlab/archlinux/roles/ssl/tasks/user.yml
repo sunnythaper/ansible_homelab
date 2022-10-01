@@ -13,3 +13,5 @@
     groups: "{{ ssl_user_group }}"
     append: yes
   with_items: "{{ ssl_users }}"
+  tags:
+    - add-user
