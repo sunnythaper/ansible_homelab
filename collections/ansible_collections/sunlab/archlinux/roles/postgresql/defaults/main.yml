@@ -40,7 +40,7 @@ postgresql_global_config:
   - option: ssl_prefer_server_ciphers
     value: "on"
   - option: ssl_ecdh_curve
-    value: "secp521r1"
+    value: "secp384r1:prime256v1"
   - option: ssl_min_protocol_version
     value: TLSv1.2
   - option: stats_temp_directory
