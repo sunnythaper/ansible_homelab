@@ -19,7 +19,7 @@
     password_expire_min: '{{ item.password_expire_min | default(omit) }}'
     password_lock: '{{ item.password_lock | default(omit) }}'
     remove: '{{ item.remove | default(false) }}'
-    shell: '{{ item.shell | default(omit) }}'
+    shell: '{{ item.shell | default("/bin/bash") }}'
     skeleton: '{{ item.skeleton | default(omit) }}'
     ssh_key_bits: '{{ item.ssh_key_bits | default(omit) }}'
     ssh_key_comment: '{{ item.ssh_key_comment | default(omit) }}'

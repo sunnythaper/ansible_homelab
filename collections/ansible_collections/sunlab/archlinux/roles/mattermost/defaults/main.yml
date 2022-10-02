@@ -10,3 +10,4 @@ mattermost_gid: 1600
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
+mattermost_base_dir: /var/lib/mattermost
