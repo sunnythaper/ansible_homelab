@@ -18,9 +18,12 @@
 
 - name: Create users
   include_tasks: user.yml
+  when: postgres_users is defined
 
 - name: Create databases
   include_tasks: database.yml
+  when: postgres_databases is defined
 
 - name: Configure users
   include_tasks: user.yml
+  when: postgres_users is defined
