@@ -3,9 +3,9 @@
   become: true
   ansible.builtin.group:
     gid: '{{ item.gid | default(omit) }}'
-    local: '{{ item.local | default(no) }}'
+    local: '{{ item.local | default(false) }}'
     name: '{{ item.name }}'
-    non_unique: '{{ item.non_unique | default(no) }}'
+    non_unique: '{{ item.non_unique | default(false) }}'
     state: '{{ item.state | default("present") }}'
-    system: '{{ item.system | default(no) }}'
+    system: '{{ item.system | default(omit) }}'
   with_items: "{{ user_groups }}"
