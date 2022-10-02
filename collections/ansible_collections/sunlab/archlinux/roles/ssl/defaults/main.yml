@@ -2,7 +2,7 @@
 # Certificate
 ssl_name: "{{ ansible_fqdn | default('subdomain.example.com') }}"
 ssl_mode: 0640
-ssl_curve: sect571r1
+ssl_curve: secp521r1
 
 # Directories
 ssl_cert_dir: /etc/ssl/certs
