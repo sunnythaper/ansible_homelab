@@ -11,7 +11,7 @@ dependencies:
             - "{{ mattermost_user }}"
             - "{{ mattermost_group }}"
             - "{{ ssl_user_group }}"
-          home: "{{ mattermost_base_dir }}"
+          home: "{{ mattermost_config_dir }}"
           uid: "{{ mattermost_uid }}"
 
 galaxy_info:
