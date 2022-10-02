@@ -10,7 +10,6 @@ dependencies:
           groups:
             - "{{ mattermost_user }}"
             - "{{ mattermost_group }}"
-            - "{{ ssl_user_group }}"
           home: "{{ mattermost_data_dir }}"
           uid: "{{ mattermost_user_uid }}"
   - role: pacman
