@@ -1,0 +1,8 @@
+---
+- name: Setup groups
+  include_tasks: group.yml
+  when: user_groups is defined
+
+- name: Setup users
+  include_tasks: user.yml
+  when: user_users is defined

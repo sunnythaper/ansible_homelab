@@ -5,6 +5,8 @@ mattermost_daemon: mattermost
 # User
 mattermost_user: mattermost
 mattermost_group: mattermost
+mattermost_uid: 1600
+mattermost_gid: 1600
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost

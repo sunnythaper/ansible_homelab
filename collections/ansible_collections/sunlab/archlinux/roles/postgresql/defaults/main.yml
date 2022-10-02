@@ -55,7 +55,6 @@ postgresql_global_config:
     value: 0770
 
 # Host-based Authentication
-# postgresql_auth_method: "{{ ansible_fips | ternary('scram-sha-256', 'md5') }}"
 postgresql_auth_method: scram-sha-256
 postgresql_hba_config:
   - type: local

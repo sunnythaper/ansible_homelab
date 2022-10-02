@@ -1,5 +1,17 @@
 ---
-dependencies: []
+dependencies:
+  - role: user
+    vars:
+      user_groups:
+        - name: "{{ mattermost_group }}"
+          gid: "{{ mattermost_gid }}"
+      user_users:
+        - name: "{{ mattermost_user }}"
+          groups:
+            - "{{ mattermost_user }}"
+            - "{{ mattermost_group }}"
+            - "{{ ssl_user_group }}"
+          uid: "{{ mattermost_uid }}"
 
 galaxy_info:
   role_name: mattermost

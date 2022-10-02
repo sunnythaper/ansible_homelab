@@ -1,0 +1,11 @@
+---
+- name: Create & configure groups
+  become: true
+  ansible.builtin.group:
+    gid: '{{ item.gid | default(omit) }}'
+    local: '{{ item.local | default(no) }}'
+    name: '{{ item.name }}'
+    non_unique: '{{ item.non_unique | default(no) }}'
+    state: '{{ item.state | default("present") }}'
+    system: '{{ item.system | default(no) }}'
+  with_items: "{{ user_groups }}"
