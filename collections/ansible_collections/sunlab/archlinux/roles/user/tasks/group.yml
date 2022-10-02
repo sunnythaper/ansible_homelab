@@ -9,3 +9,7 @@
     state: '{{ item.state | default("present") }}'
     system: '{{ item.system | default(omit) }}'
   with_items: "{{ user_groups }}"
+  when: user_groups is defined
+  tags:
+    - default
+    - add-group

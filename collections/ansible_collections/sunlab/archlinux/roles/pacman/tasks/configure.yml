@@ -7,6 +7,8 @@
     owner: root
     group: root
     mode: "{{ pacman_hooks_dir_mode }}"
+  tags:
+    - default
 
 - name: Copy pacman hooks
   become: true
@@ -19,6 +21,8 @@
   with_items:
     - pacman-clean-cache.hook
     - pacman-remove-uninstalled-cache.hook
+  tags:
+    - default
 
 - name: Enable pacman parallel downloads
   become: true
@@ -26,3 +30,5 @@
     regexp: 'ParallelDownloads'
     line: 'ParallelDownloads = {{ pacman_parallel_downloads }}'
     path: "{{ pacman_config_path }}"
+  tags:
+    - default

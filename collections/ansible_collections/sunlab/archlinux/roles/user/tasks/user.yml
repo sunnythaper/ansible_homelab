@@ -33,6 +33,9 @@
     update_password: '{{ item.update_password | default("always") }}'
   with_items: "{{ user_users }}"
   when: user_users is defined
+  tags:
+    - default
+    - add-user
 
 - name: Configure users to run a passwordless sudo command
   become: true
@@ -46,3 +49,6 @@
     mode: '{{ user_sudoers_config_mode }}'
   with_items: '{{ user_passwordless_sudo_users }}'
   when: user_passwordless_sudo_users is defined
+  tags:
+    - default
+    - add-user

@@ -5,6 +5,7 @@
     update_cache: yes
     upgrade: yes
   tags:
+    - default
     - install
     - update
 
@@ -15,4 +16,5 @@
     state: latest
   with_items: "{{ pacman_packages }}"
   tags:
+    - default
     - install

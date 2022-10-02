@@ -10,6 +10,8 @@ dependencies:
       user_passwordless_sudo_users:
         - name: "{{ pacman_helper_user }}"
           command: "{{ pacman_binary_dir }}/{{ pacman_binary }}"
+    tags:
+      - add-user
 
 galaxy_info:
   role_name: pacman

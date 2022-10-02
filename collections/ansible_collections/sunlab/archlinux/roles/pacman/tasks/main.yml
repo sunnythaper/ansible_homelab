@@ -1,9 +1,18 @@
 ---
 - name: Update & install packages
   include_tasks: install.yml
+  tags:
+    - default
+    - install
+    - update
 
 - name: Configure package manager
   include_tasks: configure.yml
+  tags:
+    - default
 
 - name: Update & install helper packages
   include_tasks: helper.yml
+  tags:
+    - default
+    - install-helper
