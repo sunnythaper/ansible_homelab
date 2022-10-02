@@ -12,9 +12,6 @@ dependencies:
             - "{{ mattermost_group }}"
           home: "{{ mattermost_data_dir }}"
           uid: "{{ mattermost_user_uid }}"
-    tags:
-      - add-user
-      - add-group
   - role: pacman
     vars:
       pacman_packages:

@@ -7,9 +7,7 @@
     state: present
     use: makepkg
   tags:
-    - default
-    - install
-    - update
+    - install-helper
 
 - name: Install packages via helper
   become: true
@@ -21,5 +19,4 @@
   with_items: '{{ pacman_helper_packages }}'
   when: pacman_helper_packages is defined
   tags:
-    - default
-    - install
+    - install-helper

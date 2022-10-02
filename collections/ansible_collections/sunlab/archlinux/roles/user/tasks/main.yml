@@ -2,13 +2,7 @@
 - name: Setup groups
   include_tasks: group.yml
   when: user_groups is defined
-  tags:
-    - default
-    - add-group
 
 - name: Setup users
   include_tasks: user.yml
   when: user_users is defined or user_passwordless_sudo_users is defined
-  tags:
-    - default
-    - add-user
