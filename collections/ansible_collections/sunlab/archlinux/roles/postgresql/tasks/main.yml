@@ -29,4 +29,4 @@
 - name: Configure users
   include_tasks: user.yml
   tags:
-    - configure-user
+    - add-user
