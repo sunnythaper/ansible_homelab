@@ -2,7 +2,7 @@
 - name: Configure users
   become: true
   become_user: "{{ postgresql_user }}"
-  postgresql_user:
+  community.postgresql.postgresql_user:
     name: "{{ item.name }}"
     password: "{{ item.password | default(omit) }}"
     encrypted: "{{ item.encrypted | default(omit) }}"
@@ -20,3 +20,5 @@
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
+  tags:
+    - add-user

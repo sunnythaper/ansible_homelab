@@ -18,15 +18,9 @@
 
 - name: Create users
   include_tasks: user.yml
-  tags:
-    - add-user
 
 - name: Create databases
   include_tasks: database.yml
-  tags:
-    - add-database
 
 - name: Configure users
   include_tasks: user.yml
-  tags:
-    - add-user
