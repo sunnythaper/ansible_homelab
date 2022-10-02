@@ -21,3 +21,15 @@
   apply:
     tags:
       - add-user
+
+- name: Create databases
+  include_tasks: database.yml
+  apply:
+    tags:
+      - add-database
+
+- name: Configure users
+  include_tasks: user.yml
+  apply:
+    tags:
+      - configure-user
