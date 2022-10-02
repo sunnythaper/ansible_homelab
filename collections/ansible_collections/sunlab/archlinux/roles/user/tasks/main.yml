@@ -5,4 +5,4 @@
 
 - name: Setup users
   include_tasks: user.yml
-  when: user_users is defined
+  when: user_users is defined or user_passwordless_sudo_users is defined

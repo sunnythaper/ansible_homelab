@@ -1,0 +1,27 @@
+---
+# Packages
+pacman_binary: pacman
+pacman_helper_binary: yay
+pacman_packages:
+  - pacman-contrib
+pacman_helper_packages: []
+
+# Users
+pacman_helper_user: aur_builder
+pacman_helper_user_uid: 1002
+
+# Groups
+pacman_helper_group: wheel
+
+# Directories
+pacman_binary_dir: /usr/bin
+pacman_hooks_dir: /etc/pacman.d/hooks
+
+# Paths
+pacman_config_path: /etc/pacman.conf
+
+# Permissions
+pacman_hooks_dir_mode: 0644
+
+# Configuration
+pacman_parallel_downloads: 6

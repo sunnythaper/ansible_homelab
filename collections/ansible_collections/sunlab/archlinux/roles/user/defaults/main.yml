@@ -1,6 +1,16 @@
 ---
+# Directories
+user_sudoers_path: /etc/sudoers.d
+
+# Permissions
+user_sudoers_config_mode: 0440
+
+# Configuration
+user_passwordless_sudo_users_validate: 'visudo -cf %s'
+
 # Groups
 user_groups: []
 
 # Users
 user_users: []
+user_passwordless_sudo_users: []

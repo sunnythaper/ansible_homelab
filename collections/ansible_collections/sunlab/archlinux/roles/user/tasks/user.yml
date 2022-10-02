@@ -32,3 +32,17 @@
     umask: '{{ item.umask | default(omit) }}'
     update_password: '{{ item.update_password | default("always") }}'
   with_items: "{{ user_users }}"
+  when: user_users is defined
+
+- name: Configure users to run a passwordless sudo command
+  become: true
+  ansible.builtin.lineinfile:
+    create: yes
+    line: '{{ item.name }} ALL=(ALL) NOPASSWD: {{ item.command }}'
+    path: '{{ user_sudoers_path }}/11-passwordless-sudo-{{ item.name }}'
+    validate: '{{ user_passwordless_sudo_users_validate }}'
+    owner: root
+    group: root
+    mode: '{{ user_sudoers_config_mode }}'
+  with_items: '{{ user_passwordless_sudo_users }}'
+  when: user_passwordless_sudo_users is defined

@@ -1,69 +1,9 @@
 ---
-- name: Update packages to latest
-  become: true
-  community.general.pacman:
-    update_cache: yes
-    upgrade: yes
-  tags:
-    - update
+- name: Update & install packages
+  include_tasks: install.yml
 
-- name: Install `pacman-contrib` via pacman
-  become: true
-  pacman:
-    name: pacman-contrib
-    state: latest
+- name: Configure package manager
+  include_tasks: configure.yml
 
-- name: Create pacman hooks directory
-  become: true
-  file:
-    path: /etc/pacman.d/hooks
-    state: directory
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Copy pacman hooks
-  become: true
-  template:
-    src: "templates/etc/pacman.d/hooks/{{ item }}.j2"
-    dest: "/etc/pacman.d/hooks/{{ item }}"
-    owner: root
-    group: root
-    mode: 0644
-  with_items:
-    - pacman-clean-cache.hook
-    - pacman-remove-uninstalled-cache.hook
-
-- name: Enable pacman parallel downloads
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: 'ParallelDownloads'
-    line: 'ParallelDownloads = 6'
-    path: /etc/pacman.conf
-
-- name: Create the `aur_builder` user
-  become: true
-  ansible.builtin.user:
-    create_home: yes
-    group: wheel
-    name: aur_builder
-    uid: 1002
-
-- name: Allow the `aur_builder` user to run `sudo pacman` without a password
-  become: true
-  ansible.builtin.lineinfile:
-    create: yes
-    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
-    path: /etc/sudoers.d/11-install-aur_builder
-    validate: 'visudo -cf %s'
-    owner: root
-    group: root
-    mode: 0440
-
-- name: Install Yay
-  become: true
-  become_user: aur_builder
-  kewlfft.aur.aur:
-    name: yay
-    state: present
-    use: makepkg
+- name: Update & install helper packages
+  include_tasks: helper.yml

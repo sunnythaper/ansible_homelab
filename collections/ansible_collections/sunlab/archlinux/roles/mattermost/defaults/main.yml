@@ -1,13 +1,15 @@
 ---
-# Daemon
-mattermost_daemon: mattermost
+# Packages
+mattermost_package: mattermost
 
-# User
+# Users
 mattermost_user: mattermost
+mattermost_user_uid: 1600
+
+# Groups
 mattermost_group: mattermost
-mattermost_uid: 1600
-mattermost_gid: 1600
+mattermost_group_gid: 1600
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
-mattermost_base_dir: /var/lib/mattermost
+mattermost_data_dir: /var/lib/mattermost

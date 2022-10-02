@@ -4,15 +4,21 @@ dependencies:
     vars:
       user_groups:
         - name: "{{ mattermost_group }}"
-          gid: "{{ mattermost_gid }}"
+          gid: "{{ mattermost_group_gid }}"
       user_users:
         - name: "{{ mattermost_user }}"
           groups:
             - "{{ mattermost_user }}"
             - "{{ mattermost_group }}"
             - "{{ ssl_user_group }}"
-          home: "{{ mattermost_config_dir }}"
-          uid: "{{ mattermost_uid }}"
+          home: "{{ mattermost_data_dir }}"
+          uid: "{{ mattermost_user_uid }}"
+  - role: pacman
+    vars:
+      pacman_packages:
+        - '{{ mattermost_package }}'
+    tags:
+      - install
 
 galaxy_info:
   role_name: mattermost

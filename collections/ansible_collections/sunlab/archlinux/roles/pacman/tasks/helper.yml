@@ -1,0 +1,23 @@
+---
+- name: Install package manager helper
+  become: true
+  become_user: '{{ pacman_helper_user }}'
+  kewlfft.aur.aur:
+    name: '{{ pacman_helper_binary }}'
+    state: present
+    use: makepkg
+  tags:
+    - install
+    - update
+
+- name: Install packages via helper
+  become: true
+  become_user: '{{ pacman_helper_user }}'
+  kewlfft.aur.aur:
+    name: '{{ item }}'
+    state: latest
+    use: '{{ pacman_helper_binary }}'
+  with_items: '{{ pacman_helper_packages }}'
+  when: pacman_helper_packages is defined
+  tags:
+    - install
