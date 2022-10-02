@@ -33,9 +33,14 @@
     - lynis
 
 - name: Configure PostgreSQL
-  hosts: archlinux:&postgresql
+  hosts: archlinux:&data
   roles:
     - postgresql
+
+- name: Configure Mattermost
+  hosts: archlinux:&chat
+  roles:
+    - mattermost
 
 - name: Configure media center storage & delivery
   hosts: archlinux:&mediacenter

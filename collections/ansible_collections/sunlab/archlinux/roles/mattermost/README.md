@@ -1,0 +1,4 @@
+mattermost
+========
+
+Install & configure Mattermost

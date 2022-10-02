@@ -1,0 +1,7 @@
+---
+- name: Install via pacman
+  become: true
+  pacman:
+    name: "{{ mattermost_daemon }}"
+    state: latest
+  when: ansible_os_family == "Archlinux"

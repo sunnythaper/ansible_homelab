@@ -1,0 +1,10 @@
+---
+# Daemon
+mattermost_daemon: mattermost
+
+# User
+mattermost_user: mattermost
+mattermost_group: mattermost
+
+# Directories
+mattermost_config_dir: /etc/webapps/mattermost
