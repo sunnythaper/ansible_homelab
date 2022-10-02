@@ -1,4 +1,12 @@
 ---
+- name: Allow access to SSL certificates
+  import_role:
+    name: ssl
+  vars:
+    ssl_users: "{{ postgresql_user }}"
+  tags:
+    - add-user
+
 - name: Check if database directory exists
   become: true
   file:
