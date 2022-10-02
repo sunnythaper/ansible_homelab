@@ -14,5 +14,6 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ pacman_packages }}"
+  when: pacman_packages is defined
   tags:
     - install
