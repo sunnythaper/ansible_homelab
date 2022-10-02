@@ -1,19 +1,19 @@
 ---
 - name: Install `nginx-mainline` via pacman
-  become: yes
+  become: true
   pacman:
     name: nginx-mainline
     state: latest
 
 - name: Enable nginx service using systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: nginx
     state: started
 
 - name: Create nginx directories
-  become: yes
+  become: true
   file:
     path: "{{ item }}"
     state: directory
@@ -26,7 +26,7 @@
     - /etc/nginx/nginxconfig.io
 
 - name: Copy nginx configs
-  become: yes
+  become: true
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"

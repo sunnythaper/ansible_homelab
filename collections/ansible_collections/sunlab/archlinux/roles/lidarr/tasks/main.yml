@@ -1,6 +1,6 @@
 ---
 - name: Install `lidarr` using yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: lidarr-nightly
@@ -8,14 +8,14 @@
     use: yay
 
 - name: Add lidarr user to nzbget group
-  become: yes
+  become: true
   ansible.builtin.user:
     name: lidarr
     groups: nzbget
     append: yes
 
 - name: Enable lidarr service using systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: lidarr

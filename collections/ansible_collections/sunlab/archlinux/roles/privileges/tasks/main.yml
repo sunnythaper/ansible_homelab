@@ -1,20 +1,20 @@
 ---
 - name: List home directories
-  become: yes
+  become: true
   find:
     file_type: directory
     paths: /home
   register: home_directories
 
 - name: Set permissions
-  become: yes
+  become: true
   file:
     mode: 0700
     path: "{{ item.path }}"
   with_items: "{{ home_directories.files }}"
 
 - name: Set /etc/shadow permissions
-  become: yes
+  become: true
   file:
     path: /etc/shadow
     owner: root
@@ -22,7 +22,7 @@
     mode: 0600
 
 - name: Set /boot/grub/grub.cfg permissions
-  become: yes
+  become: true
   file:
     path: /boot/grub/grub.cfg
     owner: root

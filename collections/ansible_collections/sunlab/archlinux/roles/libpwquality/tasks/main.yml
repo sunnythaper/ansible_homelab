@@ -1,12 +1,12 @@
 ---
 - name: Install `libpwquality` via pacman
-  become: yes
+  become: true
   pacman:
     name: libpwquality
     state: latest
 
 - name: Copy libpwquality configuration
-  become: yes
+  become: true
   template:
     src: templates/etc/security/pwquality.conf.d/50-pwquality.conf.j2
     dest: /etc/security/pwquality.conf.d/50-pwquality.conf

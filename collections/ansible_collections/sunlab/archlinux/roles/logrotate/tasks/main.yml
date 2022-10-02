@@ -1,12 +1,12 @@
 ---
 - name: Install logrotate via pacman
-  become: yes
+  become: true
   pacman:
     name: logrotate
     state: latest
 
 - name: Copy logrotate configuration
-  become: yes
+  become: true
   template:
     src: etc/logrotate.d/general.j2
     dest: /etc/logrotate.d/general

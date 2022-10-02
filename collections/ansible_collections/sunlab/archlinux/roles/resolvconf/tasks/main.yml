@@ -1,6 +1,6 @@
 ---
 - name: Create resolved.conf.d directory
-  become: yes
+  become: true
   file:
     path: /etc/systemd/resolved.conf.d
     state: directory
@@ -9,7 +9,7 @@
     mode: 0755
 
 - name: Copy resolved.conf
-  become: yes
+  become: true
   template:
     src: etc/systemd/resolved.conf.d/resolved.conf.j2
     dest: /etc/systemd/resolved.conf.d/resolved.conf
@@ -19,7 +19,7 @@
   notify: Restart systemd
 
 - name: Copy resolv.conf
-  become: yes
+  become: true
   template:
     src: etc/resolv.conf.j2
     dest: /etc/resolv.conf

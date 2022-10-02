@@ -1,5 +1,5 @@
 ---
 - name: Restart systemd
-  become: yes
+  become: true
   systemd:
     daemon_reload: 'yes'

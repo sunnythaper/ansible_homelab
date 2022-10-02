@@ -1,13 +1,13 @@
 ---
 - name: Create nzbget group
-  become: yes
+  become: true
   ansible.builtin.group:
     name: "{{ nzbget.user.group }}"
     state: present
     gid: "{{ nzbget.user.gid }}"
 
 - name: Create the nzbget user
-  become: yes
+  become: true
   ansible.builtin.user:
     create_home: no
     group: "{{ nzbget.user.group }}"
@@ -26,13 +26,13 @@
     ssl_user_group: "{{ nzbget.user.group }}"
 
 - name: Install dependencies via pacman
-  become: yes
+  become: true
   pacman:
     name: "{{nzbget.dependencies}}"
     state: latest
 
 - name: Install `nzbget-git` via yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: nzbget-git
@@ -40,7 +40,7 @@
     use: yay
 
 - name: Copy config file
-  become: yes
+  become: true
   ansible.builtin.copy:
     dest: "{{nzbget.path.config}}"
     force: no
@@ -51,7 +51,7 @@
     src: /usr/share/nzbget/nzbget.conf
 
 - name: Configure options via config file
-  become: yes
+  become: true
   become_user: "{{ nzbget.user.name }}"
   ansible.builtin.lineinfile:
     path: "{{nzbget.path.config}}"
@@ -60,7 +60,7 @@
   with_items: "{{nzbget.config}}"
 
 - name: Enable nzbget service via systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: nzbget

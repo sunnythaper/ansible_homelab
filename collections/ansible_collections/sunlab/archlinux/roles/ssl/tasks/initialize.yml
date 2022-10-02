@@ -1,6 +1,6 @@
 ---
 - name: Generate OpenSSL private key
-  become: yes
+  become: true
   community.crypto.openssl_privatekey:
     curve: "{{ ssl_curve }}"
     owner: "{{ ssl_user_name }}"
@@ -9,7 +9,7 @@
     path: '{{ ssl_key_dir }}/{{ ssl_name }}.key'
 
 - name: Create certificate signing request (CSR)
-  become: yes
+  become: true
   community.crypto.openssl_csr_pipe:
     common_name: '{{ ssl_name }}'
     privatekey_path: '{{ ssl_key_dir }}/{{ ssl_name }}.key'
@@ -17,7 +17,7 @@
   register: csr
 
 - name: Create self-signed certificate from CSR
-  become: yes
+  become: true
   community.crypto.x509_certificate:
     csr_content: "{{ csr.csr }}"
     owner: "{{ ssl_user_name }}"

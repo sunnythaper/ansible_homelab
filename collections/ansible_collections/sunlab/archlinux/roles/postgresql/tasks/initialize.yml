@@ -1,6 +1,6 @@
 ---
 - name: Check if database directory exists
-  become: yes
+  become: true
   file:
     path: "{{ postgresql_data_dir }}"
     owner: "{{ postgresql_user }}"
@@ -9,13 +9,13 @@
     mode: 0700
 
 - name: Check if database is initialized
-  become: yes
+  become: true
   ansible.builtin.stat:
     path: "{{ postgresql_data_dir }}/PG_VERSION"
   register: postgres_data
 
 - name: Initialize database
-  become: yes
+  become: true
   become_user: "{{ postgresql_user }}"
   command: "{{ postgresql_bin_dir }}/initdb -D {{ postgresql_data_dir }}"
   when: not postgres_data.stat.exists
@@ -24,7 +24,7 @@
     ansible_ssh_pipelining: true
 
 - name: Start & enable service
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: "{{ postgresql_daemon }}"

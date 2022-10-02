@@ -1,6 +1,6 @@
 ---
 - name: Remove filesystems & network protocols via modprobe
-  become: yes
+  become: true
   lineinfile:
     dest: "/etc/modprobe.d/{{ modprobe.filename }}.conf"
     regexp: "^(#)?install {{ item }}(\\s|$)"

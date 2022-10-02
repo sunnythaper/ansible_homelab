@@ -1,6 +1,6 @@
 ---
 - name: Update packages to latest
-  become: yes
+  become: true
   community.general.pacman:
     update_cache: yes
     upgrade: yes
@@ -8,13 +8,13 @@
     - update
 
 - name: Install `pacman-contrib` via pacman
-  become: yes
+  become: true
   pacman:
     name: pacman-contrib
     state: latest
 
 - name: Create pacman hooks directory
-  become: yes
+  become: true
   file:
     path: /etc/pacman.d/hooks
     state: directory
@@ -23,7 +23,7 @@
     mode: 0644
 
 - name: Copy pacman hooks
-  become: yes
+  become: true
   template:
     src: "templates/etc/pacman.d/hooks/{{ item }}.j2"
     dest: "/etc/pacman.d/hooks/{{ item }}"
@@ -35,14 +35,14 @@
     - pacman-remove-uninstalled-cache.hook
 
 - name: Enable pacman parallel downloads
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     regexp: 'ParallelDownloads'
     line: 'ParallelDownloads = 6'
     path: /etc/pacman.conf
 
 - name: Create the `aur_builder` user
-  become: yes
+  become: true
   ansible.builtin.user:
     create_home: yes
     group: wheel
@@ -50,7 +50,7 @@
     uid: 1002
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     create: yes
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
@@ -61,7 +61,7 @@
     mode: 0440
 
 - name: Install Yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: yay

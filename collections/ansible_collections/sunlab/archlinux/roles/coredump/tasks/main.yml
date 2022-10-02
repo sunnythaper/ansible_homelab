@@ -1,6 +1,6 @@
 ---
 - name: Apply coredump config via sysctl
-  become: yes
+  become: true
   sysctl:
     name: kernel.core_pattern
     value: /dev/null
@@ -9,7 +9,7 @@
     reload: yes
 
 - name: Create systemd directory
-  become: yes
+  become: true
   file:
     path: /etc/systemd/coredump.conf.d
     state: directory
@@ -18,7 +18,7 @@
     mode: 0644
 
 - name: Copy coredump conf for systemd
-  become: yes
+  become: true
   template:
     src: templates/etc/systemd/coredump.conf.d/50-coredump.conf.j2
     dest: /etc/systemd/coredump.conf.d/50-coredump.conf
@@ -28,7 +28,7 @@
   notify: Reload systemd
 
 - name: Create PAM directory
-  become: yes
+  become: true
   file:
     path: /etc/security/limits.d/
     state: directory
@@ -37,7 +37,7 @@
     mode: 0644
 
 - name: Copy coredump conf for PAM
-  become: yes
+  become: true
   lineinfile:
     dest: /etc/security/limits.d/50-coredump.conf
     line: "* hard core 0"

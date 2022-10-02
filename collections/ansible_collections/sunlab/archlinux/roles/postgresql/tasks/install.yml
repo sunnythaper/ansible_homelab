@@ -1,6 +1,6 @@
 ---
 - name: Install via pacman
-  become: yes
+  become: true
   pacman:
     name: "{{ postgresql_daemon }}"
     state: latest

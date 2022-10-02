@@ -1,12 +1,12 @@
 ---
 - name: Install `nfs-utils` via pacman
-  become: yes
+  become: true
   pacman:
     name: nfs-utils
     state: latest
 
 - name: Mount an NFS volume
-  become: yes
+  become: true
   ansible.posix.mount:
     fstype: nfs
     opts: "{{nfs.opts}}"

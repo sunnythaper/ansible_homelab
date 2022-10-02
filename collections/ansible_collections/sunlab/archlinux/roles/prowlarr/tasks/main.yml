@@ -1,6 +1,6 @@
 ---
 - name: Install `prowlarr` using yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: prowlarr
@@ -8,7 +8,7 @@
     use: yay
 
 - name: Enable prowlarr service using systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: prowlarr

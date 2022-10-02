@@ -1,18 +1,18 @@
 ---
 - name: Install `rkhunter` via pacman
-  become: yes
+  become: true
   pacman:
     name: rkhunter
     state: latest
 
 - name: Check if rkhunter database exists
-  become: yes
+  become: true
   stat:
     path: /var/lib/rkhunter/db/rkhunter.dat
   register: rkhunter_db
 
 - name: Configure rkhunter whitelist
-  become: yes
+  become: true
   lineinfile:
     line: "SCRIPTWHITELIST={{ item }}"
     dest: /etc/rkhunter.conf
@@ -20,7 +20,7 @@
   with_items: "{{ rkhunter.conf.whitelist }}"
 
 - name: Configure rkhunter hidden files
-  become: yes
+  become: true
   lineinfile:
     line: "ALLOWHIDDENFILE={{ item }}"
     dest: /etc/rkhunter.conf
@@ -28,21 +28,21 @@
   with_items: "{{ rkhunter.conf.ignorehidden }}"
 
 - name: Update rkhunter file properties database
-  become: yes
+  become: true
   command: rkhunter --propupd
   register: rkhunter_propupd
   changed_when: "'File created' in rkhunter_propupd.stdout"
   when: not rkhunter_db.stat.exists
 
 - name: Update rkhunter database
-  become: yes
+  become: true
   command: rkhunter --update
   register: rkhunter_update
   changed_when: "'Updated' in rkhunter_update.stdout"
   failed_when: "'Update failed' in rkhunter_update.stdout"
 
 - name: Perform rkhunter check
-  become: yes
+  become: true
   command: rkhunter --cronjob --report-warnings-only
   register: rkhunter_report
   changed_when: false

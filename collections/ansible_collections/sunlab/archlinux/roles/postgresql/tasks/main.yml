@@ -15,3 +15,9 @@
 
 - name: Configure database
   include_tasks: configure.yml
+
+- name: Create users
+  include_tasks: user.yml
+  apply:
+    tags:
+      - add-user

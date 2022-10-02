@@ -1,6 +1,6 @@
 ---
 - name: Enable apparmor via grub
-  become: yes
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^GRUB_CMDLINE_LINUX="(?:lsm=landlock,lockdown,yama,apparmor,bpf )?(.*)"'
     line: 'GRUB_CMDLINE_LINUX="lsm=landlock,lockdown,yama,apparmor,bpf \1"'
@@ -9,12 +9,12 @@
   register: grub
 
 - name: Apply grub file change
-  become: yes
+  become: true
   command: "grub-mkconfig -o /boot/grub/grub.cfg"
   when: grub.changed
 
 - name: Reboot server if required
-  become: yes
+  become: true
   reboot:
     msg: Reboot initiated by Ansible due to grub file updates
     connect_timeout: 5
@@ -25,34 +25,34 @@
   when: grub.changed
 
 - name: Install `apparmor` via pacman
-  become: yes
+  become: true
   pacman:
     name: apparmor
     state: latest
 
 - name: Enable apparmor service using systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: apparmor
     state: started
 
 - name: Load AppArmor extra-profiles
-  become: yes
+  become: true
   command: "apparmor_parser /usr/share/apparmor/extra-profiles"
   register: apparmor_parser
   changed_when: "'Profile already exists' not in apparmor_parser.stderr"
   failed_when: false
 
 - name: Cache AppArmor profiles
-  become: yes
+  become: true
   lineinfile:
     regexp: '^#write-cache'
     line: write-cache
     path: /etc/apparmor/parser.conf
 
 - name: Set up pam_apparmor
-  become: yes
+  become: true
   lineinfile:
     line: session optional pam_apparmor.so order=user,group,default
     dest: /etc/pam.d/apparmor

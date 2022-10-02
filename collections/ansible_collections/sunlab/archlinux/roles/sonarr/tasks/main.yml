@@ -1,6 +1,6 @@
 ---
 - name: Install `sonarr` using yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: sonarr
@@ -8,14 +8,14 @@
     use: yay
 
 - name: Add sonarr user to nzbget group
-  become: yes
+  become: true
   ansible.builtin.user:
     name: sonarr
     groups: nzbget
     append: yes
 
 - name: Enable sonarr service using systemd
-  become: yes
+  become: true
   systemd:
     enabled: yes
     name: sonarr

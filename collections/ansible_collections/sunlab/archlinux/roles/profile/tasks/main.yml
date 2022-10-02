@@ -1,6 +1,6 @@
 ---
 - name: Set umask via /etc/profile.d/umask.sh
-  become: yes
+  become: true
   lineinfile:
     dest: /etc/profile.d/umask.sh
     line: umask 027

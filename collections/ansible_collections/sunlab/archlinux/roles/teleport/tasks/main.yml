@@ -1,6 +1,6 @@
 ---
 - name: Install `teleport` using yay
-  become: yes
+  become: true
   become_user: aur_builder
   kewlfft.aur.aur:
     name: teleport-bin
@@ -8,7 +8,7 @@
     use: yay
 
 - name: Create teleport directory
-  become: yes
+  become: true
   file:
     path: /etc/teleport
     state: directory
@@ -17,7 +17,7 @@
     mode: 0600
 
 - name: Copy teleport config
-  become: yes
+  become: true
   template:
     src: "templates/teleport.yaml.j2"
     dest: "/etc/teleport/teleport.yaml"
@@ -27,14 +27,14 @@
   register: teleport_config
 
 - name: Stop teleport if config changed
-  become: yes
+  become: true
   systemd:
     name: teleport
     state: stopped
   when: teleport_config.changed
 
 - name: Start teleport service
-  become: yes
+  become: true
   systemd:
     name: teleport
     enabled: yes
