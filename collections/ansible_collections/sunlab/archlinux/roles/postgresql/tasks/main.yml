@@ -11,14 +11,14 @@
     - postgres_databases is not defined
     - postgres_users is not defined
 
-- name: Create users
-  include_tasks: user.yml
-  when: postgresql_users is defined
+# - name: Create users
+#   include_tasks: user.yml
+#   when: postgresql_users is defined
 
-- name: Create databases
-  include_tasks: database.yml
-  when: postgresql_databases is defined
+# - name: Create databases
+#   include_tasks: database.yml
+#   when: postgresql_databases is defined
 
-- name: Configure users
-  include_tasks: user_configure.yml
-  when: postgresql_users is defined
+# - name: Configure users
+#   include_tasks: user_configure.yml
+#   when: postgresql_users is defined
