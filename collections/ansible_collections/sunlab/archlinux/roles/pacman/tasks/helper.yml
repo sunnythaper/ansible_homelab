@@ -6,8 +6,6 @@
     name: '{{ pacman_helper_binary }}'
     state: present
     use: makepkg
-  tags:
-    - install-helper
 
 - name: Install packages via helper
   become: true
@@ -18,5 +16,3 @@
     use: '{{ pacman_helper_binary }}'
   with_items: '{{ pacman_helper_packages }}'
   when: pacman_helper_packages is defined
-  tags:
-    - install-helper

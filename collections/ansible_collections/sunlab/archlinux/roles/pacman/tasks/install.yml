@@ -5,7 +5,6 @@
     update_cache: yes
     upgrade: yes
   tags:
-    - install
     - update
 
 - name: Install packages
@@ -15,5 +14,3 @@
     state: latest
   with_items: "{{ pacman_packages }}"
   when: pacman_packages is defined
-  tags:
-    - install

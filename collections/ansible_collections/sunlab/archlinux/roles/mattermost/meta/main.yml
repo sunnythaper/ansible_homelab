@@ -16,8 +16,6 @@ dependencies:
     vars:
       pacman_packages:
         - '{{ mattermost_package }}'
-    tags:
-      - install
 
 galaxy_info:
   role_name: mattermost
