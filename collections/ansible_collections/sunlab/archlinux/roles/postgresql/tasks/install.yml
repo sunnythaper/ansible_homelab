@@ -1,7 +1,0 @@
----
-- name: Install via pacman
-  become: true
-  pacman:
-    name: "{{ postgresql_daemon }}"
-    state: latest
-  when: ansible_os_family == "Archlinux"

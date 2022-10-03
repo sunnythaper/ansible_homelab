@@ -1,9 +1,11 @@
 ---
-# Daemon
-postgresql_daemon: postgresql
+# Packages
+postgresql_package: postgresql
 
-# User
+# Users
 postgresql_user: postgres
+
+# Groups
 postgresql_group: postgres
 
 # Directories
@@ -92,7 +94,7 @@ postgresql_databases: []
 #   state: # defaults to 'present'
 
 # Database Users
-postgres_users_no_log: yes
+postgresql_users_no_log: yes
 postgresql_users: []
 # - name: jdoe #required; the rest are optional
 #   password: # defaults to not set

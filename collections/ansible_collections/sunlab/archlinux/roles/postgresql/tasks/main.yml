@@ -1,21 +1,24 @@
 ---
-- name: Install dependencies
-  include_tasks: install.yml
-
 - name: Initialize database
   include_tasks: initialize.yml
+  when:
+    - postgres_databases is not defined
+    - postgres_users is not defined
 
 - name: Configure database
   include_tasks: configure.yml
+  when:
+    - postgres_databases is not defined
+    - postgres_users is not defined
 
 - name: Create users
   include_tasks: user.yml
-  when: postgres_users is defined
+  when: postgresql_users is defined
 
 - name: Create databases
   include_tasks: database.yml
-  when: postgres_databases is defined
+  when: postgresql_databases is defined
 
 - name: Configure users
   include_tasks: user_configure.yml
-  when: postgres_users is defined
+  when: postgresql_users is defined

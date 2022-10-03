@@ -2,6 +2,6 @@
 - name: Restart PostgreSQL
   become: true
   service:
-    name: "{{ postgresql_daemon }}"
+    name: "{{ postgresql_package }}"
     state: restarted
     sleep: 5

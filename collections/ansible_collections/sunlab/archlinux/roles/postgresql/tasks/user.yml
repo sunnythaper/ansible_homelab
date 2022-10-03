@@ -11,7 +11,7 @@
     login_unix_socket: "{{ item.login_unix_socket | default(postgresql_unix_socket_dir[0]) }}"
     port: "{{ item.port | default(omit) }}"
   with_items: "{{ postgresql_users }}"
-  no_log: "{{ postgres_users_no_log }}"
+  no_log: "{{ postgresql_users_no_log }}"
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true

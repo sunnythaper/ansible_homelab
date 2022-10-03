@@ -18,13 +18,13 @@
   become: true
   ansible.builtin.stat:
     path: "{{ postgresql_data_dir }}/PG_VERSION"
-  register: postgres_data
+  register: postgresql_data
 
 - name: Initialize database
   become: true
   become_user: "{{ postgresql_user }}"
   command: "{{ postgresql_bin_dir }}/initdb -D {{ postgresql_data_dir }}"
-  when: not postgres_data.stat.exists
+  when: not postgresql_data.stat.exists
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
@@ -33,5 +33,5 @@
   become: true
   systemd:
     enabled: yes
-    name: "{{ postgresql_daemon }}"
+    name: "{{ postgresql_package }}"
     state: started

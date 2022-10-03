@@ -13,3 +13,6 @@ mattermost_group_gid: 1600
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
 mattermost_data_dir: /var/lib/mattermost
+
+# Databases
+mattermost_db: mattermost
