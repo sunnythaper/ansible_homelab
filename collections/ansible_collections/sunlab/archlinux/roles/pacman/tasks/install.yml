@@ -13,4 +13,4 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ pacman_packages }}"
-  when: pacman_packages is defined
+  when: pacman_packages | length > 0

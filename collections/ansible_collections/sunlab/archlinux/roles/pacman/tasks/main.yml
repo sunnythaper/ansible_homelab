@@ -7,9 +7,9 @@
 - name: Configure package manager
   include_tasks: configure.yml
   when:
-    - pacman_packages is not defined
-    - pacman_helper_packages is not defined
+    - pacman_packages  | length == 0
+    - pacman_helper_packages | length == 0
 
 - name: Update & install helper packages
   include_tasks: helper.yml
-  when: pacman_helper_packages is defined
+  when: pacman_helper_packages | length > 0
