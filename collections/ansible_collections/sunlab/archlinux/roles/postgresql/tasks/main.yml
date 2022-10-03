@@ -2,23 +2,23 @@
 - name: Initialize database
   include_tasks: initialize.yml
   when:
-    - postgres_databases | length is 0
-    - postgres_users | length is 0
+    - postgres_databases is empty
+    - postgres_users is empty
 
 - name: Configure database
   include_tasks: configure.yml
   when:
-    - postgres_databases | length is 0
-    - postgres_users | length is 0
+    - postgres_databases is empty
+    - postgres_users is empty
 
 - name: Create users
   include_tasks: user.yml
-  when: postgresql_users | length > 0
+  when: postgresql_users is not empty
 
 - name: Create databases
   include_tasks: database.yml
-  when: postgresql_databases | length > 0
+  when: postgresql_databases is not empty
 
 - name: Configure users
   include_tasks: user_configure.yml
-  when: postgresql_users | length > 0
+  when: postgresql_users is not empty
