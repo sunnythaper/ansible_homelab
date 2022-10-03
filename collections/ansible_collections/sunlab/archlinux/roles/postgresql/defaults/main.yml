@@ -1,6 +1,9 @@
 ---
 # Packages
-postgresql_package: postgresql
+postgresql_binary: postgresql
+postgresql_packages:
+  - postgresql
+  - python-psycopg
 
 # Users
 postgresql_user: postgres

@@ -3,7 +3,7 @@ dependencies:
   - role: pacman
     vars:
       pacman_packages:
-        - '{{ postgresql_package }}'
+        - '{{ postgresql_packages }}'
 
 galaxy_info:
   role_name: postgresql

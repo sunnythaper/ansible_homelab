@@ -1,9 +1,9 @@
 ---
-# - name: Setup database users
-#   ansible.builtin.import_role:
-#     name: postgresql
-#   vars:
-#     postgresql_users:
-#       - name: '{{ mattermost_user }}'
-#         password: supersecure
-#   delegate_to: postgres
+- name: Setup database users
+  ansible.builtin.import_role:
+    name: postgresql
+  vars:
+    postgresql_users:
+      - name: '{{ mattermost_user }}'
+        password: supersecure
+  delegate_to: postgres

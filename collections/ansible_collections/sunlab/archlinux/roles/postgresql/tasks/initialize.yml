@@ -33,5 +33,5 @@
   become: true
   systemd:
     enabled: yes
-    name: "{{ postgresql_package }}"
+    name: "{{ postgresql_binary }}"
     state: started
