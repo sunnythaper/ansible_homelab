@@ -29,7 +29,7 @@
     - libpwquality
     - logrotate
     - apparmor
-    - rkhunter
+    # - rkhunter
     - lynis
 
 - name: Configure PostgreSQL
