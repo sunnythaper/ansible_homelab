@@ -2,14 +2,14 @@
 - name: Initialize database
   include_tasks: initialize.yml
   when:
-    - postgres_databases | length = 0
-    - postgres_users | length = 0
+    - postgres_databases | length is 0
+    - postgres_users | length is 0
 
 - name: Configure database
   include_tasks: configure.yml
   when:
-    - postgres_databases | length = 0
-    - postgres_users | length = 0
+    - postgres_databases | length is 0
+    - postgres_users | length is 0
 
 - name: Create users
   include_tasks: user.yml
