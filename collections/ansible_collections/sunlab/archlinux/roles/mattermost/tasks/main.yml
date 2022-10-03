@@ -7,3 +7,4 @@
       - name: '{{ mattermost_user }}'
         password: supersecure
   delegate_to: postgres
+  delegate_facts: true
