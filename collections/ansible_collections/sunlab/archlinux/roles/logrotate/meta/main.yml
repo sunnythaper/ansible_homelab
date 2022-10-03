@@ -1,5 +1,9 @@
 ---
-dependencies: []
+dependencies:
+  - role: pacman
+    vars:
+      pacman_packages:
+        - '{{ logrotate_package }}'
 
 galaxy_info:
   role_name: logrotate

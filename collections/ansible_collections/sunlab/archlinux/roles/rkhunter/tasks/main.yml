@@ -1,10 +1,4 @@
 ---
-- name: Install `rkhunter` via pacman
-  become: true
-  pacman:
-    name: rkhunter
-    state: latest
-
 - name: Check if rkhunter database exists
   become: true
   stat:

@@ -6,7 +6,7 @@
     name: '{{ pacman_helper_binary }}'
     state: present
     use: makepkg
-  when: pacman_helper_packages | length > 0
+  when: pacman_helper_packages is defined
 
 - name: Install packages via helper
   become: true
@@ -16,4 +16,4 @@
     state: latest
     use: '{{ pacman_helper_binary }}'
   with_items: '{{ pacman_helper_packages }}'
-  when: pacman_helper_packages | length > 0
+  when: pacman_helper_packages is defined

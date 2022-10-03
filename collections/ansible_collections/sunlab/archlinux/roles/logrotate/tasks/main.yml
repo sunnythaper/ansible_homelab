@@ -1,10 +1,4 @@
 ---
-- name: Install logrotate via pacman
-  become: true
-  pacman:
-    name: logrotate
-    state: latest
-
 - name: Copy logrotate configuration
   become: true
   template:

@@ -1,4 +1,8 @@
 ---
+# Packages
+rkhunter_package: rkhunter
+
+# Configuration
 rkhunter:
   conf:
     ignorehidden:
