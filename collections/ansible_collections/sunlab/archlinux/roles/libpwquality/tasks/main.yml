@@ -1,10 +1,4 @@
 ---
-- name: Install `libpwquality` via pacman
-  become: true
-  pacman:
-    name: libpwquality
-    state: latest
-
 - name: Copy libpwquality configuration
   become: true
   template:

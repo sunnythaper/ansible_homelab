@@ -1,5 +1,9 @@
 ---
-dependencies: []
+dependencies:
+  - role: pacman
+    vars:
+      pacman_packages:
+        - '{{ libpwquality_package }}'
 
 galaxy_info:
   role_name: libpwquality
