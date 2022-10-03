@@ -13,6 +13,7 @@ dependencies:
           home: "{{ mattermost_data_dir }}"
           uid: "{{ mattermost_user_uid }}"
   - role: pacman
+    tasks_from: install
     vars:
       pacman_packages:
         - '{{ mattermost_package }}'
