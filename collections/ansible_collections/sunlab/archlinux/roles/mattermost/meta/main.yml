@@ -15,7 +15,7 @@ dependencies:
   - role: pacman
     vars:
       pacman_packages:
-        - '{{ mattermost_package }}'
+        - '{{ mattermost_packages }}'
 
 galaxy_info:
   role_name: mattermost

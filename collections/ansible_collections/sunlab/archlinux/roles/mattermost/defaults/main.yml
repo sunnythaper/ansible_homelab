@@ -1,6 +1,8 @@
 ---
 # Packages
-mattermost_package: mattermost
+mattermost_packages:
+  - mattermost
+  - python-psycopg2
 
 # Users
 mattermost_user: mattermost
