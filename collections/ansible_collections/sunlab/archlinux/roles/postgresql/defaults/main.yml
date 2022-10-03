@@ -3,7 +3,7 @@
 postgresql_binary: postgresql
 postgresql_packages:
   - postgresql
-  - python-psycopg
+  - python-psycopg2
 
 # Users
 postgresql_user: postgres
