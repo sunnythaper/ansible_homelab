@@ -2,7 +2,6 @@
 - name: Setup database users
   ansible.builtin.import_role:
     name: postgresql
-    tasks_from: user
   vars:
     postgresql_users:
       - name: '{{ mattermost_user }}'
