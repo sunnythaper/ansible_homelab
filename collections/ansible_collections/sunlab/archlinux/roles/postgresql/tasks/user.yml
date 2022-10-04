@@ -15,5 +15,5 @@
   when: postgresql_users is defined
   # no_log: "{{ postgresql_users_no_log }}"
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
-  vars:
-    ansible_ssh_pipelining: true
+  # vars:
+  #   ansible_ssh_pipelining: true
