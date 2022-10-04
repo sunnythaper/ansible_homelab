@@ -4,6 +4,7 @@
     name: postgresql
     apply:
       delegate_to: postgres
+      delegate_facts: false
   vars:
     postgresql_users:
       - name: '{{ mattermost_user }}'
