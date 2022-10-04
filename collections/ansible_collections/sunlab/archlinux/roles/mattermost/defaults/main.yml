@@ -2,7 +2,7 @@
 # Packages
 mattermost_packages:
   - mattermost
-  - python-psycopg2
+  # - python-psycopg2 # Not sure anymore if this is actually needed
 
 # Users
 mattermost_user: mattermost
