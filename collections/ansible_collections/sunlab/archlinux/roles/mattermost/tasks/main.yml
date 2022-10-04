@@ -6,6 +6,7 @@
     apply:
       delegate_to: postgres
   vars:
+    postgresql_user: '{{ postgresql_user }}'
     postgresql_users:
       - name: '{{ mattermost_user }}'
         password: supersecure
