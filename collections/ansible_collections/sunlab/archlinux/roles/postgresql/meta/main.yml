@@ -1,6 +1,8 @@
 ---
 dependencies:
-  - role: pacman
+  - role:
+      name: pacman
+      tasks_from: install
     vars:
       pacman_packages:
         - '{{ postgresql_packages }}'
