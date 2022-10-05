@@ -1,11 +1,11 @@
 ---
-- name: Setup database users
+- name: Setup database & users
   ansible.builtin.include_role:
     name: postgresql
     apply:
       delegate_to: postgres
       delegate_facts: false
-      tasks_from: database
+    tasks_from: database
   vars:
     postgresql_users:
       - name: '{{ mattermost_user }}'
