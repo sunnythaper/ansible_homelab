@@ -2,6 +2,7 @@
 - name: Allow access to SSL certificates
   import_role:
     name: ssl
+    tasks_from: user
   vars:
     ssl_users: "{{ postgresql_user }}"
 

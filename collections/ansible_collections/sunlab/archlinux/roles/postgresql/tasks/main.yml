@@ -8,14 +8,6 @@
 - name: Configure database daemon
   include_tasks: configure.yml
 
-- name: Create users
-  include_tasks: user.yml
-  when: postgresql_users is defined
-
-- name: Create databases
+- name: Create users & databases
   include_tasks: database.yml
-  when: postgresql_databases is defined
-
-- name: Configure users
-  include_tasks: user_configure.yml
-  when: postgresql_users is defined
+  when: postgresql_databases is defined or postgresql_users is defined
