@@ -1,2 +1,3 @@
-- option: ssl
-  value: "off"
+postgresql_config:
+  - option: ssl
+    value: "off"
