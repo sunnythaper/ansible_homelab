@@ -1,8 +1,8 @@
-# Role Options
-postgresql_config_log: stderr
-postgresql_config_ssl: enabled
+# Variables
+postgresql_var_log: stderr
+postgresql_var_ssl: enabled
 
-# Host Configuration
+# Host
 postgresql_listen_addresses:
   - localhost
   - "{{ ansible_host }}"

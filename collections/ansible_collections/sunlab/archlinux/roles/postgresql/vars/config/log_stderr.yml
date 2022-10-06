@@ -1,4 +1,4 @@
-postgresql_config:
+postgresql_config_log:
   - option: log_destination
     value: stderr
   - option: logging_collector

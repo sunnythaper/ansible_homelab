@@ -1,4 +1,4 @@
-postgresql_config:
+postgresql_config_ssl:
   - option: ssl
     value: "on"
   - option: ssl_cert_file

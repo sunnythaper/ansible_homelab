@@ -8,10 +8,8 @@
 
 - name: Include log config variables
   ansible.builtin.include_vars:
-    file: 'config/log_{{ postgresql_config_log }}.yml'
-    hash_behaviour: merge
+    file: 'config/log_{{ postgresql_var_log }}.yml'
 
 - name: Include ssl config variables
   ansible.builtin.include_vars:
-    file: 'config/ssl_{{ postgresql_config_ssl }}.yml'
-    hash_behaviour: merge
+    file: 'config/ssl_{{ postgresql_var_ssl }}.yml'

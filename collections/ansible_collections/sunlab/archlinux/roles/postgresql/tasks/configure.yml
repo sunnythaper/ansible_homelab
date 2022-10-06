@@ -8,7 +8,10 @@
     owner: '{{ postgresql_user }}'
     group: '{{ postgresql_group }}'
     mode: '{{ postgresql_config_file_mode }}'
-  with_items: '{{ postgresql_config }}'
+  with_items:
+    - '{{ postgresql_config }}'
+    - '{{ postgresql_config_log }}'
+    - '{{ postgresql_config_ssl }}'
   notify: Restart PostgreSQL
 
 - name: Configure host based authentication
