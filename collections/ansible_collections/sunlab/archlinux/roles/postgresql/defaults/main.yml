@@ -12,9 +12,6 @@ postgresql_unix_socket_dirs:
 postgresql_unix_socket_dirs_mode: 0755
 postgresql_unix_socket_permissions: 0770
 
-# Main Configuration
-postgresql_config: []
-
 # Host-based Authentication
 postgresql_auth_method: scram-sha-256
 postgresql_hba_config:
