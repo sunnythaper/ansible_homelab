@@ -12,43 +12,6 @@ postgresql_unix_socket_dirs:
 postgresql_unix_socket_dirs_mode: 0755
 postgresql_unix_socket_permissions: 0770
 
-# Global Configuration
-postgresql_config:
-  - option: db_user_namespace
-    value: "off"
-  - option: listen_addresses
-    value: '{{ postgresql_listen_addresses | join(",") }}'
-  - option: log_destination
-    value: stderr
-  - option: logging_collector
-    value: "off"
-  - option: log_directory
-    value: log
-  - option: port
-    value: 5432
-  - option: password_encryption
-    value: "{{ postgresql_auth_method }}"
-  - option: ssl
-    value: "on"
-  - option: ssl_cert_file
-    value: "{{ ssl_cert_dir }}/{{ ssl_name }}.crt"
-  - option: ssl_key_file
-    value: "{{ ssl_key_dir }}/{{ ssl_name }}.key"
-  - option: ssl_ciphers
-    value: "HIGH:MEDIUM:+3DES:!aNULL"
-  - option: ssl_prefer_server_ciphers
-    value: "on"
-  - option: ssl_ecdh_curve
-    value: "secp521r1"
-  - option: ssl_min_protocol_version
-    value: TLSv1.2
-  - option: stats_temp_directory
-    value: /run/postgresql
-  - option: unix_socket_directories
-    value: '{{ postgresql_unix_socket_dirs | join(",") }}'
-  - option: unix_socket_permissions
-    value: 0770
-
 # Host-based Authentication
 postgresql_auth_method: scram-sha-256
 postgresql_hba_config:
