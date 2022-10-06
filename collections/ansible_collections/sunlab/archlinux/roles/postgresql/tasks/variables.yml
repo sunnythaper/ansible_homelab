@@ -1,6 +1,6 @@
 - name: Include Archlinux OS variables
   ansible.builtin.include_vars: os/Archlinux.yml
-  when: ansible_os_family is 'Archlinux'
+  when: ansible_os_family == 'Archlinux'
 
 - name: Include common config variables
   ansible.builtin.include_vars:
