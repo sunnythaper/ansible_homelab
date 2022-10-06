@@ -6,13 +6,16 @@
   ansible.builtin.include_vars:
     file: config/common.yml
     hash_behaviour: merge
+    name: postgresql_config
 
 - name: Include log config variables
   ansible.builtin.include_vars:
     file: 'config/log_{{ postgresql_config_log }}.yml'
     hash_behaviour: merge
+    name: postgresql_config
 
 - name: Include ssl config variables
   ansible.builtin.include_vars:
     file: 'config/ssl_{{ postgresql_config_ssl }}.yml'
     hash_behaviour: merge
+    name: postgresql_config

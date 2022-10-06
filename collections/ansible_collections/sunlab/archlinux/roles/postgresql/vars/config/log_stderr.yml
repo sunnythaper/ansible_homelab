@@ -1,7 +1,6 @@
-postgresql_config:
-  - option: log_destination
-    value: stderr
-  - option: logging_collector
-    value: "off"
-  - option: log_directory
-    value: log
+- option: log_destination
+  value: stderr
+- option: logging_collector
+  value: "off"
+- option: log_directory
+  value: log

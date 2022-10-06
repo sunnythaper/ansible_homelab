@@ -1,15 +1,14 @@
-postgresql_config:
-  - option: ssl
-    value: "on"
-  - option: ssl_cert_file
-    value: "{{ ssl_cert_dir }}/{{ ssl_name }}.crt"
-  - option: ssl_key_file
-    value: "{{ ssl_key_dir }}/{{ ssl_name }}.key"
-  - option: ssl_ciphers
-    value: "HIGH:MEDIUM:+3DES:!aNULL"
-  - option: ssl_prefer_server_ciphers
-    value: "on"
-  - option: ssl_ecdh_curve
-    value: "secp521r1"
-  - option: ssl_min_protocol_version
-    value: TLSv1.2
+- option: ssl
+  value: "on"
+- option: ssl_cert_file
+  value: "{{ ssl_cert_dir }}/{{ ssl_name }}.crt"
+- option: ssl_key_file
+  value: "{{ ssl_key_dir }}/{{ ssl_name }}.key"
+- option: ssl_ciphers
+  value: "HIGH:MEDIUM:+3DES:!aNULL"
+- option: ssl_prefer_server_ciphers
+  value: "on"
+- option: ssl_ecdh_curve
+  value: "secp521r1"
+- option: ssl_min_protocol_version
+  value: TLSv1.2

@@ -1,15 +1,14 @@
-postgresql_config:
-  - option: db_user_namespace
-    value: "off"
-  - option: listen_addresses
-    value: '{{ postgresql_listen_addresses | join(",") }}'
-  - option: port
-    value: '{{ postgresql_listen_port }}'
-  - option: password_encryption
-    value: "{{ postgresql_auth_method }}"
-  - option: stats_temp_directory
-    value: '{{ postgresql_unix_socket_dirs[0] }}'
-  - option: unix_socket_directories
-    value: '{{ postgresql_unix_socket_dirs | join(",") }}'
-  - option: unix_socket_permissions
-    value: '{{ postgresql_unix_socket_permissions }}'
+- option: db_user_namespace
+  value: "off"
+- option: listen_addresses
+  value: '{{ postgresql_listen_addresses | join(",") }}'
+- option: port
+  value: '{{ postgresql_listen_port }}'
+- option: password_encryption
+  value: "{{ postgresql_auth_method }}"
+- option: stats_temp_directory
+  value: '{{ postgresql_unix_socket_dirs[0] }}'
+- option: unix_socket_directories
+  value: '{{ postgresql_unix_socket_dirs | join(",") }}'
+- option: unix_socket_permissions
+  value: '{{ postgresql_unix_socket_permissions }}'
