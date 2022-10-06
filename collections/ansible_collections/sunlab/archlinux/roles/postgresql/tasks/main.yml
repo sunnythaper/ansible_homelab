@@ -1,11 +1,13 @@
----
-- name: Install dependencies
+- name: Variables
+  include_tasks: variables.yml
+
+- name: Install
   include_tasks: install.yml
 
-- name: Initialize database
+- name: Initialize
   include_tasks: initialize.yml
 
-- name: Configure database daemon
+- name: Configure
   include_tasks: configure.yml
 
 - name: Create users & databases

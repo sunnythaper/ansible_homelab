@@ -1,4 +1,25 @@
----
+- name: Setup users & groups
+  ansible.builtin.include_role:
+    name: user
+  vars:
+    user_groups:
+      - name: '{{ mattermost_group }}'
+        gid: '{{ mattermost_group_gid }}'
+    user_users:
+      - name: '{{ mattermost_user }}'
+        groups:
+          - '{{ mattermost_user }}'
+          - '{{ mattermost_group }}'
+        home: '{{ mattermost_data_dir }}'
+        uid: '{{ mattermost_user_uid }}'
+
+- name: Install dependencies
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install
+  vars:
+    pacman_packages: '{{ mattermost_packages }}'
+
 - name: Setup database & users
   ansible.builtin.include_role:
     name: postgresql

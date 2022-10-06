@@ -1,4 +1,3 @@
----
 - name: Allow access to SSL certificates
   import_role:
     name: ssl
@@ -13,26 +12,26 @@
     owner: "{{ postgresql_user }}"
     group: "{{ postgresql_group }}"
     state: directory
-    mode: 0700
+    mode: '{{ postgresql_data_dir_mode }}'
 
 - name: Check if database is initialized
   become: true
   ansible.builtin.stat:
-    path: "{{ postgresql_data_dir }}/PG_VERSION"
-  register: postgresql_data
+    path: "{{ postgresql_data_dir }}/{{ postgresql_init_check_file }}"
+  register: __postgresql_data
 
 - name: Initialize database
   become: true
   become_user: "{{ postgresql_user }}"
-  command: "{{ postgresql_bin_dir }}/initdb -D {{ postgresql_data_dir }}"
-  when: not postgresql_data.stat.exists
+  command: "{{ postgresql_bin_dir }}/{{ postgresql_init_binary }} -D {{ postgresql_data_dir }}"
+  when: not __postgresql_data.stat.exists
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
 
 - name: Start & enable service
   become: true
-  systemd:
+  service:
     enabled: yes
     name: "{{ postgresql_binary }}"
     state: started

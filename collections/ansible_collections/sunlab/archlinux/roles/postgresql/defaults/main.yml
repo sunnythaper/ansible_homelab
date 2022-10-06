@@ -1,29 +1,19 @@
----
-# Packages
-postgresql_binary: postgresql
-postgresql_packages:
-  - postgresql
-  - python-psycopg2
+# Role Options
+postgresql_config_log: stderr
+postgresql_config_ssl: enabled
 
-# Users
-postgresql_user: postgres
-
-# Groups
-postgresql_group: postgres
-
-# Directories
-postgresql_bin_dir: /usr/bin
-postgresql_config_dir: /var/lib/postgres/data
-postgresql_data_dir: /var/lib/postgres/data
-
-# Global Configuration
+# Host Configuration
 postgresql_listen_addresses:
   - localhost
   - "{{ ansible_host }}"
-postgresql_unix_socket_dir:
+postgresql_listen_port: 5432
+postgresql_unix_socket_dirs:
   - /run/postgresql
-postgresql_unix_socket_dir_mode: 0755
-postgresql_global_config:
+postgresql_unix_socket_dirs_mode: 0755
+postgresql_unix_socket_permissions: 0770
+
+# Global Configuration
+postgresql_config:
   - option: db_user_namespace
     value: "off"
   - option: listen_addresses
@@ -55,7 +45,7 @@ postgresql_global_config:
   - option: stats_temp_directory
     value: /run/postgresql
   - option: unix_socket_directories
-    value: '{{ postgresql_unix_socket_dir | join(",") }}'
+    value: '{{ postgresql_unix_socket_dirs | join(",") }}'
   - option: unix_socket_permissions
     value: 0770
 
@@ -91,7 +81,7 @@ postgresql_databases: []
 #   login_host: # defaults to 'localhost'
 #   login_password: # defaults to not set
 #   login_user: # defaults to '{{ postgresql_user }}'
-#   login_unix_socket: # defaults to 1st of postgresql_unix_socket_dir
+#   login_unix_socket: # defaults to 1st of postgresql_unix_socket_dirs
 #   port: # defaults to not set
 #   owner: # defaults to postgresql_user
 #   state: # defaults to 'present'
@@ -108,6 +98,6 @@ postgresql_users: []
 #   login_host: # defaults to 'localhost'
 #   login_password: # defaults to not set
 #   login_user: # defaults to '{{ postgresql_user }}'
-#   login_unix_socket: # defaults to 1st of postgresql_unix_socket_dir
+#   login_unix_socket: # defaults to 1st of postgresql_unix_socket_dirs
 #   port: # defaults to not set
 #   state: # defaults to 'present'

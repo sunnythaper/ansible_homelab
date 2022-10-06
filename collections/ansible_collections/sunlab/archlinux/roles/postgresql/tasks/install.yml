@@ -1,7 +1,6 @@
----
-- ansible.builtin.include_role:
-    name: pacman
-    tasks_from: install
-  vars:
-    pacman_packages:
-      - '{{ postgresql_packages }}'
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ postgresql_packages }}"

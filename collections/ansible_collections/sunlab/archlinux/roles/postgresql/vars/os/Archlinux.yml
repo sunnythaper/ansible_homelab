@@ -1,0 +1,23 @@
+# Packages
+postgresql_binary: postgresql
+postgresql_init_binary: initdb
+postgresql_packages:
+  - postgresql
+  - python-psycopg2
+
+# User
+postgresql_user: postgres
+postgresql_group: postgres
+
+# Directories
+postgresql_bin_dir: /usr/bin
+postgresql_config_dir: /var/lib/postgres/data
+postgresql_data_dir: /var/lib/postgres/data
+postgresql_data_dir_mode: 0700
+
+# Files
+postgresql_config_file: postgresql.conf
+postgresql_config_file_mode: 0600
+postgresql_hba_config_file: pg_hba.conf
+postgresql_hba_config_file_mode: 0600
+postgresql_init_check_file: PG_VERSION

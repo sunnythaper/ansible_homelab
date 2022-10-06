@@ -1,33 +1,32 @@
----
-- name: Configure global settings
+- name: Configure main settings
   become: true
   lineinfile:
-    dest: "{{ postgresql_config_dir }}/postgresql.conf"
-    regexp: "^#?{{ item.option }}.+$"
+    dest: '{{ postgresql_config_dir }}/{{ postgresql_config_file }}'
+    regexp: '^#?{{ item.option }}.+$'
     line: "{{ item.option }} = '{{ item.value }}'"
-    state: "{{ item.state | default('present') }}"
-    owner: "{{ postgresql_user }}"
-    group: "{{ postgresql_group }}"
-    mode: 0600
-  with_items: "{{ postgresql_global_config }}"
+    state: '{{ item.state | default("present") }}'
+    owner: '{{ postgresql_user }}'
+    group: '{{ postgresql_group }}'
+    mode: '{{ postgresql_config_file_mode }}'
+  with_items: '{{ postgresql_config }}'
   notify: Restart PostgreSQL
 
 - name: Configure host based authentication
   become: true
   template:
-    src: "pg_hba.conf.j2"
-    dest: "{{ postgresql_config_dir }}/pg_hba.conf"
-    owner: "{{ postgresql_user }}"
-    group: "{{ postgresql_group }}"
-    mode: 0600
+    src: 'pg_hba.conf.j2'
+    dest: '{{ postgresql_config_dir }}/{{ postgresql_hba_config_file }}'
+    owner: '{{ postgresql_user }}'
+    group: '{{ postgresql_group }}'
+    mode: '{{ postgresql_hba_config_file_mode }}'
   notify: Restart PostgreSQL
 
 - name: Check if unix socket directory exists
   become: true
   file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: directory
-    owner: "{{ postgresql_user }}"
-    group: "{{ postgresql_group }}"
-    mode: "{{ postgresql_unix_socket_dir_mode }}"
-  with_items: "{{ postgresql_unix_socket_dir }}"
+    owner: '{{ postgresql_user }}'
+    group: '{{ postgresql_group }}'
+    mode: '{{ postgresql_unix_socket_dirs_mode }}'
+  with_items: '{{ postgresql_unix_socket_dirs }}'
