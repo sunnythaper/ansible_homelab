@@ -1,0 +1,27 @@
+- name: Create user group
+  become: true
+  ansible.builtin.group:
+    gid: '{{ mattermost_group_gid }}'
+    name: '{{ mattermost_group }}'
+    state: present
+
+- name: Create user
+  become: true
+  ansible.builtin.user:
+    create_home: false
+    groups:
+      - '{{ mattermost_group }}'
+      - '{{ mattermost_ssl_group | default(omit) }}'
+    home: '{{ mattermost_data_dir }}'
+    name: '{{ mattermost_user }}'
+    password: supersecure
+    shell: '/bin/bash'
+    state: present
+    uid: '{{ mattermost_user_uid }}'
+
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ mattermost_packages }}"

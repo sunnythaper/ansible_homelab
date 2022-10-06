@@ -1,0 +1,12 @@
+# Packages
+mattermost_packages:
+  - mattermost
+  # - python-psycopg2 # Not sure anymore if this is actually needed
+
+# User
+mattermost_user: mattermost
+mattermost_group: mattermost
+
+# Directories
+mattermost_config_dir: /etc/webapps/mattermost
+mattermost_data_dir: /var/lib/mattermost
