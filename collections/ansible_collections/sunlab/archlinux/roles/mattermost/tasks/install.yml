@@ -11,7 +11,7 @@
     create_home: false
     groups:
       - '{{ mattermost_group }}'
-      - '{{ mattermost_ssl_group | default(omit) }}'
+      - '{{ mattermost_ssl_group }}'
     home: '{{ mattermost_data_dir }}'
     name: '{{ mattermost_user }}'
     shell: '/bin/bash'
