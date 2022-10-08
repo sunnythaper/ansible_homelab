@@ -14,7 +14,6 @@
       - '{{ mattermost_ssl_group | default(omit) }}'
     home: '{{ mattermost_data_dir }}'
     name: '{{ mattermost_user }}'
-    password: supersecure
     shell: '/bin/bash'
     state: present
     uid: '{{ mattermost_user_uid }}'
