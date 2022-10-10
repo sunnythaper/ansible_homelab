@@ -1,0 +1,38 @@
+- name: Create database user
+  become: true
+  become_user: "{{ mattermost_database_admin_user }}"
+  community.postgresql.mattermost_database_admin_user:
+    name: "{{ mattermost_database_user }}"
+    password: "{{ mattermost_database_password }}"
+    state: present
+  no_log: "{{ mattermost_database_no_log }}"
+  # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
+  vars:
+    ansible_ssh_pipelining: true
+  delegate_to: '{{ mattermost_database_host }}'
+
+- name: Create database
+  become: true
+  become_user: "{{ mattermost_database_admin_user }}"
+  community.postgresql.postgresql_db:
+    name: "{{ mattermost_database }}"
+    owner: "{{ mattermost_database_user }}"
+    state: present
+  # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
+  vars:
+    ansible_ssh_pipelining: true
+  delegate_to: '{{ mattermost_database_host }}'
+
+- name: Configure database user
+  become: true
+  become_user: "{{ mattermost_database_admin_user }}"
+  community.postgresql.mattermost_database_admin_user:
+    name: "{{ mattermost_database_user }}"
+    password: "{{ mattermost_database_password }}"
+    db: "{{ mattermost_database }}"
+    state: present
+  no_log: "{{ mattermost_database_no_log }}"
+  # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
+  vars:
+    ansible_ssh_pipelining: true
+  delegate_to: '{{ mattermost_database_host }}'
