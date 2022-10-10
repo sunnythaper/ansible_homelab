@@ -1,6 +1,3 @@
-# Variables
-
-
 # User
 mattermost_ssl_group: '{{ ssl_user_group | default("ssl-cert") }}'
 mattermost_user_uid: 1600

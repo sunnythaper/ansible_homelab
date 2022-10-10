@@ -1,4 +1,5 @@
 # Packages
+mattermost_binary: mattermost
 mattermost_packages:
   - mattermost
   # - python-psycopg2 # Not sure anymore if this is actually needed
