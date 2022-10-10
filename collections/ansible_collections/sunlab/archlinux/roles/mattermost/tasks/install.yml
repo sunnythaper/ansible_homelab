@@ -14,7 +14,7 @@
       - '{{ mattermost_ssl_group }}'
     home: '{{ mattermost_data_dir }}'
     name: '{{ mattermost_user }}'
-    shell: '/bin/bash'
+    shell: '{{ mattermost_user_shell }}'
     state: present
     uid: '{{ mattermost_user_uid }}'
 

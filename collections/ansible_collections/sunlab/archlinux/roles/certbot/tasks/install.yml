@@ -1,3 +1,21 @@
+- name: Create user group
+  become: true
+  ansible.builtin.group:
+    gid: '{{ certbot_group_gid }}'
+    name: '{{ certbot_group }}'
+    state: present
+
+- name: Create user
+  become: true
+  ansible.builtin.user:
+    create_home: no
+    group: '{{ certbot_group }}'
+    home: '{{ certbot_data_dir }}'
+    name: '{{ certbot_user }}'
+    shell: '{{ certbot_user_shell }}'
+    state: present
+    uid: '{{ certbot_user_uid }}'
+
 - name: Install packages
   become: true
   pacman:

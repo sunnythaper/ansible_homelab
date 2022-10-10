@@ -6,6 +6,7 @@ mattermost_packages:
 
 # User
 mattermost_user: mattermost
+mattermost_user_shell: '/bin/bash'
 mattermost_group: mattermost
 
 # Directories

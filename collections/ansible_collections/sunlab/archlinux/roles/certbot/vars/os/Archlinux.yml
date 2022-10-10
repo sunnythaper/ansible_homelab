@@ -2,3 +2,11 @@
 certbot_binary: certbot
 certbot_packages:
   - certbot
+
+# User
+certbot_user: certbot
+certbot_user_shell: '/bin/bash'
+certbot_group: certbot
+
+# Directories
+certbot_data_dir: /var/lib/letsencrypt
