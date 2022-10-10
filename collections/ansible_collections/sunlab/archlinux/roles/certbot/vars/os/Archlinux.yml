@@ -1,0 +1,4 @@
+# Packages
+certbot_binary: certbot
+certbot_packages:
+  - certbot

@@ -1,0 +1,6 @@
+dependencies: []
+
+galaxy_info:
+  role_name: certbot
+  author: sunnythaper
+  description: Install & configure Certbot
