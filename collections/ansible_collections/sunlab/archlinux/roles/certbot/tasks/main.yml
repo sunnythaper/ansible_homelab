@@ -3,3 +3,9 @@
 
 - name: Install
   include_tasks: install.yml
+
+- name: Initialize
+  include_tasks: initialize.yml
+
+- name:: Configure
+  include_tasks: configure.yml

@@ -10,7 +10,7 @@
   ansible.builtin.user:
     create_home: no
     group: '{{ certbot_group }}'
-    home: '{{ certbot_data_dir }}'
+    home: '{{ certbot_config_dir }}'
     name: '{{ certbot_user }}'
     shell: '{{ certbot_user_shell }}'
     state: present

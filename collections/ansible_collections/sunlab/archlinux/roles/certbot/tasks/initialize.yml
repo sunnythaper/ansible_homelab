@@ -1,0 +1,26 @@
+- name: Set config directory permissions
+  become: true
+  ansible.builtin.file:
+    mode: '{{ certbot_config_dir_mode }}'
+    path: '{{ certbot_config_dir }}'
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    state: directory
+
+- name: Set config archive directory permissions
+  become: true
+  ansible.builtin.file:
+    mode: '{{ certbot_config_archive_dir_mode }}'
+    path: '{{ certbot_config_archive_dir }}'
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    state: directory
+
+- name: Set config live directory permissions
+  become: true
+  ansible.builtin.file:
+    mode: '{{ certbot_config_live_dir_mode }}'
+    path: '{{ certbot_config_live_dir }}'
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    state: directory

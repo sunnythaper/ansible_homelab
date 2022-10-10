@@ -1,3 +1,28 @@
 # User
 certbot_user_uid: 1003
 certbot_group_gid: 1003
+
+# Permissions
+certbot_config_file_mode: 0600
+certbot_config_archive_dir_mode: 0750
+certbot_config_dir_mode: 0700
+certbot_config_live_dir_mode: 0750
+certbot_dns_credentials_file_mode: 0600
+
+# Host
+certbot_domain: '{{ ansible_fqdn | default("example.com") }}'
+certbot_email: '{{ config.email | default("admin@example.com") }}'
+
+# Cloudflare
+certbot_dns_cloudflare: 'true'
+certbot_dns_api_token: 0123456789abcdef0123456789abcdef01234567
+certbot_dns_credentials_file: '{{ certbot_config_dir }}/cloudflare.ini'
+
+# Configuration
+certbot_agree_tos: 'true'
+certbot_expand: 'true'
+certbot_elliptic_curve: secp521r1
+certbot_keep_until_expiring: 'true'
+certbot_key_type: rsa
+certbot_noninteractive: 'true'
+certbot_rsa_key_size: 4096

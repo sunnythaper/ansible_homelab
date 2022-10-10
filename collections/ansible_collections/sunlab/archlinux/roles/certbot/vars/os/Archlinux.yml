@@ -2,11 +2,19 @@
 certbot_binary: certbot
 certbot_packages:
   - certbot
+  - certbot-dns-cloudflare
 
 # User
 certbot_user: certbot
-certbot_user_shell: '/bin/bash'
+certbot_user_shell: /bin/bash
 certbot_group: certbot
 
 # Directories
-certbot_data_dir: /var/lib/letsencrypt
+certbot_config_dir: /etc/letsencrypt
+certbot_config_archive_dir: '{{ certbot_config_dir }}/archive'
+certbot_config_live_dir: '{{ certbot_config_dir }}/live'
+certbot_log_dir: /var/log/letsencrypt
+certbot_work_dir: /var/lib/letsencrypt
+
+# Files
+certbot_config_file: cli.ini

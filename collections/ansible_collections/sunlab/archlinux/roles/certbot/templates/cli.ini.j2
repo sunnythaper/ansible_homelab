@@ -1,0 +1,18 @@
+# Host
+domain = {{ certbot_domain }}
+email = {{ cerbot_email }}
+
+# Cloudflare
+dns-cloudflare = {{ certbot_dns_cloudflare }}
+dns-cloudflare-credentials = {{ certbot_dns_credentials_file }}
+
+# Key
+key-type = {{ certbot_key_type }}
+elliptic-curve = {{ certbot_elliptic_curve }}
+rsa-key-size = {{ certbot_rsa_key_size }}
+
+# Configuration
+agree-tos = {{ certbot_agree_tos }}
+expand = {{ certbot_expand }}
+keep-until-expiring = {{ certbot_keep_until_expiring }}
+noninteractive = {{ certbot_noninteractive }}

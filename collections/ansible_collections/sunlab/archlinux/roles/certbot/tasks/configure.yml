@@ -1,0 +1,10 @@
+- name: Create dns configuration
+  become: true
+  ansible.builtin.lineinfile:
+    dest: '{{ certbot_dns_credentials_file }}'
+    line: 'dns_cloudflare_api_token = {{ certbot_dns_api_token }}'
+    state: present
+    create: true
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    mode: '{{ certbot_dns_credentials_file_mode }}'
