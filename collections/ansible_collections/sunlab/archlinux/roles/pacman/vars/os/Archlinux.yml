@@ -5,6 +5,7 @@ pacman_contrib_package: pacman-contrib
 
 # User
 pacman_helper_user: aur_builder
+pacman_helper_user_shell: '/bin/bash'
 pacman_helper_group: wheel
 
 # Directories
@@ -17,3 +18,4 @@ pacman_config_path: /etc/pacman.conf
 
 # Commands
 pacman_sudo_validate: 'visudo -cf %s'
+pacman_helper_builder: makepkg

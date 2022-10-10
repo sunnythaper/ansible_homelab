@@ -1,5 +1,4 @@
 # User
-pacman_helper_group_gid: 1002
 pacman_helper_user_uid: 1002
 
 # Permissions

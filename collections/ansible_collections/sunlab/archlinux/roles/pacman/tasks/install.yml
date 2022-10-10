@@ -6,20 +6,13 @@
   tags:
     - update
 
-- name: Create user group
-  become: true
-  ansible.builtin.group:
-    gid: '{{ pacman_helper_group_gid }}'
-    name: '{{ pacman_helper_group }}'
-    state: present
-
 - name: Create user
   become: true
   ansible.builtin.user:
     create_home: yes
     group: '{{ pacman_helper_group }}'
     name: '{{ pacman_helper_user }}'
-    shell: '/bin/bash'
+    shell: '{{ pacman_helper_user_shell }}'
     state: present
     uid: '{{ pacman_helper_user_uid }}'
 
@@ -46,4 +39,4 @@
   kewlfft.aur.aur:
     name: '{{ pacman_helper_package }}'
     state: present
-    use: makepkg
+    use: '{{ pacman_helper_builder }}'
