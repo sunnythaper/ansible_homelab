@@ -1,7 +1,7 @@
 - name: Create database user
   become: true
   become_user: "{{ mattermost_database_admin_user }}"
-  community.postgresql.mattermost_database_admin_user:
+  community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
     password: "{{ mattermost_database_password }}"
     state: present
@@ -26,7 +26,7 @@
 - name: Configure database user
   become: true
   become_user: "{{ mattermost_database_admin_user }}"
-  community.postgresql.mattermost_database_admin_user:
+  community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
     password: "{{ mattermost_database_password }}"
     db: "{{ mattermost_database }}"
