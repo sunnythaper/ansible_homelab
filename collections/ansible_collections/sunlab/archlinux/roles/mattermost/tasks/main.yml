@@ -4,5 +4,5 @@
 - name: Install
   include_tasks: install.yml
 
-- name: Setup database & users
+- name: Initialize
   include_tasks: initialize.yml
