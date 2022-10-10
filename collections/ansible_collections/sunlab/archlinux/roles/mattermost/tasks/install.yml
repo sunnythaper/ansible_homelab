@@ -8,7 +8,7 @@
 - name: Create user
   become: true
   ansible.builtin.user:
-    create_home: false
+    create_home: no
     groups:
       - '{{ mattermost_group }}'
       - '{{ mattermost_ssl_group }}'

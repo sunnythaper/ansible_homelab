@@ -1,3 +1,4 @@
 ---
 # Packages
-libpwquality_package: libpwquality
+libpwquality_packages:
+  - libpwquality

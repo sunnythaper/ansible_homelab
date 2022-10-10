@@ -1,6 +1,7 @@
 ---
 # Packages
-rkhunter_package: rkhunter
+rkhunter_packages:
+  - rkhunter
 
 # Configuration
 rkhunter:

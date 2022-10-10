@@ -1,15 +1,5 @@
 ---
-dependencies:
-  - role: user
-    vars:
-      user_users:
-        - name: "{{ pacman_helper_user }}"
-          group: "{{ pacman_helper_group }}"
-          create_home: yes
-          uid: "{{ pacman_helper_user_uid }}"
-      user_passwordless_sudo_users:
-        - name: "{{ pacman_helper_user }}"
-          command: "{{ pacman_binary_dir }}/{{ pacman_binary }}"
+dependencies: []
 
 galaxy_info:
   role_name: pacman

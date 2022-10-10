@@ -1,4 +1,10 @@
----
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ logrotate_packages }}"
+
 - name: Copy logrotate configuration
   become: true
   template:

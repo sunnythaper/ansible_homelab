@@ -1,4 +1,3 @@
----
 - name: Update packages
   become: true
   community.general.pacman:
@@ -7,10 +6,44 @@
   tags:
     - update
 
-- name: Install packages
+- name: Create user group
+  become: true
+  ansible.builtin.group:
+    gid: '{{ pacman_helper_group_gid }}'
+    name: '{{ pacman_helper_group }}'
+    state: present
+
+- name: Create user
+  become: true
+  ansible.builtin.user:
+    create_home: yes
+    group: '{{ pacman_helper_group }}'
+    name: '{{ pacman_helper_user }}'
+    shell: '/bin/bash'
+    state: present
+    uid: '{{ pacman_helper_user_uid }}'
+
+- name: Configure user to run passwordless pacman command
+  become: true
+  ansible.builtin.lineinfile:
+    create: yes
+    line: '{{ pacman_helper_user }} ALL=(ALL) NOPASSWD: {{ pacman_binary_dir }}/{{ pacman_binary }}'
+    path: '{{ pacman_sudoersd_dir }}/11-{{ pacman_helper_user }}'
+    validate: '{{ pacman_sudo_validate }}'
+    owner: root
+    group: root
+    mode: '{{ pacman_sudoersd_mode }}'
+
+- name: Install pacman-contrib package
   become: true
   pacman:
-    name: "{{ item }}"
+    name: '{{ pacman_contrib_package }}'
     state: latest
-  with_items: "{{ pacman_packages }}"
-  when: pacman_packages is defined
+
+- name: Install package manager helper
+  become: true
+  become_user: '{{ pacman_helper_user }}'
+  kewlfft.aur.aur:
+    name: '{{ pacman_helper_package }}'
+    state: present
+    use: makepkg

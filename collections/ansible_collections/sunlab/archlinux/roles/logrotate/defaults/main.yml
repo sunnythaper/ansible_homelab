@@ -1,3 +1,4 @@
 ---
 # Packages
-logrotate_package: logrotate
+logrotate_packages:
+  - logrotate

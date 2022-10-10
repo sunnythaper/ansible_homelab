@@ -1,9 +1,5 @@
 ---
-dependencies:
-  - role: pacman
-    vars:
-      pacman_packages:
-        - '{{ rkhunter_package }}'
+dependencies: []
 
 galaxy_info:
   role_name: rkhunter

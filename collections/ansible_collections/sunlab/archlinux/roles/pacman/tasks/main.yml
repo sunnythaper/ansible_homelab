@@ -1,15 +1,10 @@
----
-- name: Update & install packages
+- name: Variables
+  include_tasks: variables.yml
+
+- name: Install
   include_tasks: install.yml
   tags:
     - update
 
-- name: Configure package manager
+- name: Configure
   include_tasks: configure.yml
-  when:
-    - pacman_packages is not defined
-    - pacman_helper_packages is not defined
-
-- name: Update & install helper packages
-  include_tasks: helper.yml
-  when: pacman_helper_packages is defined

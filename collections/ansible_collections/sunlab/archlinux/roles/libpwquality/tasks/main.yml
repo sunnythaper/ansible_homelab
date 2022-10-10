@@ -1,4 +1,11 @@
 ---
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ libpwquality_packages }}"
+
 - name: Copy libpwquality configuration
   become: true
   template:

@@ -1,4 +1,10 @@
----
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ rkhunter_packages }}"
+
 - name: Check if rkhunter database exists
   become: true
   stat:
