@@ -9,3 +9,6 @@
 
 - name: Configure
   include_tasks: configure.yml
+
+- name: Certificate
+  include_tasks: certificate.yml

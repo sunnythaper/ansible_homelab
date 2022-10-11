@@ -1,0 +1,11 @@
+- name: Check if certificate exists
+  become: true
+  stat:
+    path: '{{ certbot_config_live_dir }}/{{ certbot_domain }}/{{ certbot_cert_file }}'
+  register: __certbot_cert
+
+- name: Generate certificate
+  become: true
+  become_user: '{{ certbot_user }}'
+  command: '{{ certbot_binary }}/{{ certbot_new_command }}'
+  when: not __certbot_cert.stat.exists
