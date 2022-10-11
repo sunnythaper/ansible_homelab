@@ -10,7 +10,7 @@ certbot_user_shell: /bin/bash
 certbot_group: certbot
 
 # Directories
-certbot_certificate_dir: '{{ certbot_config_live_dir }}/{{ certbot_domain }}/{{ certbot_cert_file }}'
+certbot_certificate_dir: '{{ certbot_config_live_dir }}/{{ certbot_domain }}'
 certbot_config_dir: /etc/letsencrypt
 certbot_config_archive_dir: '{{ certbot_config_dir }}/archive'
 certbot_config_live_dir: '{{ certbot_config_dir }}/live'

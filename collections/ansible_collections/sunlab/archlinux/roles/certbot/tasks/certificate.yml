@@ -1,7 +1,7 @@
 - name: Check if certificate exists
   become: true
   ansible.builtin.stat:
-    path: '{{ certbot_certificate_dir }}\{{ certbot_cert_file }}'
+    path: '{{ certbot_certificate_dir }}/{{ certbot_cert_file }}'
   register: __certbot_cert
 
 - name: Generate certificate
