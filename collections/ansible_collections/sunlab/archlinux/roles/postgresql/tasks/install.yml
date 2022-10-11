@@ -1,3 +1,23 @@
+- name: Create user group
+  become: true
+  ansible.builtin.group:
+    gid: '{{ postgresql_group_gid }}'
+    name: '{{ postgresql_group }}'
+    state: present
+
+- name: Create user
+  become: true
+  ansible.builtin.user:
+    create_home: no
+    groups:
+      - '{{ postgresql_group }}'
+      - '{{ postgresql_ssl_group }}'
+    home: '{{ postgresql_data_dir }}'
+    name: '{{ postgresql_user }}'
+    shell: '{{ postgresql_user_shell }}'
+    state: present
+    uid: '{{ postgresql_user_uid }}'
+
 - name: Install packages
   become: true
   pacman:

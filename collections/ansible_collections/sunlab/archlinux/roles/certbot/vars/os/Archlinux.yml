@@ -10,6 +10,7 @@ certbot_user_shell: /bin/bash
 certbot_group: certbot
 
 # Directories
+certbot_certificate_dir: '{{ certbot_config_live_dir }}/{{ certbot_domain }}/{{ certbot_cert_file }}'
 certbot_config_dir: /etc/letsencrypt
 certbot_config_archive_dir: '{{ certbot_config_dir }}/archive'
 certbot_config_live_dir: '{{ certbot_config_dir }}/live'
@@ -18,7 +19,8 @@ certbot_work_dir: /var/lib/letsencrypt
 
 # Files
 certbot_config_file: cli.ini
-certbot_cert_file: cert.pem
+certbot_cert_file: fullchain.pem
+certbot_key_file: privkey.pem
 
 # Commands
 certbot_new_command: certonly

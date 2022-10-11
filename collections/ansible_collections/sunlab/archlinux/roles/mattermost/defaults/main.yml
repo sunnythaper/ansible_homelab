@@ -1,5 +1,5 @@
 # User
-mattermost_ssl_group: '{{ ssl_user_group | default("ssl-cert") }}'
+mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
 mattermost_user_uid: 1600
 mattermost_group_gid: 1600
 

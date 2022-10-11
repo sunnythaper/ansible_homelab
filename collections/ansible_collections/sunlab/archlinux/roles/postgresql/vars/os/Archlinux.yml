@@ -7,6 +7,7 @@ postgresql_packages:
 
 # User
 postgresql_user: postgres
+postgresql_user_shell: /bin/bash
 postgresql_group: postgres
 
 # Directories

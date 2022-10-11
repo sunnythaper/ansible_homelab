@@ -1,6 +1,0 @@
----
-- name: Install `python-cryptography` via pacman
-  become: true
-  community.general.pacman:
-    name: python-cryptography
-    state: latest
