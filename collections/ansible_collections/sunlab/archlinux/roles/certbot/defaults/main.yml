@@ -3,7 +3,7 @@ certbot_user_uid: 1003
 certbot_group_gid: 1003
 
 # Host
-certbot_domain: '{{ inventory_hostname}}.{{ config.domain | default("example.com") }}'
+certbot_domain: '{{ ansible_fqdn | default("example.com") }}'
 certbot_email: '{{ config.email | default("admin@example.com") }}'
 
 # Cloudflare
