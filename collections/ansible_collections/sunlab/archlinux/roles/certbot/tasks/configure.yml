@@ -2,6 +2,7 @@
   become: true
   ansible.builtin.lineinfile:
     dest: '{{ certbot_config_dir }}/{{ certbot_dns_credentials_file }}'
+    regex: '^dns_cloudflare_api_token = .*'
     line: 'dns_cloudflare_api_token = {{ certbot_dns_api_token }}'
     state: present
     create: true
