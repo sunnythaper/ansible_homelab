@@ -17,7 +17,7 @@ certbot_email: '{{ config.email | default("admin@example.com") }}'
 
 # Cloudflare
 certbot_dns_cloudflare: 'true'
-certbot_dns_api_token: 0123456789abcdef0123456789abcdef01234567
+certbot_dns_api_token: '{{ cloudflare_token | default("0123456789abcdef0123456789abcdef01234567") }}'
 certbot_dns_credentials_file: cloudflare.ini
 
 # Configuration
