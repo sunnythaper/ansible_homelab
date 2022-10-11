@@ -1,7 +1,7 @@
 - name: Configure main settings
   become: true
   lineinfile:
-    dest: '{{ postgresql_config_dir }}/{{ postgresql_config_file }}'
+    dest: '{{ postgresql_data_dir }}/{{ postgresql_config_file }}'
     regexp: '^#?{{ item.option }}.+$'
     line: "{{ item.option }} = '{{ item.value }}'"
     state: '{{ item.state | default("present") }}'
@@ -18,7 +18,7 @@
   become: true
   template:
     src: 'pg_hba.conf.j2'
-    dest: '{{ postgresql_config_dir }}/{{ postgresql_hba_config_file }}'
+    dest: '{{ postgresql_data_dir }}/{{ postgresql_hba_config_file }}'
     owner: '{{ postgresql_user }}'
     group: '{{ postgresql_group }}'
     mode: '{{ postgresql_hba_config_file_mode }}'
