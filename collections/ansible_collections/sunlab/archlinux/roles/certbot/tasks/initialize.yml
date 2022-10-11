@@ -24,3 +24,12 @@
     owner: '{{ certbot_user }}'
     group: '{{ certbot_group }}'
     state: directory
+
+- name: Set log directory permissions
+  become: true
+  ansible.builtin.file:
+    mode: '{{ certbot_log_dir_mode }}'
+    path: '{{ certbot_log_dir }}'
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    state: directory
