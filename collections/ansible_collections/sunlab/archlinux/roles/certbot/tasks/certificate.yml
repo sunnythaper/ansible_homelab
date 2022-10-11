@@ -9,3 +9,6 @@
   become_user: '{{ certbot_user }}'
   command: '{{ certbot_binary }} {{ certbot_new_command }}'
   when: not __certbot_cert.stat.exists
+  register: __certbot_cert_generate
+  # changed_when: "'Updated' in __certbot_cert_generate.stdout"
+  failed_when: "'Error' in __certbot_cert_generate.stdout"
