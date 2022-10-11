@@ -8,6 +8,7 @@
     owner: '{{ certbot_user }}'
     group: '{{ certbot_group }}'
     mode: '{{ certbot_dns_credentials_file_mode }}'
+  no_log: '{{ certbot_dns_credentials_no_log }}'
 
 - name: Copy config template
   become: true
