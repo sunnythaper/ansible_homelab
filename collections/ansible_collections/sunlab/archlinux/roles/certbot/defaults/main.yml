@@ -16,7 +16,7 @@ certbot_dns_propogation_seconds: 60
 # Permissions
 certbot_config_file_mode: 0600
 certbot_config_archive_dir_mode: 0750
-certbot_config_dir_mode: 0700
+certbot_config_dir_mode: 0750
 certbot_config_live_dir_mode: 0750
 certbot_dns_credentials_file_mode: 0600
 certbot_log_dir_mode: 0700
