@@ -26,11 +26,10 @@
   hosts: archlinux
   roles:
     - certbot
-    - ssl
     - libpwquality
     - logrotate
     - apparmor
-    # - rkhunter
+    - rkhunter
     - lynis
 
 - name: Configure PostgreSQL
