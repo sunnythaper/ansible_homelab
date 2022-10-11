@@ -21,6 +21,7 @@ postgresql_ssl_cert_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt
 postgresql_ssl_cert_file: '{{ certbot_cert_file | default("fullchain.pem") }}'
 postgresql_ssl_key_file: '{{ certbot_key_file | default("privkey.pem") }}'
 postgresql_ssl_group: '{{ certbot_group | default("certbot") }}'
+postgresql_ssl_file_mode: 0700
 
 # Host-based Authentication
 postgresql_auth_method: scram-sha-256

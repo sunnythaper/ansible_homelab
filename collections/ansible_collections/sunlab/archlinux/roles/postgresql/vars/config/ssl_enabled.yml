@@ -2,9 +2,9 @@ postgresql_config_ssl:
   - option: ssl
     value: "on"
   - option: ssl_cert_file
-    value: "{{ postgresql_ssl_cert_dir }}/{{ postgresql_ssl_cert_file }}"
+    value: "{{ postgresql_data_dir }}/{{ postgresql_ssl_cert_file }}"
   - option: ssl_key_file
-    value: "{{ postgresql_ssl_cert_dir }}/{{ postgresql_ssl_key_file }}"
+    value: "{{ postgresql_data_dir }}/{{ postgresql_ssl_key_file }}"
   - option: ssl_ciphers
     value: "HIGH:MEDIUM:+3DES:!aNULL"
   - option: ssl_prefer_server_ciphers

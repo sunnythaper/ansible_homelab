@@ -23,6 +23,19 @@
     ansible_ssh_pipelining: true
     ansible_remote_tmp: '{{ postgresql_ansible_dir }}'
 
+- name: Create symbolic link to ssl
+  become: true
+  ansible.builtin.file:
+    src: '{{ postgresql_ssl_cert_dir }}/{{ item }}'
+    dest: '{{ postgresql_data_dir }}/{{ item }}'
+    owner: '{{ postgresql_user }}'
+    group: '{{ postgresql_group }}'
+    state: link
+    mode: '{{ postgresql_ssl_file_mode }}'
+  with_items:
+    - '{{ postgresql_ssl_cert_file  }}'
+    - '{{ postgresql_ssl_key_file }}'
+
 - name: Start & enable service
   become: true
   service:
