@@ -3,8 +3,8 @@
   ansible.builtin.file:
     mode: '{{ certbot_config_dir_mode }}'
     path: '{{ certbot_config_dir }}'
-    owner: '{{ certbot_user }}'
-    group: '{{ certbot_group }}'
+    owner: root
+    group: root
     state: directory
 
 - name: Set config archive directory permissions
