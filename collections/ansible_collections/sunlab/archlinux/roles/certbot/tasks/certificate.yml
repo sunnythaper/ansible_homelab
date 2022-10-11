@@ -10,5 +10,5 @@
   ansible.builtin.command: '{{ certbot_binary }} {{ certbot_new_command }}'
   when: not __certbot_cert.stat.exists
   register: __certbot_cert_generate
-  # changed_when: "'Updated' in __certbot_cert_generate.stdout"
+  changed_when: "'Successfully received certificate' in __certbot_cert_generate.stdout"
   failed_when: "'Error' in __certbot_cert_generate.stderr or 'fail' in __certbot_cert_generate.stderr"
