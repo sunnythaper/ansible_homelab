@@ -7,5 +7,5 @@
 - name: Generate certificate
   become: true
   become_user: '{{ certbot_user }}'
-  command: '{{ certbot_binary }}/{{ certbot_new_command }}'
+  command: '{{ certbot_binary }} {{ certbot_new_command }}'
   when: not __certbot_cert.stat.exists
