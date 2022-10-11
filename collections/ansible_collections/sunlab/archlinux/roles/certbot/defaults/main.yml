@@ -11,6 +11,7 @@ certbot_dns_cloudflare: 'true'
 certbot_dns_api_token: '{{ cloudflare_token | default("0123456789abcdef0123456789abcdef01234567") }}'
 certbot_dns_credentials_file: cloudflare.ini
 certbot_dns_credentials_no_log: yes
+certbot_dns_propogation_seconds: 60
 
 # Permissions
 certbot_config_file_mode: 0600
