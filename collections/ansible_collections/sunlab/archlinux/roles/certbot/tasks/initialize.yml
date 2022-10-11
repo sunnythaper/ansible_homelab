@@ -33,3 +33,12 @@
     owner: '{{ certbot_user }}'
     group: '{{ certbot_group }}'
     state: directory
+
+- name: Set work directory permissions
+  become: true
+  ansible.builtin.file:
+    mode: '{{ certbot_work_dir_mode }}'
+    path: '{{ certbot_work_dir }}'
+    owner: '{{ certbot_user }}'
+    group: '{{ certbot_group }}'
+    state: directory
