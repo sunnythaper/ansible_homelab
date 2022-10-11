@@ -1,8 +1,8 @@
 # Packages
 mattermost_binary: mattermost
 mattermost_packages:
+  - ca-certificates
   - mattermost
-  # - python-psycopg2 # Not sure anymore if this is actually needed
 
 # User
 mattermost_user: mattermost
