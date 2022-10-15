@@ -2,8 +2,8 @@
   become: true
   ansible.builtin.lineinfile:
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
-    regex: '"{{ item.option }}": .*'
-    line: '"{{ item.option }}": "{{ item.value }}"'
+    regex: '^(\s+)"{{ item.option }}": ".*"(,)?'
+    line: '\1"{{ item.option }}": "{{ item.value }}"\2'
     state: present
     owner: '{{ mattermost_user }}'
     group: '{{ mattermost_group }}'
