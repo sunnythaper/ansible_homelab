@@ -1,8 +1,8 @@
 # SSL
 mattermost_ssl: enabled
 mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
-mattermost_ssl_cert: '{{ certbot_certificate_dir | default("/etc/letsencrypt/live/example.com") }}/{{ certbot_cert_file | default("fullchain.pem") }}'
-mattermost_ssl_key: '{{ certbot_certificate_dir | default("/etc/letsencrypt/live/example.com") }}/{{ certbot_key_file | default("privkey.pem") }}'
+mattermost_ssl_cert: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_cert_file | default("fullchain.pem") }}'
+mattermost_ssl_key: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_key_file | default("privkey.pem") }}'
 
 # User
 mattermost_user_uid: 1600
