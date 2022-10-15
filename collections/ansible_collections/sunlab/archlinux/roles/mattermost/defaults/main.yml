@@ -6,7 +6,7 @@ mattermost_group_gid: 1600
 # Database
 mattermost_database: mattermost
 mattermost_database_type: postgres
-mattermost_database_host: 'postgres.{{ ansible_domain }}'
+mattermost_database_host: 'postgres.{{ ansible_domain | default("example.com") }}'
 mattermost_database_host_type: remote
 mattermost_database_port: 5432
 mattermost_database_ssl_mode: verify-full
