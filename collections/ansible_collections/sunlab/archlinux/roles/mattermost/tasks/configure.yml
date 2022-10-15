@@ -12,3 +12,4 @@
   no_log: '{{ mattermost_config_no_log }}'
   with_items:
     - '{{ mattermost_config_db}}'
+    - '{{ mattermost_config_ssl }}'

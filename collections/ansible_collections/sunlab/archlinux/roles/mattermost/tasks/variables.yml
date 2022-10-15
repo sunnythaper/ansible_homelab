@@ -2,6 +2,10 @@
   ansible.builtin.include_vars: os/Archlinux.yml
   when: ansible_os_family == 'Archlinux'
 
-- name: Include config variables
+- name: Include database config variables
   ansible.builtin.include_vars:
     file: 'config/db_{{ mattermost_database_host_type }}.yml'
+
+- name: Include ssl config variables
+  ansible.builtin.include_vars:
+    file: 'config/ssl_{{ mattermost_ssl }}.yml'

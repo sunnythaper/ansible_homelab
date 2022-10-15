@@ -1,0 +1,11 @@
+mattermost_config_ssl:
+  - option: ListenAddress
+    value: ':443'
+  - option: ConnectionSecurity
+    value: TLS
+  - option: Forward80to443
+    value: 'true'
+  - option: TLSCertFile
+    value: '{{ mattermost_ssl_cert }}'
+  - option: TLSKeyFile
+    value: '{{ mattermost_ssl_key }}'
