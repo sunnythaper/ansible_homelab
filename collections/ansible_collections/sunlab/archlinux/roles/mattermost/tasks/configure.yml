@@ -1,6 +1,6 @@
 - name: Configure main settings
   become: true
-  ansible.buildin.lineinfile:
+  ansible.builtin.lineinfile:
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
     regex: '"{{ item.option }}": .*'
     line: '"{{ item.option }}": "{{ item.value }}"'
