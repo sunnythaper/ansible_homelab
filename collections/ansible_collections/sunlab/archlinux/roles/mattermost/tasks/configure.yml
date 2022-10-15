@@ -13,3 +13,13 @@
   with_items:
     - '{{ mattermost_config_db}}'
     - '{{ mattermost_config_ssl }}'
+  notify: Restart Mattermost
+
+- name: Configure ssl capability
+  become: true
+  community.general.capabilities:
+    path: '{{ mattermost_binary_path }}'
+    capability: cap_net_bind_service=+ep
+    state: present
+  when: mattermost_ssl is 'enabled'
+  notify: Restart Mattermost

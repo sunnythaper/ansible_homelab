@@ -3,4 +3,3 @@
   service:
     name: "{{ postgresql_binary }}"
     state: restarted
-    sleep: 5

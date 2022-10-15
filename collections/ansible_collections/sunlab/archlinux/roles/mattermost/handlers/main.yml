@@ -1,0 +1,5 @@
+- name: Restart Mattermost
+  become: true
+  service:
+    name: "{{ mattermost_binary }}"
+    state: restarted
