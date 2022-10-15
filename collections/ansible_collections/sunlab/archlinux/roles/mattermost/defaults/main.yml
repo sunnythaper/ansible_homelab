@@ -5,7 +5,12 @@ mattermost_group_gid: 1600
 
 # Database
 mattermost_database: mattermost
+mattermost_database_type: postgres
 mattermost_database_host: postgres
+mattermost_database_port: 5432
+mattermost_database_ssl_mode: verify-full
+mattermost_database_timeout: 10
+mattermost_database_binary_parameters: 'yes'
 mattermost_database_admin_user: '{{ postgresql_user | default("postgres") }}'
 mattermost_database_user: '{{ mattermost_user }}'
 mattermost_database_password: supersecure

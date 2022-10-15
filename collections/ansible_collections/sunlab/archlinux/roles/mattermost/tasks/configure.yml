@@ -1,0 +1,12 @@
+- name: Configure main settings
+  become: true
+  ansible.buildin.lineinfile:
+    dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
+    regex: '"{{ item.option }}": .*'
+    line: '"{{ item.option }}": "{{ item.value }}"'
+    state: present
+    owner: '{{ mattermost_user }}'
+    group: '{{ mattermost_group }}'
+    mode: '{{ mattermost_config_file_mode }}'
+  no_log: '{{ mattermost_config_no_log }}'
+  with_items: '{{ mattermost_config }}'
