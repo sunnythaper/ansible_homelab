@@ -17,7 +17,7 @@ mattermost_data_dir: /var/lib/mattermost
 mattermost_config_file: config.json
 
 # Permissions
-mattermost_config_file_mode: 0700
+mattermost_config_file_mode: 0600
 
 # Logging
 mattermost_config_no_log: no
