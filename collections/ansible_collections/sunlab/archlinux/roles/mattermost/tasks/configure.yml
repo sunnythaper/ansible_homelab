@@ -1,6 +1,7 @@
 - name: Configure main settings
   become: true
   ansible.builtin.lineinfile:
+    backrefs: yes
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
     regex: '^(\s+)"{{ item.option }}": ".*"(,)?'
     line: '\1"{{ item.option }}": "{{ item.value }}"\2'
