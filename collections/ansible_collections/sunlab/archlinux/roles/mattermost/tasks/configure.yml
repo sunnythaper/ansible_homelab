@@ -21,5 +21,5 @@
     path: '{{ mattermost_binary_path }}'
     capability: cap_net_bind_service=+ep
     state: present
-  when: mattermost_ssl is 'enabled'
+  when: mattermost_ssl == 'enabled'
   notify: Restart Mattermost
