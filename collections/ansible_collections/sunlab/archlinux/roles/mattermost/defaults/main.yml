@@ -7,6 +7,7 @@ mattermost_group_gid: 1600
 mattermost_database: mattermost
 mattermost_database_type: postgres
 mattermost_database_host: postgres
+mattermost_database_host_type: remote
 mattermost_database_port: 5432
 mattermost_database_ssl_mode: verify-full
 mattermost_database_timeout: 10
