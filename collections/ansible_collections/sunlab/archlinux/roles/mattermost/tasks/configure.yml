@@ -9,4 +9,5 @@
     group: '{{ mattermost_group }}'
     mode: '{{ mattermost_config_file_mode }}'
   no_log: '{{ mattermost_config_no_log }}'
-  with_items: '{{ mattermost_config }}'
+  with_items:
+    - '{{ mattermost_config_db}}'
