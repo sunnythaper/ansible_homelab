@@ -6,7 +6,7 @@ mattermost_ssl_key: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live
 # Config
 mattermost_config_ssl:
   - option: SiteURL
-    value: '{{ ansible_fqdn }}'
+    value: 'https://{{ ansible_fqdn }}'
   - option: ListenAddress
     value: ':8065'
     before: TLSCertFile
