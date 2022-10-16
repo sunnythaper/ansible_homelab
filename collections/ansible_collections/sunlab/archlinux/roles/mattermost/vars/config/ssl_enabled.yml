@@ -10,3 +10,5 @@ mattermost_config_ssl:
     value: '{{ mattermost_ssl_cert }}'
   - option: TLSKeyFile
     value: '{{ mattermost_ssl_key }}'
+
+mattermost_config_capability: cap_net_bind_service+eip
