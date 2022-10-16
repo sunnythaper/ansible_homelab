@@ -4,7 +4,8 @@
     backrefs: yes
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
     regex: '^(\s+)"{{ item.option }}": ".*"(,)?'
-    insertbefore: '^\s+"{{ item.before | default(omit) }}.*$'
+    insertbefore: '^\s+"{{ item.before | default(omit) }}.*""'
+    firstmatch: yes
     line: '\1"{{ item.option }}": "{{ item.value }}"\2'
     state: present
     owner: '{{ mattermost_user }}'
