@@ -40,4 +40,6 @@
     group: root
     mode: '{{ mattermost_service_file_mode }}'
   with_items: '{{ mattermost_config_service }}'
-  notify: Restart Mattermost
+  notify:
+    - Restart Systemd
+    - Restart Mattermost
