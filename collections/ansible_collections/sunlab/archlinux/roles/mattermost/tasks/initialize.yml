@@ -36,3 +36,16 @@
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
+
+- name: Create symbolic link to ssl
+  become: true
+  ansible.builtin.file:
+    src: '{{ mattermost_ssl_dir }}/{{ item }}'
+    dest: '{{ mattermost_config_dir }}/{{ item }}'
+    owner: '{{ mattermost_user }}'
+    group: '{{ mattermost_group }}'
+    state: link
+    mode: '{{ mattermost_ssl_file_mode }}'
+  with_items:
+    - '{{ mattermost_ssl_cert_file  }}'
+    - '{{ mattermost_ssl_key_file }}'
