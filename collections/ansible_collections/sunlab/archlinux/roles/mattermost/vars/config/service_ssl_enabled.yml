@@ -1,11 +1,11 @@
 mattermost_config_service:
   - option: CapabilityBoundingSet
-    value: CAP_NET_BIND_SERVICE
+    value: CAP_NET_BIND_SERVICE, CAP_NET_RAW
   - option: AmbientCapabilities
-    value: CAP_NET_BIND_SERVICE
+    value: CAP_NET_BIND_SERVICE, CAP_NET_RAW
     before: CapabilityBoundingSet
   - option: Capabilities
-    value: CAP_NET_BIND_SERVICE=+eip
+    value: CAP_NET_BIND_SERVICE=+eip, CAP_NET_RAW=+eip
     before: CapabilityBoundingSet
   - option: SecureBits
     value: keep-caps
