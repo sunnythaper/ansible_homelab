@@ -11,17 +11,19 @@ mattermost_group: mattermost
 
 # Paths
 mattermost_binary_path: '/usr/bin/{{ mattermost_binary }}'
-mattermost_binary_root_path: '/usr/share/webapps/mattermost/bin/{{ mattermost_binary }}'
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
 mattermost_data_dir: /var/lib/mattermost
+mattermost_service_dir: /usr/lib/systemd/system
 
 # Files
 mattermost_config_file: config.json
+mattermost_service_file: mattermost.service
 
 # Permissions
 mattermost_config_file_mode: 0600
+mattermost_service_file_mode: 0644
 
 # Logging
 mattermost_config_no_log: no
