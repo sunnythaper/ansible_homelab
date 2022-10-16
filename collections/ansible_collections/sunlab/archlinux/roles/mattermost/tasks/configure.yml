@@ -17,26 +17,26 @@
     - '{{ mattermost_config_ssl }}'
   notify: Restart Mattermost
 
-# - name: Configure ssl capability
-#   become: true
-#   community.general.capabilities:
-#     path: '{{ mattermost_binary_path }}'
-#     capability: cap_net_bind_service=+ep
-#     state: absent
-#   when: mattermost_ssl == 'enabled'
-#   notify: Restart Mattermost
-
-- name: Configure service settings
+- name: Configure ssl capability
   become: true
-  ansible.builtin.lineinfile:
-    dest: '{{ mattermost_service_dir }}/{{ mattermost_service_file }}'
-    regex: '^{{ item.option }}=(.*)?'
-    insertbefore: '^{{ item.before | default(omit) }}.*$'
-    line: '{{ item.option }}={{ item.value }}'
-    create: yes
-    state: present
-    owner: root
-    group: root
-    mode: '{{ mattermost_service_file_mode }}'
-  with_items: '{{ mattermost_config_service }}'
+  community.general.capabilities:
+    path: '{{ mattermost_binary_path }}'
+    capability: cap_net_bind_service+eip
+    state: absent
+  when: mattermost_ssl == 'enabled'
   notify: Restart Mattermost
+
+# - name: Configure service settings
+#   become: true
+#   ansible.builtin.lineinfile:
+#     dest: '{{ mattermost_service_dir }}/{{ mattermost_service_file }}'
+#     regex: '^{{ item.option }}=(.*)?'
+#     insertbefore: '^{{ item.before | default(omit) }}.*$'
+#     line: '{{ item.option }}={{ item.value }}'
+#     create: yes
+#     state: present
+#     owner: root
+#     group: root
+#     mode: '{{ mattermost_service_file_mode }}'
+#   with_items: '{{ mattermost_config_service }}'
+#   notify: Restart Mattermost
