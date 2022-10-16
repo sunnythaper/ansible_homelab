@@ -22,7 +22,7 @@
   community.general.capabilities:
     path: '{{ mattermost_binary_path }}'
     capability: cap_net_bind_service=+ep
-    state: present
+    state: absent
   when: mattermost_ssl == 'enabled'
   notify: Restart Mattermost
 
@@ -33,6 +33,7 @@
 #     regex: '^{{ item.option }}=(.*)?'
 #     insertbefore: '^{{ item.before | default(omit) }}.*$'
 #     line: '{{ item.option }}={{ item.value }}'
+#     create: yes
 #     state: present
 #     owner: root
 #     group: root
