@@ -8,7 +8,7 @@ mattermost_config_ssl:
   - option: SiteURL
     value: 'https://{{ ansible_fqdn }}'
   - option: ListenAddress
-    value: '0.0.0.0:8065'
+    value: '{{ ansible_host }}:8065'
     before: TLSCertFile
   - option: ConnectionSecurity
     value: TLS
