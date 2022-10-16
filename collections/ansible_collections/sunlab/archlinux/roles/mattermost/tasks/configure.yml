@@ -4,6 +4,7 @@
     backrefs: yes
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
     regex: '^(\s+)"{{ item.option }}": ".*"(,)?'
+    insertafter: '^\s+"{{ item.after | default(omit) }}.*$'
     line: '\1"{{ item.option }}": "{{ item.value }}"\2'
     state: present
     owner: '{{ mattermost_user }}'
@@ -19,7 +20,7 @@
   become: true
   community.general.capabilities:
     path: '{{ mattermost_binary_path }}'
-    capability: cap_net_bind_service=+ep
+    capability: cap_net_bind_service+ep
     state: present
   when: mattermost_ssl == 'enabled'
   notify: Restart Mattermost
