@@ -4,5 +4,7 @@ mattermost_config_service:
   - option: AmbientCapabilities
     value: CAP_NET_BIND_SERVICE
     before: CapabilityBoundingSet
+  - option: Capabilities
+    value: CAP_NET_BIND_SERVICE+ep
   - option: SecureBits
     value: keep-caps
