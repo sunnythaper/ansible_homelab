@@ -19,8 +19,11 @@
 - name: Configure ssl capability
   become: true
   community.general.capabilities:
-    path: '{{ mattermost_binary_path }}'
+    path: '{{ item }}'
     capability: cap_net_bind_service=+ep
     state: present
   when: mattermost_ssl == 'enabled'
+  with_items:
+    - '{{ mattermost_binary_path }}'
+    - '{{ mattermost_binary_root_path }}'
   notify: Restart Mattermost
