@@ -6,5 +6,6 @@ mattermost_config_service:
     before: CapabilityBoundingSet
   - option: Capabilities
     value: CAP_NET_BIND_SERVICE+ep
+    before: CapabilityBoundingSet
   - option: SecureBits
     value: keep-caps
