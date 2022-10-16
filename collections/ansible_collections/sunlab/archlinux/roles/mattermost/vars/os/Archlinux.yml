@@ -10,7 +10,7 @@ mattermost_user_shell: /bin/bash
 mattermost_group: mattermost
 
 # Paths
-mattermost_binary_path: '/opt/mattermost/bin/{{ mattermost_binary }}'
+mattermost_binary_path: '/usr/bin/{{ mattermost_binary }}'
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
