@@ -4,7 +4,7 @@
     backrefs: yes
     dest: '{{ mattermost_config_dir }}/{{ mattermost_config_file }}'
     regex: '^(\s+)"{{ item.option }}": ".*"(,)?'
-    insertafter: '^\s+"{{ item.after | default(omit) }}.*$'
+    insertbefore: '^\s+"{{ item.before | default(omit) }}.*$'
     line: '\1"{{ item.option }}": "{{ item.value }}"\2'
     state: present
     owner: '{{ mattermost_user }}'
@@ -21,19 +21,19 @@
   community.general.capabilities:
     path: '{{ mattermost_binary_path }}'
     capability: cap_net_bind_service=+ep
-    state: absent
+    state: present
   when: mattermost_ssl == 'enabled'
   notify: Restart Mattermost
 
-- name: Configure service settings
-  become: true
-  ansible.builtin.lineinfile:
-    dest: '{{ mattermost_service_dir }}/{{ mattermost_service_file }}'
-    regex: '^{{ item.option }}=(.*)?'
-    line: '{{ item.option }}={{ item.value }}'
-    state: present
-    owner: root
-    group: root
-    mode: '{{ mattermost_service_file_mode }}'
-  with_items: '{{ mattermost_config_service }}'
-  notify: Restart Mattermost
+# - name: Configure service settings
+#   become: true
+#   ansible.builtin.lineinfile:
+#     dest: '{{ mattermost_service_dir }}/{{ mattermost_service_file }}'
+#     regex: '^{{ item.option }}=(.*)?'
+#     line: '{{ item.option }}={{ item.value }}'
+#     state: present
+#     owner: root
+#     group: root
+#     mode: '{{ mattermost_service_file_mode }}'
+#   with_items: '{{ mattermost_config_service }}'
+#   notify: Restart Mattermost
