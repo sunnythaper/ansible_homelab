@@ -11,6 +11,7 @@ mattermost_group: mattermost
 
 # Paths
 mattermost_binary_path: '/usr/bin/{{ mattermost_binary }}'
+mattermost_binary_root_path: '/usr/share/webapps/mattermost/bin/{{ mattermost_binary }}'
 
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
