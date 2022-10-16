@@ -14,8 +14,8 @@ mattermost_config_ssl:
   - option: ListenAddress
     value: ':8065'
     before: TLSCertFile
-  # - option: ConnectionSecurity
-  #   value: TLS
+  - option: ConnectionSecurity
+    value: TLS
   - option: TLSCertFile
     value: '{{ mattermost_ssl_cert }}'
   - option: TLSKeyFile
