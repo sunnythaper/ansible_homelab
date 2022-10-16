@@ -1,14 +1,16 @@
+# SSL
+mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
+mattermost_ssl_cert: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_cert_file | default("fullchain.pem") }}'
+mattermost_ssl_key: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_key_file | default("privkey.pem") }}'
+
+# Config
 mattermost_config_ssl:
   - option: ListenAddress
-    value: ':443'
+    value: ':8065'
     before: TLSCertFile
   - option: ConnectionSecurity
     value: TLS
-  - option: Forward80to443
-    value: 'true'
   - option: TLSCertFile
     value: '{{ mattermost_ssl_cert }}'
   - option: TLSKeyFile
     value: '{{ mattermost_ssl_key }}'
-
-mattermost_config_capability: CAP_NET_BIND_SERVICE=+eip

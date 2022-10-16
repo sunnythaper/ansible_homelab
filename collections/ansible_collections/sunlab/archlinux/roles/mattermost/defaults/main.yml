@@ -1,8 +1,5 @@
 # SSL
 mattermost_ssl: enabled
-mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
-mattermost_ssl_cert: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_cert_file | default("fullchain.pem") }}'
-mattermost_ssl_key: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}/{{ certbot_key_file | default("privkey.pem") }}'
 
 # User
 mattermost_user_uid: 1600
@@ -20,4 +17,3 @@ mattermost_database_binary_parameters: 'yes'
 mattermost_database_admin_user: '{{ postgresql_user | default("postgres") }}'
 mattermost_database_user: '{{ mattermost_user }}'
 mattermost_database_password: supersecure
-mattermost_database_no_log: yes
