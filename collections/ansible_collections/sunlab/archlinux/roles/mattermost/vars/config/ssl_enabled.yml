@@ -1,7 +1,7 @@
 mattermost_config_ssl:
   - option: ListenAddress
     value: ':443'
-    before: ConnectionSecurity
+    before: TLSCertFile
   - option: ConnectionSecurity
     value: TLS
   - option: Forward80to443

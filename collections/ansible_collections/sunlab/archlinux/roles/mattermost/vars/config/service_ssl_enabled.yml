@@ -1,3 +1,7 @@
 mattermost_config_service:
   - option: CapabilityBoundingSet
     value: CAP_NET_BIND_SERVICE
+    before: '[Install]'
+  - option: AmbientCapabilities
+    value: CAP_NET_BIND_SERVICE
+    before: '[Install]'
