@@ -3,14 +3,14 @@
   become_user: "{{ mattermost_database_admin_user }}"
   community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
-    password: "{{ mattermost_database_password }}"
+    password: "{{ item }}"
     state: present
   no_log: "{{ mattermost_config_no_log }}"
+  with_items: '{{ mattermost_database_password }}'
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
-  delegate_facts: yes
 
 - name: Create database
   become: true
@@ -23,22 +23,21 @@
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
-  delegate_facts: yes
 
 - name: Configure database user
   become: true
   become_user: "{{ mattermost_database_admin_user }}"
   community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
-    password: "{{ mattermost_database_password }}"
+    password: "{{ item }}"
     db: "{{ mattermost_database }}"
     state: present
   no_log: "{{ mattermost_config_no_log }}"
+  with_items: '{{ mattermost_database_password }}'
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
-  delegate_facts: yes
 
 - name: Create symbolic link to ssl
   become: true
