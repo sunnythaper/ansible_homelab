@@ -1,6 +1,6 @@
 # SSL
 mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
-mattermost_ssl_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ certbot_domain | default(ansible_fqdn) }}'
+mattermost_ssl_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ ansible_hostname }}.{{ sunlab_domain }}'
 mattermost_ssl_cert_file: '{{ certbot_cert_file | default("fullchain.pem") }}'
 mattermost_ssl_key_file: '{{ certbot_key_file | default("privkey.pem") }}'
 mattermost_ssl_cert: '{{ mattermost_config_dir }}/{{ mattermost_ssl_cert_file }}'
@@ -10,7 +10,7 @@ mattermost_ssl_file_mode: 0700
 # Config
 mattermost_config_ssl:
   - option: SiteURL
-    value: 'https://{{ ansible_fqdn }}'
+    value: 'https://{{ ansible_hostname }}.{{ sunlab_domain }}'
   - option: ListenAddress
     value: ':8065'
     before: TLSCertFile

@@ -17,7 +17,7 @@ postgresql_unix_socket_dirs_mode: 0755
 postgresql_unix_socket_permissions: 0770
 
 # SSL
-postgresql_ssl_cert_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live") }}/{{ certbot_domain | default(ansible_fqdn) }}'
+postgresql_ssl_cert_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live") }}/{{ ansible_hostname }}.{{ sunlab_domain }}'
 postgresql_ssl_cert_file: '{{ certbot_cert_file | default("fullchain.pem") }}'
 postgresql_ssl_key_file: '{{ certbot_key_file | default("privkey.pem") }}'
 postgresql_ssl_group: '{{ certbot_group | default("certbot") }}'

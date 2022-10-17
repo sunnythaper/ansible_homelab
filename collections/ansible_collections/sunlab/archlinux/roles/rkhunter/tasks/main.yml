@@ -55,7 +55,7 @@
     url: "{{ config.mattermost.url }}"
     api_key: "{{ config.mattermost.api_key }}"
     attachments:
-      - text: "Report for **{{ ansible_fqdn }}**"
+      - text: "Report for **{{ ansible_hostname }}.{{ sunlab_domain }}**"
         color: '#530f52'
         title: rkhunter Report
         fields:
