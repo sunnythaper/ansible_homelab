@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Apply playbook to all hosts
+  hosts: all
 
 - name: Import SunLab playbook
   import_playbook: sunlab.archlinux.init
