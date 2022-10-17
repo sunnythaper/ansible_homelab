@@ -35,7 +35,7 @@ postgresql_hba_config:
     user: all
     auth_method: reject
   - type: hostssl
-    database: all
+    database: sameuser
     user: all
     address: "10.0.0.0/8"
     auth_method: "{{ postgresql_auth_method }}"
