@@ -1,8 +1,8 @@
 [Resolve]
-DNS={% for dns in config.dns -%}{{ dns }} {% endfor %}
+DNS={% for dns in sunlab_dns -%}{{ dns }} {% endfor %}
 
 FallbackDNS=
-Domains=~{{ config.domain }}
+Domains=~{{ sunlab_domain }}
 DNSSEC=yes
 DNSOverTLS=opportunistic
 MulticastDNS=no

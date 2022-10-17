@@ -3,11 +3,12 @@
   become: true
   authorized_key:
     exclusive: yes
-    key: "{{ item.key }}"
+    key: "{{ sunlab_authorized_key }}"
     state: present
-    user: "{{ item.name }}"
+    user: "{{ item }}"
   with_items:
-    - "{{ config.users.sudo | default([]) }}"
+    - "{{ sunlab_ansible_admin }}"
+    - "{{ sunlab_admin }}"
 
 - name: Copy /etc/issue banner
   become: true

@@ -7,7 +7,7 @@ unattendedupgrades:
     Automatic_Reboot: "true"
     Debug: "false"
     InstallOnShutdown: "false"
-    Mail: "{{ config.email | default('admin@example.com') }}"
+    Mail: "{{ sunlab_email }}"
     MailOnlyOnError: true
     MinimalSteps: "true"
     OnlyOnACPower: "true"

@@ -2,7 +2,7 @@
 {{ setting }} {{ value }}
 {% endfor %}
 
-AllowUsers {{config.users.sudo[0].name}} {{config.users.sudo[1].name}}
+AllowUsers {{ sunlab_ansible_admin }} {{ sunlab_admin }}
 
 {% for setting in sshd.hostkeys -%}
 HostKey {{ setting }}

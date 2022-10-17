@@ -48,6 +48,8 @@
   changed_when: false
   failed_when: false
 
+# FIXME: Update with latest Mattermost information and SunLab custom credential
+
 - name: Send rkhunter report via Mattermost
   mattermost:
     url: "{{ config.mattermost.url }}"

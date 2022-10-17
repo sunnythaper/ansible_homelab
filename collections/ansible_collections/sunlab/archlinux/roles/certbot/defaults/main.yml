@@ -3,12 +3,12 @@ certbot_user_uid: 1003
 certbot_group_gid: 1003
 
 # Host
-certbot_domain: '{{ ansible_fqdn | default("example.com") }}'
-certbot_email: '{{ config.email | default("admin@example.com") }}'
+certbot_domain: '{{ inventory_hostname }}.{{ sunlab_domain }}'
+certbot_email: '{{ sunlab_email }}'
 
 # Cloudflare
 certbot_dns_cloudflare: 'true'
-certbot_dns_api_token: '{{ cloudflare_token | default("0123456789abcdef0123456789abcdef01234567") }}'
+certbot_dns_api_token: '{{ sunlab_cloudflare_token }}'
 certbot_dns_credentials_file: cloudflare.ini
 certbot_dns_credentials_no_log: yes
 certbot_dns_propogation_seconds: 60
