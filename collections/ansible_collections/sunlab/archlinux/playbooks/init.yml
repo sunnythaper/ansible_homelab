@@ -41,6 +41,7 @@
   hosts: archlinux:&chat
   roles:
     - mattermost
+    - cloudflared
 
 - name: Configure media center storage & delivery
   hosts: archlinux:&mediacenter

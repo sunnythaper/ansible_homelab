@@ -1,0 +1,23 @@
+- name: Create user group
+  become: true
+  ansible.builtin.group:
+    gid: '{{ cloudflared_group_gid }}'
+    name: '{{ cloudflared_group }}'
+    state: present
+
+- name: Create user
+  become: true
+  ansible.builtin.user:
+    create_home: yes
+    group: '{{ cloudflared_group }}'
+    name: '{{ cloudflared_user }}'
+    shell: '{{ cloudflared_user_shell }}'
+    state: present
+    uid: '{{ cloudflared_user_uid }}'
+
+- name: Install packages
+  become: true
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ cloudflared_packages }}"

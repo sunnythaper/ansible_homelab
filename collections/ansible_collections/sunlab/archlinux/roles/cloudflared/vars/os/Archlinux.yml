@@ -1,0 +1,9 @@
+# Packages
+cloudflared_binary: cloudflared
+cloudflared_packages:
+  - cloudflared
+
+# User
+cloudflared_user: cloudflared
+cloudflared_user_shell: /bin/bash
+cloudflared_group: cloudflared
