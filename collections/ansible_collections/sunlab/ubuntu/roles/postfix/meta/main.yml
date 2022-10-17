@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: postfix
-  author: sunnythaper
-  description: Configure postfix in a security-forward approach

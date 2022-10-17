@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: coredump
-  author: sunnythaper
-  description: Disable / restrict system coredumps

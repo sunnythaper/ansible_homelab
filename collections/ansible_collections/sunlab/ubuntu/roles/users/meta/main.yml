@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: users
-  author: sunnythaper
-  description: Add & remove normal, system, and sudo users

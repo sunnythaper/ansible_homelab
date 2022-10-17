@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: sysctl
-  author: sunnythaper
-  description: Apply system level configurations via sysctl

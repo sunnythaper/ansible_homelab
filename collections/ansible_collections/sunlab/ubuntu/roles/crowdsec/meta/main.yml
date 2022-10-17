@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: crowdsec
-  author: sunnythaper
-  description: Install & configure crowdsec

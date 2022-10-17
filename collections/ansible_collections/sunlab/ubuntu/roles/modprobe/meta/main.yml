@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: modprobe
-  author: sunnythaper
-  description: Remove filesystems & network protocols via modprobe

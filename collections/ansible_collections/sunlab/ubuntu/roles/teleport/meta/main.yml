@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: teleport
-  author: sunnythaper
-  description: Install & configure teleport

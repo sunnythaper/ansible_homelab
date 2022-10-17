@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: cracklib
-  author: sunnythaper
-  description: Harden password requirements with cracklib for pam

@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: cron
-  author: sunnythaper
-  description: Configure cron in a security-forward approach

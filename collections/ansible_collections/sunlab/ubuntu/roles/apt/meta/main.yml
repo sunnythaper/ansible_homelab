@@ -1,7 +1,0 @@
----
-dependencies: []
-
-galaxy_info:
-  role_name: apt
-  author: sunnythaper
-  description: Install and remove desired system packages via aptitude
