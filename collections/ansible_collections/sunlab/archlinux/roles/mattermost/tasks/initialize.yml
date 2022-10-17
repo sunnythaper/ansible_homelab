@@ -49,3 +49,12 @@
   with_items:
     - '{{ mattermost_ssl_cert_file  }}'
     - '{{ mattermost_ssl_key_file }}'
+
+- name: Create Bleve directory
+  become: true
+  ansible.builtin.file:
+    mode: '{{ mattermost_bleve_dir_mode }}'
+    path: '{{ mattermost_bleve_dir }}'
+    owner: '{{ mattermost_user }}'
+    group: '{{ mattermost_group }}'
+    state: directory

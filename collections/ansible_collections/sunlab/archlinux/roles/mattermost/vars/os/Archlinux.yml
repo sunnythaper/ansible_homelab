@@ -12,11 +12,13 @@ mattermost_group: mattermost
 # Directories
 mattermost_config_dir: /etc/webapps/mattermost
 mattermost_data_dir: /var/lib/mattermost
+mattermost_bleve_dir: '{{ mattermost_data_dir }}/bleveindexes'
 
 # Files
 mattermost_config_file: config.json
 
 # Permissions
+mattermost_bleve_dir_mode: 0700
 mattermost_config_file_mode: 0600
 
 # Logging
