@@ -1,4 +1,4 @@
 ---
 nginx:
-  domain: "{{ ansible_hostname }}.{{ sunlab_domain }}"
+  domain: "{{ sunlab_domain }}"
   subdomain: plex
