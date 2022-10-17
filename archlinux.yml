@@ -3,4 +3,4 @@
   hosts: all
 
 - name: Import SunLab playbook
-  import_playbook: sunlab.archlinux
+  import_playbook: sunlab.archlinux.init
