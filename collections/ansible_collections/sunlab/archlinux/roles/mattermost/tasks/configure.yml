@@ -15,7 +15,7 @@
     owner: '{{ mattermost_user }}'
     group: '{{ mattermost_group }}'
     mode: '{{ mattermost_config_file_mode }}'
-  no_log: '{{ mattermost_config_no_log }}'
+  no_log: '{{ mattermost_no_log }}'
   with_items:
     - '{{ mattermost_config_db}}'
     - '{{ mattermost_config_ssl }}'
