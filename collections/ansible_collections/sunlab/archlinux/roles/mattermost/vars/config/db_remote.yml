@@ -1,4 +1,4 @@
 # Config
 mattermost_config_db:
   - option: DataSource
-    value: '{{ mattermost_database_type }}://{{ mattermost_database_user }}:{{ mattermost_database_password }}@{{ mattermost_database_host }}:{{ mattermost_database_port }}/{{ mattermost_database }}?sslmode={{ mattermost_database_ssl_mode }}&connect_timeout={{ mattermost_database_timeout }}&binary_parameters={{ mattermost_database_binary_parameters }}'
+    value: '{{ mattermost_database_type }}://{{ mattermost_database_user }}:{{ mattermost_database_password | password_hash("sha512", 65534 | random(seed=sunlab_seed_salt) | string) }}@{{ mattermost_database_host }}:{{ mattermost_database_port }}/{{ mattermost_database }}?sslmode={{ mattermost_database_ssl_mode }}&connect_timeout={{ mattermost_database_timeout }}&binary_parameters={{ mattermost_database_binary_parameters }}'
