@@ -10,6 +10,7 @@ mattermost_user_shell: /bin/bash
 mattermost_group: mattermost
 
 # Directories
+mattermost_base_dir: /usr/share/webapps/mattermost
 mattermost_config_dir: /etc/webapps/mattermost
 mattermost_data_dir: /var/lib/mattermost
 mattermost_bleve_dir: '{{ mattermost_data_dir }}/bleveindexes'
@@ -18,6 +19,7 @@ mattermost_client_files_dir: '{{mattermost_client_dir}}/files'
 mattermost_client_plugins_dir: '{{mattermost_client_dir}}/plugins'
 mattermost_files_dir: '{{ mattermost_data_dir }}/files'
 mattermost_plugins_dir: '{{ mattermost_data_dir }}/plugins'
+mattermost_base_client_plugins_dir: '{{ mattermost_base_dir }}/client/plugins'
 
 # Files
 mattermost_config_file: config.json
