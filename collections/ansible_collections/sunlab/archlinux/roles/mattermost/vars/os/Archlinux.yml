@@ -22,4 +22,4 @@ mattermost_bleve_dir_mode: 0700
 mattermost_config_file_mode: 0600
 
 # Logging
-mattermost_config_no_log: no
+mattermost_config_no_log: yes

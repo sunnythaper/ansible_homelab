@@ -3,7 +3,7 @@
   become_user: "{{ mattermost_database_admin_user }}"
   community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
-    password: "{{ mattermost_database_password }}"
+    password: "{{ sunlab_seed_password }}"
     state: present
   no_log: "{{ mattermost_config_no_log }}"
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
@@ -28,7 +28,7 @@
   become_user: "{{ mattermost_database_admin_user }}"
   community.postgresql.postgresql_user:
     name: "{{ mattermost_database_user }}"
-    password: "{{ mattermost_database_password }}"
+    password: "{{ sunlab_seed_password }}"
     db: "{{ mattermost_database }}"
     state: present
   no_log: "{{ mattermost_config_no_log }}"
