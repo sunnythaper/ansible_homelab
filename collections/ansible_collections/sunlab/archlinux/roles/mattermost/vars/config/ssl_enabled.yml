@@ -1,4 +1,5 @@
 # SSL
+# TODO: Remove ssl_group variable
 mattermost_ssl_group: '{{ certbot_group | default("certbot") }}'
 mattermost_ssl_dir: '{{ certbot_config_live_dir | default("/etc/letsencrypt/live/") }}/{{ ansible_hostname }}.{{ sunlab_domain }}'
 mattermost_ssl_cert_file: '{{ certbot_cert_file | default("fullchain.pem") }}'
