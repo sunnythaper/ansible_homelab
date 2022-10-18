@@ -12,9 +12,7 @@
     group: '{{ certbot_group }}'
     home: '{{ certbot_config_dir }}'
     name: '{{ certbot_user }}'
-    password: - name: Generate password
-  ansible.builtin.set_fact:
-    mattermost_database_password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
+    password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
     shell: '{{ certbot_user_shell }}'
     state: present
     uid: '{{ certbot_user_uid }}'

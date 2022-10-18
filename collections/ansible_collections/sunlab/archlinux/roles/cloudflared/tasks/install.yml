@@ -11,7 +11,7 @@
     create_home: yes
     group: '{{ cloudflared_group }}'
     name: '{{ cloudflared_user }}'
-    mattermost_database_password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
+    password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
     shell: '{{ cloudflared_user_shell }}'
     state: present
     uid: '{{ cloudflared_user_uid }}'
