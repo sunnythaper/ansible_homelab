@@ -71,13 +71,4 @@
     - '{{ mattermost_client_plugins_dir }}'
     - '{{ mattermost_files_dir }}'
     - '{{ mattermost_plugins_dir }}'
-
-- name: Create symbolic link to plugins
-  become: true
-  ansible.builtin.file:
-    src: '{{ mattermost_client_plugins_dir }}'
-    dest: '{{ mattermost_base_client_plugins_dir }}'
-    owner: '{{ mattermost_user }}'
-    group: '{{ mattermost_group }}'
-    state: link
-    mode: '{{ mattermost_common_dir_mode }}'
+    - '{{ mattermost_base_client_plugins_dir }}'
