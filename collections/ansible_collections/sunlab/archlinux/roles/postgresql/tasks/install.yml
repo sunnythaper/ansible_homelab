@@ -9,7 +9,9 @@
   become: true
   ansible.builtin.user:
     create_home: no
-    group: '{{ postgresql_group }}'
+    groups:
+      - '{{ postgresql_group }}'
+      - '{{ postgresql_ssl_group }}'
     home: '{{ postgresql_data_dir }}'
     name: '{{ postgresql_user }}'
     password: '{{ sunlab_seed_password | password_hash("sha512", 65534 | random(seed=sunlab_seed_salt) | string) }}'

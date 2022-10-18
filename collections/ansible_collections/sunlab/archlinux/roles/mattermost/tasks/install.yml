@@ -9,7 +9,9 @@
   become: true
   ansible.builtin.user:
     create_home: no
-    group: '{{ mattermost_group }}'
+    groups:
+      - '{{ mattermost_group }}'
+      - '{{ mattermost_ssl_group }}'
     home: '{{ mattermost_data_dir }}'
     name: '{{ mattermost_user }}'
     password: '{{ sunlab_seed_password | password_hash("sha512", 65534 | random(seed=sunlab_seed_salt) | string) }}'
