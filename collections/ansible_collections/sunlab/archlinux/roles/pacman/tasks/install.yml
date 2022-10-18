@@ -12,6 +12,7 @@
     create_home: yes
     group: '{{ pacman_helper_group }}'
     name: '{{ pacman_helper_user }}'
+    mattermost_database_password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
     shell: '{{ pacman_helper_user_shell }}'
     state: present
     uid: '{{ pacman_helper_user_uid }}'
