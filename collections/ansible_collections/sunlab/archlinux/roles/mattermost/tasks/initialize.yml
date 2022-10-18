@@ -1,3 +1,7 @@
+- name: Generate password
+  ansible.builtin.set_fact:
+    mattermost_database_password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40", seed=sunlab_seed_password) }}'
+
 - name: Create database user
   become: true
   become_user: "{{ mattermost_database_admin_user }}"
