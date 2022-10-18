@@ -10,7 +10,7 @@
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
-  delegate_facts: yes
+  delegate_facts: no
 
 - name: Create database
   become: true
@@ -37,7 +37,7 @@
   vars:
     ansible_ssh_pipelining: true
   delegate_to: '{{ mattermost_database_host }}'
-  delegate_facts: yes
+  delegate_facts: no
 
 - name: Create symbolic link to ssl
   become: true
