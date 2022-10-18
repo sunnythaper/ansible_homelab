@@ -16,5 +16,6 @@ mattermost_database_timeout: 10
 mattermost_database_binary_parameters: 'yes'
 mattermost_database_admin_user: '{{ postgresql_user | default("postgres") }}'
 mattermost_database_user: '{{ mattermost_user }}'
-mattermost_database_password: '{{ sunlab_seed_password | password_hash("sha256", 65534 | random(seed=sunlab_seed_salt) | string) }}'
-# mattermost_database_password: '{{ lookup("ansible.builtin.password", "/dev/null chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
+# mattermost_database_password: '{{ sunlab_seed_password | password_hash("sha256", 65534 | random(seed=sunlab_seed_salt) | string) }}'
+# mattermost_database_password: '{{ lookup("ansible.builtin.password", mattermost_config_dir + "/pass chars=ascii_lowercase,ascii_uppercase,digits length=40 encrypt=sha512_crypt", seed=sunlab_seed_password) }}'
+mattermost_database_password: supersecure
