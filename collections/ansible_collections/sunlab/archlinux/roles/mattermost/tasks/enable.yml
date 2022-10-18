@@ -1,0 +1,6 @@
+- name: Start & enable service
+  become: true
+  service:
+    enabled: yes
+    name: "{{ mattermost_binary }}"
+    state: started

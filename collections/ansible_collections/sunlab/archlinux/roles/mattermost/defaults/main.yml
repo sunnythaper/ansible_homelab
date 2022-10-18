@@ -1,4 +1,5 @@
 # SSL
+mattermost_search: bleve
 mattermost_ssl: enabled
 
 # User

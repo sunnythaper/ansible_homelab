@@ -9,3 +9,7 @@
 - name: Include ssl config variables
   ansible.builtin.include_vars:
     file: 'config/ssl_{{ mattermost_ssl }}.yml'
+
+- name: Include search config variables
+  ansible.builtin.include_vars:
+    file: 'config/search_{{ mattermost_search }}.yml'

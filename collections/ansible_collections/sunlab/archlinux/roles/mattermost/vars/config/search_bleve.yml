@@ -1,0 +1,4 @@
+# Config
+mattermost_config_search:
+  - option: IndexDir
+    value: '{{ mattermost_bleve_dir }}'
