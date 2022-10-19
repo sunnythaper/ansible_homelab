@@ -1,9 +1,10 @@
 ---
-- name: Update system packages & install Teleport
+- name: Update system packages
   hosts: archlinux
   roles:
     - pacman
-#     - teleport
+  tags:
+    - update
 
 - name: Configure basic host & network settings
   hosts: archlinux
@@ -31,6 +32,11 @@
     - apparmor
     - rkhunter
     - lynis
+
+# - name: Configure Teleport
+#   hosts: archlinux
+#   roles:
+#     - teleport
 
 - name: Configure PostgreSQL
   hosts: archlinux:&data
