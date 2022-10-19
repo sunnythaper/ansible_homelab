@@ -2,9 +2,7 @@
 - name: Update system packages
   hosts: archlinux
   roles:
-    - name: pacman
-      tags:
-        - update
+    - pacman
 
 - name: Configure basic host & network settings
   hosts: archlinux
