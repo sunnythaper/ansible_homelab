@@ -3,8 +3,8 @@
 
 - name: Install
   include_tasks: install.yml
-  tags:
-    - update
+    tags:
+      - update
 
 - name: Configure
   include_tasks: configure.yml
