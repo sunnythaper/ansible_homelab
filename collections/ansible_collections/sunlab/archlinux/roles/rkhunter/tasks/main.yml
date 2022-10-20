@@ -47,6 +47,9 @@
   register: rkhunter_report
   changed_when: false
   failed_when: false
+  tags:
+    - rkhunter-check
+
 
 # FIXME: Update with latest Mattermost information and SunLab custom credential
 
