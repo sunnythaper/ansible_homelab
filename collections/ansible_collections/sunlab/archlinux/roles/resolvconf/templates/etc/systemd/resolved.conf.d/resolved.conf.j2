@@ -1,5 +1,5 @@
 [Resolve]
-DNS={% for dns in sunlab_dns -%}{{ dns }} {% endfor %}
+DNS={{ sunlab_dns }}
 
 FallbackDNS=
 Domains={{ sunlab_domain }}
