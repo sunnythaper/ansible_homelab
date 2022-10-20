@@ -2,7 +2,7 @@
 DNS={% for dns in sunlab_dns -%}{{ dns }} {% endfor %}
 
 FallbackDNS=
-Domains=~{{ sunlab_domain }}
+Domains={{ sunlab_domain }}
 DNSSEC=yes
 DNSOverTLS=opportunistic
 MulticastDNS=no

@@ -1,0 +1,6 @@
+dependencies: []
+
+galaxy_info:
+  role_name: iptables
+  author: sunnythaper
+  description: Setup & configure iptables
