@@ -1,0 +1,11 @@
+- name: Start reflector
+  become: true
+  service:
+    name: '{{ pacman_reflector_binary }}'
+    state: started
+
+- name: Update packages
+  become: true
+  community.general.pacman:
+    update_cache: yes
+    upgrade: yes

@@ -1,0 +1,9 @@
+- name: Start & enable timer
+  become: true
+  service:
+    enabled: yes
+    name: "{{ pacman_reflector_binary }}.timer"
+    state: started
+  notify:
+    - Start reflector
+    - Update packages

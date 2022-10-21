@@ -1,0 +1,20 @@
+- name: Create pacman hooks directory
+  become: true
+  file:
+    path: "{{ pacman_hooks_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "{{ pacman_hooks_dir_mode }}"
+
+- name: Copy pacman hooks
+  become: true
+  template:
+    src: "templates/{{ item }}.j2"
+    dest: "{{ pacman_hooks_dir }}/{{ item }}"
+    owner: root
+    group: root
+    mode: "{{ pacman_hooks_dir_mode }}"
+  with_items:
+    - pacman-clean-cache.hook
+    - pacman-remove-uninstalled-cache.hook

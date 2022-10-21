@@ -1,3 +1,6 @@
+# Packages
+pacman_reflector_binary: reflector
+
 # User
 pacman_reflector_user: root
 pacman_reflector_group: root
