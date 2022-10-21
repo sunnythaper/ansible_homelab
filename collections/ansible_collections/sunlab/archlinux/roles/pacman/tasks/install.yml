@@ -1,3 +1,15 @@
+- name: Get latest mirrorlist
+  become: true
+  ansible.builtin.get_url:
+    url: 'https://archlinux.org/mirrorlist/?country={{ pacman_mirrorlist_country }}&protocol={{ pacman_mirrorlist_protocol }}&ip_version={{ pacman_mirrorlist_ip_version }}&use_mirror_status={{ pacman_mirrorlist_status }}'
+    dest: '{{ pacman_mirrorlist_path }}'
+    force: yes
+    owner: '{{ pacman_mirrorlist_user }}'
+    group: '{{ pacman_mirrorlist_group }}'
+    mode: '{{ pacman_mirrorlist_file_mode }}'
+  tags:
+    - update
+
 - name: Update packages
   become: true
   community.general.pacman:
