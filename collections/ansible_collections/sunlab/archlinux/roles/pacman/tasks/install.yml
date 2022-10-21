@@ -7,8 +7,6 @@
     owner: '{{ pacman_mirrorlist_user }}'
     group: '{{ pacman_mirrorlist_group }}'
     mode: '{{ pacman_mirrorlist_file_mode }}'
-  tags:
-    - update
 
 - name: Uncomment mirrors in mirrorlist
   become: true
