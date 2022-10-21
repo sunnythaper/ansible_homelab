@@ -6,6 +6,6 @@ pacman_parallel_downloads: 6
 
 # Mirrorlist
 pacman_mirrorlist_country: US
-pacman_mirrorlist_latest: 5
+pacman_mirrorlist_latest: 10
 pacman_mirrorlist_protocol: https
 pacman_mirrorlist_sort: rate
