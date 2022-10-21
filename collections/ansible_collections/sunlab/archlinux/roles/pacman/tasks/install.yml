@@ -14,7 +14,7 @@
   become: true
   ansible.builtin.replace:
     path: '{{ pacman_mirrorlist_path }}'
-    regex: '^#Server = (.*)$'
+    regexp: '^#Server = (.*)$'
     replace: 'Server = \1'
     owner: '{{ pacman_mirrorlist_user }}'
     group: '{{ pacman_mirrorlist_group }}'
