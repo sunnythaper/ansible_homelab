@@ -12,12 +12,10 @@
 
 - name: Uncomment mirrors in mirrorlist
   become: true
-  ansible.builtin.lineinfile:
-    backrefs: yes
-    dest: '{{ pacman_mirrorlist_path }}'
+  ansible.builtin.replace:
+    path: '{{ pacman_mirrorlist_path }}'
     regex: '^#Server = (.*)$'
-    line: 'Server = \1'
-    state: present
+    replace: 'Server = \1'
     owner: '{{ pacman_mirrorlist_user }}'
     group: '{{ pacman_mirrorlist_group }}'
     mode: '{{ pacman_mirrorlist_file_mode }}'
