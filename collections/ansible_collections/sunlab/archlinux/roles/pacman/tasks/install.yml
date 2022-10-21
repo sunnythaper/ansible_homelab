@@ -6,6 +6,13 @@
   tags:
     - update
 
+- name: Install packages
+  become: true
+  pacman:
+    name: '{{ item }}'
+    state: latest
+  with_items: '{{ pacman_packages }}'
+
 - name: Create user
   become: true
   ansible.builtin.user:
@@ -27,12 +34,6 @@
     owner: root
     group: root
     mode: '{{ pacman_sudoersd_mode }}'
-
-- name: Install pacman-contrib package
-  become: true
-  pacman:
-    name: '{{ pacman_contrib_package }}'
-    state: latest
 
 - name: Install package manager helper
   become: true
