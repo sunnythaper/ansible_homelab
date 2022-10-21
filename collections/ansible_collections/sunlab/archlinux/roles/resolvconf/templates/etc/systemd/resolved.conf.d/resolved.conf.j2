@@ -4,8 +4,8 @@ DNS={{ sunlab_dns }}#pfsense.{{ sunlab_domain }}
 FallbackDNS=127.0.0.1 ::1
 Domains={{ sunlab_domain }}
 # TODO: Figure out what exactly is up with DNSSEC AND DNS over TLS
-DNSSEC=allow-downgrade
-DNSOverTLS=opportunistic
+DNSSEC=yes
+DNSOverTLS=yes
 MulticastDNS=no
 LLMNR=no
 Cache=no-negative
