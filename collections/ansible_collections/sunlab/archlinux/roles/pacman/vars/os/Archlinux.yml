@@ -2,6 +2,7 @@
 pacman_binary: pacman
 pacman_packages:
   - pacman-contrib
+  - reflector
 pacman_helper_package: yay
 
 # User

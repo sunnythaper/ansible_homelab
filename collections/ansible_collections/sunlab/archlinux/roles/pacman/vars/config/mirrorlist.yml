@@ -1,9 +1,0 @@
-# User
-pacman_mirrorlist_user: root
-pacman_mirrorlist_group: root
-
-# Paths
-pacman_mirrorlist_path: /etc/pacman.d/mirrorlist
-
-# Permissions
-pacman_mirrorlist_file_mode: 0644
