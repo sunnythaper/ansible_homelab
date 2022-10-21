@@ -2,7 +2,6 @@
 pacman_binary: pacman
 pacman_packages:
   - pacman-contrib
-  - pacman-mirrorlist
 pacman_helper_package: yay
 
 # User
@@ -17,6 +16,10 @@ pacman_sudoersd_dir: /etc/sudoers.d
 
 # Paths
 pacman_config_path: /etc/pacman.conf
+
+# Permissions
+pacman_hooks_dir_mode: 0644
+pacman_sudoersd_file_mode: 0440
 
 # Commands
 pacman_sudo_validate: 'visudo -cf %s'

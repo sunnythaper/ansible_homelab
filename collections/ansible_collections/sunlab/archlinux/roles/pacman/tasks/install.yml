@@ -33,7 +33,7 @@
     validate: '{{ pacman_sudo_validate }}'
     owner: root
     group: root
-    mode: '{{ pacman_sudoersd_mode }}'
+    mode: '{{ pacman_sudoersd_file_mode }}'
 
 - name: Install package manager helper
   become: true

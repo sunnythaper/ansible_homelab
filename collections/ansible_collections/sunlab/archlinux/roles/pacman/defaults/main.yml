@@ -1,9 +1,5 @@
 # User
 pacman_helper_user_uid: 1002
 
-# Permissions
-pacman_hooks_dir_mode: 0644
-pacman_sudoersd_mode: 0440
-
 # Configuration
 pacman_parallel_downloads: 6
