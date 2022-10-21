@@ -1,0 +1,20 @@
+# User
+pacman_reflector_user: root
+pacman_reflector_group: root
+
+# Path
+pacman_reflector_path: /etc/xdg/reflector/reflector.conf
+
+# Permissions
+pacman_reflector_file_mode: 0644
+
+# Config
+config_reflector:
+  - option: country
+    value: '{{ pacman_mirrorlist_country }}'
+  - option: latest
+    value: '{{ pacman_mirrorlist_latest }}'
+  - option: protocol
+    value: '{{ pacman_mirrorlist_protocol }}'
+  - option: sort
+    value: '{{ pacman_mirrorlist_sort }}'

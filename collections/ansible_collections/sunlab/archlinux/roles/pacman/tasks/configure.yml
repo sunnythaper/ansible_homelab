@@ -22,6 +22,17 @@
 - name: Enable pacman parallel downloads
   become: true
   ansible.builtin.lineinfile:
+    path: "{{ pacman_config_path }}"
     regexp: 'ParallelDownloads'
     line: 'ParallelDownloads = {{ pacman_parallel_downloads }}'
-    path: "{{ pacman_config_path }}"
+
+- name: Configure reflector
+  become: true
+  ansible.builtin.lineinfile:
+    path: '{{ pacman_reflector_path }}'
+    regexp: '^(# )?--{{ item.option }} .*$'
+    line: '--{{ item.option }} = {{ item.value }}'
+    owner: '{{ pacman_reflector_user }}'
+    group: '{{ pacman_reflector_group }}'
+    mode: '{{ pacman_reflector_file_mode }}'
+  with_items: '{{ config_reflector }}'
