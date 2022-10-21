@@ -10,7 +10,7 @@
   ansible.builtin.lineinfile:
     path: '{{ pacman_reflector_path }}'
     regexp: '^(# )?--{{ item.option }} .*$'
-    line: '--{{ item.option }} = {{ item.value }}'
+    line: '--{{ item.option }} {{ item.value }}'
     owner: '{{ pacman_reflector_user }}'
     group: '{{ pacman_reflector_group }}'
     mode: '{{ pacman_reflector_file_mode }}'
