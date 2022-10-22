@@ -1,11 +1,5 @@
 # Config
 iptables_rules:
-  - comment: User-defined TCP chain
-    chain: TCP
-    # chain_management: yes
-  - comment: User-defined UDP chain
-    chain: UDP
-    # chain_management: yes
   - comment: Default DROP policy for FORWARD chain
     chain: FORWARD
     policy: DROP
@@ -27,21 +21,12 @@ iptables_rules:
     jump: ACCEPT
     protocol: icmp
   - comment: Accept SSH access # TODO: Setup ispet and move configuration
-    chain: TCP
+    chain: INPUT
+    ctstate: NEW
     destination_port: '{{ iptables_ssh_port }}'
     jump: ACCEPT
     protocol: tcp
-  - comment: Attach TCP chain to INPUT chain
-    chain: INPUT
-    ctstate: NEW
-    jump: TCP
-    protocol: tcp
     syn: match
-  - comment: Attach UDP chain to INPUT chain
-    chain: INPUT
-    ctstate: NEW
-    jump: UDP
-    protocol: udp
   - comment: Default DROP rule for INVALID ctstate
     chain: INPUT
     ctstate: INVALID
