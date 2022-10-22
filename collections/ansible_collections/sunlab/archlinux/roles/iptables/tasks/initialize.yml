@@ -20,22 +20,23 @@
 - name: Setup rules & policies
   become: true
   ansible.builtin.iptables:
-    comment: '{{ item.comment | default(omit) }}'
-    chain: '{{ item.chain }}'
     chain_management: '{{ item.chain_management | default(omit) }}'
+    chain: '{{ item.chain }}'
+    comment: '{{ item.comment | default(omit) }}'
     ctstate: '{{ item.ctstate | default(omit) }}'
     destination_port: '{{ item.destination_port | default(omit) }}'
     icmp_type: '{{ item.icmp_type | default(omit) }}'
     in_interface: '{{ item.in_interface | default(omit) }}'
     jump: '{{ item.jump | default(omit) }}'
-    protocol: '{{ item.protocol | default(omit) }}'
     policy: '{{ item.policy | default(omit) }}'
+    protocol: '{{ item.protocol | default(omit) }}'
     reject_with: '{{ item.reject_with | default(omit) }}'
     state: present
   with_items: '{{ iptables_rules }}'
 
-- name: Save rules & policies state
+- name: Save rules state
   become: true
   community.general.iptables_state:
-    state: saved
     path: '{{ iptables_rules_path }}'
+    state: saved
+    table: filter
