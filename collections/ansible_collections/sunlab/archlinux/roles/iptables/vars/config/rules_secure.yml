@@ -2,10 +2,10 @@
 iptables_rules:
   - comment: User-defined TCP chain
     chain: TCP
-    chain_management: yes
+    # chain_management: yes
   - comment: User-defined UDP chain
     chain: UDP
-    chain_management: yes
+    # chain_management: yes
   - comment: Default DROP policy for FORWARD chain
     chain: FORWARD
     policy: DROP

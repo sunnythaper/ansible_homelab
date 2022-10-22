@@ -22,7 +22,7 @@
   ansible.builtin.iptables:
     comment: '{{ item.comment | default(omit) }}'
     chain: '{{ item.chain }}'
-    chain_management: '{{ item.chain_management | default(no) }}'
+    chain_management: '{{ item.chain_management | default(omit) }}'
     ctstate: '{{ item.ctstate | default(omit) }}'
     destination_port: '{{ item.destination_port | default(omit) }}'
     icmp_type: '{{ item.icmp_type | default(omit) }}'
@@ -31,6 +31,7 @@
     protocol: '{{ item.protocol | default(omit) }}'
     policy: '{{ item.policy | default(omit) }}'
     reject_with: '{{ item.reject_with | default(omit) }}'
+    state: present
   with_items: '{{ iptables_rules }}'
 
 - name: Save rules & policies state
