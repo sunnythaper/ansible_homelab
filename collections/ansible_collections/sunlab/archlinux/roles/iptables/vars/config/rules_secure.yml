@@ -2,7 +2,7 @@
 iptables_rules:
   - comment: Default DROP policy for FORWARD chain
     chain: FORWARD
-    policy: DROP
+    policy: ACCEPT # TODO: Setup ipset and change to DROP
   - comment: Default DROP policy for OUTPUT chain
     chain: OUTPUT
     policy: ACCEPT # TODO: Setup ipset and change to DROP
