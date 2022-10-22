@@ -2,3 +2,6 @@
 iptables_binary: iptables
 iptables_packages:
   - iptables
+
+# Paths
+iptables_rules_path: /etc/iptables/iptables.rules

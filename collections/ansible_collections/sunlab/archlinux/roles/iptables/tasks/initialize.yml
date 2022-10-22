@@ -1,0 +1,40 @@
+- name: Check if service is running
+  become: true
+  ansible.builtin.systemd:
+    name: '{{ iptables_binary }}'
+  register: __iptables_service
+
+- name: Flush all tables
+  become: true
+  ansible.builtin.iptables:
+    flush: yes
+    table: '{{ item }}'
+  with_items:
+    - filter
+    - nat
+    - mangle
+    - raw
+    - security
+  when: __iptables_service.status.ActiveState == 'inactive'
+
+- name: Setup rules & policies
+  become: true
+  ansible.builtin.iptables:
+    comment: '{{ item.comment | default(omit) }}'
+    chain: '{{ item.chain }}'
+    chain_management: '{{ item.chain_management | default(no) }}'
+    ctstate: '{{ item.ctstate | default(omit) }}'
+    destination_port: '{{ item.destination_port | default(omit) }}'
+    icmp_type: '{{ item.icmp_type | default(omit) }}'
+    in_interface: '{{ item.in_interface | default(omit) }}'
+    jump: '{{ item.jump | default(omit) }}'
+    protocol: '{{ item.protocol | default(omit) }}'
+    policy: '{{ item.policy | default(omit) }}'
+    reject_with: '{{ item.reject_with | default(omit) }}'
+  with_items: '{{ iptables_rules }}'
+  when: __iptables_service.status.ActiveState == 'inactive'
+
+- name: Save rules & policies state
+  community.general.iptables_state:
+    state: saved
+    path: '{{ iptables_rules_path }}'

@@ -1,0 +1,65 @@
+# Config
+iptables_rules:
+  - comment: User-defined TCP chain
+    chain: TCP
+    chain_management: yes
+  - comment: User-defined UDP chain
+    chain: UDP
+    chain_management: yes
+  - comment: Default DROP policy for FORWARD chain
+    chain: FORWARD
+    policy: DROP
+  - comment: Default DROP policy for OUTPUT chain
+    chain: OUTPUT
+    policy: ACCEPT # TODO: Setup ipset and change to DROP
+  - comment: Accept established connections
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+  - comment: Accept loopback access
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+  - comment: Accept ICMP access
+    chain: INPUT
+    ctstate: NEW
+    icmp_type: 8
+    jump: ACCEPT
+    protocol: icmp
+  - comment: Accept SSH access # TODO: Setup ispet and move configuration
+    chain: TCP
+    destination_port: '{{ iptables_ssh_port }}'
+    jump: ACCEPT
+    protocol: tcp
+  - comment: Attach TCP chain to INPUT chain
+    chain: INPUT
+    ctstate: NEW
+    jump: TCP
+    protocol: tcp
+    syn: match
+  - comment: Attach UDP chain to INPUT chain
+    chain: INPUT
+    ctstate: NEW
+    jump: UDP
+    protocol: udp
+  - comment: Default DROP rule for INVALID ctstate
+    chain: INPUT
+    ctstate: INVALID
+    jump: DROP
+  - comment: Default DROP policy for INPUT chain
+    chain: INPUT
+    policy: DROP
+  - comment: Default REJECT TCP rule
+    chain: INPUT
+    jump: REJECT
+    protocol: tcp
+    reject_with: tcp-reset
+  - comment: Default REJECT UDP rule
+    chain: INPUT
+    jump: REJECT
+    protocol: udp
+    reject_with: icmp-port-unreachable
+  - comment: Default REJECT rule
+    chain: INPUT
+    jump: REJECT
+    reject_with: icmp-proto-unreachable

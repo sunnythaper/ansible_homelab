@@ -1,0 +1,11 @@
+# Config
+iptables_rules:
+  - comment: Default ACCEPT policy for FORWARD chain
+    chain: FORWARD
+    policy: ACCEPT
+  - comment: Default ACCEPT policy for OUTPUT chain
+    chain: OUTPUT
+    policy: ACCEPT
+  - comment: Default ACCEPT policy for INPUT chain
+    chain: INPUT
+    policy: ACCEPT
