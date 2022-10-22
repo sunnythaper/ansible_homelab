@@ -35,6 +35,7 @@
   with_items: '{{ iptables_rules }}'
 
 - name: Save rules & policies state
+  become: true
   community.general.iptables_state:
     state: saved
     path: '{{ iptables_rules_path }}'
