@@ -14,6 +14,10 @@ iptables_rules:
     chain: INPUT
     in_interface: lo
     jump: ACCEPT
+  - comment: Default DROP rule for INVALID ctstate
+    chain: INPUT
+    ctstate: INVALID
+    jump: DROP
   - comment: Accept ICMP access
     chain: INPUT
     ctstate: NEW
@@ -27,10 +31,6 @@ iptables_rules:
     jump: ACCEPT
     protocol: tcp
     syn: match
-  - comment: Default DROP rule for INVALID ctstate
-    chain: INPUT
-    ctstate: INVALID
-    jump: DROP
   - comment: Default DROP policy for INPUT chain
     chain: INPUT
     policy: ACCEPT # TODO: Setup ipset and change to DROP
