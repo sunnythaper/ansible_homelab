@@ -1,7 +1,6 @@
-# Config
 iptables_rules:
   - chain: FORWARD
-    policy: ACCEPT # TODO: Setup ipset and change to DROP
+    policy: DROP
   - chain: OUTPUT
     policy: ACCEPT # TODO: Setup ipset and change to DROP
   - chain: INPUT
@@ -28,12 +27,12 @@ iptables_rules:
     policy: ACCEPT # TODO: Setup ipset and change to DROP
   - chain: INPUT
     jump: REJECT
-    protocol: tcp
-    reject_with: tcp-reset
-  - chain: INPUT
-    jump: REJECT
     protocol: udp
     reject_with: icmp-port-unreachable
+  - chain: INPUT
+    jump: REJECT
+    protocol: tcp
+    reject_with: tcp-reset
   - chain: INPUT
     jump: REJECT
     reject_with: icmp-proto-unreachable

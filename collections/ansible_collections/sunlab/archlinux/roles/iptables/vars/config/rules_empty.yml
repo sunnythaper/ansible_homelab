@@ -1,11 +1,7 @@
-# Config
 iptables_rules:
-  - comment: Default ACCEPT policy for FORWARD chain
-    chain: FORWARD
+  - chain: FORWARD
     policy: ACCEPT
-  - comment: Default ACCEPT policy for OUTPUT chain
-    chain: OUTPUT
+  - chain: OUTPUT
     policy: ACCEPT
-  - comment: Default ACCEPT policy for INPUT chain
-    chain: INPUT
+  - chain: INPUT
     policy: ACCEPT
