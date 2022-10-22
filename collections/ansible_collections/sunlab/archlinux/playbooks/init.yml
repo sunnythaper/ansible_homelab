@@ -24,6 +24,7 @@
 - name: Configure additional packages for additional security
   hosts: archlinux
   roles:
+    - iptables
     - certbot
     - libpwquality
     - logrotate

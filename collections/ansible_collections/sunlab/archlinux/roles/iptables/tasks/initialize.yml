@@ -32,7 +32,6 @@
     policy: '{{ item.policy | default(omit) }}'
     reject_with: '{{ item.reject_with | default(omit) }}'
   with_items: '{{ iptables_rules }}'
-  when: __iptables_service.status.ActiveState == 'inactive'
 
 - name: Save rules & policies state
   community.general.iptables_state:
