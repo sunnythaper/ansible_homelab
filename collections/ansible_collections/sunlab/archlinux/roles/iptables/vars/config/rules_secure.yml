@@ -1,6 +1,6 @@
 iptables_rules:
   - chain: FORWARD
-    policy: DROP
+    policy: ACCEPT # TODO: Setup ipset and change to DROP
   - chain: OUTPUT
     policy: ACCEPT # TODO: Setup ipset and change to DROP
   - chain: INPUT
