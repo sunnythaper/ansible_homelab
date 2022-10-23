@@ -18,7 +18,7 @@
     mode: '{{ iptables_rules_file_mode }}'
   register: __iptables_iptables_config
 
-- name: Setup rules & policies
+- name: Setup ACCEPT policies
   become: true
   ansible.builtin.iptables:
     chain: '{{ item }}'
