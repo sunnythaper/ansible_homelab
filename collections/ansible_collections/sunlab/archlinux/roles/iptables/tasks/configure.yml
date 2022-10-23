@@ -26,4 +26,6 @@
   community.general.iptables_state:
     path: '{{ iptables_rules_path }}'
     state: restored
+  async: "{{ ansible_timeout }}"
+  poll: 0
   when: __iptables_config.changed
