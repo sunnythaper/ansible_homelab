@@ -1,6 +1,7 @@
 - name: Generate password
   ansible.builtin.set_fact:
     mattermost_database_password: '{{ sunlab_seed_password | password_hash("sha512", 80000 | random(seed=sunlab_seed_salt) | string )  | regex_replace ("[^A-Za-z0-9]","") }}'
+  no_log: '{{ mattermost_no_log }}'
 
 - name: Create database user
   become: true
