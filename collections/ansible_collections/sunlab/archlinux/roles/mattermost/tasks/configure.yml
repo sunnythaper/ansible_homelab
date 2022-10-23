@@ -13,7 +13,7 @@
     mode: '{{ mattermost_config_file_mode }}'
   no_log: '{{ mattermost_no_log }}'
   with_items:
-    - '{{ mattermost_config_db}}'
+    - '{{ mattermost_config_db }}'
     - '{{ mattermost_config_search }}'
     - '{{ mattermost_config_ssl }}'
   notify: Restart Mattermost
