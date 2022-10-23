@@ -1,6 +1,7 @@
 destroy
 {% if iptables_security_level == 'secure' -%}
 create {{ iptables_input_tcp_ipset }} bitmap:port range 0-65535
+add {{ iptables_input_tcp_ipset }} {{ iptables_ssh_port }}
 {% for port in iptables_input_tcp_ports %}
 add {{ iptables_input_tcp_ipset }} {{ port }}
 {% endfor %}
