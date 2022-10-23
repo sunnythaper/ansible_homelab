@@ -7,6 +7,10 @@ iptables_output_policy: ACCEPT # TODO: Change to DROP
 iptables_input_tcp_chain: INPUT_TCP
 iptables_input_udp_chain: INPUT_UDP
 
+# IPsets
+iptables_input_tcp_ipset: input_tcp_ports
+iptables_input_udp_ipset: input_udp_ports
+
 # INPUT ports
 iptables_input_tcp_ports:
   - '{{ iptables_ssh_port }}'
