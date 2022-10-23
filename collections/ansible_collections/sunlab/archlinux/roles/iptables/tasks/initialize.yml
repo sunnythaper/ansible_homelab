@@ -39,4 +39,3 @@
   community.general.iptables_state:
     path: '{{ iptables_rules_path }}'
     state: saved
-    table: filter
