@@ -1,3 +1,4 @@
+destroy
 {% if iptables_security_level == 'secure' -%}
 create {{ iptables_input_tcp_ipset }} bitmap:port range 0-65535
 {% for port in iptables_input_tcp_ports %}

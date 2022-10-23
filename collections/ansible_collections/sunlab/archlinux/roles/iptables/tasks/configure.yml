@@ -6,11 +6,7 @@
     owner: root
     group: root
     mode: '{{ iptables_rules_file_mode }}'
-
-- name: Load ipset config
-  become: true
-  ansible.builtin.command:
-    cmd: '{{ ipset_binary | quote }} restore -f {{ ipset_config_path | quote }}'
+  register: __iptables_ipset_config
 
 - name: Copy iptables config template
   become: true
@@ -20,6 +16,26 @@
     owner: root
     group: root
     mode: '{{ iptables_rules_file_mode }}'
+  register: __iptables_iptables_config
+
+- name: Flush all tables
+  become: true
+  ansible.builtin.iptables:
+    flush: yes
+    table: '{{ item }}'
+  with_items:
+    - filter
+    - nat
+    - mangle
+    - raw
+    - security
+  when: __iptables_ipset_config.changed or __iptables_iptables_config.changed
+
+- name: Load ipset config
+  become: true
+  ansible.builtin.command:
+    cmd: '{{ ipset_binary | quote }} restore -f {{ ipset_config_path | quote }}'
+  when: __iptables_ipset_config.changed
 
 - name: Load iptables config
   become: true
@@ -28,3 +44,4 @@
     state: restored
   async: "{{ ansible_timeout }}"
   poll: 0
+  when: __iptables_ipset_config.changed or __iptables_iptables_config.changed

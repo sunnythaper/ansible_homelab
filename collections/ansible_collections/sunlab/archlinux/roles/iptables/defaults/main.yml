@@ -3,3 +3,7 @@ iptables_security_level: secure
 
 # Ports
 iptables_ssh_port: 22
+iptables_application_input_tcp_ports:
+  - 5432
+  - 8065
+iptables_application_input_udp_ports: []
