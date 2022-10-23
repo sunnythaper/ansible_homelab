@@ -4,8 +4,8 @@ iptables_forward_policy: DROP
 iptables_output_policy: ACCEPT # TODO: Change to DROP
 
 # Chains
-iptables_input_tcp_chain: INPUTTCP
-iptables_input_udp_chain: INPUTUDP
+iptables_input_tcp_chain: INPUT_TCP
+iptables_input_udp_chain: INPUT_UDP
 
 # INPUT ports
 iptables_input_tcp_ports:
