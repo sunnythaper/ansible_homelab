@@ -19,7 +19,6 @@
     - mangle
     - raw
     - security
-  when: __iptables_config.changed
 
 - name: Load config
   become: true
