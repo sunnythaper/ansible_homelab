@@ -3,6 +3,9 @@
   ansible.builtin.template:
     src: iptables.rules.j2
     dest: '{{ iptables_rules_path }}'
+    owner: root
+    group: root
+    mode: '{{ iptables_rules_file_mode }}'
   register: __iptables_config
 
 # - name: Flush all tables
