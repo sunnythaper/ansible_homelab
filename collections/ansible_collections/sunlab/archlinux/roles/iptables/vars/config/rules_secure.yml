@@ -10,9 +10,6 @@ iptables_rules:
     in_interface: lo
     jump: ACCEPT
   - chain: INPUT
-    ctstate: INVALID
-    jump: DROP
-  - chain: INPUT
     ctstate: NEW
     icmp_type: 8
     jump: ACCEPT
@@ -26,6 +23,9 @@ iptables_rules:
   - chain: INPUT
     policy: ACCEPT # TODO: Setup ipset and change to DROP
   - chain: INPUT
+    ctstate: INVALID
+    jump: DROP
+  - chain: INPUT
     jump: REJECT
     protocol: udp
     reject_with: icmp-port-unreachable
@@ -36,3 +36,7 @@ iptables_rules:
   - chain: INPUT
     jump: REJECT
     reject_with: icmp-proto-unreachable
+
+    # TODO: Setup further security measures and logging options from:
+    # https://wiki.archlinux.org/title/Simple_stateful_firewall#Tricking_port_scanners
+    # https://wiki.archlinux.org/title/Iptables#Logging
