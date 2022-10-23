@@ -15,7 +15,7 @@ iptables_input_udp_ipset: input_udp_ports
 iptables_input_tcp_ports:
   - '{{ iptables_ssh_port }}'
   - '{{ iptables_application_input_tcp_ports }}'
-iptables_input_udp_ports: []
+iptables_input_udp_ports:
   - '{{ iptables_application_input_udp_ports }}'
 
 # TODO: Setup further security measures and logging options from:
