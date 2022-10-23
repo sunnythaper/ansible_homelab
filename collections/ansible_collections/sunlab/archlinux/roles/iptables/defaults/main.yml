@@ -1,5 +1,5 @@
 # Variables
-iptables_security_level: empty
+iptables_security_level: secure
 
 # Ports
 iptables_ssh_port: 22
