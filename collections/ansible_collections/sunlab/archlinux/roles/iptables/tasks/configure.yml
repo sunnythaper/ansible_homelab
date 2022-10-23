@@ -18,6 +18,17 @@
     mode: '{{ iptables_rules_file_mode }}'
   register: __iptables_iptables_config
 
+- name: Setup rules & policies
+  become: true
+  ansible.builtin.iptables:
+    chain: '{{ item }}'
+    policy: ACCEPT
+  with_items:
+    - INPUT
+    - FORWARD
+    - OUTPUT
+  when: __iptables_ipset_config.changed or __iptables_iptables_config.changed
+
 - name: Flush all tables
   become: true
   ansible.builtin.iptables:
