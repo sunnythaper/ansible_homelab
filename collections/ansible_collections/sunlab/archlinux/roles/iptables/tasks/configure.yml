@@ -28,4 +28,3 @@
     state: restored
   async: "{{ ansible_timeout }}"
   poll: 0
-  when: __iptables_config.changed
