@@ -1,42 +1,20 @@
-iptables_rules:
-  - chain: FORWARD
-    policy: ACCEPT # TODO: Setup ipset and change to DROP
-  - chain: OUTPUT
-    policy: ACCEPT # TODO: Setup ipset and change to DROP
-  - chain: INPUT
-    ctstate: ESTABLISHED,RELATED
-    jump: ACCEPT
-  - chain: INPUT
-    in_interface: lo
-    jump: ACCEPT
-  - chain: INPUT
-    ctstate: NEW
-    icmp_type: 8
-    jump: ACCEPT
-    protocol: icmp
-  - chain: INPUT
-    ctstate: NEW
-    destination_port: '{{ iptables_ssh_port }}'
-    jump: ACCEPT
-    protocol: tcp
-    syn: match
-  - chain: INPUT
-    policy: ACCEPT # TODO: Setup ipset and change to DROP
-  - chain: INPUT
-    ctstate: INVALID
-    jump: DROP
-  - chain: INPUT
-    jump: REJECT
-    protocol: udp
-    reject_with: icmp-port-unreachable
-  - chain: INPUT
-    jump: REJECT
-    protocol: tcp
-    reject_with: tcp-reset
-  - chain: INPUT
-    jump: REJECT
-    reject_with: icmp-proto-unreachable
+# Policies
+iptables_input_policy: DROP
+iptables_forward_policy: DROP
+iptables_output_policy: ACCEPT # TODO: Change to DROP
 
-    # TODO: Setup further security measures and logging options from:
-    # https://wiki.archlinux.org/title/Simple_stateful_firewall#Tricking_port_scanners
-    # https://wiki.archlinux.org/title/Iptables#Logging
+# Chains
+iptables_input_tcp_chain: INPUT_TCP
+iptables_input_udp_chain: INPUT_UDP
+
+# INPUT ports
+iptables_input_tcp_ports:
+  - '{{ iptables_ssh_port }}'
+  - 5432
+  - 8065
+iptables_input_udp_ports:
+  - '{{ iptables_ssh_port }}'
+
+# TODO: Setup further security measures and logging options from:
+# https://wiki.archlinux.org/title/Simple_stateful_firewall#Tricking_port_scanners
+# https://wiki.archlinux.org/title/Iptables#Logging

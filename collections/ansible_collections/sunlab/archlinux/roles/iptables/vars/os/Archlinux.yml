@@ -6,3 +6,6 @@ iptables_packages:
 
 # Paths
 iptables_rules_path: /etc/iptables/iptables.rules
+
+# Permissions
+iptables_rules_file_mode: 0600

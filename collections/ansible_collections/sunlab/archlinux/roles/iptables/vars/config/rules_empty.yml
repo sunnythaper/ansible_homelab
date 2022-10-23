@@ -1,7 +1,3 @@
-iptables_rules:
-  - chain: FORWARD
-    policy: ACCEPT
-  - chain: OUTPUT
-    policy: ACCEPT
-  - chain: INPUT
-    policy: ACCEPT
+iptables_input_policy: ACCEPT
+iptables_forward_policy: ACCEPT
+iptables_output_policy: ACCEPT
