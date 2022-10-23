@@ -1,17 +1,9 @@
-create myset-ip hash:ip family inet hashsize 1024 maxelem 65536 bucketsize 12 initval 0x08041062
-add myset-ip 2.2.2.2
-add myset-ip 1.1.1.1
-create myset-ip2 hash:ip family inet hashsize 1024 maxelem 65536 bucketsize 12 initval 0x69d8fa83
-add myset-ip2 1.1.1.1
-
-
-create hash:ip,port
-
-create httpsPorts bitmap:port range 0-65536
-add httpsPorts 80
-add httpsPorts 443
-
-
-
-
-
+destroy
+create input_tcp_ports bitmap:port range 0-65535
+{% for port in iptables_input_tcp_ports %}
+add input_tcp_ports {{ port }}
+{% endfor %}
+create input_udp_ports bitmap:port range 0-65535
+{% for port in iptables_input_udp_ports %}
+add input_udp_ports {{ port }}
+{% endfor %}

@@ -5,7 +5,9 @@ iptables_packages:
   - ipset
 
 # Paths
+ipset_config_path: /etc/ipset.conf
 iptables_rules_path: /etc/iptables/iptables.rules
 
 # Permissions
-iptables_rules_file_mode: 0644
+iptables_config_file_mode: 0600
+iptables_rules_file_mode: 0600

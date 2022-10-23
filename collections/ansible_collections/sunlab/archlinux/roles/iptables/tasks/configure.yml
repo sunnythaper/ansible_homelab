@@ -1,4 +1,4 @@
-- name: Copy config template
+- name: Copy iptables config template
   become: true
   ansible.builtin.template:
     src: iptables.rules.j2
@@ -8,19 +8,17 @@
     mode: '{{ iptables_rules_file_mode }}'
   register: __iptables_config
 
-# - name: Flush all tables
-#   become: true
-#   ansible.builtin.iptables:
-#     flush: yes
-#     table: '{{ item }}'
-#   with_items:
-#     - filter
-#     - nat
-#     - mangle
-#     - raw
-#     - security
+- name: Copy ipset config template
+  become: true
+  ansible.builtin.template:
+    src: ipset.conf.j2
+    dest: '{{ ipset_config_path }}'
+    owner: root
+    group: root
+    mode: '{{ iptables_rules_file_mode }}'
+  register: __ipset_config
 
-- name: Load config
+- name: Load iptables config
   become: true
   community.general.iptables_state:
     path: '{{ iptables_rules_path }}'
