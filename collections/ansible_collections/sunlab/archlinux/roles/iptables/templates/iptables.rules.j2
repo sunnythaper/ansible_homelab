@@ -27,8 +27,8 @@ COMMIT
 {% if iptables_security_level == 'secure' -%}
 :{{ iptables_input_tcp_chain }} - [0:0]
 :{{ iptables_input_udp_chain }} - [0:0]
--A {{ iptables_input_tcp_chain }} -p tcp -m {{ iptables_input_tcp_ipset }} -j ACCEPT
--A {{ iptables_input_udp_chain }} -p udp -m {{ iptables_input_udp_ipset }} -j ACCEPT
+-A {{ iptables_input_tcp_chain }} -p tcp -m set -m {{ iptables_input_tcp_ipset }} -j ACCEPT
+-A {{ iptables_input_udp_chain }} -p udp -m set -m {{ iptables_input_udp_ipset }} -j ACCEPT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -m conntrack --ctstate INVALID -j DROP
