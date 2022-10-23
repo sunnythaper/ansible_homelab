@@ -12,8 +12,7 @@ iptables_input_tcp_ports:
   - '{{ iptables_ssh_port }}'
   - 5432
   - 8065
-iptables_input_udp_ports:
-  - '{{ iptables_ssh_port }}'
+iptables_input_udp_ports: []
 
 # TODO: Setup further security measures and logging options from:
 # https://wiki.archlinux.org/title/Simple_stateful_firewall#Tricking_port_scanners

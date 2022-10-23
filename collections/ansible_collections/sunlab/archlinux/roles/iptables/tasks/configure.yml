@@ -25,3 +25,10 @@
     state: restored
   async: "{{ ansible_timeout }}"
   poll: 0
+  when: __iptables_config.changed
+
+- name: Load ipset config
+  become: true
+  ansible.builtin.command:
+    cmd: '{{ ipset_binary | quote }} restore -f {{ ipset_config_path | quote }}'
+  when: __ipset_config.changed
