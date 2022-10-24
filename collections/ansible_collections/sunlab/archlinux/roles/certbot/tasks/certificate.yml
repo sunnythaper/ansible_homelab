@@ -7,7 +7,7 @@
 - name: Generate certificate
   become: true
   become_user: '{{ certbot_user }}'
-  ansible.builtin.command: '{{ certbot_binary }} {{ certbot_new_command }}'
+  ansible.builtin.command: '{{ certbot_binary | quote }} {{ certbot_new_command | quote }}'
   when: not __certbot_cert.stat.exists
   register: __certbot_cert_generate
   changed_when: "'Successfully received certificate' in __certbot_cert_generate.stdout"

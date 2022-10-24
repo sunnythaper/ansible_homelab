@@ -16,7 +16,7 @@
 - name: Initialize database
   become: true
   become_user: "{{ postgresql_user }}"
-  command: "{{ postgresql_bin_dir }}/{{ postgresql_init_binary }} -D {{ postgresql_data_dir }}"
+  command: "{{ postgresql_bin_dir | quote }}/{{ postgresql_init_binary | quote }} -D {{ postgresql_data_dir | quote }}"
   when: not __postgresql_data.stat.exists
   # See: https://github.com/ansible/ansible/issues/16048#issuecomment-229012509
   vars:
