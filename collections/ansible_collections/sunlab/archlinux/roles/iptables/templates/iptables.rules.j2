@@ -28,8 +28,12 @@ COMMIT
 :FORWARD {{ iptables_forward_policy }} [0:0]
 :OUTPUT {{ iptables_output_policy }} [0:0]
 {% if iptables_security_level == 'secure' -%}
+{% if (iptables_input_tcp_ports is defined) and iptables_input_tcp_ports -%}
 :{{ iptables_input_tcp_chain }} - [0:0]
+{% endif %}
+{% if (iptables_input_udp_ports is defined) and iptables_input_udp_ports -%}
 :{{ iptables_input_udp_chain }} - [0:0]
+{% endif %}
 {% if (iptables_input_tcp_ports is defined) and iptables_input_tcp_ports -%}
 -A {{ iptables_input_tcp_chain }} -p tcp -m set --match-set {{ iptables_input_tcp_ipset }} dst -j ACCEPT
 {% endif %}
@@ -40,8 +44,12 @@ COMMIT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -m conntrack --ctstate INVALID -j DROP
 -A INPUT -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+{% if (iptables_input_tcp_ports is defined) and iptables_input_tcp_ports -%}
 -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j {{ iptables_input_tcp_chain }}
+{% endif %}
+{% if (iptables_input_udp_ports is defined) and iptables_input_udp_ports -%}
 -A INPUT -p udp -m conntrack --ctstate NEW -j {{ iptables_input_udp_chain }}
+{% endif %}
 -A INPUT -p tcp -j REJECT --reject-with tcp-reset
 -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
 -A INPUT -j REJECT --reject-with icmp-proto-unreachable
