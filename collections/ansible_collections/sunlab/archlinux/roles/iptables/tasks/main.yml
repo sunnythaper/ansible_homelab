@@ -6,3 +6,6 @@
 
 - name: Configure
   include_tasks: configure.yml
+
+- name: Enable
+  include_tasks: enable.yml
