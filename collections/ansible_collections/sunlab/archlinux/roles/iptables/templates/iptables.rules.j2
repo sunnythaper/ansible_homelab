@@ -19,8 +19,10 @@ COMMIT
 :INPUT ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
-{% if iptables_security_level == 'secure' -%}
--A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8065
+{% if (iptables_redirect_tcp_ports is defined) and iptables_redirect_tcp_ports -%}
+{% for port in iptables_redirect_tcp_ports %}
+-A PREROUTING -p tcp --dport {{ port.src }} -j REDIRECT --to-port {{ port.dest }}
+{% endfor %}
 {% endif %}
 COMMIT
 *filter

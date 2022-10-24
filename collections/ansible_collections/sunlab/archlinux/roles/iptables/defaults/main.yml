@@ -7,3 +7,6 @@ iptables_input_tcp_ports:
   - 5432
   - 8065
 iptables_input_udp_ports: []
+iptables_redirect_tcp_ports:
+  - src: 443
+  - dest: 8065
