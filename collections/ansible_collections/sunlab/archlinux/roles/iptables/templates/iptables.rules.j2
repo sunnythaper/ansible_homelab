@@ -22,6 +22,7 @@ COMMIT
 {% if (iptables_redirect_tcp_ports is defined) and iptables_redirect_tcp_ports -%}
 {% for port in iptables_redirect_tcp_ports %}
 -A PREROUTING -p tcp --dport {{ port.src }} -j REDIRECT --to-port {{ port.dest }}
+-A OUTPUT -p tcp -o lo --dport {{ port.src }} -j REDIRECT --to-port {{ port.dest }}
 {% endfor %}
 {% endif %}
 COMMIT
