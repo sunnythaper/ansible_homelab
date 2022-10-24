@@ -1,0 +1,13 @@
+- name: Start & enable iptables service
+  become: true
+  service:
+    enabled: yes
+    name: "{{ iptables_binary }}"
+    state: started
+
+- name: Start & enable ipset service
+  become: true
+  service:
+    enabled: yes
+    name: "{{ iptables_ipset_binary }}"
+    state: started

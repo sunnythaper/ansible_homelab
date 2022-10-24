@@ -2,7 +2,7 @@
   become: true
   ansible.builtin.template:
     src: ipset.conf.j2
-    dest: '{{ ipset_config_path }}'
+    dest: '{{ iptables_ipset_config_path }}'
     owner: root
     group: root
     mode: '{{ iptables_rules_file_mode }}'
@@ -45,7 +45,7 @@
 - name: Load ipset config
   become: true
   ansible.builtin.command:
-    cmd: '{{ ipset_binary | quote }} restore -f {{ ipset_config_path | quote }}'
+    cmd: '{{ iptables_ipset_binary | quote }} restore -f {{ iptables_ipset_config_path | quote }}'
   when: __iptables_ipset_config.changed
 
 - name: Load iptables config

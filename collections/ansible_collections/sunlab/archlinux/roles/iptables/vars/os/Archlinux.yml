@@ -1,12 +1,12 @@
 # Packages
-ipset_binary: ipset
+iptables_ipset_binary: ipset
 iptables_binary: iptables
 iptables_packages:
   - iptables
   - ipset
 
 # Paths
-ipset_config_path: /etc/ipset.conf
+iptables_ipset_config_path: /etc/ipset.conf
 iptables_rules_path: /etc/iptables/iptables.rules
 
 # Permissions
