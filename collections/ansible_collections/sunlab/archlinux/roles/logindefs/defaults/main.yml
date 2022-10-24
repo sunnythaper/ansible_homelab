@@ -7,13 +7,13 @@ logindefs:
     ENCRYPT_METHOD: SHA512
     ENV_PATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
     ENV_SUPATH: "PATH=/usr/local/sbin:/usr/local/bin:/usr/bin"
-    ERASECHAR: 0177
+    ERASECHAR: 177
     FAIL_DELAY: 3
     FAILLOG_ENAB: "yes"
     GID_MAX: 60000
     GID_MIN: 1000
     HUSHLOGIN_FILE: .hushlogin
-    KILLCHAR: 025
+    KILLCHAR: 25
     LOG_OK_LOGINS: "yes"
     LOG_UNKFAIL_ENAB: "no"
     LOGIN_RETRIES: 5
@@ -32,7 +32,7 @@ logindefs:
     SYSLOG_SG_ENAB: "yes"
     SYSLOG_SU_ENAB: "yes"
     TTYGROUP: tty
-    TTYPERM: 0600
+    TTYPERM: 600
     UID_MAX: 60000
     UID_MIN: 1000
     UMASK: 27
