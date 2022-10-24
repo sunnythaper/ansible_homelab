@@ -14,3 +14,4 @@ iptables_input_udp_ipset: input_udp_ports
 # TODO: Setup further security measures and logging options from:
 # https://wiki.archlinux.org/title/Simple_stateful_firewall#Tricking_port_scanners
 # https://wiki.archlinux.org/title/Iptables#Logging
+# https://upcloud.com/resources/tutorials/iptables-firewall-recent-triggering-ipset
