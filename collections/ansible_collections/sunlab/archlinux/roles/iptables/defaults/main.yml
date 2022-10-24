@@ -9,4 +9,4 @@ iptables_input_tcp_ports:
 iptables_input_udp_ports: []
 iptables_redirect_tcp_ports:
   - src: 443
-  - dest: 8065
+    dest: 8065
