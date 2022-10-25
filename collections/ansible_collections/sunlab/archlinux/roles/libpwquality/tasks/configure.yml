@@ -1,0 +1,17 @@
+- name: Copy libpwquality configuration
+  become: true
+  ansible.builtin.template:
+    src: 50-pwquality.conf.j2
+    dest: '{{ libpwquality_config_path }}'
+    owner: root
+    group: root
+    mode: '{{ libpwquality_config_file_mode }}'
+
+- name: Copy passwd configuration
+  become: true
+  ansible.builtin.template:
+    src: passwd.j2
+    dest: '{{ libpwquality_passwd_path }}'
+    owner: root
+    group: root
+    mode: '{{ libpwquality_passwd_file_mode }}'

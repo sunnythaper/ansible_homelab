@@ -1,16 +1,8 @@
----
-- name: Install packages
-  become: true
-  pacman:
-    name: "{{ item }}"
-    state: latest
-  with_items: "{{ libpwquality_packages }}"
+- name: Variables
+  include_tasks: variables.yml
 
-- name: Copy libpwquality configuration
-  become: true
-  template:
-    src: templates/etc/security/pwquality.conf.d/50-pwquality.conf.j2
-    dest: /etc/security/pwquality.conf.d/50-pwquality.conf
-    owner: root
-    group: root
-    mode: 0644
+- name: Install
+  include_tasks: install.yml
+
+- name: Configure
+  include_tasks: configure.yml

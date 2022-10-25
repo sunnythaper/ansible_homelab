@@ -1,0 +1,11 @@
+# Packages
+libpwquality_packages:
+  - libpwquality
+
+# Paths
+libpwquality_config_path: /etc/security/pwquality.conf.d/50-pwquality.conf
+libpwquality_passwd_path: /etc/pam.d/passwd
+
+# Permissions
+libpwquality_config_file_mode: 0644
+libpwquality_passwd_file_mode: 0644
