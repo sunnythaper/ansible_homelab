@@ -5,4 +5,5 @@ libpwquality_lcredit: -2
 libpwquality_minlen: 16
 libpwquality_ocredit: -1
 libpwquality_retry: 1
+libpwquality_rounds: 65536
 libpwquality_ucredit: -1

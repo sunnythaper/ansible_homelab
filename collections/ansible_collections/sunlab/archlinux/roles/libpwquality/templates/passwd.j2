@@ -3,4 +3,4 @@
 #password       required        pam_unix.so sha512 shadow use_authtok
 #password        required        pam_unix.so sha512 shadow nullok
 password required pam_pwquality.so retry={{ libpwquality_retry }} minlen={{ libpwquality_minlen }} difok={{ libpwquality_difok }} dcredit={{ libpwquality_dcredit }} ucredit={{ libpwquality_ucredit }} ocredit={{ libpwquality_ocredit }} lcredit={{ libpwquality_lcredit }} [badwords=myservice mydomain] enforce_for_root
-password required pam_unix.so use_authtok sha512 shadow
+password required pam_unix.so use_authtok sha512 shadow rounds={{ libpwquality_rounds }}
