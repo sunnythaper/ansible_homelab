@@ -1,4 +1,13 @@
----
+- name: Set umask via /etc/profile
+  become: true
+  ansible.builtin.lineinfile:
+    dest: /etc/profile
+    regexp: '^umask.*$'
+    line: umask 027
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Set umask via /etc/profile.d/umask.sh
   become: true
   ansible.builtin.lineinfile:
