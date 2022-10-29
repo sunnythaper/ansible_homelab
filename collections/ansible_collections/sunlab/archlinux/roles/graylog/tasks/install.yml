@@ -1,0 +1,8 @@
+- name: Install packages
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: '{{ item }}'
+    state: latest
+    use: '{{ graylog_aur_helper }}'
+  with_items: '{{ graylog_aur_packages }}'

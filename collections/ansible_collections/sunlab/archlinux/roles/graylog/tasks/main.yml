@@ -1,0 +1,5 @@
+- name: Variables
+  include_tasks: variables.yml
+
+- name: Install
+  include_tasks: install.yml

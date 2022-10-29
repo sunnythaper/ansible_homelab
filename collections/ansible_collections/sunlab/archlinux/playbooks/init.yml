@@ -37,6 +37,11 @@
 #   roles:
 #     - teleport
 
+- name: Configure Graylog
+  hosts: data:&graylog
+  roles:
+    - graylog
+
 - name: Configure PostgreSQL
   hosts: data:&postgres
   roles:

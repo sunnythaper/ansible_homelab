@@ -1,0 +1,4 @@
+graylog
+========
+
+Setup & configure Graylog

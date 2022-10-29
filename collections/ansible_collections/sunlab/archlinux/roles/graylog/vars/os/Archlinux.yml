@@ -1,0 +1,5 @@
+graylog_aur_packages:
+  - graylog
+
+# Users
+graylog_aur_helper: yay
