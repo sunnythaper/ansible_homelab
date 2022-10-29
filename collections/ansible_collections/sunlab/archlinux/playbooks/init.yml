@@ -1,17 +1,17 @@
 ---
 - name: Update system packages
-  hosts: archlinux
+  hosts: all
   roles:
     - pacman
 
 - name: Configure basic host & network settings
-  hosts: archlinux
+  hosts: all
   roles:
     - resolvconf
     - hosts
 
 - name: Harden system configuration to be security-forward
-  hosts: archlinux
+  hosts: all
   roles:
     - sshd
     - profile
@@ -22,7 +22,7 @@
     - privileges
 
 - name: Configure additional packages for additional security
-  hosts: archlinux
+  hosts: all
   roles:
     - iptables
     - certbot
@@ -33,23 +33,23 @@
     - lynis
 
 # - name: Configure Teleport
-#   hosts: archlinux
+#   hosts: all
 #   roles:
 #     - teleport
 
 - name: Configure PostgreSQL
-  hosts: archlinux:&data
+  hosts: data:&postgres
   roles:
     - postgresql
 
 - name: Configure Mattermost
-  hosts: archlinux:&chat
+  hosts: chat:&mattermost
   roles:
     - mattermost
     - cloudflared
 
 - name: Configure media center storage & delivery
-  hosts: archlinux:&mediacenter
+  hosts: media:&mediacenter
   roles:
     - nfs
     - nzbget
