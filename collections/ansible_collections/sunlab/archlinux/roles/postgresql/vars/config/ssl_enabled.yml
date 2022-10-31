@@ -14,7 +14,7 @@ postgresql_config_ssl:
   - option: ssl_key_file
     value: "{{ postgresql_data_dir }}/{{ postgresql_ssl_key_file }}"
   - option: ssl_ciphers
-    value: "HIGH:MEDIUM:+3DES:!aNULL"
+    value: "EECDH+AESGCM:EDH+AESGCM"
   - option: ssl_prefer_server_ciphers
     value: "on"
   - option: ssl_ecdh_curve
