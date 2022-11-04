@@ -22,3 +22,5 @@ mattermost_config_ssl:
     value: '{{ mattermost_ssl_key }}'
   - option: TLSStrictTransport
     value: 'true'
+  - option: TLSOverwriteCiphers
+    value: 'EECDH+AESGCM:EDH+AESGCM'
