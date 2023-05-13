@@ -8,7 +8,6 @@
     user: "{{ item }}"
   with_items:
     - "{{ sunlab_ansible_admin }}"
-    - "{{ sunlab_admin }}"
 
 - name: Copy /etc/issue banner
   become: true
