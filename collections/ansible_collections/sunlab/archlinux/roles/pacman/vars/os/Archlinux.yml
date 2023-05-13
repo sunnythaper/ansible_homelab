@@ -1,6 +1,8 @@
 # Packages
 pacman_binary: pacman
 pacman_packages:
+  - base-devel
+  - git
   - pacman-contrib
   - reflector
 pacman_helper_package: yay
