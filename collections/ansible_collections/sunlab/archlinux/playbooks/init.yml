@@ -51,6 +51,10 @@
   hosts: chat:&mattermost
   roles:
     - mattermost
+
+- name: Configure Cloudflared
+  hosts: proxy:&cloudflared
+  roles:
     - cloudflared
 
 - name: Configure media center storage & delivery
