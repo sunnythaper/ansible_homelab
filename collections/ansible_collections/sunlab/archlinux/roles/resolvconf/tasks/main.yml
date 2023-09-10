@@ -26,5 +26,5 @@
     owner: root
     group: root
     state: link
-    mode: 0777
+    mode: 0700
   notify: Restart systemd
