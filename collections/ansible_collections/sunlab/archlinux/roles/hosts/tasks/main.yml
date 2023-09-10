@@ -25,7 +25,7 @@
 - name: Copy /etc/cloud/templates/hosts.arch.tmpl file
   become: true
   template:
-    src: etc/cloud/templates/hosts.arch.tmpl
+    src: etc/cloud/templates/hosts.arch.tmpl.j2
     dest: etc/cloud/templates/hosts.arch.tmpl
     owner: root
     group: root
