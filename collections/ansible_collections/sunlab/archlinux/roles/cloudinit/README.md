@@ -1,0 +1,4 @@
+cloudinit
+========
+
+Configure cloud-init

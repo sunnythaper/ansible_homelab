@@ -1,0 +1,6 @@
+dependencies: []
+
+galaxy_info:
+  role_name: cloudinit
+  author: sunnythaper
+  description: Configure cloud-init
