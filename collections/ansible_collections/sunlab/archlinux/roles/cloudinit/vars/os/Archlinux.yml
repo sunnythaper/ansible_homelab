@@ -1,0 +1,15 @@
+# Paths
+cloudinit_config_path: '{{ cloudinit_config_dir }}/{{ cloudinit_config_file }}'
+cloudinit_custon_config_path: '{{ cloudinit_custom_config_dir }}/{{ cloudinit_custom_config_file }}'
+
+# Directories
+cloudinit_config_dir: /etc/cloud
+cloudinit_custom_config_dir: '{{ cloudinit_config_dir }}/{{ cloudinit_config_file }}.d'
+
+# Files
+cloudinit_config_file: cloud.cfg
+
+# Permissions
+cloudinit_custom_config_file_mode: 0644
+cloudinit_custom_config_file_owner: root
+cloudinit_custom_config_file_group: root

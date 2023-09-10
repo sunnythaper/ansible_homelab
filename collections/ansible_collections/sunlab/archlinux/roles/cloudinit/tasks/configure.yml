@@ -1,0 +1,14 @@
+- name: Check if host is managed by cloud-init
+  stat:
+    path: '{{ cloudinit_config_path }}'
+  register: cloudinit_managed
+
+- name: Copy custom configuration file
+  become: true
+  template:
+    src: config.cfg.j2
+    dest: '{{ cloudinit_custon_config_path }}'
+    owner: '{{ cloudinit_custom_config_file_owner }}'
+    group: '{{ cloudinit_custom_config_file_group }}'
+    mode: '{{ cloudinit_custom_config_file_mode }}'
+  when: cloudinit_managed.stat.exists

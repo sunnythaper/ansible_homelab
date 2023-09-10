@@ -1,0 +1,5 @@
+# Configuration
+cloudinit_config_manage_etc_hosts: false
+
+# Files
+cloudinit_custom_config_file: 99_config.cfg
