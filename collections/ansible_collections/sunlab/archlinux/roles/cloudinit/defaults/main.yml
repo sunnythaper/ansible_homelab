@@ -1,4 +1,5 @@
 # Configuration
+cloudinit_config_fqdn: '{{ inventory_hostname }}.{{ sunlab_domain }}'
 cloudinit_config_manage_etc_hosts: 'false'
 
 # Files
