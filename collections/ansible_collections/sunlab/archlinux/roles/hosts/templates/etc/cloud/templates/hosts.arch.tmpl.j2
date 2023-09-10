@@ -14,8 +14,8 @@ you need to add the following to config:
 #
 {# The value '{{hostname}}' will be replaced with the local-hostname -#}
 {% raw %}
-127.0.0.1 localhost {{hostname}}
 127.0.1.1 {{fqdn}} {{hostname}}
+127.0.0.1 localhost
 {% endraw %}
 
 # The following lines are desirable for IPv6 capable hosts
