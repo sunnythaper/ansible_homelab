@@ -27,4 +27,5 @@
     group: root
     state: link
     mode: 0700
+    force: true
   notify: Restart systemd
