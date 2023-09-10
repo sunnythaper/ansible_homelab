@@ -18,12 +18,13 @@
     group: root
   notify: Restart systemd
 
-- name: Copy resolv.conf
+- name: Create symbolic link to stub-resolv.conf
   become: true
-  template:
-    src: etc/resolv.conf.j2
+  ansible.builtin.file:
+    src: /run/systemd/resolve/stub-resolv.conf
     dest: /etc/resolv.conf
-    mode: 0644
     owner: root
     group: root
+    state: link
+    mode: 0777
   notify: Restart systemd
