@@ -1,0 +1,6 @@
+- name: Install packages
+  become: true
+  pacman:
+    name: '{{ item }}'
+    state: latest
+  with_items: '{{ lynis_packages }}'

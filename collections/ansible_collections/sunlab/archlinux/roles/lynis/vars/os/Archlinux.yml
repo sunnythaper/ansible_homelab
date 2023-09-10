@@ -1,0 +1,4 @@
+# Packages
+lynis_packages:
+  - inetutils
+  - lynis

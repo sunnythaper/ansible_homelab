@@ -1,6 +1,5 @@
----
-- name: Install `lynis` via pacman
-  become: true
-  pacman:
-    name: lynis
-    state: latest
+- name: Variables
+  include_tasks: variables.yml
+
+- name: Install
+  include_tasks: install.yml
