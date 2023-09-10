@@ -3,7 +3,7 @@
 DNS={{ sunlab_dns }}#pfsense.{{ sunlab_domain }}
 FallbackDNS=127.0.0.1 ::1
 Domains={{ sunlab_domain }}
-DNSSEC=yes
+DNSSEC=allow-downgrade
 DNSOverTLS=yes
 MulticastDNS=no
 LLMNR=no
