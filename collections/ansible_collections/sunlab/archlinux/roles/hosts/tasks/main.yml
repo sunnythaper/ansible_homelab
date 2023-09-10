@@ -7,6 +7,11 @@
     group: root
     mode: 0644
 
+- name: Check if /etc/hosts is managed by cloud-init
+  stat:
+    path: /etc/cloud/templates/hosts.arch.tmpl
+  register: managed_hosts_file
+
 - name: Copy /etc/hosts file
   become: true
   template:
@@ -15,3 +20,14 @@
     owner: root
     group: root
     mode: 0644
+  when: not managed_hosts_file.stat.exists
+
+- name: Copy /etc/cloud/templates/hosts.arch.tmpl file
+  become: true
+  template:
+    src: etc/cloud/templates/hosts.arch.tmpl
+    dest: etc/cloud/templates/hosts.arch.tmpl
+    owner: root
+    group: root
+    mode: 0644
+  when: managed_hosts_file.stat.exists
