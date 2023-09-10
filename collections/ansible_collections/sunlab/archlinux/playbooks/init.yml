@@ -7,7 +7,7 @@
 - name: Configure basic host & network settings
   hosts: all
   roles:
-    - cloud-init
+    - cloudinit
     - resolvconf
     - hosts
 
